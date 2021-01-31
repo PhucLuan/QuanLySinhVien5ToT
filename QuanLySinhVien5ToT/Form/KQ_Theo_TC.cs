@@ -31,8 +31,9 @@ namespace QuanLySinhVien5ToT
             loadcbFillterTC();
             loadcbThoigian_TS();
             loadcbTC_TS();
+            loadcbThoiGian_Xem();
             showKQ(KQ_Theo_TcBLL.DsKQ(pagenumber, numberRecord));
-            
+
         }
         void showKQ(List<Kq_Theo_tcDTO> listkq)
         {
@@ -40,13 +41,14 @@ namespace QuanLySinhVien5ToT
         }
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             string name = dtgv_KQTTC.Columns[e.ColumnIndex].Name;
             if (name == "XemChiTiet")
             {
                 pn_Them_SuaKQ.Visible = false;
                 pn_XemChiTiet.Visible = true;
                 dtgv_KQTTC.Width = 674;
+                pn_XemChiTiet.Enabled = false;
             }
             if (name == "Sua")
             {
@@ -55,16 +57,33 @@ namespace QuanLySinhVien5ToT
                 dtgv_KQTTC.Width = 674;
                 btnLuuKQ.Visible = true;
                 flagLuu = 1;
-                binding();
+                txtMssvThem_Sua.Enabled = false;
+                cbTCThem_Sua.Enabled = false;
+                cbThoiGianThem_Sua.Enabled = false;
+
+                txtMssvThem_Sua.BorderColor = Color.White;
+                txtMssvThem_Sua.PlaceholderText = "";
+                txtMssvThem_Sua.PlaceholderForeColor = Color.White;
+                txtTDBBThem_Sua.BorderColor = Color.White;
+                txtTDBBThem_Sua.PlaceholderText = "";
+                txtTDBBThem_Sua.PlaceholderForeColor = Color.White;
+                txtTDHDKThem_Sua.BorderColor = Color.White;
+                txtTDHDKThem_Sua.PlaceholderText = "";
+                txtTDHDKThem_Sua.PlaceholderForeColor = Color.White;
             }
 
-            MessageBox.Show(KQ_Theo_TcBLL
-                .GetIdFormattedDateTime(dtgv_KQTTC.Rows[e.RowIndex].Cells[8].Value.ToString()));
+            DataGridViewRow row = this.dtgv_KQTTC.Rows[e.RowIndex];
+            txtMssvThem_Sua.Text = row.Cells["Mssv"].Value.ToString();
+            cbTCThem_Sua.Text = row.Cells["TieuChi"].Value.ToString();
+            txtTDBBThem_Sua.Text = row.Cells["TienDoHDBB"].Value.ToString();
+            txtTDHDKThem_Sua.Text = row.Cells["TienDoHDKhac"].Value.ToString();
+            cbThoiGianThem_Sua.SelectedValue = KQ_Theo_TcBLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
 
-            //DataGridViewRow row = this.dtgv_KQTTC.Rows[e.RowIndex];
-            //txtMssvThem_Sua.Text = row.Cells["Mssv"].Value.ToString();
-            //cbTCThem_Sua.Text= row.Cells["TieuChi"].Value.ToString();
-            //cbThoiGianThem_Sua.Text= row.Cells["MaThoiGian"].Selected.ToString();
+            txtTenSinhVien.Text = row.Cells["TenSinhVien"].Value.ToString();
+            txtTieuChi_Xem.Text = row.Cells["TieuChi"].Value.ToString();
+            txtTDBB_Xem.Text = row.Cells["TienDoHDBB"].Value.ToString();
+            txtTDHDK_Xem.Text = row.Cells["TienDoHDKhac"].Value.ToString();
+            cbThoiGian_Xem.SelectedValue = KQ_Theo_TcBLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
         }
 
         private void btnX_XemChiTiet_Click(object sender, EventArgs e)
@@ -87,61 +106,111 @@ namespace QuanLySinhVien5ToT
             dtgv_KQTTC.Width = 674;
             btnLuuKQ.Visible = true;
             flagLuu = 0;
+            txtMssvThem_Sua.Text = "";
+            txtTDBBThem_Sua.Text = "";
+            txtTDHDKThem_Sua.Text = "";
+            txtMssvThem_Sua.Enabled = true;
+            cbThoiGianThem_Sua.Enabled = true;
+            cbTCThem_Sua.Enabled = true;
+
+            txtMssvThem_Sua.BorderColor = Color.White;
+            txtMssvThem_Sua.PlaceholderText = "";
+            txtMssvThem_Sua.PlaceholderForeColor = Color.White;
+            txtTDBBThem_Sua.BorderColor = Color.White;
+            txtTDBBThem_Sua.PlaceholderText = "";
+            txtTDBBThem_Sua.PlaceholderForeColor = Color.White;
+            txtTDHDKThem_Sua.BorderColor = Color.White;
+            txtTDHDKThem_Sua.PlaceholderText = "";
+            txtTDHDKThem_Sua.PlaceholderForeColor = Color.White;
         }
 
         private void btnLuuKQ_Click(object sender, EventArgs e)
         {
-            pn_XemChiTiet.Visible = false;
-            pn_Them_SuaKQ.Visible = false;
-            dtgv_KQTTC.Width = 981;
-            btnLuuKQ.Visible = false;
-            if (flagLuu == 0)
+            if (txtMssvThem_Sua.Text == "" || txtTDHDKThem_Sua.Text == "" || txtTDBBThem_Sua.Text == "")
             {
-                KQ_THEO_TIEUCHI kq = KQ_Theo_TcBLL.Get(x => x.Mssv.Trim() == txtMssvThem_Sua.Text.Trim() && x.MaTieuChi.Trim()==cbTCThem_Sua.Text.Trim() && x.MaThoiGian==Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue));
-                if (kq == null)
+                if (string.IsNullOrEmpty(txtMssvThem_Sua.Text.Trim()))
                 {
-                    kq = new KQ_THEO_TIEUCHI();
-                    kq.Mssv = txtMssvThem_Sua.Text;
-                    kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
-                    kq.MaThoiGian =Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
-                    if (txtMssvThem_Sua.Text.Trim() == "" || cbTCThem_Sua.Text.Trim() == "" || cbThoiGianThem_Sua.Text.Trim() == "")
-                    {
-                        MessageBox.Show("không được để trống dữ liệu");
-                    }
-                    else
-                    {
-                        kq.Mssv = txtMssvThem_Sua.Text;
-                        kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
-                        kq.TienDoHDBatBuoc =Convert.ToInt16(txtTDBBThem_Sua.Text);
-                        kq.TienDoHDKhac = Convert.ToBoolean(txtTDHDKThem_Sua.Text);
-                        kq.MaThoiGian= Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
-
-
-
-                        KQ_Theo_TcBLL.Add(kq);
-                        MessageBox.Show("Lưu Thành Công");
-                    }
+                    txtMssvThem_Sua.BorderColor = Color.Red;
+                    txtMssvThem_Sua.PlaceholderText = "bạn chưa nhập mssv";
+                    txtMssvThem_Sua.PlaceholderForeColor = Color.Red;
                 }
-                else
+                if (string.IsNullOrEmpty(txtTDBBThem_Sua.Text.Trim()))
                 {
-                    MessageBox.Show("Mã Số Sinh Viên Không Được Trùng!!!!!");
+                    txtTDBBThem_Sua.BorderColor = Color.Red;
+                    txtTDBBThem_Sua.PlaceholderText = "bạn chưa nhập TDHDBB";
+                    txtTDBBThem_Sua.PlaceholderForeColor = Color.Red;
                 }
-                showKQ(KQ_Theo_TcBLL.DsKQ(pagenumber, numberRecord));
+                if (string.IsNullOrEmpty(txtTDHDKThem_Sua.Text.Trim()))
+                {
+                    txtTDHDKThem_Sua.BorderColor = Color.Red;
+                    txtTDHDKThem_Sua.PlaceholderText = "bạn chưa nhập TDHDK";
+                    txtTDHDKThem_Sua.PlaceholderForeColor = Color.Red;
+                }
+
             }
             else
             {
-                
-                KQ_THEO_TIEUCHI kq = KQ_Theo_TcBLL.Get(x => x.Mssv.Trim() == txtMssvThem_Sua.Text.Trim() && x.MaTieuChi.Trim() == cbTCThem_Sua.SelectedValue.ToString());
-                //kq.Mssv = txtMssvThem_Sua.Text;
-                //kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
-                kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
-                kq.TienDoHDKhac = Convert.ToBoolean(txtTDHDKThem_Sua.Text);
-                //kq.MaThoiGian = Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
+                pn_XemChiTiet.Visible = false;
+                pn_Them_SuaKQ.Visible = false;
+                dtgv_KQTTC.Width = 981;
+                btnLuuKQ.Visible = false;
+                if (flagLuu == 0)
+                {
+                    KQ_THEO_TIEUCHI kq = KQ_Theo_TcBLL.Get(x => x.Mssv.Trim() == txtMssvThem_Sua.Text.Trim() && x.MaTieuChi.Trim() == cbTCThem_Sua.Text.Trim() && x.MaThoiGian == Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue));
+                    if (kq == null)
+                    {
+                        kq = new KQ_THEO_TIEUCHI();
+                        kq.Mssv = txtMssvThem_Sua.Text;
+                        kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
+                        kq.MaThoiGian = Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
+                        //kq.Mssv = txtMssvThem_Sua.Text;
+                        //kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
+                        if (Convert.ToInt32(txtTDBBThem_Sua.Text) > 7)
+                        {
+                            txtTDBBThem_Sua.Text = "";
+                            MessageBox.Show("Số tiến độ không được vượt quá 7");
+                        }
+                        else
+                        {
+                            kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
+                            kq.TienDoHDKhac = Convert.ToBoolean(txtTDHDKThem_Sua.Text);
+                            //kq.MaThoiGian = Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
+                            KQ_Theo_TcBLL.Add(kq);
+                            MessageBox.Show("Lưu Thành Công");
+                        }
 
-                KQ_Theo_TcBLL.Edit(kq);
-                MessageBox.Show("Sửa Thành Công");
-                showKQ(KQ_Theo_TcBLL.DsKQ(pagenumber, numberRecord));
+                    }
+                    else
+                    {
+                        MessageBox.Show("dữ liệu thêm đã bị trùng");
+                    }
+                    showKQ(KQ_Theo_TcBLL.DsKQ(pagenumber, numberRecord));
+                }
+                else
+                {
+
+                    KQ_THEO_TIEUCHI kq = KQ_Theo_TcBLL.Get(x => x.Mssv.Trim() == txtMssvThem_Sua.Text.Trim() && x.MaTieuChi.Trim() == cbTCThem_Sua.SelectedValue.ToString() && x.MaThoiGian == Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString()));
+                    //kq.Mssv = txtMssvThem_Sua.Text;
+                    //kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
+                    if (Int32.Parse(txtTDBBThem_Sua.Text) > 7)
+                    {
+                        txtTDBBThem_Sua.Text = "";
+                        MessageBox.Show("Số tiến độ không được vượt quá 7");
+                    }
+                    else
+                    {
+                        kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
+                        kq.TienDoHDKhac = Convert.ToBoolean(txtTDHDKThem_Sua.Text);
+                        //kq.MaThoiGian = Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
+
+                        KQ_Theo_TcBLL.Edit(kq);
+                        MessageBox.Show("Sửa Thành Công");
+                    }
+
+                    showKQ(KQ_Theo_TcBLL.DsKQ(pagenumber, numberRecord));
+                }
             }
+
         }
 
         private void btnXThemKQ_Click(object sender, EventArgs e)
@@ -150,16 +219,17 @@ namespace QuanLySinhVien5ToT
             pn_Them_SuaKQ.Visible = false;
             dtgv_KQTTC.Width = 981;
             btnLuuKQ.Visible = false;
+            showKQ(KQ_Theo_TcBLL.DsKQ(pagenumber, numberRecord));
         }
 
         void loadcbFillterTG()
         {
-            cbFillterThoiGian.DataSource = new BindingSource(KQ_Theo_TcBLL.showTime(),null);
-            cbFillterThoiGian.DisplayMember="Value";
+            cbFillterThoiGian.DataSource = new BindingSource(KQ_Theo_TcBLL.showTime(), null);
+            cbFillterThoiGian.DisplayMember = "Value";
             cbFillterThoiGian.ValueMember = "Key";
         }
 
-        
+
 
         private void btnSuaTC_Click(object sender, EventArgs e)
         {
@@ -191,32 +261,41 @@ namespace QuanLySinhVien5ToT
         }
         void loadcbThoigian_TS()
         {
-            cbThoiGianThem_Sua.DataSource = KQ_Theo_TcBLL.dsthoigian();
-            cbThoiGianThem_Sua.DisplayMember = "FullTime";
-            cbThoiGianThem_Sua.ValueMember = "MaThoiGian";
+            cbThoiGianThem_Sua.DataSource = new BindingSource(KQ_Theo_TcBLL.showTime(), null);
+            cbThoiGianThem_Sua.DisplayMember = "Value";
+            cbThoiGianThem_Sua.ValueMember = "Key";
+        }
+        void loadcbThoiGian_Xem()
+        {
+            cbThoiGian_Xem.DataSource = new BindingSource(KQ_Theo_TcBLL.showTime(), null);
+            cbThoiGian_Xem.DisplayMember = "Value";
+            cbThoiGian_Xem.ValueMember = "Key";
         }
         void loadcbTC_TS()
         {
             cbTCThem_Sua.DataSource = KQ_Theo_TcBLL.dstieuchi();
             cbTCThem_Sua.DisplayMember = "TenTieuChi";
             cbTCThem_Sua.ValueMember = "MaTieuChi";
-        }   
-        void binding()
-        {
-            txtMssvThem_Sua.DataBindings.Clear();
-            txtMssvThem_Sua.DataBindings.Add("Text", dtgv_KQTTC.DataSource, "Mssv");
-            cbTCThem_Sua.DataBindings.Clear();
-            cbTCThem_Sua.DataBindings.Add("Text", dtgv_KQTTC.DataSource, "TenTieuChi");
-            txtTDBBThem_Sua.DataBindings.Clear();
-            txtTDBBThem_Sua.DataBindings.Add("Text", dtgv_KQTTC.DataSource, "TienDoHDBatBuoc");
-            txtTDHDKThem_Sua.DataBindings.Clear();
-            txtTDHDKThem_Sua.DataBindings.Add("Text", dtgv_KQTTC.DataSource, "TienDoHDKhac");
-            cbThoiGianThem_Sua.DataBindings.Clear();
-            cbThoiGianThem_Sua.DataBindings.Add("Text", dtgv_KQTTC.DataSource, "ThoiGian");
         }
-        
-        
 
-        
+        private void txtMssvThem_Sua_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+                MessageBox.Show("Bạn chỉ được nhập kí tự số !!!");
+            }
+        }
+
+        private void txtTDBBThem_Sua_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+                MessageBox.Show("Bạn chỉ được nhập kí tự số !!!");
+            }
+        }
     }
 }
