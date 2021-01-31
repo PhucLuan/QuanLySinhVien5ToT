@@ -1,0 +1,1650 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DT_QL_SV5TOT_5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAP_TIEU_CHUAN">
+          <Key>
+            <PropertyRef Name="MaCapTieuChuan" />
+          </Key>
+          <Property Name="MaCapTieuChuan" Type="int" Nullable="false" />
+          <Property Name="TenCapTieuChuan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CURRENT_QUYDINH_DIEM">
+          <Key>
+            <PropertyRef Name="MaQuyDinhDiem" />
+          </Key>
+          <Property Name="MaQuyDinhDiem" Type="int" Nullable="false" />
+          <Property Name="MaLoaiDiem" Type="int" />
+          <Property Name="DiemToiThieu" Type="int" />
+          <Property Name="MaDonVi" Type="varchar" MaxLength="15" />
+          <Property Name="MaTieuChuan" Type="int" />
+          <Property Name="Mathoigian" Type="int" />
+        </EntityType>
+        <EntityType Name="CURRENT_TIME">
+          <Key>
+            <PropertyRef Name="IDthoigian" />
+          </Key>
+          <Property Name="IDthoigian" Type="int" Nullable="false" />
+          <Property Name="TuNgay" Type="date" />
+          <Property Name="DenNgay" Type="date" />
+        </EntityType>
+        <EntityType Name="CHUONG_TRINH">
+          <Key>
+            <PropertyRef Name="MaChuongTrinh" />
+          </Key>
+          <Property Name="MaChuongTrinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenChuongTrinh" Type="nvarchar" MaxLength="500" />
+          <Property Name="MaTieuChuan" Type="int" />
+          <Property Name="ThoiGianDienRa" Type="date" />
+          <Property Name="DonViToChuc" Type="varchar" MaxLength="15" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
+          <Property Name="LinkBaiDang" Type="varchar" MaxLength="100" />
+          <Property Name="HinhAnh" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DIEM">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaLoaiDiem" />
+            <PropertyRef Name="MaHocKy" />
+          </Key>
+          <Property Name="Mssv" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="MaLoaiDiem" Type="int" Nullable="false" />
+          <Property Name="Diem" Type="int" />
+          <Property Name="MaHocKy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DON_VI">
+          <Key>
+            <PropertyRef Name="MaDonVi" />
+          </Key>
+          <Property Name="MaDonVi" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TenDonVi" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="HOCKY_XETDIEM">
+          <Key>
+            <PropertyRef Name="MaHocKy" />
+          </Key>
+          <Property Name="MaHocKy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HocKy" Type="nvarchar" MaxLength="20" />
+          <Property Name="Nam" Type="int" />
+          <Property Name="MaThoiGianXetDiem" Type="int" />
+        </EntityType>
+        <EntityType Name="KQ_THEO_TIEUCHI">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaTieuChi" />
+            <PropertyRef Name="MaThoiGian" />
+          </Key>
+          <Property Name="Mssv" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="MaTieuChi" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DanhGia" Type="int" />
+          <Property Name="TienDoHDBatBuoc" Type="smallint" />
+          <Property Name="TienDoHDKhac" Type="bit" />
+          <Property Name="TienDoTong" Type="smallint" />
+          <Property Name="MaThoiGian" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAI_DIEM">
+          <Key>
+            <PropertyRef Name="MaLoaiDiem" />
+          </Key>
+          <Property Name="MaLoaiDiem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiDiem" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="LOAI_TIEU_CHUAN">
+          <Key>
+            <PropertyRef Name="MaLoaiTieuChuan" />
+          </Key>
+          <Property Name="MaLoaiTieuChuan" Type="bit" Nullable="false" />
+          <Property Name="TenLoaiTieuChuan" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="IDnv" />
+          </Key>
+          <Property Name="IDnv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="IDuser" Type="int" />
+        </EntityType>
+        <EntityType Name="QUYDINH_DIEM">
+          <Key>
+            <PropertyRef Name="MaQuyDinhDiem" />
+          </Key>
+          <Property Name="MaQuyDinhDiem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaLoaiDiem" Type="int" />
+          <Property Name="DiemToiThieu" Type="int" />
+          <Property Name="MaDonVi" Type="varchar" MaxLength="15" />
+          <Property Name="MaTieuChuan" Type="int" />
+          <Property Name="Mathoigian" Type="int" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="IDrole" />
+          </Key>
+          <Property Name="IDrole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="SINH_VIEN">
+          <Key>
+            <PropertyRef Name="Mssv" />
+          </Key>
+          <Property Name="Mssv" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDT" Type="varchar" MaxLength="10" />
+          <Property Name="Lop" Type="varchar" MaxLength="100" />
+          <Property Name="DonVi" Type="varchar" MaxLength="15" />
+          <Property Name="Khoa" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="IDuser" Type="int" />
+        </EntityType>
+        <EntityType Name="TIEU_CHI">
+          <Key>
+            <PropertyRef Name="MaTieuChi" />
+          </Key>
+          <Property Name="MaTieuChi" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TenTieuChi" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TIEU_CHUAN">
+          <Key>
+            <PropertyRef Name="MaTieuChuan" />
+          </Key>
+          <Property Name="MaTieuChuan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTieuChuan" Type="nvarchar" MaxLength="500" />
+          <Property Name="MaTieuChi" Type="varchar" MaxLength="15" />
+          <Property Name="MaLoaiTieuChuan" Type="bit" />
+          <Property Name="Cap" Type="int" />
+          <Property Name="QuyDinhGiai" Type="bit" />
+        </EntityType>
+        <EntityType Name="THAMGIA_CHUONGTRINH">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaChuongTrinh" />
+          </Key>
+          <Property Name="Mssv" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="MaChuongTrinh" Type="int" Nullable="false" />
+          <Property Name="Giai" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaThoiGian" Type="int" />
+        </EntityType>
+        <EntityType Name="THOIDIEM_SV_THAMGIA">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaThoiGian" />
+          </Key>
+          <Property Name="Mssv" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="MaThoiGian" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="THOIGIAN_XET">
+          <Key>
+            <PropertyRef Name="MaThoiGian" />
+          </Key>
+          <Property Name="MaThoiGian" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TuNgay" Type="date" />
+          <Property Name="DenNgay" Type="date" />
+        </EntityType>
+        <EntityType Name="THUCHIEN_TIEUCHUAN">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaTieuChuan" />
+          </Key>
+          <Property Name="Mssv" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="MaTieuChuan" Type="int" Nullable="false" />
+          <Property Name="MaThoiGian" Type="int" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="IDuser" />
+          </Key>
+          <Property Name="IDuser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="IDrole" Type="int" />
+        </EntityType>
+        <Association Name="FK__CHUONG_TR__DonVi__4AB81AF0">
+          <End Role="DON_VI" Type="Self.DON_VI" Multiplicity="0..1" />
+          <End Role="CHUONG_TRINH" Type="Self.CHUONG_TRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="CHUONG_TRINH">
+              <PropertyRef Name="DonViToChuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHUONG_TR__MaTie__4BAC3F29">
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="CHUONG_TRINH" Type="Self.CHUONG_TRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Principal>
+            <Dependent Role="CHUONG_TRINH">
+              <PropertyRef Name="MaTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEM__MaHocKy__5BE2A6F2">
+          <End Role="HOCKY_XETDIEM" Type="Self.HOCKY_XETDIEM" Multiplicity="1" />
+          <End Role="DIEM" Type="Self.DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOCKY_XETDIEM">
+              <PropertyRef Name="MaHocKy" />
+            </Principal>
+            <Dependent Role="DIEM">
+              <PropertyRef Name="MaHocKy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEM__MaLoaiDiem__4D94879B">
+          <End Role="LOAI_DIEM" Type="Self.LOAI_DIEM" Multiplicity="1" />
+          <End Role="DIEM" Type="Self.DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Principal>
+            <Dependent Role="DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEM__Mssv__4E88ABD4">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="DIEM" Type="Self.DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="DIEM">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KQ_THEO_T__DanhG__34C8D9D1">
+          <End Role="CAP_TIEU_CHUAN" Type="Self.CAP_TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAP_TIEU_CHUAN">
+              <PropertyRef Name="MaCapTieuChuan" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="DanhGia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KQ_THEO_T__MaTie__33D4B598">
+          <End Role="TIEU_CHI" Type="Self.TIEU_CHI" Multiplicity="1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHI">
+              <PropertyRef Name="MaTieuChi" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="MaTieuChi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KQ_THEO_TI__Mssv__32E0915F">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUYDINH_D__MaDon__5535A963">
+          <End Role="DON_VI" Type="Self.DON_VI" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="MaDonVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUYDINH_D__MaLoa__5629CD9C">
+          <End Role="LOAI_DIEM" Type="Self.LOAI_DIEM" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUYDINH_D__MaTie__571DF1D5">
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="MaTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SINH_VIEN__DonVi__59063A47">
+          <End Role="DON_VI" Type="Self.DON_VI" Multiplicity="0..1" />
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="SINH_VIEN">
+              <PropertyRef Name="DonVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TIEU_CHUA__MaLoa__619B8048">
+          <End Role="LOAI_TIEU_CHUAN" Type="Self.LOAI_TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_TIEU_CHUAN">
+              <PropertyRef Name="MaLoaiTieuChuan" />
+            </Principal>
+            <Dependent Role="TIEU_CHUAN">
+              <PropertyRef Name="MaLoaiTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TIEU_CHUA__MaTie__628FA481">
+          <End Role="TIEU_CHI" Type="Self.TIEU_CHI" Multiplicity="0..1" />
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHI">
+              <PropertyRef Name="MaTieuChi" />
+            </Principal>
+            <Dependent Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TIEU_CHUAN__Cap__6383C8BA">
+          <End Role="CAP_TIEU_CHUAN" Type="Self.CAP_TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAP_TIEU_CHUAN">
+              <PropertyRef Name="MaCapTieuChuan" />
+            </Principal>
+            <Dependent Role="TIEU_CHUAN">
+              <PropertyRef Name="Cap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THAMGIA_C__MaChu__440B1D61">
+          <End Role="CHUONG_TRINH" Type="Self.CHUONG_TRINH" Multiplicity="1" />
+          <End Role="THAMGIA_CHUONGTRINH" Type="Self.THAMGIA_CHUONGTRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUONG_TRINH">
+              <PropertyRef Name="MaChuongTrinh" />
+            </Principal>
+            <Dependent Role="THAMGIA_CHUONGTRINH">
+              <PropertyRef Name="MaChuongTrinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THAMGIA_CH__Mssv__4316F928">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="THAMGIA_CHUONGTRINH" Type="Self.THAMGIA_CHUONGTRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="THAMGIA_CHUONGTRINH">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THOIDIEM_S__Mssv__2B3F6F97">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="THOIDIEM_SV_THAMGIA" Type="Self.THOIDIEM_SV_THAMGIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="THOIDIEM_SV_THAMGIA">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THUCHIEN___MaTie__5FB337D6">
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="1" />
+          <End Role="THUCHIEN_TIEUCHUAN" Type="Self.THUCHIEN_TIEUCHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Principal>
+            <Dependent Role="THUCHIEN_TIEUCHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THUCHIEN___MaTho__656C112C">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="THUCHIEN_TIEUCHUAN" Type="Self.THUCHIEN_TIEUCHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="THUCHIEN_TIEUCHUAN">
+              <PropertyRef Name="MaThoiGian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THUCHIEN_T__Mssv__60A75C0F">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="THUCHIEN_TIEUCHUAN" Type="Self.THUCHIEN_TIEUCHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="THUCHIEN_TIEUCHUAN">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOCKY_XETDIEM_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="HOCKY_XETDIEM" Type="Self.HOCKY_XETDIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="HOCKY_XETDIEM">
+              <PropertyRef Name="MaThoiGianXetDiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KQ_THEO_TIEUCHI_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="MaThoiGian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHANVIEN_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDuser" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="IDuser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUYDINH_DIEM_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="Mathoigian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SINH_VIEN_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDuser" />
+            </Principal>
+            <Dependent Role="SINH_VIEN">
+              <PropertyRef Name="IDuser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="THAMGIA_CHUONGTRINH" Type="Self.THAMGIA_CHUONGTRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="THAMGIA_CHUONGTRINH">
+              <PropertyRef Name="MaThoiGian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOIDIEM_SV_THAMGIA_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="1" />
+          <End Role="THOIDIEM_SV_THAMGIA" Type="Self.THOIDIEM_SV_THAMGIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="THOIDIEM_SV_THAMGIA">
+              <PropertyRef Name="MaThoiGian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROLE">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="IDrole" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="IDrole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DT_QL_SV5TOT_5ModelStoreContainer">
+          <EntitySet Name="CAP_TIEU_CHUAN" EntityType="Self.CAP_TIEU_CHUAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CURRENT_QUYDINH_DIEM" EntityType="Self.CURRENT_QUYDINH_DIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CURRENT_TIME" EntityType="Self.CURRENT_TIME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHUONG_TRINH" EntityType="Self.CHUONG_TRINH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIEM" EntityType="Self.DIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DON_VI" EntityType="Self.DON_VI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOCKY_XETDIEM" EntityType="Self.HOCKY_XETDIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KQ_THEO_TIEUCHI" EntityType="Self.KQ_THEO_TIEUCHI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAI_DIEM" EntityType="Self.LOAI_DIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAI_TIEU_CHUAN" EntityType="Self.LOAI_TIEU_CHUAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUYDINH_DIEM" EntityType="Self.QUYDINH_DIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SINH_VIEN" EntityType="Self.SINH_VIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIEU_CHI" EntityType="Self.TIEU_CHI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIEU_CHUAN" EntityType="Self.TIEU_CHUAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THAMGIA_CHUONGTRINH" EntityType="Self.THAMGIA_CHUONGTRINH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THOIDIEM_SV_THAMGIA" EntityType="Self.THOIDIEM_SV_THAMGIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THOIGIAN_XET" EntityType="Self.THOIGIAN_XET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THUCHIEN_TIEUCHUAN" EntityType="Self.THUCHIEN_TIEUCHUAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CHUONG_TR__DonVi__4AB81AF0" Association="Self.FK__CHUONG_TR__DonVi__4AB81AF0">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="CHUONG_TRINH" EntitySet="CHUONG_TRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHUONG_TR__MaTie__4BAC3F29" Association="Self.FK__CHUONG_TR__MaTie__4BAC3F29">
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+            <End Role="CHUONG_TRINH" EntitySet="CHUONG_TRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEM__MaHocKy__5BE2A6F2" Association="Self.FK__DIEM__MaHocKy__5BE2A6F2">
+            <End Role="HOCKY_XETDIEM" EntitySet="HOCKY_XETDIEM" />
+            <End Role="DIEM" EntitySet="DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEM__MaLoaiDiem__4D94879B" Association="Self.FK__DIEM__MaLoaiDiem__4D94879B">
+            <End Role="LOAI_DIEM" EntitySet="LOAI_DIEM" />
+            <End Role="DIEM" EntitySet="DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEM__Mssv__4E88ABD4" Association="Self.FK__DIEM__Mssv__4E88ABD4">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="DIEM" EntitySet="DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KQ_THEO_T__DanhG__34C8D9D1" Association="Self.FK__KQ_THEO_T__DanhG__34C8D9D1">
+            <End Role="CAP_TIEU_CHUAN" EntitySet="CAP_TIEU_CHUAN" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KQ_THEO_T__MaTie__33D4B598" Association="Self.FK__KQ_THEO_T__MaTie__33D4B598">
+            <End Role="TIEU_CHI" EntitySet="TIEU_CHI" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KQ_THEO_TI__Mssv__32E0915F" Association="Self.FK__KQ_THEO_TI__Mssv__32E0915F">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUYDINH_D__MaDon__5535A963" Association="Self.FK__QUYDINH_D__MaDon__5535A963">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUYDINH_D__MaLoa__5629CD9C" Association="Self.FK__QUYDINH_D__MaLoa__5629CD9C">
+            <End Role="LOAI_DIEM" EntitySet="LOAI_DIEM" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUYDINH_D__MaTie__571DF1D5" Association="Self.FK__QUYDINH_D__MaTie__571DF1D5">
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SINH_VIEN__DonVi__59063A47" Association="Self.FK__SINH_VIEN__DonVi__59063A47">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TIEU_CHUA__MaLoa__619B8048" Association="Self.FK__TIEU_CHUA__MaLoa__619B8048">
+            <End Role="LOAI_TIEU_CHUAN" EntitySet="LOAI_TIEU_CHUAN" />
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TIEU_CHUA__MaTie__628FA481" Association="Self.FK__TIEU_CHUA__MaTie__628FA481">
+            <End Role="TIEU_CHI" EntitySet="TIEU_CHI" />
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TIEU_CHUAN__Cap__6383C8BA" Association="Self.FK__TIEU_CHUAN__Cap__6383C8BA">
+            <End Role="CAP_TIEU_CHUAN" EntitySet="CAP_TIEU_CHUAN" />
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THAMGIA_C__MaChu__440B1D61" Association="Self.FK__THAMGIA_C__MaChu__440B1D61">
+            <End Role="CHUONG_TRINH" EntitySet="CHUONG_TRINH" />
+            <End Role="THAMGIA_CHUONGTRINH" EntitySet="THAMGIA_CHUONGTRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THAMGIA_CH__Mssv__4316F928" Association="Self.FK__THAMGIA_CH__Mssv__4316F928">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="THAMGIA_CHUONGTRINH" EntitySet="THAMGIA_CHUONGTRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THOIDIEM_S__Mssv__2B3F6F97" Association="Self.FK__THOIDIEM_S__Mssv__2B3F6F97">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="THOIDIEM_SV_THAMGIA" EntitySet="THOIDIEM_SV_THAMGIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THUCHIEN___MaTie__5FB337D6" Association="Self.FK__THUCHIEN___MaTie__5FB337D6">
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+            <End Role="THUCHIEN_TIEUCHUAN" EntitySet="THUCHIEN_TIEUCHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THUCHIEN___MaTho__656C112C" Association="Self.FK__THUCHIEN___MaTho__656C112C">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="THUCHIEN_TIEUCHUAN" EntitySet="THUCHIEN_TIEUCHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THUCHIEN_T__Mssv__60A75C0F" Association="Self.FK__THUCHIEN_T__Mssv__60A75C0F">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="THUCHIEN_TIEUCHUAN" EntitySet="THUCHIEN_TIEUCHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOCKY_XETDIEM_THOIGIAN_XET" Association="Self.FK_HOCKY_XETDIEM_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="HOCKY_XETDIEM" EntitySet="HOCKY_XETDIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KQ_THEO_TIEUCHI_THOIGIAN_XET" Association="Self.FK_KQ_THEO_TIEUCHI_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHANVIEN_USER" Association="Self.FK_NHANVIEN_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUYDINH_DIEM_THOIGIAN_XET" Association="Self.FK_QUYDINH_DIEM_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SINH_VIEN_USER" Association="Self.FK_SINH_VIEN_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET" Association="Self.FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="THAMGIA_CHUONGTRINH" EntitySet="THAMGIA_CHUONGTRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOIDIEM_SV_THAMGIA_THOIGIAN_XET" Association="Self.FK_THOIDIEM_SV_THAMGIA_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="THOIDIEM_SV_THAMGIA" EntitySet="THOIDIEM_SV_THAMGIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLE" Association="Self.FK_USER_ROLE">
+            <End Role="ROLE" EntitySet="ROLE" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DT_QL_SV5TOT_5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAP_TIEU_CHUAN">
+          <Key>
+            <PropertyRef Name="MaCapTieuChuan" />
+          </Key>
+          <Property Name="MaCapTieuChuan" Type="Int32" Nullable="false" />
+          <Property Name="TenCapTieuChuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KQ_THEO_TIEUCHI" Relationship="Self.FK__KQ_THEO_T__DanhG__34C8D9D1" FromRole="CAP_TIEU_CHUAN" ToRole="KQ_THEO_TIEUCHI" />
+          <NavigationProperty Name="TIEU_CHUAN" Relationship="Self.FK__TIEU_CHUAN__Cap__6383C8BA" FromRole="CAP_TIEU_CHUAN" ToRole="TIEU_CHUAN" />
+        </EntityType>
+        <EntityType Name="CURRENT_QUYDINH_DIEM">
+          <Key>
+            <PropertyRef Name="MaQuyDinhDiem" />
+          </Key>
+          <Property Name="MaQuyDinhDiem" Type="Int32" Nullable="false" />
+          <Property Name="MaLoaiDiem" Type="Int32" />
+          <Property Name="DiemToiThieu" Type="Int32" />
+          <Property Name="MaDonVi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MaTieuChuan" Type="Int32" />
+          <Property Name="Mathoigian" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CURRENT_TIME">
+          <Key>
+            <PropertyRef Name="IDthoigian" />
+          </Key>
+          <Property Name="IDthoigian" Type="Int32" Nullable="false" />
+          <Property Name="TuNgay" Type="DateTime" Precision="0" />
+          <Property Name="DenNgay" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="CHUONG_TRINH">
+          <Key>
+            <PropertyRef Name="MaChuongTrinh" />
+          </Key>
+          <Property Name="MaChuongTrinh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenChuongTrinh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MaTieuChuan" Type="Int32" />
+          <Property Name="ThoiGianDienRa" Type="DateTime" Precision="0" />
+          <Property Name="DonViToChuc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LinkBaiDang" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DON_VI" Relationship="Self.FK__CHUONG_TR__DonVi__4AB81AF0" FromRole="CHUONG_TRINH" ToRole="DON_VI" />
+          <NavigationProperty Name="TIEU_CHUAN" Relationship="Self.FK__CHUONG_TR__MaTie__4BAC3F29" FromRole="CHUONG_TRINH" ToRole="TIEU_CHUAN" />
+          <NavigationProperty Name="THAMGIA_CHUONGTRINH" Relationship="Self.FK__THAMGIA_C__MaChu__440B1D61" FromRole="CHUONG_TRINH" ToRole="THAMGIA_CHUONGTRINH" />
+        </EntityType>
+        <EntityType Name="DIEM">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaLoaiDiem" />
+            <PropertyRef Name="MaHocKy" />
+          </Key>
+          <Property Name="Mssv" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiDiem" Type="Int32" Nullable="false" />
+          <Property Name="Diem1" Type="Int32" />
+          <Property Name="MaHocKy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HOCKY_XETDIEM" Relationship="Self.FK__DIEM__MaHocKy__5BE2A6F2" FromRole="DIEM" ToRole="HOCKY_XETDIEM" />
+          <NavigationProperty Name="LOAI_DIEM" Relationship="Self.FK__DIEM__MaLoaiDiem__4D94879B" FromRole="DIEM" ToRole="LOAI_DIEM" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__DIEM__Mssv__4E88ABD4" FromRole="DIEM" ToRole="SINH_VIEN" />
+        </EntityType>
+        <EntityType Name="DON_VI">
+          <Key>
+            <PropertyRef Name="MaDonVi" />
+          </Key>
+          <Property Name="MaDonVi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHUONG_TRINH" Relationship="Self.FK__CHUONG_TR__DonVi__4AB81AF0" FromRole="DON_VI" ToRole="CHUONG_TRINH" />
+          <NavigationProperty Name="QUYDINH_DIEM" Relationship="Self.FK__QUYDINH_D__MaDon__5535A963" FromRole="DON_VI" ToRole="QUYDINH_DIEM" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__SINH_VIEN__DonVi__59063A47" FromRole="DON_VI" ToRole="SINH_VIEN" />
+        </EntityType>
+        <EntityType Name="HOCKY_XETDIEM">
+          <Key>
+            <PropertyRef Name="MaHocKy" />
+          </Key>
+          <Property Name="MaHocKy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HocKy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Nam" Type="Int32" />
+          <Property Name="MaThoiGianXetDiem" Type="Int32" />
+          <NavigationProperty Name="DIEMs" Relationship="Self.FK__DIEM__MaHocKy__5BE2A6F2" FromRole="HOCKY_XETDIEM" ToRole="DIEM" />
+          <NavigationProperty Name="THOIGIAN_XET" Relationship="Self.FK_HOCKY_XETDIEM_THOIGIAN_XET" FromRole="HOCKY_XETDIEM" ToRole="THOIGIAN_XET" />
+        </EntityType>
+        <EntityType Name="KQ_THEO_TIEUCHI">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaTieuChi" />
+            <PropertyRef Name="MaThoiGian" />
+          </Key>
+          <Property Name="Mssv" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaTieuChi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DanhGia" Type="Int32" />
+          <Property Name="TienDoHDBatBuoc" Type="Int16" />
+          <Property Name="TienDoHDKhac" Type="Boolean" />
+          <Property Name="TienDoTong" Type="Int16" />
+          <Property Name="MaThoiGian" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CAP_TIEU_CHUAN" Relationship="Self.FK__KQ_THEO_T__DanhG__34C8D9D1" FromRole="KQ_THEO_TIEUCHI" ToRole="CAP_TIEU_CHUAN" />
+          <NavigationProperty Name="TIEU_CHI" Relationship="Self.FK__KQ_THEO_T__MaTie__33D4B598" FromRole="KQ_THEO_TIEUCHI" ToRole="TIEU_CHI" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__KQ_THEO_TI__Mssv__32E0915F" FromRole="KQ_THEO_TIEUCHI" ToRole="SINH_VIEN" />
+          <NavigationProperty Name="THOIGIAN_XET" Relationship="Self.FK_KQ_THEO_TIEUCHI_THOIGIAN_XET" FromRole="KQ_THEO_TIEUCHI" ToRole="THOIGIAN_XET" />
+        </EntityType>
+        <EntityType Name="LOAI_DIEM">
+          <Key>
+            <PropertyRef Name="MaLoaiDiem" />
+          </Key>
+          <Property Name="MaLoaiDiem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiDiem" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DIEMs" Relationship="Self.FK__DIEM__MaLoaiDiem__4D94879B" FromRole="LOAI_DIEM" ToRole="DIEM" />
+          <NavigationProperty Name="QUYDINH_DIEM" Relationship="Self.FK__QUYDINH_D__MaLoa__5629CD9C" FromRole="LOAI_DIEM" ToRole="QUYDINH_DIEM" />
+        </EntityType>
+        <EntityType Name="LOAI_TIEU_CHUAN">
+          <Key>
+            <PropertyRef Name="MaLoaiTieuChuan" />
+          </Key>
+          <Property Name="MaLoaiTieuChuan" Type="Boolean" Nullable="false" />
+          <Property Name="TenLoaiTieuChuan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TIEU_CHUAN" Relationship="Self.FK__TIEU_CHUA__MaLoa__619B8048" FromRole="LOAI_TIEU_CHUAN" ToRole="TIEU_CHUAN" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="IDnv" />
+          </Key>
+          <Property Name="IDnv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IDuser" Type="Int32" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_NHANVIEN_USER" FromRole="NHANVIEN" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="QUYDINH_DIEM">
+          <Key>
+            <PropertyRef Name="MaQuyDinhDiem" />
+          </Key>
+          <Property Name="MaQuyDinhDiem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaLoaiDiem" Type="Int32" />
+          <Property Name="DiemToiThieu" Type="Int32" />
+          <Property Name="MaDonVi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MaTieuChuan" Type="Int32" />
+          <Property Name="Mathoigian" Type="Int32" />
+          <NavigationProperty Name="DON_VI" Relationship="Self.FK__QUYDINH_D__MaDon__5535A963" FromRole="QUYDINH_DIEM" ToRole="DON_VI" />
+          <NavigationProperty Name="LOAI_DIEM" Relationship="Self.FK__QUYDINH_D__MaLoa__5629CD9C" FromRole="QUYDINH_DIEM" ToRole="LOAI_DIEM" />
+          <NavigationProperty Name="TIEU_CHUAN" Relationship="Self.FK__QUYDINH_D__MaTie__571DF1D5" FromRole="QUYDINH_DIEM" ToRole="TIEU_CHUAN" />
+          <NavigationProperty Name="THOIGIAN_XET" Relationship="Self.FK_QUYDINH_DIEM_THOIGIAN_XET" FromRole="QUYDINH_DIEM" ToRole="THOIGIAN_XET" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="IDrole" />
+          </Key>
+          <Property Name="IDrole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USERs" Relationship="Self.FK_USER_ROLE" FromRole="ROLE" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="SINH_VIEN">
+          <Key>
+            <PropertyRef Name="Mssv" />
+          </Key>
+          <Property Name="Mssv" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NoiSinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Lop" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DonVi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Khoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDuser" Type="Int32" />
+          <NavigationProperty Name="DIEMs" Relationship="Self.FK__DIEM__Mssv__4E88ABD4" FromRole="SINH_VIEN" ToRole="DIEM" />
+          <NavigationProperty Name="DON_VI" Relationship="Self.FK__SINH_VIEN__DonVi__59063A47" FromRole="SINH_VIEN" ToRole="DON_VI" />
+          <NavigationProperty Name="KQ_THEO_TIEUCHI" Relationship="Self.FK__KQ_THEO_TI__Mssv__32E0915F" FromRole="SINH_VIEN" ToRole="KQ_THEO_TIEUCHI" />
+          <NavigationProperty Name="THAMGIA_CHUONGTRINH" Relationship="Self.FK__THAMGIA_CH__Mssv__4316F928" FromRole="SINH_VIEN" ToRole="THAMGIA_CHUONGTRINH" />
+          <NavigationProperty Name="THUCHIEN_TIEUCHUAN" Relationship="Self.FK__THUCHIEN_T__Mssv__60A75C0F" FromRole="SINH_VIEN" ToRole="THUCHIEN_TIEUCHUAN" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_SINH_VIEN_USER" FromRole="SINH_VIEN" ToRole="USER" />
+          <NavigationProperty Name="THOIGIAN_XET" Relationship="Self.THOIDIEM_SV_THAMGIA" FromRole="SINH_VIEN" ToRole="THOIGIAN_XET" />
+        </EntityType>
+        <EntityType Name="TIEU_CHI">
+          <Key>
+            <PropertyRef Name="MaTieuChi" />
+          </Key>
+          <Property Name="MaTieuChi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenTieuChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KQ_THEO_TIEUCHI" Relationship="Self.FK__KQ_THEO_T__MaTie__33D4B598" FromRole="TIEU_CHI" ToRole="KQ_THEO_TIEUCHI" />
+          <NavigationProperty Name="TIEU_CHUAN" Relationship="Self.FK__TIEU_CHUA__MaTie__628FA481" FromRole="TIEU_CHI" ToRole="TIEU_CHUAN" />
+        </EntityType>
+        <EntityType Name="TIEU_CHUAN">
+          <Key>
+            <PropertyRef Name="MaTieuChuan" />
+          </Key>
+          <Property Name="MaTieuChuan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTieuChuan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MaTieuChi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MaLoaiTieuChuan" Type="Boolean" />
+          <Property Name="Cap" Type="Int32" />
+          <Property Name="QuyDinhGiai" Type="Boolean" />
+          <NavigationProperty Name="CAP_TIEU_CHUAN" Relationship="Self.FK__TIEU_CHUAN__Cap__6383C8BA" FromRole="TIEU_CHUAN" ToRole="CAP_TIEU_CHUAN" />
+          <NavigationProperty Name="CHUONG_TRINH" Relationship="Self.FK__CHUONG_TR__MaTie__4BAC3F29" FromRole="TIEU_CHUAN" ToRole="CHUONG_TRINH" />
+          <NavigationProperty Name="LOAI_TIEU_CHUAN" Relationship="Self.FK__TIEU_CHUA__MaLoa__619B8048" FromRole="TIEU_CHUAN" ToRole="LOAI_TIEU_CHUAN" />
+          <NavigationProperty Name="QUYDINH_DIEM" Relationship="Self.FK__QUYDINH_D__MaTie__571DF1D5" FromRole="TIEU_CHUAN" ToRole="QUYDINH_DIEM" />
+          <NavigationProperty Name="TIEU_CHI" Relationship="Self.FK__TIEU_CHUA__MaTie__628FA481" FromRole="TIEU_CHUAN" ToRole="TIEU_CHI" />
+          <NavigationProperty Name="THUCHIEN_TIEUCHUAN" Relationship="Self.FK__THUCHIEN___MaTie__5FB337D6" FromRole="TIEU_CHUAN" ToRole="THUCHIEN_TIEUCHUAN" />
+        </EntityType>
+        <EntityType Name="THAMGIA_CHUONGTRINH">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaChuongTrinh" />
+          </Key>
+          <Property Name="Mssv" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaChuongTrinh" Type="Int32" Nullable="false" />
+          <Property Name="Giai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaThoiGian" Type="Int32" />
+          <NavigationProperty Name="CHUONG_TRINH" Relationship="Self.FK__THAMGIA_C__MaChu__440B1D61" FromRole="THAMGIA_CHUONGTRINH" ToRole="CHUONG_TRINH" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__THAMGIA_CH__Mssv__4316F928" FromRole="THAMGIA_CHUONGTRINH" ToRole="SINH_VIEN" />
+          <NavigationProperty Name="THOIGIAN_XET" Relationship="Self.FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET" FromRole="THAMGIA_CHUONGTRINH" ToRole="THOIGIAN_XET" />
+        </EntityType>
+        <EntityType Name="THOIGIAN_XET">
+          <Key>
+            <PropertyRef Name="MaThoiGian" />
+          </Key>
+          <Property Name="MaThoiGian" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TuNgay" Type="DateTime" Precision="0" />
+          <Property Name="DenNgay" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="HOCKY_XETDIEM" Relationship="Self.FK_HOCKY_XETDIEM_THOIGIAN_XET" FromRole="THOIGIAN_XET" ToRole="HOCKY_XETDIEM" />
+          <NavigationProperty Name="KQ_THEO_TIEUCHI" Relationship="Self.FK_KQ_THEO_TIEUCHI_THOIGIAN_XET" FromRole="THOIGIAN_XET" ToRole="KQ_THEO_TIEUCHI" />
+          <NavigationProperty Name="QUYDINH_DIEM" Relationship="Self.FK_QUYDINH_DIEM_THOIGIAN_XET" FromRole="THOIGIAN_XET" ToRole="QUYDINH_DIEM" />
+          <NavigationProperty Name="THAMGIA_CHUONGTRINH" Relationship="Self.FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET" FromRole="THOIGIAN_XET" ToRole="THAMGIA_CHUONGTRINH" />
+          <NavigationProperty Name="THUCHIEN_TIEUCHUAN" Relationship="Self.FK__THUCHIEN___MaTho__656C112C" FromRole="THOIGIAN_XET" ToRole="THUCHIEN_TIEUCHUAN" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.THOIDIEM_SV_THAMGIA" FromRole="THOIGIAN_XET" ToRole="SINH_VIEN" />
+        </EntityType>
+        <EntityType Name="THUCHIEN_TIEUCHUAN">
+          <Key>
+            <PropertyRef Name="Mssv" />
+            <PropertyRef Name="MaTieuChuan" />
+          </Key>
+          <Property Name="Mssv" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaTieuChuan" Type="Int32" Nullable="false" />
+          <Property Name="MaThoiGian" Type="Int32" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__THUCHIEN_T__Mssv__60A75C0F" FromRole="THUCHIEN_TIEUCHUAN" ToRole="SINH_VIEN" />
+          <NavigationProperty Name="TIEU_CHUAN" Relationship="Self.FK__THUCHIEN___MaTie__5FB337D6" FromRole="THUCHIEN_TIEUCHUAN" ToRole="TIEU_CHUAN" />
+          <NavigationProperty Name="THOIGIAN_XET" Relationship="Self.FK__THUCHIEN___MaTho__656C112C" FromRole="THUCHIEN_TIEUCHUAN" ToRole="THOIGIAN_XET" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="IDuser" />
+          </Key>
+          <Property Name="IDuser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDrole" Type="Int32" />
+          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN_USER" FromRole="USER" ToRole="NHANVIEN" />
+          <NavigationProperty Name="ROLE" Relationship="Self.FK_USER_ROLE" FromRole="USER" ToRole="ROLE" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK_SINH_VIEN_USER" FromRole="USER" ToRole="SINH_VIEN" />
+        </EntityType>
+        <Association Name="FK__KQ_THEO_T__DanhG__34C8D9D1">
+          <End Role="CAP_TIEU_CHUAN" Type="Self.CAP_TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAP_TIEU_CHUAN">
+              <PropertyRef Name="MaCapTieuChuan" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="DanhGia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TIEU_CHUAN__Cap__6383C8BA">
+          <End Role="CAP_TIEU_CHUAN" Type="Self.CAP_TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAP_TIEU_CHUAN">
+              <PropertyRef Name="MaCapTieuChuan" />
+            </Principal>
+            <Dependent Role="TIEU_CHUAN">
+              <PropertyRef Name="Cap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHUONG_TR__DonVi__4AB81AF0">
+          <End Role="DON_VI" Type="Self.DON_VI" Multiplicity="0..1" />
+          <End Role="CHUONG_TRINH" Type="Self.CHUONG_TRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="CHUONG_TRINH">
+              <PropertyRef Name="DonViToChuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHUONG_TR__MaTie__4BAC3F29">
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="CHUONG_TRINH" Type="Self.CHUONG_TRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Principal>
+            <Dependent Role="CHUONG_TRINH">
+              <PropertyRef Name="MaTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THAMGIA_C__MaChu__440B1D61">
+          <End Role="CHUONG_TRINH" Type="Self.CHUONG_TRINH" Multiplicity="1" />
+          <End Role="THAMGIA_CHUONGTRINH" Type="Self.THAMGIA_CHUONGTRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUONG_TRINH">
+              <PropertyRef Name="MaChuongTrinh" />
+            </Principal>
+            <Dependent Role="THAMGIA_CHUONGTRINH">
+              <PropertyRef Name="MaChuongTrinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEM__MaHocKy__5BE2A6F2">
+          <End Role="HOCKY_XETDIEM" Type="Self.HOCKY_XETDIEM" Multiplicity="1" />
+          <End Role="DIEM" Type="Self.DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOCKY_XETDIEM">
+              <PropertyRef Name="MaHocKy" />
+            </Principal>
+            <Dependent Role="DIEM">
+              <PropertyRef Name="MaHocKy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEM__MaLoaiDiem__4D94879B">
+          <End Role="LOAI_DIEM" Type="Self.LOAI_DIEM" Multiplicity="1" />
+          <End Role="DIEM" Type="Self.DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Principal>
+            <Dependent Role="DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIEM__Mssv__4E88ABD4">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="DIEM" Type="Self.DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="DIEM">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUYDINH_D__MaDon__5535A963">
+          <End Role="DON_VI" Type="Self.DON_VI" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="MaDonVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SINH_VIEN__DonVi__59063A47">
+          <End Role="DON_VI" Type="Self.DON_VI" Multiplicity="0..1" />
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="SINH_VIEN">
+              <PropertyRef Name="DonVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOCKY_XETDIEM_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="HOCKY_XETDIEM" Type="Self.HOCKY_XETDIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="HOCKY_XETDIEM">
+              <PropertyRef Name="MaThoiGianXetDiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KQ_THEO_T__MaTie__33D4B598">
+          <End Role="TIEU_CHI" Type="Self.TIEU_CHI" Multiplicity="1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHI">
+              <PropertyRef Name="MaTieuChi" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="MaTieuChi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KQ_THEO_TI__Mssv__32E0915F">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KQ_THEO_TIEUCHI_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="1" />
+          <End Role="KQ_THEO_TIEUCHI" Type="Self.KQ_THEO_TIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="KQ_THEO_TIEUCHI">
+              <PropertyRef Name="MaThoiGian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUYDINH_D__MaLoa__5629CD9C">
+          <End Role="LOAI_DIEM" Type="Self.LOAI_DIEM" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="MaLoaiDiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TIEU_CHUA__MaLoa__619B8048">
+          <End Role="LOAI_TIEU_CHUAN" Type="Self.LOAI_TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_TIEU_CHUAN">
+              <PropertyRef Name="MaLoaiTieuChuan" />
+            </Principal>
+            <Dependent Role="TIEU_CHUAN">
+              <PropertyRef Name="MaLoaiTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHANVIEN_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDuser" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="IDuser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUYDINH_D__MaTie__571DF1D5">
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="MaTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUYDINH_DIEM_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="QUYDINH_DIEM" Type="Self.QUYDINH_DIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="QUYDINH_DIEM">
+              <PropertyRef Name="Mathoigian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROLE">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="IDrole" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="IDrole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THAMGIA_CH__Mssv__4316F928">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="THAMGIA_CHUONGTRINH" Type="Self.THAMGIA_CHUONGTRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="THAMGIA_CHUONGTRINH">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THUCHIEN_T__Mssv__60A75C0F">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="1" />
+          <End Role="THUCHIEN_TIEUCHUAN" Type="Self.THUCHIEN_TIEUCHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Mssv" />
+            </Principal>
+            <Dependent Role="THUCHIEN_TIEUCHUAN">
+              <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SINH_VIEN_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDuser" />
+            </Principal>
+            <Dependent Role="SINH_VIEN">
+              <PropertyRef Name="IDuser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TIEU_CHUA__MaTie__628FA481">
+          <End Role="TIEU_CHI" Type="Self.TIEU_CHI" Multiplicity="0..1" />
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHI">
+              <PropertyRef Name="MaTieuChi" />
+            </Principal>
+            <Dependent Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THUCHIEN___MaTie__5FB337D6">
+          <End Role="TIEU_CHUAN" Type="Self.TIEU_CHUAN" Multiplicity="1" />
+          <End Role="THUCHIEN_TIEUCHUAN" Type="Self.THUCHIEN_TIEUCHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIEU_CHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Principal>
+            <Dependent Role="THUCHIEN_TIEUCHUAN">
+              <PropertyRef Name="MaTieuChuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="THAMGIA_CHUONGTRINH" Type="Self.THAMGIA_CHUONGTRINH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="THAMGIA_CHUONGTRINH">
+              <PropertyRef Name="MaThoiGian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THUCHIEN___MaTho__656C112C">
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="0..1" />
+          <End Role="THUCHIEN_TIEUCHUAN" Type="Self.THUCHIEN_TIEUCHUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THOIGIAN_XET">
+              <PropertyRef Name="MaThoiGian" />
+            </Principal>
+            <Dependent Role="THUCHIEN_TIEUCHUAN">
+              <PropertyRef Name="MaThoiGian" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="THOIDIEM_SV_THAMGIA">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+          <End Role="THOIGIAN_XET" Type="Self.THOIGIAN_XET" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DT_QL_SV5TOT_5Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAP_TIEU_CHUAN" EntityType="Self.CAP_TIEU_CHUAN" />
+          <EntitySet Name="CURRENT_QUYDINH_DIEM" EntityType="Self.CURRENT_QUYDINH_DIEM" />
+          <EntitySet Name="CURRENT_TIME" EntityType="Self.CURRENT_TIME" />
+          <EntitySet Name="CHUONG_TRINH" EntityType="Self.CHUONG_TRINH" />
+          <EntitySet Name="DIEMs" EntityType="Self.DIEM" />
+          <EntitySet Name="DON_VI" EntityType="Self.DON_VI" />
+          <EntitySet Name="HOCKY_XETDIEM" EntityType="Self.HOCKY_XETDIEM" />
+          <EntitySet Name="KQ_THEO_TIEUCHI" EntityType="Self.KQ_THEO_TIEUCHI" />
+          <EntitySet Name="LOAI_DIEM" EntityType="Self.LOAI_DIEM" />
+          <EntitySet Name="LOAI_TIEU_CHUAN" EntityType="Self.LOAI_TIEU_CHUAN" />
+          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="QUYDINH_DIEM" EntityType="Self.QUYDINH_DIEM" />
+          <EntitySet Name="ROLEs" EntityType="Self.ROLE" />
+          <EntitySet Name="SINH_VIEN" EntityType="Self.SINH_VIEN" />
+          <EntitySet Name="TIEU_CHI" EntityType="Self.TIEU_CHI" />
+          <EntitySet Name="TIEU_CHUAN" EntityType="Self.TIEU_CHUAN" />
+          <EntitySet Name="THAMGIA_CHUONGTRINH" EntityType="Self.THAMGIA_CHUONGTRINH" />
+          <EntitySet Name="THOIGIAN_XET" EntityType="Self.THOIGIAN_XET" />
+          <EntitySet Name="THUCHIEN_TIEUCHUAN" EntityType="Self.THUCHIEN_TIEUCHUAN" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <AssociationSet Name="FK__KQ_THEO_T__DanhG__34C8D9D1" Association="Self.FK__KQ_THEO_T__DanhG__34C8D9D1">
+            <End Role="CAP_TIEU_CHUAN" EntitySet="CAP_TIEU_CHUAN" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TIEU_CHUAN__Cap__6383C8BA" Association="Self.FK__TIEU_CHUAN__Cap__6383C8BA">
+            <End Role="CAP_TIEU_CHUAN" EntitySet="CAP_TIEU_CHUAN" />
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHUONG_TR__DonVi__4AB81AF0" Association="Self.FK__CHUONG_TR__DonVi__4AB81AF0">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="CHUONG_TRINH" EntitySet="CHUONG_TRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHUONG_TR__MaTie__4BAC3F29" Association="Self.FK__CHUONG_TR__MaTie__4BAC3F29">
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+            <End Role="CHUONG_TRINH" EntitySet="CHUONG_TRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THAMGIA_C__MaChu__440B1D61" Association="Self.FK__THAMGIA_C__MaChu__440B1D61">
+            <End Role="CHUONG_TRINH" EntitySet="CHUONG_TRINH" />
+            <End Role="THAMGIA_CHUONGTRINH" EntitySet="THAMGIA_CHUONGTRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEM__MaHocKy__5BE2A6F2" Association="Self.FK__DIEM__MaHocKy__5BE2A6F2">
+            <End Role="HOCKY_XETDIEM" EntitySet="HOCKY_XETDIEM" />
+            <End Role="DIEM" EntitySet="DIEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEM__MaLoaiDiem__4D94879B" Association="Self.FK__DIEM__MaLoaiDiem__4D94879B">
+            <End Role="LOAI_DIEM" EntitySet="LOAI_DIEM" />
+            <End Role="DIEM" EntitySet="DIEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIEM__Mssv__4E88ABD4" Association="Self.FK__DIEM__Mssv__4E88ABD4">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="DIEM" EntitySet="DIEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUYDINH_D__MaDon__5535A963" Association="Self.FK__QUYDINH_D__MaDon__5535A963">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SINH_VIEN__DonVi__59063A47" Association="Self.FK__SINH_VIEN__DonVi__59063A47">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOCKY_XETDIEM_THOIGIAN_XET" Association="Self.FK_HOCKY_XETDIEM_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="HOCKY_XETDIEM" EntitySet="HOCKY_XETDIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KQ_THEO_T__MaTie__33D4B598" Association="Self.FK__KQ_THEO_T__MaTie__33D4B598">
+            <End Role="TIEU_CHI" EntitySet="TIEU_CHI" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KQ_THEO_TI__Mssv__32E0915F" Association="Self.FK__KQ_THEO_TI__Mssv__32E0915F">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KQ_THEO_TIEUCHI_THOIGIAN_XET" Association="Self.FK_KQ_THEO_TIEUCHI_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUYDINH_D__MaLoa__5629CD9C" Association="Self.FK__QUYDINH_D__MaLoa__5629CD9C">
+            <End Role="LOAI_DIEM" EntitySet="LOAI_DIEM" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TIEU_CHUA__MaLoa__619B8048" Association="Self.FK__TIEU_CHUA__MaLoa__619B8048">
+            <End Role="LOAI_TIEU_CHUAN" EntitySet="LOAI_TIEU_CHUAN" />
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHANVIEN_USER" Association="Self.FK_NHANVIEN_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUYDINH_D__MaTie__571DF1D5" Association="Self.FK__QUYDINH_D__MaTie__571DF1D5">
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUYDINH_DIEM_THOIGIAN_XET" Association="Self.FK_QUYDINH_DIEM_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLE" Association="Self.FK_USER_ROLE">
+            <End Role="ROLE" EntitySet="ROLEs" />
+            <End Role="USER" EntitySet="USERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THAMGIA_CH__Mssv__4316F928" Association="Self.FK__THAMGIA_CH__Mssv__4316F928">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="THAMGIA_CHUONGTRINH" EntitySet="THAMGIA_CHUONGTRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THUCHIEN_T__Mssv__60A75C0F" Association="Self.FK__THUCHIEN_T__Mssv__60A75C0F">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="THUCHIEN_TIEUCHUAN" EntitySet="THUCHIEN_TIEUCHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SINH_VIEN_USER" Association="Self.FK_SINH_VIEN_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TIEU_CHUA__MaTie__628FA481" Association="Self.FK__TIEU_CHUA__MaTie__628FA481">
+            <End Role="TIEU_CHI" EntitySet="TIEU_CHI" />
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THUCHIEN___MaTie__5FB337D6" Association="Self.FK__THUCHIEN___MaTie__5FB337D6">
+            <End Role="TIEU_CHUAN" EntitySet="TIEU_CHUAN" />
+            <End Role="THUCHIEN_TIEUCHUAN" EntitySet="THUCHIEN_TIEUCHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET" Association="Self.FK_THAMGIA_CHUONGTRINH_THOIGIAN_XET">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="THAMGIA_CHUONGTRINH" EntitySet="THAMGIA_CHUONGTRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THUCHIEN___MaTho__656C112C" Association="Self.FK__THUCHIEN___MaTho__656C112C">
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+            <End Role="THUCHIEN_TIEUCHUAN" EntitySet="THUCHIEN_TIEUCHUAN" />
+          </AssociationSet>
+          <AssociationSet Name="THOIDIEM_SV_THAMGIA" Association="Self.THOIDIEM_SV_THAMGIA">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DT_QL_SV5TOT_5ModelStoreContainer" CdmEntityContainer="DT_QL_SV5TOT_5Entities2">
+          <EntitySetMapping Name="CAP_TIEU_CHUAN">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.CAP_TIEU_CHUAN">
+              <MappingFragment StoreEntitySet="CAP_TIEU_CHUAN">
+                <ScalarProperty Name="MaCapTieuChuan" ColumnName="MaCapTieuChuan" />
+                <ScalarProperty Name="TenCapTieuChuan" ColumnName="TenCapTieuChuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CURRENT_QUYDINH_DIEM">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.CURRENT_QUYDINH_DIEM">
+              <MappingFragment StoreEntitySet="CURRENT_QUYDINH_DIEM">
+                <ScalarProperty Name="MaQuyDinhDiem" ColumnName="MaQuyDinhDiem" />
+                <ScalarProperty Name="MaLoaiDiem" ColumnName="MaLoaiDiem" />
+                <ScalarProperty Name="DiemToiThieu" ColumnName="DiemToiThieu" />
+                <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+                <ScalarProperty Name="MaTieuChuan" ColumnName="MaTieuChuan" />
+                <ScalarProperty Name="Mathoigian" ColumnName="Mathoigian" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CURRENT_TIME">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.CURRENT_TIME">
+              <MappingFragment StoreEntitySet="CURRENT_TIME">
+                <ScalarProperty Name="IDthoigian" ColumnName="IDthoigian" />
+                <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
+                <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUONG_TRINH">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.CHUONG_TRINH">
+              <MappingFragment StoreEntitySet="CHUONG_TRINH">
+                <ScalarProperty Name="MaChuongTrinh" ColumnName="MaChuongTrinh" />
+                <ScalarProperty Name="TenChuongTrinh" ColumnName="TenChuongTrinh" />
+                <ScalarProperty Name="MaTieuChuan" ColumnName="MaTieuChuan" />
+                <ScalarProperty Name="ThoiGianDienRa" ColumnName="ThoiGianDienRa" />
+                <ScalarProperty Name="DonViToChuc" ColumnName="DonViToChuc" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="LinkBaiDang" ColumnName="LinkBaiDang" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIEMs">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.DIEM">
+              <MappingFragment StoreEntitySet="DIEM">
+                <ScalarProperty Name="Mssv" ColumnName="Mssv" />
+                <ScalarProperty Name="MaLoaiDiem" ColumnName="MaLoaiDiem" />
+                <ScalarProperty Name="Diem1" ColumnName="Diem" />
+                <ScalarProperty Name="MaHocKy" ColumnName="MaHocKy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DON_VI">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.DON_VI">
+              <MappingFragment StoreEntitySet="DON_VI">
+                <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+                <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOCKY_XETDIEM">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.HOCKY_XETDIEM">
+              <MappingFragment StoreEntitySet="HOCKY_XETDIEM">
+                <ScalarProperty Name="MaHocKy" ColumnName="MaHocKy" />
+                <ScalarProperty Name="HocKy" ColumnName="HocKy" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="MaThoiGianXetDiem" ColumnName="MaThoiGianXetDiem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KQ_THEO_TIEUCHI">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.KQ_THEO_TIEUCHI">
+              <MappingFragment StoreEntitySet="KQ_THEO_TIEUCHI">
+                <ScalarProperty Name="Mssv" ColumnName="Mssv" />
+                <ScalarProperty Name="MaTieuChi" ColumnName="MaTieuChi" />
+                <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+                <ScalarProperty Name="TienDoHDBatBuoc" ColumnName="TienDoHDBatBuoc" />
+                <ScalarProperty Name="TienDoHDKhac" ColumnName="TienDoHDKhac" />
+                <ScalarProperty Name="TienDoTong" ColumnName="TienDoTong" />
+                <ScalarProperty Name="MaThoiGian" ColumnName="MaThoiGian" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAI_DIEM">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.LOAI_DIEM">
+              <MappingFragment StoreEntitySet="LOAI_DIEM">
+                <ScalarProperty Name="MaLoaiDiem" ColumnName="MaLoaiDiem" />
+                <ScalarProperty Name="TenLoaiDiem" ColumnName="TenLoaiDiem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAI_TIEU_CHUAN">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.LOAI_TIEU_CHUAN">
+              <MappingFragment StoreEntitySet="LOAI_TIEU_CHUAN">
+                <ScalarProperty Name="MaLoaiTieuChuan" ColumnName="MaLoaiTieuChuan" />
+                <ScalarProperty Name="TenLoaiTieuChuan" ColumnName="TenLoaiTieuChuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="IDnv" ColumnName="IDnv" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDuser" ColumnName="IDuser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUYDINH_DIEM">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.QUYDINH_DIEM">
+              <MappingFragment StoreEntitySet="QUYDINH_DIEM">
+                <ScalarProperty Name="MaQuyDinhDiem" ColumnName="MaQuyDinhDiem" />
+                <ScalarProperty Name="MaLoaiDiem" ColumnName="MaLoaiDiem" />
+                <ScalarProperty Name="DiemToiThieu" ColumnName="DiemToiThieu" />
+                <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+                <ScalarProperty Name="MaTieuChuan" ColumnName="MaTieuChuan" />
+                <ScalarProperty Name="Mathoigian" ColumnName="Mathoigian" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLEs">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.ROLE">
+              <MappingFragment StoreEntitySet="ROLE">
+                <ScalarProperty Name="IDrole" ColumnName="IDrole" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SINH_VIEN">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.SINH_VIEN">
+              <MappingFragment StoreEntitySet="SINH_VIEN">
+                <ScalarProperty Name="Mssv" ColumnName="Mssv" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="DonVi" ColumnName="DonVi" />
+                <ScalarProperty Name="Khoa" ColumnName="Khoa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IDuser" ColumnName="IDuser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIEU_CHI">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.TIEU_CHI">
+              <MappingFragment StoreEntitySet="TIEU_CHI">
+                <ScalarProperty Name="MaTieuChi" ColumnName="MaTieuChi" />
+                <ScalarProperty Name="TenTieuChi" ColumnName="TenTieuChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIEU_CHUAN">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.TIEU_CHUAN">
+              <MappingFragment StoreEntitySet="TIEU_CHUAN">
+                <ScalarProperty Name="MaTieuChuan" ColumnName="MaTieuChuan" />
+                <ScalarProperty Name="TenTieuChuan" ColumnName="TenTieuChuan" />
+                <ScalarProperty Name="MaTieuChi" ColumnName="MaTieuChi" />
+                <ScalarProperty Name="MaLoaiTieuChuan" ColumnName="MaLoaiTieuChuan" />
+                <ScalarProperty Name="Cap" ColumnName="Cap" />
+                <ScalarProperty Name="QuyDinhGiai" ColumnName="QuyDinhGiai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THAMGIA_CHUONGTRINH">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.THAMGIA_CHUONGTRINH">
+              <MappingFragment StoreEntitySet="THAMGIA_CHUONGTRINH">
+                <ScalarProperty Name="Mssv" ColumnName="Mssv" />
+                <ScalarProperty Name="MaChuongTrinh" ColumnName="MaChuongTrinh" />
+                <ScalarProperty Name="Giai" ColumnName="Giai" />
+                <ScalarProperty Name="MaThoiGian" ColumnName="MaThoiGian" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THOIGIAN_XET">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.THOIGIAN_XET">
+              <MappingFragment StoreEntitySet="THOIGIAN_XET">
+                <ScalarProperty Name="MaThoiGian" ColumnName="MaThoiGian" />
+                <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
+                <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THUCHIEN_TIEUCHUAN">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.THUCHIEN_TIEUCHUAN">
+              <MappingFragment StoreEntitySet="THUCHIEN_TIEUCHUAN">
+                <ScalarProperty Name="Mssv" ColumnName="Mssv" />
+                <ScalarProperty Name="MaTieuChuan" ColumnName="MaTieuChuan" />
+                <ScalarProperty Name="MaThoiGian" ColumnName="MaThoiGian" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="IDuser" ColumnName="IDuser" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDrole" ColumnName="IDrole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="THOIDIEM_SV_THAMGIA" TypeName="DT_QL_SV5TOT_5Model.THOIDIEM_SV_THAMGIA" StoreEntitySet="THOIDIEM_SV_THAMGIA">
+            <EndProperty Name="SINH_VIEN">
+              <ScalarProperty Name="Mssv" ColumnName="Mssv" />
+            </EndProperty>
+            <EndProperty Name="THOIGIAN_XET">
+              <ScalarProperty Name="MaThoiGian" ColumnName="MaThoiGian" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

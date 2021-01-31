@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CED0120-2A76-47C3-8109-3839112E39CE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLySinhVien5ToT</RootNamespace>
+    <AssemblyName>QuanLySinhVien5ToT</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\..\Downloads\Guna.UI2_WinForms_v2.0.1.2\lib\net40\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Scaffolding.EntityFramework.12.0, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Edit_RoleBLL.cs" />
+    <Compile Include="BLL\KQ_Theo_tcBLL.cs" />
+    <Compile Include="BLL\QL_Chuong_TrinhBLL.cs" />
+    <Compile Include="BLL\QL_DV_BLL.cs" />
+    <Compile Include="BLL\SinhVienBLL.cs" />
+    <Compile Include="BLL\Tieu_ChuanBLL.cs" />
+    <Compile Include="BLL\User_RoleBLL.cs" />
+    <Compile Include="CAP_TIEU_CHUAN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHUONG_TRINH.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CURRENT_QUYDINH_DIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CURRENT_TIME.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Cap_Tieu_ChuanDAL.cs" />
+    <Compile Include="DAL\Chuong_TrinhDAL.cs" />
+    <Compile Include="DAL\Don_ViDAL.cs" />
+    <Compile Include="DAL\GenericRepository.cs" />
+    <Compile Include="DAL\GenericUnitOfWork.cs" />
+    <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\Kq_Theo_tcDAL.cs" />
+    <Compile Include="DAL\Loai_Tieu_ChuanDAL.cs" />
+    <Compile Include="DAL\Mydb.cs" />
+    <Compile Include="DAL\RoleDAL.cs" />
+    <Compile Include="DAL\Sinh_VienDAL.cs" />
+    <Compile Include="DAL\Thoi_Gian_XetDAL.cs" />
+    <Compile Include="DAL\Tieu_ChiDAL.cs" />
+    <Compile Include="DAL\Tieu_ChuanDAL.cs" />
+    <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="DemoSV5TDataSet.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DemoSV5TDataSet.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DemoSV5TDataSet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DemoSV5TDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DON_VI.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Cap_Tieu_ChuanDTO.cs" />
+    <Compile Include="DTO\Chuong_TrinhDTO.cs" />
+    <Compile Include="DTO\Don_ViDTO.cs" />
+    <Compile Include="DTO\Kq_Theo_tcDTO.cs" />
+    <Compile Include="DTO\Loai_Tieu_ChuanDTO.cs" />
+    <Compile Include="DTO\RoleDTO.cs" />
+    <Compile Include="DTO\Sinh_VienDTO.cs" />
+    <Compile Include="DTO\Thoi_Gian_XetDTO.cs" />
+    <Compile Include="DTO\Tieu_ChiDTO.cs" />
+    <Compile Include="DTO\Tieu_ChuanDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Edit_Role.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\Edit_Role.Designer.cs">
+      <DependentUpon>Edit_Role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Edit_Current_QD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\Edit_Current_QD.Designer.cs">
+      <DependentUpon>Edit_Current_QD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Edit_LoaiDiem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\Edit_LoaiDiem.Designer.cs">
+      <DependentUpon>Edit_LoaiDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\BG_TrangChu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\BG_TrangChu.Designer.cs">
+      <DependentUpon>BG_TrangChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Edit_Tieu_Chi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\Edit_Tieu_Chi.Designer.cs">
+      <DependentUpon>Edit_Tieu_Chi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\KQ_Theo_TC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\KQ_Theo_TC.Designer.cs">
+      <DependentUpon>KQ_Theo_TC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QL_CT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QL_CT.Designer.cs">
+      <DependentUpon>QL_CT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QL_DIEM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QL_DIEM.Designer.cs">
+      <DependentUpon>QL_DIEM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QL_TIEUCHUAN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QL_TIEUCHUAN.Designer.cs">
+      <DependentUpon>QL_TIEUCHUAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\HOCKYXETDIEM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\HOCKYXETDIEM.Designer.cs">
+      <DependentUpon>HOCKYXETDIEM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QL_DonVi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QL_DonVi.Designer.cs">
+      <DependentUpon>QL_DonVi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Login.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HOCKY_XETDIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KQ_THEO_TIEUCHI.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAI_DIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAI_TIEU_CHUAN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QL_TGX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QL_TGX.Designer.cs">
+      <DependentUpon>QL_TGX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QUYDINHDIEM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QUYDINHDIEM.Designer.cs">
+      <DependentUpon>QUYDINHDIEM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\THAMGIA_CT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\THAMGIA_CT.Designer.cs">
+      <DependentUpon>THAMGIA_CT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QUYDINH_GIAI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QUYDINH_GIAI.Designer.cs">
+      <DependentUpon>QUYDINH_GIAI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\THUCHIENTIEUCHUAN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\THUCHIENTIEUCHUAN.Designer.cs">
+      <DependentUpon>THUCHIENTIEUCHUAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\THONGTIN_SINHVIEN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\THONGTIN_SINHVIEN.Designer.cs">
+      <DependentUpon>THONGTIN_SINHVIEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\QL_NHAN_VIEN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\QL_NHAN_VIEN.Designer.cs">
+      <DependentUpon>QL_NHAN_VIEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUYDINH_DIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROLE.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SINH_VIEN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THAMGIA_CHUONGTRINH.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THOIGIAN_XET.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THUCHIEN_TIEUCHUAN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIEU_CHI.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIEU_CHUAN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trang_Chu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trang_Chu.Designer.cs">
+      <DependentUpon>Trang_Chu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Form\Edit_TGX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\Edit_TGX.Designer.cs">
+      <DependentUpon>Edit_TGX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\User_Role.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\User_Role.Designer.cs">
+      <DependentUpon>User_Role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="USER.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form\Edit_Role.resx">
+      <DependentUpon>Edit_Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Edit_Current_QD.resx">
+      <DependentUpon>Edit_Current_QD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Edit_LoaiDiem.resx">
+      <DependentUpon>Edit_LoaiDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\BG_TrangChu.resx">
+      <DependentUpon>BG_TrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Edit_Tieu_Chi.resx">
+      <DependentUpon>Edit_Tieu_Chi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\KQ_Theo_TC.resx">
+      <DependentUpon>KQ_Theo_TC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QL_CT.resx">
+      <DependentUpon>QL_CT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QL_DIEM.resx">
+      <DependentUpon>QL_DIEM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QL_TIEUCHUAN.resx">
+      <DependentUpon>QL_TIEUCHUAN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\HOCKYXETDIEM.resx">
+      <DependentUpon>HOCKYXETDIEM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ThamGia_CT.resx">
+      <DependentUpon>THAMGIA_CT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QL_DonVi.resx">
+      <DependentUpon>QL_DonVi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QL_TGX.resx">
+      <DependentUpon>QL_TGX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QUYDINHDIEM.resx">
+      <DependentUpon>QUYDINHDIEM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QUYDINH_GIAI.resx">
+      <DependentUpon>QUYDINH_GIAI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\QL_NHAN_VIEN.resx">
+      <DependentUpon>QL_NHAN_VIEN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Form\THUCHIENTIEUCHUAN.resx">
+      <DependentUpon>THUCHIENTIEUCHUAN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\THONGTIN_SINHVIEN.resx">
+      <DependentUpon>THONGTIN_SINHVIEN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trang_Chu.resx">
+      <DependentUpon>Trang_Chu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Edit_TGX.resx">
+      <DependentUpon>Edit_TGX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\User_Role.resx">
+      <DependentUpon>User_Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="DemoSV5TDataSet.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DemoSV5TDataSet.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DemoSV5TDataSet.edmx.diagram">
+      <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-macos-close-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-restore-down-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-macos-minimize-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-information-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-pointing-left-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-total-sales-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-card-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-card-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-palms-up-together-light-skin-tone-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-scoreboard-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-scoreboard-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-haram-food-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-haram-food-961.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-information-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-male-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-information-961.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-haram-food-962.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-scoreboard-801.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-scoreboard-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-palms-up-together-light-skin-tone-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-card-642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-total-sales-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-information-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-256 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-restore-down-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-male-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-joining-queue-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-approval-400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-low-importance-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-send-letter-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-plus-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-bin-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-macos-close-961.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-wrench-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-wrench-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-wrench-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-male-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-male-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-timezone-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-leaderboard-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-rules-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-crowd-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-male-1002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-crowd-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Capture.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-triangle-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\336-3366677_login-login-icon-white-png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1593944188_127_Tip-Hinh-nen-Powerpoint-mau-sang.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1593944188_127_Tip-Hinh-nen-Powerpoint-mau-sang1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background-powerpoint-don-gian-dep-voi-nen-xanh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hoctap9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hoctap91.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-yellow-right-transparent-11547070739jcdbkgta1b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tải xuống.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DemoSV5TDataSet.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
+      <LastGenOutput>DemoSV5TDataSet.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DemoSV5TDataSet.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
+      <LastGenOutput>DemoSV5TDataSet.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\icons8-delete-bin-96 %281%291.png" />
+    <None Include="Resources\icons8-wrench-961.png" />
+    <None Include="Resources\icons8-double-right-801.png" />
+    <None Include="Resources\icons8-double-right-80.png" />
+    <None Include="Resources\icons8-chevron-left-80.png" />
+    <None Include="Resources\icons8-delete-bin-96 %281%29.png" />
+    <None Include="Resources\icons8-wrench-96.png" />
+    <None Include="Resources\icons8-view-96.png" />
+    <None Include="Resources\icons8-search-96.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
