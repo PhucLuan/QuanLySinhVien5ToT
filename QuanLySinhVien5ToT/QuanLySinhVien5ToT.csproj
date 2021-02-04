@@ -73,8 +73,11 @@
     <Compile Include="BLL\Edit_RoleBLL.cs" />
     <Compile Include="BLL\KQ_Theo_tcBLL.cs" />
     <Compile Include="BLL\QL_Chuong_TrinhBLL.cs" />
+    <Compile Include="BLL\QL_DiemBLL.cs" />
     <Compile Include="BLL\QL_DV_BLL.cs" />
     <Compile Include="BLL\SinhVienBLL.cs" />
+    <Compile Include="BLL\ThamGia_CT_BLL.cs" />
+    <Compile Include="BLL\ThucHien_TieuChuanBLL.cs" />
     <Compile Include="BLL\Tieu_ChuanBLL.cs" />
     <Compile Include="BLL\User_RoleBLL.cs" />
     <Compile Include="CAP_TIEU_CHUAN.cs">
@@ -83,14 +86,21 @@
     <Compile Include="CHUONG_TRINH.cs">
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
     </Compile>
-    <Compile Include="CURRENT_QUYDINH_DIEM.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CURRENT_TIME.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\Cap_Tieu_ChuanDAL.cs" />
     <Compile Include="DAL\Chuong_TrinhDAL.cs" />
+    <Compile Include="DAL\DiemDAL.cs" />
+    <Compile Include="DAL\HocKy_XetDiemDAL.cs" />
+    <Compile Include="DAL\LoaiDiemDAL.cs" />
+    <Compile Include="DAL\ThamGia_ChuongtrinhDAL.cs" />
+    <Compile Include="DAL\ThoiDiemSV_ThamGiaDAL.cs" />
+    <Compile Include="DAL\ThucHien_TieuChuanDAL.cs" />
+    <Compile Include="DIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DON_VI.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\DiemDTO.cs" />
     <Compile Include="DAL\Don_ViDAL.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="DAL\GenericUnitOfWork.cs" />
@@ -119,20 +129,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DIEM.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DON_VI.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
     <Compile Include="DTO\Cap_Tieu_ChuanDTO.cs" />
     <Compile Include="DTO\Chuong_TrinhDTO.cs" />
     <Compile Include="DTO\Don_ViDTO.cs" />
+    <Compile Include="DTO\HocKy_XetDiemDTO.cs" />
     <Compile Include="DTO\Kq_Theo_tcDTO.cs" />
+    <Compile Include="DTO\LoaiDiemDTO.cs" />
     <Compile Include="DTO\Loai_Tieu_ChuanDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\Sinh_VienDTO.cs" />
+    <Compile Include="DTO\ThanGia_ChuongtrinhDTO.cs" />
+    <Compile Include="DTO\ThoiDiemSV_ThamGiaDTO.cs" />
     <Compile Include="DTO\Thoi_Gian_XetDTO.cs" />
+    <Compile Include="DTO\ThucHien_TieuChuanDTO.cs" />
     <Compile Include="DTO\Tieu_ChiDTO.cs" />
     <Compile Include="DTO\Tieu_ChuanDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
@@ -214,21 +223,6 @@
     <Compile Include="Form\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="HOCKY_XETDIEM.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KQ_THEO_TIEUCHI.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LOAI_DIEM.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LOAI_TIEU_CHUAN.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NHANVIEN.cs">
-      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
-    </Compile>
     <Compile Include="Form\QL_TGX.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -271,6 +265,21 @@
     <Compile Include="Form\QL_NHAN_VIEN.Designer.cs">
       <DependentUpon>QL_NHAN_VIEN.cs</DependentUpon>
     </Compile>
+    <Compile Include="HOCKY_XETDIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KQ_THEO_TIEUCHI.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAI_DIEM.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAI_TIEU_CHUAN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
     <Compile Include="QUYDINH_DIEM.cs">
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
     </Compile>
@@ -278,6 +287,9 @@
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
     </Compile>
     <Compile Include="SINH_VIEN.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
     </Compile>
     <Compile Include="THAMGIA_CHUONGTRINH.cs">

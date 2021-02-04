@@ -17,10 +17,7 @@ namespace QuanLySinhVien5ToT
             InitializeComponent();
         }
 
-        private void btnThemTime_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         
 
@@ -29,7 +26,8 @@ namespace QuanLySinhVien5ToT
             string name = dtgv_ThongTin.Columns[e.ColumnIndex].Name;
             if (name == "XemChiTiet")
             {
-               
+                pn_Them_TT.Visible = false;
+                btnLuuTT.Visible = false;
                 pn_XemChiTiet.Visible = true;
                 dtgv_ThongTin.Width = 726;
             }
@@ -37,10 +35,10 @@ namespace QuanLySinhVien5ToT
 
         private void guna2ImageButton5_Click(object sender, EventArgs e)
         {
-
-            
-            pn_XemChiTiet.Visible = false;
             dtgv_ThongTin.Width = 1008;
+            pn_Them_TT.Visible = false;
+            btnLuuTT.Visible = false;
+            pn_XemChiTiet.Visible = false;
         }
 
 
@@ -51,6 +49,30 @@ namespace QuanLySinhVien5ToT
             this.Controls.Add(UC);
             UC.BringToFront();
             UC.Location = new Point(123, 48);
+        }
+
+        private void btnThemTT_Click(object sender, EventArgs e)
+        {
+            dtgv_ThongTin.Width = 726;
+            pn_Them_TT.Visible = true;
+            btnLuuTT.Visible = true;
+            pn_XemChiTiet.Visible = false;
+        }
+
+        private void btnXThem_TT_Click(object sender, EventArgs e)
+        {
+            dtgv_ThongTin.Width = 1008;
+            pn_Them_TT.Visible = false;
+            btnLuuTT.Visible = false;
+            pn_XemChiTiet.Visible = false;
+        }
+
+        private void btnLuuTT_Click(object sender, EventArgs e)
+        {
+            dtgv_ThongTin.Width = 1008;
+            pn_Them_TT.Visible = false;
+            btnLuuTT.Visible = false;
+            pn_XemChiTiet.Visible = false;
         }
     }
 }

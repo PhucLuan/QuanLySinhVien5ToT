@@ -16,7 +16,7 @@ namespace QuanLySinhVien5ToT
     {
         public string Mssv { get; set; }
         public int MaTieuChuan { get; set; }
-        public Nullable<int> MaThoiGian { get; set; }
+        public int MaThoiGian { get; set; }
     
         public virtual SINH_VIEN SINH_VIEN { get; set; }
         public virtual TIEU_CHUAN TIEU_CHUAN { get; set; }

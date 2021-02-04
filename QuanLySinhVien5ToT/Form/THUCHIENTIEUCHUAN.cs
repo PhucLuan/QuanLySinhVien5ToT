@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLySinhVien5ToT.DTO;
+using QuanLySinhVien5ToT.BLL;
 
 namespace QuanLySinhVien5ToT
 {
@@ -15,20 +17,70 @@ namespace QuanLySinhVien5ToT
         public THUCHIENTIEUCHUAN()
         {
             InitializeComponent();
+            
         }
-
+        int pagenumber = 1;
+        int numberRecord = 10;
+        private int flagLuu = 0;
+        private int flagDT = 0;
+        DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
+        ThucHien_TieuChuanBLL thucHien_TieuChuanBLL = new ThucHien_TieuChuanBLL();
+        private void THUCHIENTIEUCHUAN_Load(object sender, EventArgs e)
+        {
+            loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+            loadcbFillterTC();
+            loadcbTC_TS();
+            loadcbFillterTG();
+            loadcbThoiGian_TS();
+            loadcbThoiGian_Xem();
+            loadcbFillterDV();
+            SuggestTxtMssv();
+            SuggestTxtSearch();
+        }
+        void loadTHTC(List<ThucHien_TieuChuanDTO> listthtc)
+        {
+            dtgv_THTC.DataSource = listthtc;
+            flagDT = 0;
+        }
         private void btnThemTT_Click(object sender, EventArgs e)
         {
             pn_ThemTT.Visible = true;
             pn_Sort.Visible = false;
             btnLuuTT.Visible = true;
+            pn_Xem.Visible = false;
+            txtMssv_TS.Text = "";
         }
 
         private void btnLuuTT_Click(object sender, EventArgs e)
         {
-            pn_ThemTT.Visible = false;
-            pn_Sort.Visible = true;
-            btnLuuTT.Visible = false;
+            if (txtMssv_TS.Text == "")
+            {
+                txtMssv_TS.BorderColor = Color.Red;
+                txtMssv_TS.PlaceholderText = "bạn chưa nhập Mssv";
+                txtMssv_TS.PlaceholderForeColor = Color.Red;
+            }
+            else
+            {
+                pn_ThemTT.Visible = false;
+                pn_Sort.Visible = true;
+                btnLuuTT.Visible = false;
+                pn_Xem.Visible = false;
+                THUCHIEN_TIEUCHUAN thtc = thucHien_TieuChuanBLL.Get(x => x.Mssv.Trim() == txtMssv_TS.Text.Trim() && x.MaTieuChuan == Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString()) && x.MaThoiGian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString()));
+                if (thtc == null)
+                {
+                    thtc = new THUCHIEN_TIEUCHUAN();
+                    thtc.Mssv = txtMssv_TS.Text;
+                    thtc.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
+                    thtc.MaThoiGian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                    thucHien_TieuChuanBLL.Add(thtc);
+                    MessageBox.Show("Lưu Thành Công");
+                }
+                else
+                {
+                    MessageBox.Show("dữ liệu đã bị trùng");
+                }
+            }
+            
         }
 
         private void btnX_TT_Click(object sender, EventArgs e)
@@ -36,16 +88,164 @@ namespace QuanLySinhVien5ToT
             pn_ThemTT.Visible = false;
             pn_Sort.Visible = true;
             btnLuuTT.Visible = false;
+            pn_Xem.Visible = false;
+            loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
 
         private void dtgv_TT_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string name = dtgv_TT.Columns[e.ColumnIndex].Name;
-            if (name == "Sua")
+            string name = dtgv_THTC.Columns[e.ColumnIndex].Name;
+            if (name == "Xem")
             {
                 pn_Sort.Visible = false;
-                pn_ThemTT.Visible = true;
-                btnLuuTT.Visible = true;
+                pn_ThemTT.Visible = false;
+                btnLuuTT.Visible = false;
+                pn_Xem.Visible = true;
+                txtTenSinhVien_Xem.Enabled = false;
+                txtTenTieuChuan_Xem.Enabled = false;
+                txtDonVi_Xem.Enabled = false;
+                cbThoiGian_Xem.Enabled = false;
+
+            }
+            DataGridViewRow row = this.dtgv_THTC.Rows[e.RowIndex];
+            txtTenSinhVien_Xem.Text = row.Cells["TenSinhVien"].Value.ToString();
+            txtTenTieuChuan_Xem.Text = row.Cells["TenTieuChuan"].Value.ToString();
+            txtDonVi_Xem.Text = row.Cells["DonVi"].Value.ToString();
+            cbThoiGian_Xem.SelectedValue = thucHien_TieuChuanBLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
+        }
+
+        private void btnX_Xem_Click(object sender, EventArgs e)
+        {
+            pn_ThemTT.Visible = false;
+            pn_Sort.Visible = true;
+            btnLuuTT.Visible = false;
+            pn_Xem.Visible = false;
+            loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+
+            txtMssv_TS.BorderColor = Color.FromArgb(213, 218, 223);
+            txtMssv_TS.PlaceholderText = "";
+            txtMssv_TS.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
+        }
+
+        private void btnprevious_Click(object sender, EventArgs e)
+        {
+            if (pagenumber - 1 > 0)
+            {
+                pagenumber--;
+                if (flagDT == 0)
+                {
+                    loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }
+                else if (flagDT == 1)
+                {
+                    var listfillter = new List<ThucHien_TieuChuanDTO>();
+                    listfillter = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbThoiGian_TS.Text)).ToList();
+                    dtgv_THTC.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+
+                }
+                else if (flagDT == 2)
+                {
+                    var listsearch = new List<ThucHien_TieuChuanDTO>();
+                    listsearch = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).ToList();
+                    dtgv_THTC.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                }
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int totlalrecord = 0;
+            totlalrecord = db.THUCHIEN_TIEUCHUAN.Count();
+            if (pagenumber - 1 < totlalrecord / numberRecord)
+            {
+                pagenumber++;
+                if (flagDT == 0)
+                {
+                    loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }
+                else if (flagDT == 1)
+                {
+                    var listfillter = new List<ThucHien_TieuChuanDTO>();
+                    listfillter = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbThoiGian_TS.Text)).ToList();
+                    dtgv_THTC.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+
+                }
+                else if (flagDT == 2)
+                {
+                    var listsearch = new List<ThucHien_TieuChuanDTO>();
+                    listsearch = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).ToList();
+                    dtgv_THTC.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                }
+
+            }
+        }
+        void loadcbFillterTC()
+        {
+            cbFillterTieuChuan.DataSource = thucHien_TieuChuanBLL.dstieuchuan();
+            cbFillterTieuChuan.DisplayMember = "TenTieuChuan";
+            cbFillterTieuChuan.ValueMember = "MaTieuChuan";
+        }
+        void loadcbTC_TS()
+        {
+            cbTieuChuan_TS.DataSource = thucHien_TieuChuanBLL.dstieuchuan();
+            cbTieuChuan_TS.DisplayMember = "TenTieuChuan";
+            cbTieuChuan_TS.ValueMember = "MaTieuChuan";
+        }
+        void loadcbFillterTG()
+        {
+            cbFillter_TG.DataSource = new BindingSource(thucHien_TieuChuanBLL.showTime(), null);
+            cbFillter_TG.DisplayMember = "Value";
+            cbFillter_TG.ValueMember = "Key";
+        }
+        void loadcbThoiGian_TS()
+        {
+            cbThoiGian_TS.DataSource = new BindingSource(thucHien_TieuChuanBLL.showTime(), null);
+            cbThoiGian_TS.DisplayMember = "Value";
+            cbThoiGian_TS.ValueMember = "Key";
+        }
+        void loadcbThoiGian_Xem()
+        {
+            cbThoiGian_Xem.DataSource = new BindingSource(thucHien_TieuChuanBLL.showTime(), null);
+            cbThoiGian_Xem.DisplayMember = "Value";
+            cbThoiGian_Xem.ValueMember = "Key";
+        }
+        void loadcbFillterDV()
+        {
+            CbFillter_DV.DataSource = thucHien_TieuChuanBLL.dsdonvi();
+            CbFillter_DV.DisplayMember = "MaDonVi";
+            CbFillter_DV.ValueMember = "MaDonVi";
+        }
+        void SuggestTxtMssv()
+        {
+            txtMssv_TS.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Select(x => x.Mssv).ToArray());
+        }
+        void SuggestTxtSearch()
+        {
+            txtSearch.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Select(x => x.HoTen).ToArray());
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            var listfillter = new List<ThucHien_TieuChuanDTO>();
+            listfillter = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbThoiGian_TS.Text)).ToList();
+            dtgv_THTC.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+            flagDT = 1;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            var listsearch = new List<ThucHien_TieuChuanDTO>();
+            listsearch = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).ToList();
+            dtgv_THTC.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+            flagDT = 2;
+        }
+
+        private void txtMssv_TS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Bạn chỉ được nhập kí tự số !!!");
             }
         }
     }

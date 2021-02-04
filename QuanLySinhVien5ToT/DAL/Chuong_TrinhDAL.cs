@@ -29,5 +29,21 @@ namespace QuanLySinhVien5ToT.DAL
             Loadrecord= chuong_TrinhDTOs.Skip((page - 1) * recordNum).Take(recordNum).ToList();
             return Loadrecord;
         }
+        public List<Chuong_TrinhDTO> getChuongTrinh()
+        {
+            List<Chuong_TrinhDTO> chuong_TrinhDTOs = new List<Chuong_TrinhDTO>();
+            chuong_TrinhDTOs = (from ct in db.CHUONG_TRINH
+                                from tc in db.TIEU_CHUAN
+                                where ct.MaTieuChuan == tc.MaTieuChuan
+                                select new Chuong_TrinhDTO
+                                {
+                                    MaChuongTrinh = ct.MaChuongTrinh,
+                                    TenChuongTrinh = ct.TenChuongTrinh,
+                                    TenTieuChuan = tc.TenTieuChuan,
+                                    ThoiGianDienRa = ct.ThoiGianDienRa,
+                                    DonViToChuc = ct.DonViToChuc
+                                }).ToList();           
+            return chuong_TrinhDTOs;
+        }
     }
 }

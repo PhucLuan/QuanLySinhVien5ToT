@@ -19,9 +19,9 @@ namespace QuanLySinhVien5ToT
         {
             this.DIEMs = new HashSet<DIEM>();
             this.KQ_THEO_TIEUCHI = new HashSet<KQ_THEO_TIEUCHI>();
+            this.THOIGIAN_XET = new HashSet<THOIGIAN_XET>();
             this.THAMGIA_CHUONGTRINH = new HashSet<THAMGIA_CHUONGTRINH>();
             this.THUCHIEN_TIEUCHUAN = new HashSet<THUCHIEN_TIEUCHUAN>();
-            this.THOIGIAN_XET = new HashSet<THOIGIAN_XET>();
         }
     
         public string Mssv { get; set; }
@@ -41,12 +41,12 @@ namespace QuanLySinhVien5ToT
         public virtual DON_VI DON_VI { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
+        public virtual USER USER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<THOIGIAN_XET> THOIGIAN_XET { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THAMGIA_CHUONGTRINH> THAMGIA_CHUONGTRINH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THUCHIEN_TIEUCHUAN> THUCHIEN_TIEUCHUAN { get; set; }
-        public virtual USER USER { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<THOIGIAN_XET> THOIGIAN_XET { get; set; }
     }
 }

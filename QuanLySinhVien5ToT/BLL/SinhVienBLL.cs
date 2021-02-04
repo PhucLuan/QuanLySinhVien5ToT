@@ -45,18 +45,14 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return unitOfWorkNV.Repository<SINH_VIEN>().GetAll(x => x.HoTen.Contains(keyvalue));
         }
-        public List<Sinh_VienDTO> DsSinhVien(int page,int recordNum)
+        public List<Sinh_VienDTO> DsSinhVien()
         {
-            return Sinh_VienDAL.Getdssinhvien(page,recordNum);
+            return Sinh_VienDAL.Getdssinhvien();
         }
-        public List<Sinh_VienDTO> Fillter_SV(string DV, string Khoa, string Lop, int page, int recordNum)
-        {
-            return Sinh_VienDAL.Fillter(DV, Khoa, Lop, page ,recordNum );
-        }
-        public List<Sinh_VienDTO> Search_Ten(string Ten)
-        {
-            return Sinh_VienDAL.Search_Ten(Ten);
-        }
+        //public List<Sinh_VienDTO> Search_Ten(string Ten)
+        //{
+        //    return Sinh_VienDAL.Search_Ten(Ten);
+        //}
         public List<Don_ViDTO> dsDonVi()
         {
             return Don_ViDAL.GetDonVi();

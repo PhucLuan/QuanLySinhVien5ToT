@@ -16,6 +16,8 @@ namespace QuanLySinhVien5ToT
 {
     public partial class QL_DonVi : UserControl
     {
+        int pagenumber = 1;
+        int numberRecord = 3;
         private int flagLuu = 0;
         public QL_DonVi()
         {
@@ -23,7 +25,7 @@ namespace QuanLySinhVien5ToT
         }
         private void QL_DonVi_Load(object sender, EventArgs e)
         {
-            ShowDonVi(QL_DV_BLL.dsDonVi());
+            ShowDonVi(QL_DV_BLL.dsDonVi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         QL_DV_BLL QL_DV_BLL = new QL_DV_BLL();

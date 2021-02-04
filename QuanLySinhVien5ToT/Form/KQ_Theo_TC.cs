@@ -252,7 +252,7 @@ namespace QuanLySinhVien5ToT
         private void btnNext_Click(object sender, EventArgs e)
         {
             int totlalrecord = 0;
-            totlalrecord = db.TIEU_CHUAN.Count();
+            totlalrecord = db.KQ_THEO_TIEUCHI.Count();
             if (pagenumber - 1 < totlalrecord / numberRecord)
             {
                 pagenumber++;

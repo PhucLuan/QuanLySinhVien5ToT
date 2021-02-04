@@ -11,8 +11,7 @@ namespace QuanLySinhVien5ToT.DAL
 {
     public class Kq_Theo_tcDAL
     {
-        private Thoi_Gian_XetDTO thoi_Gian_XetDTO = new Thoi_Gian_XetDTO();
-        private Kq_Theo_tcDTO kq_Theo_TcDTO = new Kq_Theo_tcDTO();
+        
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         public List<Kq_Theo_tcDTO> getKQ(int page, int recordNum) 
         {
