@@ -44,5 +44,6 @@ namespace QuanLySinhVien5ToT
         public virtual DbSet<THAMGIA_CHUONGTRINH> THAMGIA_CHUONGTRINH { get; set; }
         public virtual DbSet<THUCHIEN_TIEUCHUAN> THUCHIEN_TIEUCHUAN { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<THOIDIEM_SV_THAMGIA> THOIDIEM_SV_THAMGIA { get; set; }
     }
 }

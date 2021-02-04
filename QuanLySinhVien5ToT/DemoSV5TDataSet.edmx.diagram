@@ -13,13 +13,13 @@
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.KQ_THEO_TIEUCHI" PointX="10.5" PointY="10" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.LOAI_DIEM" PointX="5.25" PointY="16.375" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.LOAI_TIEU_CHUAN" PointX="1.5" PointY="15.625" Width="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.NHANVIEN" PointX="3" PointY="21" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.NHANVIEN" PointX="3.25" PointY="20.25" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.QUYDINH_DIEM" PointX="7.5" PointY="13.75" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.ROLE" PointX="1.5" PointY="18.25" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.SINH_VIEN" PointX="3" PointY="7.75" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.TIEU_CHI" PointX="1.5" PointY="4.625" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.TIEU_CHUAN" PointX="3.75" PointY="1.375" Width="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.THOIGIAN_XET" PointX="5.25" PointY="12.625" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.THOIGIAN_XET" PointX="5.25" PointY="14" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.USER" PointX="0.75" PointY="0.875" Width="1.5" IsExpanded="true" />
         <AssociationConnector ManuallyRouted="false" Association="DT_QL_SV5TOT_5Model.FK__KQ_THEO_T__DanhG__34C8D9D1" />
         <AssociationConnector ManuallyRouted="false" Association="DT_QL_SV5TOT_5Model.FK__TIEU_CHUAN__Cap__6383C8BA" />
@@ -42,9 +42,8 @@
         <AssociationConnector ManuallyRouted="false" Association="DT_QL_SV5TOT_5Model.FK_USER_ROLE" />
         <AssociationConnector ManuallyRouted="false" Association="DT_QL_SV5TOT_5Model.FK_SINH_VIEN_USER" />
         <AssociationConnector ManuallyRouted="false" Association="DT_QL_SV5TOT_5Model.FK__TIEU_CHUA__MaTie__628FA481" />
-        <AssociationConnector ManuallyRouted="false" Association="DT_QL_SV5TOT_5Model.THOIDIEM_SV_THAMGIA" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.THAMGIA_CHUONGTRINH" Width="1.5" PointX="8.25" PointY="10.5" />
-        <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.THUCHIEN_TIEUCHUAN" Width="1.5" PointX="8.5" PointY="6.375" />
+        <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.THUCHIEN_TIEUCHUAN" Width="1.5" PointX="8.5" PointY="5.5" />
         <AssociationConnector Association="DT_QL_SV5TOT_5Model.FK__THAMGIA_C__MaChu__03F0984C" />
         <AssociationConnector Association="DT_QL_SV5TOT_5Model.FK__THAMGIA_CH__Mssv__02FC7413" />
         <AssociationConnector Association="DT_QL_SV5TOT_5Model.FK__THUCHIEN_T__Mssv__07C12930" />
@@ -52,7 +51,10 @@
         <AssociationConnector Association="DT_QL_SV5TOT_5Model.FK__THAMGIA_C__MaTho__04E4BC85" />
         <AssociationConnector Association="DT_QL_SV5TOT_5Model.FK__THUCHIEN___MaTho__09A971A2" />
         <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.sysdiagram" Width="1.5" PointX="5.375" PointY="5.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="DT_QL_SV5TOT_5Model.THOIDIEM_SV_THAMGIA" Width="1.5" PointX="10.875" PointY="7.125" />
+        <AssociationConnector Association="DT_QL_SV5TOT_5Model.FK__THOIDIEM_S__Mssv__160F4887" />
+        <AssociationConnector Association="DT_QL_SV5TOT_5Model.FK__THOIDIEM___MaTho__17036CC0" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

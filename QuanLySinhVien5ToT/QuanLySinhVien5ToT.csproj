@@ -77,6 +77,7 @@
     <Compile Include="BLL\QL_DV_BLL.cs" />
     <Compile Include="BLL\SinhVienBLL.cs" />
     <Compile Include="BLL\ThamGia_CT_BLL.cs" />
+    <Compile Include="BLL\ThoiDiemSV_ThamGiaBLL.cs" />
     <Compile Include="BLL\ThucHien_TieuChuanBLL.cs" />
     <Compile Include="BLL\Tieu_ChuanBLL.cs" />
     <Compile Include="BLL\User_RoleBLL.cs" />
@@ -293,6 +294,9 @@
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
     </Compile>
     <Compile Include="THAMGIA_CHUONGTRINH.cs">
+      <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THOIDIEM_SV_THAMGIA.cs">
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
     </Compile>
     <Compile Include="THOIGIAN_XET.cs">

@@ -351,7 +351,7 @@
         private Guna.UI2.WinForms.Guna2DataGridView dtgv_Role;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        //private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Button btnThemTC;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTieuChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTieuChi;
