@@ -78,6 +78,7 @@
     <Compile Include="BLL\SinhVienBLL.cs" />
     <Compile Include="BLL\ThamGia_CT_BLL.cs" />
     <Compile Include="BLL\ThoiDiemSV_ThamGiaBLL.cs" />
+    <Compile Include="BLL\ThoiGianXetBLL.cs" />
     <Compile Include="BLL\ThucHien_TieuChuanBLL.cs" />
     <Compile Include="BLL\Tieu_ChuanBLL.cs" />
     <Compile Include="BLL\User_RoleBLL.cs" />
@@ -626,6 +627,32 @@
       <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
       <LastGenOutput>DemoSV5TDataSet.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\14974663671582988848-5127.png" />
+    <None Include="Resources\seo-23-5126.png" />
+    <None Include="Resources\seo-23-5125.png" />
+    <None Include="Resources\14974663671582988848-5126.png" />
+    <None Include="Resources\search_data-5125.png" />
+    <None Include="Resources\14974663671582988848-5125.png" />
+    <None Include="Resources\seo-23-5124.png" />
+    <None Include="Resources\search_data-5124.png" />
+    <None Include="Resources\14974663671582988848-5124.png" />
+    <None Include="Resources\search_data-5123.png" />
+    <None Include="Resources\14974663671582988848-5123.png" />
+    <None Include="Resources\seo-23-5123.png" />
+    <None Include="Resources\search_data-5122.png" />
+    <None Include="Resources\14974663671582988848-5122.png" />
+    <None Include="Resources\find-vector-icon-png_2608451.jpg" />
+    <None Include="Resources\seo-23-5122.png" />
+    <None Include="Resources\search_data-5121.png" />
+    <None Include="Resources\search_data-512.png" />
+    <None Include="Resources\find-vector-icon-png_260845.jpg" />
+    <None Include="Resources\14974663671582988848-5121.png" />
+    <None Include="Resources\seo-23-5121.png" />
+    <None Include="Resources\view-file.png" />
+    <None Include="Resources\14974663671582988848-512.png" />
+    <None Include="Resources\606-6065122_delete-bin-trash-png-free-download-transparent-delete.png" />
+    <None Include="Resources\seo-23-512.png" />
+    <None Include="Resources\maintenance-icon-tools-settings-or-repair-icons-vector-20461200.jpg" />
     <None Include="Resources\icons8-delete-bin-96 %281%291.png" />
     <None Include="Resources\icons8-wrench-961.png" />
     <None Include="Resources\icons8-double-right-801.png" />

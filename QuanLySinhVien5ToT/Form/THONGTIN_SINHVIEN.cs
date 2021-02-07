@@ -21,7 +21,7 @@ namespace QuanLySinhVien5ToT
             InitializeComponent();
         }
         int pagenumber = 1;
-        int numberRecord = 2;
+        int numberRecord = 8;
         private int flagLuu = 0;
         private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
@@ -35,6 +35,8 @@ namespace QuanLySinhVien5ToT
             loadcbGioiTinh();
             loadcbKhoa();
             loadcbDonVi();
+            TXTSEARCH();
+            SuggestTxtMssv();
 
             //Fillter();
         }
@@ -164,76 +166,75 @@ namespace QuanLySinhVien5ToT
                     txtEmail.BorderColor = Color.Red;
                     txtEmail.PlaceholderText = "bạn chưa nhập Email";
                     txtEmail.PlaceholderForeColor = Color.Red;
-                }
-                else
+                }                
+            }
+            else
+            {
+                pn_Sort.Visible = true;
+                pn_ThemSua.Visible = false;
+                btnLuuSV.Visible = false;
+                btnThemKQ.Enabled = true;
+                if (flagLuu == 0)
                 {
-                    pn_Sort.Visible = true;
-                    pn_ThemSua.Visible = false;
-                    btnLuuSV.Visible = false;
-                    btnThemKQ.Enabled = true;
-                    if (flagLuu == 0)
+                    SINH_VIEN sinhvien = sinhVienBLL.Get(x => x.Mssv.Trim() == txtMssv.Text.Trim());
+                    if (sinhvien == null)
                     {
-                        SINH_VIEN sinhvien = sinhVienBLL.Get(x => x.Mssv.Trim() == txtMssv.Text.Trim());
-                        if (sinhvien == null)
+                        sinhvien = new SINH_VIEN();
+                        sinhvien.Mssv = txtMssv.Text;
+                        if (txtMssv.Text.Trim() == "")
                         {
-                            sinhvien = new SINH_VIEN();
-                            sinhvien.Mssv = txtMssv.Text;
-                            if (txtMssv.Text.Trim() == "")
-                            {
-                                MessageBox.Show("Mã Số Sinh Viên Không được để trống");
-                            }
-                            else
-                            {
-                                sinhvien.HoTen = txtHoTen.Text;
-                                sinhvien.NgaySinh = dtpkNgaySinh.Value;
-                                sinhvien.GioiTinh = cbGioiTinh.Text;
-                                sinhvien.NoiSinh = txtNoiSinh.Text;
-                                sinhvien.SDT = txtSDT.Text;
-                                sinhvien.Lop = txtLop.Text;
-                                sinhvien.DonVi = cbDonVi.Text;
-                                sinhvien.Khoa = cbKhoa.Text;
-                                sinhvien.Email = txtEmail.Text;
-
-
-                                sinhVienBLL.Add(sinhvien);
-                                MessageBox.Show("Lưu Thành Công");
-                            }
+                            MessageBox.Show("Mã Số Sinh Viên Không được để trống");
                         }
                         else
                         {
-                            MessageBox.Show("Mã Số Sinh Viên Không Được Trùng!!!!!");
+                            sinhvien.HoTen = txtHoTen.Text;
+                            sinhvien.NgaySinh = dtpkNgaySinh.Value;
+                            sinhvien.GioiTinh = cbGioiTinh.Text;
+                            sinhvien.NoiSinh = txtNoiSinh.Text;
+                            sinhvien.SDT = txtSDT.Text;
+                            sinhvien.Lop = txtLop.Text;
+                            sinhvien.DonVi = cbDonVi.Text;
+                            sinhvien.Khoa = cbKhoa.Text;
+                            sinhvien.Email = txtEmail.Text;
+
+
+                            sinhVienBLL.Add(sinhvien);
+                            MessageBox.Show("Lưu Thành Công");
                         }
-                        ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                     }
                     else
                     {
-                        try
-                        {
-                            SINH_VIEN sv = sinhVienBLL.Get(x => x.Mssv.Trim() == txtMssv.Text.Trim());
-
-                            sv.HoTen = txtHoTen.Text;
-                            sv.NgaySinh = dtpkNgaySinh.Value;
-                            sv.GioiTinh = cbGioiTinh.Text;
-                            sv.NoiSinh = txtNoiSinh.Text;
-                            sv.SDT = txtSDT.Text;
-                            sv.Lop = txtLop.Text;
-                            sv.DonVi = cbDonVi.Text;
-                            sv.Khoa = cbKhoa.Text;
-                            sv.Email = txtEmail.Text;
-                            
-
-                            sinhVienBLL.Edit(sv);
-                            MessageBox.Show("Sửa Thành Công");
-                        }
-                        catch (NullReferenceException)
-                        {
-                            MessageBox.Show("Vui lòng chọn nhân viên cần sửa thông tin");
-                        }
-
-                        ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        MessageBox.Show("Mã Số Sinh Viên Không Được Trùng!!!!!");
                     }
+                    ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                 }
+                else
+                {
+                    try
+                    {
+                        SINH_VIEN sv = sinhVienBLL.Get(x => x.Mssv.Trim() == txtMssv.Text.Trim());
 
+                        sv.HoTen = txtHoTen.Text;
+                        sv.NgaySinh = dtpkNgaySinh.Value;
+                        sv.GioiTinh = cbGioiTinh.Text;
+                        sv.NoiSinh = txtNoiSinh.Text;
+                        sv.SDT = txtSDT.Text;
+                        sv.Lop = txtLop.Text;
+                        sv.DonVi = cbDonVi.Text;
+                        sv.Khoa = cbKhoa.Text;
+                        sv.Email = txtEmail.Text;
+
+
+                        sinhVienBLL.Edit(sv);
+                        MessageBox.Show("Sửa Thành Công");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        MessageBox.Show("Vui lòng chọn nhân viên cần sửa thông tin");
+                    }
+
+                    ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }
             }
         }
 
@@ -323,7 +324,18 @@ namespace QuanLySinhVien5ToT
 
         private void txtSaerch_TextChanged(object sender, EventArgs e)
         {
-            //dtgv_SV.DataSource = sinhVienBLL.Search_Ten(txtSaerch.Text);
+            if (string.IsNullOrEmpty(txtSaerch.Text.Trim()))
+            {
+                ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                flagDT = 0;
+            }
+            else
+            {
+                var listsearch = new List<Sinh_VienDTO>();
+                listsearch = sinhVienBLL.DsSinhVien().Where(x => x.HoTen.Contains(txtSaerch.Text.Trim())).ToList();
+                dtgv_SV.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+               
+            }
         }
 
 
@@ -400,6 +412,14 @@ namespace QuanLySinhVien5ToT
                 e.Handled = true;
                 MessageBox.Show("Bạn chỉ được nhập kí tự số !!!");
             }
+        }
+        void TXTSEARCH()
+        {
+            txtSaerch.AutoCompleteCustomSource.AddRange(sinhVienBLL.DsSinhVien().Select(x => x.HoTen).ToArray());
+        }
+        void SuggestTxtMssv()
+        {
+            txtMssv.AutoCompleteCustomSource.AddRange(sinhVienBLL.DsSinhVien().Select(x => x.Mssv).ToArray());
         }
 
 

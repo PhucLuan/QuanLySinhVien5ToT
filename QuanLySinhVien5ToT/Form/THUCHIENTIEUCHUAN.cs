@@ -20,7 +20,7 @@ namespace QuanLySinhVien5ToT
             
         }
         int pagenumber = 1;
-        int numberRecord = 10;
+        int numberRecord = 8;
         private int flagLuu = 0;
         private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();

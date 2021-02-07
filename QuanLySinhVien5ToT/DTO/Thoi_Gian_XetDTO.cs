@@ -12,5 +12,6 @@ namespace QuanLySinhVien5ToT.DTO
         public int MaThoiGian { get; set; }
         public DateTime? TuNgay { get; set; }
         public DateTime? DenNgay { get; set; }       
+        public Boolean? TrangThai { get; set; }
     }
 }

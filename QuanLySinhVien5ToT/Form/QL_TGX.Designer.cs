@@ -32,15 +32,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pn_sort = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtFillter_Lop = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
             this.label13 = new System.Windows.Forms.Label();
             this.cbFillter_DV = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CbFillter_TG = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pn_XemChiTiet = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbThoiGian_Xem = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
-            this.btnXThongTin = new Guna.UI2.WinForms.Guna2ImageButton();
             this.txtDonVi_Xem = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtLop_Xem = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtHoTen_Xem = new Guna.UI2.WinForms.Guna2TextBox();
@@ -50,35 +54,37 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dtgv_ThongTin = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnThemKQ = new Guna.UI2.WinForms.Guna2Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbThoiGian_Xem = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pn_Them_TT = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnLuuTT = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cbThoiGian_TS = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.btnXThem_TT = new Guna.UI2.WinForms.Guna2ImageButton();
             this.txtMssv_TS = new Guna.UI2.WinForms.Guna2TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnLuuTT = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThemTT = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
-            this.txtFillter_Lop = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.Mssv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThoiGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnXThem_TT = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnThemTT = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThemKQ = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXThongTin = new Guna.UI2.WinForms.Guna2ImageButton();
             this.XemChiTiet = new System.Windows.Forms.DataGridViewImageColumn();
             this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_sort.SuspendLayout();
             this.pn_XemChiTiet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ThongTin)).BeginInit();
             this.pn_Them_TT.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pn_sort
@@ -99,6 +105,51 @@
             this.pn_sort.ShadowDecoration.Parent = this.pn_sort;
             this.pn_sort.Size = new System.Drawing.Size(726, 168);
             this.pn_sort.TabIndex = 16;
+            // 
+            // txtFillter_Lop
+            // 
+            this.txtFillter_Lop.BackColor = System.Drawing.Color.Transparent;
+            this.txtFillter_Lop.BorderRadius = 10;
+            this.txtFillter_Lop.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFillter_Lop.DefaultText = "";
+            this.txtFillter_Lop.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtFillter_Lop.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtFillter_Lop.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFillter_Lop.DisabledState.Parent = this.txtFillter_Lop;
+            this.txtFillter_Lop.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFillter_Lop.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFillter_Lop.FocusedState.Parent = this.txtFillter_Lop;
+            this.txtFillter_Lop.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtFillter_Lop.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFillter_Lop.HoverState.Parent = this.txtFillter_Lop;
+            this.txtFillter_Lop.Location = new System.Drawing.Point(111, 115);
+            this.txtFillter_Lop.Name = "txtFillter_Lop";
+            this.txtFillter_Lop.PasswordChar = '\0';
+            this.txtFillter_Lop.PlaceholderText = "";
+            this.txtFillter_Lop.SelectedText = "";
+            this.txtFillter_Lop.ShadowDecoration.Parent = this.txtFillter_Lop;
+            this.txtFillter_Lop.Size = new System.Drawing.Size(251, 36);
+            this.txtFillter_Lop.TabIndex = 50;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.Gray;
+            this.label9.Location = new System.Drawing.Point(25, 128);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 15);
+            this.label9.TabIndex = 49;
+            this.label9.Text = "Lớp :";
+            // 
+            // guna2Separator3
+            // 
+            this.guna2Separator3.BackColor = System.Drawing.Color.White;
+            this.guna2Separator3.Location = new System.Drawing.Point(7, 56);
+            this.guna2Separator3.Name = "guna2Separator3";
+            this.guna2Separator3.Size = new System.Drawing.Size(705, 10);
+            this.guna2Separator3.TabIndex = 48;
             // 
             // label13
             // 
@@ -166,6 +217,8 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtSearch.BackColor = System.Drawing.Color.Transparent;
             this.txtSearch.BorderRadius = 10;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -188,6 +241,7 @@
             this.txtSearch.ShadowDecoration.Parent = this.txtSearch;
             this.txtSearch.Size = new System.Drawing.Size(705, 35);
             this.txtSearch.TabIndex = 5;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // pn_XemChiTiet
             // 
@@ -213,6 +267,39 @@
             this.pn_XemChiTiet.TabIndex = 15;
             this.pn_XemChiTiet.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(11, 287);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 15);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Thời Gian :";
+            // 
+            // cbThoiGian_Xem
+            // 
+            this.cbThoiGian_Xem.BackColor = System.Drawing.Color.Transparent;
+            this.cbThoiGian_Xem.BorderRadius = 20;
+            this.cbThoiGian_Xem.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbThoiGian_Xem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbThoiGian_Xem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.cbThoiGian_Xem.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbThoiGian_Xem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbThoiGian_Xem.FocusedState.Parent = this.cbThoiGian_Xem;
+            this.cbThoiGian_Xem.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbThoiGian_Xem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbThoiGian_Xem.HoverState.Parent = this.cbThoiGian_Xem;
+            this.cbThoiGian_Xem.ItemHeight = 30;
+            this.cbThoiGian_Xem.ItemsAppearance.Parent = this.cbThoiGian_Xem;
+            this.cbThoiGian_Xem.Location = new System.Drawing.Point(83, 278);
+            this.cbThoiGian_Xem.Name = "cbThoiGian_Xem";
+            this.cbThoiGian_Xem.ShadowDecoration.Parent = this.cbThoiGian_Xem;
+            this.cbThoiGian_Xem.Size = new System.Drawing.Size(204, 36);
+            this.cbThoiGian_Xem.TabIndex = 46;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -232,25 +319,6 @@
             this.guna2Separator2.Name = "guna2Separator2";
             this.guna2Separator2.Size = new System.Drawing.Size(245, 10);
             this.guna2Separator2.TabIndex = 7;
-            // 
-            // btnXThongTin
-            // 
-            this.btnXThongTin.BackColor = System.Drawing.Color.White;
-            this.btnXThongTin.Checked = true;
-            this.btnXThongTin.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThongTin.CheckedState.Parent = this.btnXThongTin;
-            this.btnXThongTin.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThongTin.HoverState.Parent = this.btnXThongTin;
-            this.btnXThongTin.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnXThongTin.ImageRotate = 0F;
-            this.btnXThongTin.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnXThongTin.Location = new System.Drawing.Point(232, 8);
-            this.btnXThongTin.Name = "btnXThongTin";
-            this.btnXThongTin.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnXThongTin.PressedState.Parent = this.btnXThongTin;
-            this.btnXThongTin.Size = new System.Drawing.Size(30, 31);
-            this.btnXThongTin.TabIndex = 14;
-            this.btnXThongTin.Click += new System.EventHandler(this.guna2ImageButton5_Click);
             // 
             // txtDonVi_Xem
             // 
@@ -443,7 +511,7 @@
             this.dtgv_ThongTin.Location = new System.Drawing.Point(15, 225);
             this.dtgv_ThongTin.Name = "dtgv_ThongTin";
             this.dtgv_ThongTin.RowHeadersVisible = false;
-            this.dtgv_ThongTin.RowTemplate.Height = 40;
+            this.dtgv_ThongTin.RowTemplate.Height = 35;
             this.dtgv_ThongTin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgv_ThongTin.Size = new System.Drawing.Size(1022, 374);
             this.dtgv_ThongTin.TabIndex = 13;
@@ -466,68 +534,10 @@
             this.dtgv_ThongTin.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_ThongTin.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dtgv_ThongTin.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dtgv_ThongTin.ThemeStyle.RowsStyle.Height = 40;
+            this.dtgv_ThongTin.ThemeStyle.RowsStyle.Height = 35;
             this.dtgv_ThongTin.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_ThongTin.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_ThongTin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_information_64;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // btnThemKQ
-            // 
-            this.btnThemKQ.BackColor = System.Drawing.Color.Transparent;
-            this.btnThemKQ.BorderRadius = 20;
-            this.btnThemKQ.CheckedState.Parent = this.btnThemKQ;
-            this.btnThemKQ.CustomImages.Parent = this.btnThemKQ;
-            this.btnThemKQ.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemKQ.ForeColor = System.Drawing.Color.White;
-            this.btnThemKQ.HoverState.Parent = this.btnThemKQ;
-            this.btnThemKQ.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
-            this.btnThemKQ.Location = new System.Drawing.Point(747, 115);
-            this.btnThemKQ.Name = "btnThemKQ";
-            this.btnThemKQ.ShadowDecoration.Parent = this.btnThemKQ;
-            this.btnThemKQ.Size = new System.Drawing.Size(290, 45);
-            this.btnThemKQ.TabIndex = 45;
-            this.btnThemKQ.Text = "Edit Thời Gian Xét";
-            this.btnThemKQ.Click += new System.EventHandler(this.btnThemKQ_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(11, 287);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 15);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Thời Gian :";
-            // 
-            // cbThoiGian_Xem
-            // 
-            this.cbThoiGian_Xem.BackColor = System.Drawing.Color.Transparent;
-            this.cbThoiGian_Xem.BorderRadius = 20;
-            this.cbThoiGian_Xem.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbThoiGian_Xem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbThoiGian_Xem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.cbThoiGian_Xem.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbThoiGian_Xem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbThoiGian_Xem.FocusedState.Parent = this.cbThoiGian_Xem;
-            this.cbThoiGian_Xem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbThoiGian_Xem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbThoiGian_Xem.HoverState.Parent = this.cbThoiGian_Xem;
-            this.cbThoiGian_Xem.ItemHeight = 30;
-            this.cbThoiGian_Xem.ItemsAppearance.Parent = this.cbThoiGian_Xem;
-            this.cbThoiGian_Xem.Location = new System.Drawing.Point(83, 278);
-            this.cbThoiGian_Xem.Name = "cbThoiGian_Xem";
-            this.cbThoiGian_Xem.ShadowDecoration.Parent = this.cbThoiGian_Xem;
-            this.cbThoiGian_Xem.Size = new System.Drawing.Size(204, 36);
-            this.cbThoiGian_Xem.TabIndex = 46;
             // 
             // pn_Them_TT
             // 
@@ -547,6 +557,25 @@
             this.pn_Them_TT.Size = new System.Drawing.Size(290, 220);
             this.pn_Them_TT.TabIndex = 47;
             this.pn_Them_TT.Visible = false;
+            // 
+            // btnLuuTT
+            // 
+            this.btnLuuTT.BackColor = System.Drawing.Color.Transparent;
+            this.btnLuuTT.BorderRadius = 20;
+            this.btnLuuTT.CheckedState.Parent = this.btnLuuTT;
+            this.btnLuuTT.CustomImages.Parent = this.btnLuuTT;
+            this.btnLuuTT.FillColor = System.Drawing.Color.LimeGreen;
+            this.btnLuuTT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuuTT.ForeColor = System.Drawing.Color.White;
+            this.btnLuuTT.HoverState.Parent = this.btnLuuTT;
+            this.btnLuuTT.Location = new System.Drawing.Point(225, 171);
+            this.btnLuuTT.Name = "btnLuuTT";
+            this.btnLuuTT.ShadowDecoration.Parent = this.btnLuuTT;
+            this.btnLuuTT.Size = new System.Drawing.Size(60, 35);
+            this.btnLuuTT.TabIndex = 47;
+            this.btnLuuTT.Text = "Lưu";
+            this.btnLuuTT.Visible = false;
+            this.btnLuuTT.Click += new System.EventHandler(this.btnLuuTT_Click);
             // 
             // label5
             // 
@@ -601,27 +630,10 @@
             this.guna2Separator1.Size = new System.Drawing.Size(269, 10);
             this.guna2Separator1.TabIndex = 7;
             // 
-            // btnXThem_TT
-            // 
-            this.btnXThem_TT.BackColor = System.Drawing.Color.White;
-            this.btnXThem_TT.Checked = true;
-            this.btnXThem_TT.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThem_TT.CheckedState.Parent = this.btnXThem_TT;
-            this.btnXThem_TT.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThem_TT.HoverState.Parent = this.btnXThem_TT;
-            this.btnXThem_TT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnXThem_TT.ImageRotate = 0F;
-            this.btnXThem_TT.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnXThem_TT.Location = new System.Drawing.Point(246, 8);
-            this.btnXThem_TT.Name = "btnXThem_TT";
-            this.btnXThem_TT.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnXThem_TT.PressedState.Parent = this.btnXThem_TT;
-            this.btnXThem_TT.Size = new System.Drawing.Size(30, 31);
-            this.btnXThem_TT.TabIndex = 14;
-            this.btnXThem_TT.Click += new System.EventHandler(this.btnXThem_TT_Click);
-            // 
             // txtMssv_TS
             // 
+            this.txtMssv_TS.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtMssv_TS.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtMssv_TS.BackColor = System.Drawing.Color.Transparent;
             this.txtMssv_TS.BorderRadius = 20;
             this.txtMssv_TS.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -645,6 +657,7 @@
             this.txtMssv_TS.ShadowDecoration.Parent = this.txtMssv_TS;
             this.txtMssv_TS.Size = new System.Drawing.Size(206, 36);
             this.txtMssv_TS.TabIndex = 8;
+            this.txtMssv_TS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMssv_TS_KeyPress);
             // 
             // label14
             // 
@@ -658,104 +671,30 @@
             this.label14.TabIndex = 1;
             this.label14.Text = "Mssv :";
             // 
-            // btnLuuTT
+            // guna2Panel1
             // 
-            this.btnLuuTT.BackColor = System.Drawing.Color.Transparent;
-            this.btnLuuTT.BorderRadius = 20;
-            this.btnLuuTT.CheckedState.Parent = this.btnLuuTT;
-            this.btnLuuTT.CustomImages.Parent = this.btnLuuTT;
-            this.btnLuuTT.FillColor = System.Drawing.Color.LimeGreen;
-            this.btnLuuTT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuuTT.ForeColor = System.Drawing.Color.White;
-            this.btnLuuTT.HoverState.Parent = this.btnLuuTT;
-            this.btnLuuTT.Location = new System.Drawing.Point(225, 171);
-            this.btnLuuTT.Name = "btnLuuTT";
-            this.btnLuuTT.ShadowDecoration.Parent = this.btnLuuTT;
-            this.btnLuuTT.Size = new System.Drawing.Size(60, 35);
-            this.btnLuuTT.TabIndex = 47;
-            this.btnLuuTT.Text = "Lưu";
-            this.btnLuuTT.Visible = false;
-            this.btnLuuTT.Click += new System.EventHandler(this.btnLuuTT_Click);
+            this.guna2Panel1.BorderRadius = 20;
+            this.guna2Panel1.Controls.Add(this.label15);
+            this.guna2Panel1.Controls.Add(this.btnprevious);
+            this.guna2Panel1.Controls.Add(this.btnNext);
+            this.guna2Panel1.FillColor = System.Drawing.Color.White;
+            this.guna2Panel1.Location = new System.Drawing.Point(447, 605);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(164, 42);
+            this.guna2Panel1.TabIndex = 50;
             // 
-            // btnThemTT
+            // label15
             // 
-            this.btnThemTT.BackColor = System.Drawing.Color.Transparent;
-            this.btnThemTT.BorderRadius = 20;
-            this.btnThemTT.CheckedState.Parent = this.btnThemTT;
-            this.btnThemTT.CustomImages.Parent = this.btnThemTT;
-            this.btnThemTT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemTT.ForeColor = System.Drawing.Color.White;
-            this.btnThemTT.HoverState.Parent = this.btnThemTT;
-            this.btnThemTT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
-            this.btnThemTT.Location = new System.Drawing.Point(750, 166);
-            this.btnThemTT.Name = "btnThemTT";
-            this.btnThemTT.ShadowDecoration.Parent = this.btnThemTT;
-            this.btnThemTT.Size = new System.Drawing.Size(287, 45);
-            this.btnThemTT.TabIndex = 46;
-            this.btnThemTT.Text = "Thêm Thông Tin ";
-            this.btnThemTT.Click += new System.EventHandler(this.btnThemTT_Click);
-            // 
-            // guna2Separator3
-            // 
-            this.guna2Separator3.BackColor = System.Drawing.Color.White;
-            this.guna2Separator3.Location = new System.Drawing.Point(7, 56);
-            this.guna2Separator3.Name = "guna2Separator3";
-            this.guna2Separator3.Size = new System.Drawing.Size(705, 10);
-            this.guna2Separator3.TabIndex = 48;
-            // 
-            // txtFillter_Lop
-            // 
-            this.txtFillter_Lop.BackColor = System.Drawing.Color.Transparent;
-            this.txtFillter_Lop.BorderRadius = 10;
-            this.txtFillter_Lop.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFillter_Lop.DefaultText = "";
-            this.txtFillter_Lop.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtFillter_Lop.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtFillter_Lop.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFillter_Lop.DisabledState.Parent = this.txtFillter_Lop;
-            this.txtFillter_Lop.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFillter_Lop.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFillter_Lop.FocusedState.Parent = this.txtFillter_Lop;
-            this.txtFillter_Lop.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtFillter_Lop.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFillter_Lop.HoverState.Parent = this.txtFillter_Lop;
-            this.txtFillter_Lop.Location = new System.Drawing.Point(111, 115);
-            this.txtFillter_Lop.Name = "txtFillter_Lop";
-            this.txtFillter_Lop.PasswordChar = '\0';
-            this.txtFillter_Lop.PlaceholderText = "";
-            this.txtFillter_Lop.SelectedText = "";
-            this.txtFillter_Lop.ShadowDecoration.Parent = this.txtFillter_Lop;
-            this.txtFillter_Lop.Size = new System.Drawing.Size(251, 36);
-            this.txtFillter_Lop.TabIndex = 50;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(25, 128);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 15);
-            this.label9.TabIndex = 49;
-            this.label9.Text = "Lớp :";
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.Color.Transparent;
-            this.btnTimKiem.BorderRadius = 20;
-            this.btnTimKiem.CheckedState.Parent = this.btnTimKiem;
-            this.btnTimKiem.CustomImages.Parent = this.btnTimKiem;
-            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.HoverState.Parent = this.btnTimKiem;
-            this.btnTimKiem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_search_96;
-            this.btnTimKiem.Location = new System.Drawing.Point(492, 115);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.ShadowDecoration.Parent = this.btnTimKiem;
-            this.btnTimKiem.Size = new System.Drawing.Size(180, 36);
-            this.btnTimKiem.TabIndex = 52;
-            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Gray;
+            this.label15.Location = new System.Drawing.Point(73, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(18, 20);
+            this.label15.TabIndex = 50;
+            this.label15.Text = "1";
             // 
             // Mssv
             // 
@@ -788,11 +727,161 @@
             this.ThoiGian.HeaderText = "Thời Gian";
             this.ThoiGian.Name = "ThoiGian";
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_information_64;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 20;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn2.HeaderText = "";
+            this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources._606_6065122_delete_bin_trash_png_free_download_transparent_delete;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 20;
+            // 
+            // btnprevious
+            // 
+            this.btnprevious.BackColor = System.Drawing.Color.Transparent;
+            this.btnprevious.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnprevious.CheckedState.Parent = this.btnprevious;
+            this.btnprevious.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.btnprevious.HoverState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnprevious.HoverState.Parent = this.btnprevious;
+            this.btnprevious.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_double_right_80;
+            this.btnprevious.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.btnprevious.ImageRotate = 0F;
+            this.btnprevious.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnprevious.Location = new System.Drawing.Point(22, 4);
+            this.btnprevious.Name = "btnprevious";
+            this.btnprevious.PressedState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.btnprevious.PressedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnprevious.PressedState.Parent = this.btnprevious;
+            this.btnprevious.Size = new System.Drawing.Size(45, 35);
+            this.btnprevious.TabIndex = 47;
+            this.btnprevious.Click += new System.EventHandler(this.btnprevious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackColor = System.Drawing.Color.Transparent;
+            this.btnNext.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnNext.CheckedState.Parent = this.btnNext;
+            this.btnNext.HoverState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnNext.HoverState.Parent = this.btnNext;
+            this.btnNext.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_double_right_801;
+            this.btnNext.ImageRotate = 0F;
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnNext.Location = new System.Drawing.Point(97, 4);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.PressedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnNext.PressedState.Parent = this.btnNext;
+            this.btnNext.Size = new System.Drawing.Size(45, 35);
+            this.btnNext.TabIndex = 48;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnXThem_TT
+            // 
+            this.btnXThem_TT.BackColor = System.Drawing.Color.White;
+            this.btnXThem_TT.Checked = true;
+            this.btnXThem_TT.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThem_TT.CheckedState.Parent = this.btnXThem_TT;
+            this.btnXThem_TT.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThem_TT.HoverState.Parent = this.btnXThem_TT;
+            this.btnXThem_TT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnXThem_TT.ImageRotate = 0F;
+            this.btnXThem_TT.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnXThem_TT.Location = new System.Drawing.Point(246, 8);
+            this.btnXThem_TT.Name = "btnXThem_TT";
+            this.btnXThem_TT.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnXThem_TT.PressedState.Parent = this.btnXThem_TT;
+            this.btnXThem_TT.Size = new System.Drawing.Size(30, 31);
+            this.btnXThem_TT.TabIndex = 14;
+            this.btnXThem_TT.Click += new System.EventHandler(this.btnXThem_TT_Click);
+            // 
+            // btnThemTT
+            // 
+            this.btnThemTT.BackColor = System.Drawing.Color.Transparent;
+            this.btnThemTT.BorderRadius = 20;
+            this.btnThemTT.CheckedState.Parent = this.btnThemTT;
+            this.btnThemTT.CustomImages.Parent = this.btnThemTT;
+            this.btnThemTT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemTT.ForeColor = System.Drawing.Color.White;
+            this.btnThemTT.HoverState.Parent = this.btnThemTT;
+            this.btnThemTT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
+            this.btnThemTT.Location = new System.Drawing.Point(750, 166);
+            this.btnThemTT.Name = "btnThemTT";
+            this.btnThemTT.ShadowDecoration.Parent = this.btnThemTT;
+            this.btnThemTT.Size = new System.Drawing.Size(287, 45);
+            this.btnThemTT.TabIndex = 46;
+            this.btnThemTT.Text = "Thêm Thông Tin ";
+            this.btnThemTT.Click += new System.EventHandler(this.btnThemTT_Click);
+            // 
+            // btnThemKQ
+            // 
+            this.btnThemKQ.BackColor = System.Drawing.Color.Transparent;
+            this.btnThemKQ.BorderRadius = 20;
+            this.btnThemKQ.CheckedState.Parent = this.btnThemKQ;
+            this.btnThemKQ.CustomImages.Parent = this.btnThemKQ;
+            this.btnThemKQ.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemKQ.ForeColor = System.Drawing.Color.White;
+            this.btnThemKQ.HoverState.Parent = this.btnThemKQ;
+            this.btnThemKQ.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
+            this.btnThemKQ.Location = new System.Drawing.Point(747, 115);
+            this.btnThemKQ.Name = "btnThemKQ";
+            this.btnThemKQ.ShadowDecoration.Parent = this.btnThemKQ;
+            this.btnThemKQ.Size = new System.Drawing.Size(290, 45);
+            this.btnThemKQ.TabIndex = 45;
+            this.btnThemKQ.Text = "Edit Thời Gian Xét";
+            this.btnThemKQ.Click += new System.EventHandler(this.btnThemKQ_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.Transparent;
+            this.btnTimKiem.BorderRadius = 20;
+            this.btnTimKiem.CheckedState.Parent = this.btnTimKiem;
+            this.btnTimKiem.CustomImages.Parent = this.btnTimKiem;
+            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
+            this.btnTimKiem.HoverState.Parent = this.btnTimKiem;
+            this.btnTimKiem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_search_96;
+            this.btnTimKiem.Location = new System.Drawing.Point(492, 115);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.ShadowDecoration.Parent = this.btnTimKiem;
+            this.btnTimKiem.Size = new System.Drawing.Size(180, 36);
+            this.btnTimKiem.TabIndex = 52;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // btnXThongTin
+            // 
+            this.btnXThongTin.BackColor = System.Drawing.Color.White;
+            this.btnXThongTin.Checked = true;
+            this.btnXThongTin.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThongTin.CheckedState.Parent = this.btnXThongTin;
+            this.btnXThongTin.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThongTin.HoverState.Parent = this.btnXThongTin;
+            this.btnXThongTin.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnXThongTin.ImageRotate = 0F;
+            this.btnXThongTin.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnXThongTin.Location = new System.Drawing.Point(232, 8);
+            this.btnXThongTin.Name = "btnXThongTin";
+            this.btnXThongTin.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnXThongTin.PressedState.Parent = this.btnXThongTin;
+            this.btnXThongTin.Size = new System.Drawing.Size(30, 31);
+            this.btnXThongTin.TabIndex = 14;
+            this.btnXThongTin.Click += new System.EventHandler(this.guna2ImageButton5_Click);
+            // 
             // XemChiTiet
             // 
             this.XemChiTiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.XemChiTiet.HeaderText = "";
-            this.XemChiTiet.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_information_64;
+            this.XemChiTiet.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_5121;
+            this.XemChiTiet.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.XemChiTiet.Name = "XemChiTiet";
             this.XemChiTiet.Width = 20;
             // 
@@ -800,6 +889,8 @@
             // 
             this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Xoa.HeaderText = "";
+            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_512;
+            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Xoa.Name = "Xoa";
             this.Xoa.Width = 20;
             // 
@@ -807,6 +898,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.pn_Them_TT);
             this.Controls.Add(this.btnThemTT);
             this.Controls.Add(this.btnThemKQ);
@@ -823,6 +915,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ThongTin)).EndInit();
             this.pn_Them_TT.ResumeLayout(false);
             this.pn_Them_TT.PerformLayout();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -865,6 +959,11 @@
         private Guna.UI2.WinForms.Guna2TextBox txtFillter_Lop;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2Button btnTimKiem;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Label label15;
+        private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
+        private Guna.UI2.WinForms.Guna2ImageButton btnNext;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mssv;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lop;

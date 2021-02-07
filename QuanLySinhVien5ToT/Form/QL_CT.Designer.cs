@@ -32,13 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgv_CT = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenChuongTrinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTieuChuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThoiGianDienRa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonViToChuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SuaCT = new System.Windows.Forms.DataGridViewImageColumn();
-            this.XoaCT = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Sort = new Guna.UI2.WinForms.Guna2Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.guna2ComboBox5 = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -67,6 +60,13 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnThemHD = new Guna.UI2.WinForms.Guna2Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenChuongTrinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTieuChuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThoiGianDienRa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonViToChuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SuaCT = new System.Windows.Forms.DataGridViewImageColumn();
+            this.XoaCT = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_CT)).BeginInit();
             this.pn_Sort.SuspendLayout();
             this.pn_Them_Sua.SuspendLayout();
@@ -90,7 +90,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgv_CT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgv_CT.ColumnHeadersHeight = 21;
+            this.dtgv_CT.ColumnHeadersHeight = 40;
             this.dtgv_CT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.TenChuongTrinh,
@@ -112,6 +112,7 @@
             this.dtgv_CT.Location = new System.Drawing.Point(18, 203);
             this.dtgv_CT.Name = "dtgv_CT";
             this.dtgv_CT.RowHeadersVisible = false;
+            this.dtgv_CT.RowTemplate.Height = 40;
             this.dtgv_CT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgv_CT.Size = new System.Drawing.Size(1010, 395);
             this.dtgv_CT.TabIndex = 0;
@@ -128,66 +129,16 @@
             this.dtgv_CT.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dtgv_CT.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dtgv_CT.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dtgv_CT.ThemeStyle.HeaderStyle.Height = 21;
+            this.dtgv_CT.ThemeStyle.HeaderStyle.Height = 40;
             this.dtgv_CT.ThemeStyle.ReadOnly = false;
             this.dtgv_CT.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dtgv_CT.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_CT.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dtgv_CT.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dtgv_CT.ThemeStyle.RowsStyle.Height = 22;
+            this.dtgv_CT.ThemeStyle.RowsStyle.Height = 40;
             this.dtgv_CT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_CT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_CT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID.DataPropertyName = "MaChuongTrinh";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Width = 46;
-            // 
-            // TenChuongTrinh
-            // 
-            this.TenChuongTrinh.DataPropertyName = "TenChuongTrinh";
-            this.TenChuongTrinh.HeaderText = "Tên Chương Trình";
-            this.TenChuongTrinh.Name = "TenChuongTrinh";
-            // 
-            // TenTieuChuan
-            // 
-            this.TenTieuChuan.DataPropertyName = "TenTieuChuan";
-            this.TenTieuChuan.HeaderText = "Tiêu Chuẩn";
-            this.TenTieuChuan.Name = "TenTieuChuan";
-            // 
-            // ThoiGianDienRa
-            // 
-            this.ThoiGianDienRa.DataPropertyName = "ThoiGianDienRa";
-            this.ThoiGianDienRa.HeaderText = "Diễn Ra";
-            this.ThoiGianDienRa.Name = "ThoiGianDienRa";
-            // 
-            // DonViToChuc
-            // 
-            this.DonViToChuc.DataPropertyName = "DonViToChuc";
-            this.DonViToChuc.HeaderText = "Tổ Chức";
-            this.DonViToChuc.Name = "DonViToChuc";
-            // 
-            // SuaCT
-            // 
-            this.SuaCT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.SuaCT.HeaderText = "";
-            this.SuaCT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_wrench_961;
-            this.SuaCT.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.SuaCT.Name = "SuaCT";
-            this.SuaCT.Width = 20;
-            // 
-            // XoaCT
-            // 
-            this.XoaCT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.XoaCT.HeaderText = "";
-            this.XoaCT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_delete_bin_96__1_1;
-            this.XoaCT.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.XoaCT.Name = "XoaCT";
-            this.XoaCT.Width = 20;
             // 
             // pn_Sort
             // 
@@ -650,6 +601,56 @@
             this.btnThemHD.Text = "Thêm Chương Trình";
             this.btnThemHD.Click += new System.EventHandler(this.btnThemHD_Click);
             // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.DataPropertyName = "MaChuongTrinh";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Width = 46;
+            // 
+            // TenChuongTrinh
+            // 
+            this.TenChuongTrinh.DataPropertyName = "TenChuongTrinh";
+            this.TenChuongTrinh.HeaderText = "Tên Chương Trình";
+            this.TenChuongTrinh.Name = "TenChuongTrinh";
+            // 
+            // TenTieuChuan
+            // 
+            this.TenTieuChuan.DataPropertyName = "TenTieuChuan";
+            this.TenTieuChuan.HeaderText = "Tiêu Chuẩn";
+            this.TenTieuChuan.Name = "TenTieuChuan";
+            // 
+            // ThoiGianDienRa
+            // 
+            this.ThoiGianDienRa.DataPropertyName = "ThoiGianDienRa";
+            this.ThoiGianDienRa.HeaderText = "Diễn Ra";
+            this.ThoiGianDienRa.Name = "ThoiGianDienRa";
+            // 
+            // DonViToChuc
+            // 
+            this.DonViToChuc.DataPropertyName = "DonViToChuc";
+            this.DonViToChuc.HeaderText = "Tổ Chức";
+            this.DonViToChuc.Name = "DonViToChuc";
+            // 
+            // SuaCT
+            // 
+            this.SuaCT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SuaCT.HeaderText = "";
+            this.SuaCT.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_5126;
+            this.SuaCT.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.SuaCT.Name = "SuaCT";
+            this.SuaCT.Width = 20;
+            // 
+            // XoaCT
+            // 
+            this.XoaCT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.XoaCT.HeaderText = "";
+            this.XoaCT.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5127;
+            this.XoaCT.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.XoaCT.Name = "XoaCT";
+            this.XoaCT.Width = 20;
+            // 
             // QL_CT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,6 +703,8 @@
         private System.Windows.Forms.Label label15;
         private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
         private Guna.UI2.WinForms.Guna2ImageButton btnNext;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenChuongTrinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTieuChuan;
@@ -709,7 +712,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DonViToChuc;
         private System.Windows.Forms.DataGridViewImageColumn SuaCT;
         private System.Windows.Forms.DataGridViewImageColumn XoaCT;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
     }
 }

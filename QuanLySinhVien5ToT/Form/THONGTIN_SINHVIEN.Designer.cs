@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pn_Sort = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.txtFillterLop = new Guna.UI2.WinForms.Guna2TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -42,19 +41,6 @@
             this.cbFillter_DonVi = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtSaerch = new Guna.UI2.WinForms.Guna2TextBox();
             this.dtgv_SV = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Mssv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Xem = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.cbGioiTinh = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -72,7 +58,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pn_ThemSua = new Guna.UI2.WinForms.Guna2Panel();
             this.txtLop = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnXThemSV = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnLuuSV = new Guna.UI2.WinForms.Guna2Button();
             this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -80,14 +65,29 @@
             this.label14 = new System.Windows.Forms.Label();
             this.cbDonVi = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.Mssv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnXThemSV = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnThemKQ = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label15 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
+            this.Xem = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Sort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_SV)).BeginInit();
             this.pn_ThemSua.SuspendLayout();
@@ -112,24 +112,6 @@
             this.pn_Sort.ShadowDecoration.Parent = this.pn_Sort;
             this.pn_Sort.Size = new System.Drawing.Size(829, 165);
             this.pn_Sort.TabIndex = 41;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.Color.Transparent;
-            this.btnTimKiem.BorderRadius = 20;
-            this.btnTimKiem.CheckedState.Parent = this.btnTimKiem;
-            this.btnTimKiem.CustomImages.Parent = this.btnTimKiem;
-            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.HoverState.Parent = this.btnTimKiem;
-            this.btnTimKiem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_search_96;
-            this.btnTimKiem.Location = new System.Drawing.Point(418, 115);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.ShadowDecoration.Parent = this.btnTimKiem;
-            this.btnTimKiem.Size = new System.Drawing.Size(180, 36);
-            this.btnTimKiem.TabIndex = 50;
-            this.btnTimKiem.Text = "Tìm Kiếm";
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // guna2Separator1
             // 
@@ -242,6 +224,8 @@
             // 
             // txtSaerch
             // 
+            this.txtSaerch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtSaerch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtSaerch.BackColor = System.Drawing.Color.Transparent;
             this.txtSaerch.BorderRadius = 10;
             this.txtSaerch.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -268,21 +252,21 @@
             // 
             // dtgv_SV
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.dtgv_SV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dtgv_SV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgv_SV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_SV.BackgroundColor = System.Drawing.Color.White;
             this.dtgv_SV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgv_SV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_SV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv_SV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv_SV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgv_SV.ColumnHeadersHeight = 40;
             this.dtgv_SV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Mssv,
@@ -298,20 +282,21 @@
             this.Xem,
             this.Sua,
             this.Xoa});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgv_SV.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgv_SV.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgv_SV.EnableHeadersVisualStyles = false;
             this.dtgv_SV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_SV.Location = new System.Drawing.Point(14, 224);
             this.dtgv_SV.Name = "dtgv_SV";
             this.dtgv_SV.ReadOnly = true;
             this.dtgv_SV.RowHeadersVisible = false;
+            this.dtgv_SV.RowTemplate.Height = 35;
             this.dtgv_SV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgv_SV.Size = new System.Drawing.Size(1017, 384);
             this.dtgv_SV.TabIndex = 40;
@@ -334,110 +319,10 @@
             this.dtgv_SV.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_SV.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dtgv_SV.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dtgv_SV.ThemeStyle.RowsStyle.Height = 22;
+            this.dtgv_SV.ThemeStyle.RowsStyle.Height = 35;
             this.dtgv_SV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_SV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_SV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_SV_CellContentClick);
-            // 
-            // Mssv
-            // 
-            this.Mssv.DataPropertyName = "Mssv";
-            this.Mssv.HeaderText = "Mssv";
-            this.Mssv.Name = "Mssv";
-            this.Mssv.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "Ngày Sinh";
-            this.NgaySinh.Name = "NgaySinh";
-            this.NgaySinh.ReadOnly = true;
-            // 
-            // GioiTinh
-            // 
-            this.GioiTinh.DataPropertyName = "GioiTinh";
-            this.GioiTinh.HeaderText = "Giới Tính";
-            this.GioiTinh.Name = "GioiTinh";
-            this.GioiTinh.ReadOnly = true;
-            // 
-            // NoiSinh
-            // 
-            this.NoiSinh.DataPropertyName = "NoiSinh";
-            this.NoiSinh.HeaderText = "Nơi Sinh";
-            this.NoiSinh.Name = "NoiSinh";
-            this.NoiSinh.ReadOnly = true;
-            // 
-            // SDT
-            // 
-            this.SDT.DataPropertyName = "SDT";
-            this.SDT.HeaderText = "SDT";
-            this.SDT.Name = "SDT";
-            this.SDT.ReadOnly = true;
-            // 
-            // Lop
-            // 
-            this.Lop.DataPropertyName = "Lop";
-            this.Lop.HeaderText = "Lớp";
-            this.Lop.Name = "Lop";
-            this.Lop.ReadOnly = true;
-            // 
-            // DonVi
-            // 
-            this.DonVi.DataPropertyName = "DonVi";
-            this.DonVi.HeaderText = "Đơn Vị";
-            this.DonVi.Name = "DonVi";
-            this.DonVi.ReadOnly = true;
-            // 
-            // Khoa
-            // 
-            this.Khoa.DataPropertyName = "Khoa";
-            this.Khoa.HeaderText = "Khóa";
-            this.Khoa.Name = "Khoa";
-            this.Khoa.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Xem
-            // 
-            this.Xem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xem.HeaderText = "";
-            this.Xem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_view_96;
-            this.Xem.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xem.Name = "Xem";
-            this.Xem.ReadOnly = true;
-            this.Xem.Width = 20;
-            // 
-            // Sua
-            // 
-            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sua.HeaderText = "";
-            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_wrench_96;
-            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Sua.Name = "Sua";
-            this.Sua.ReadOnly = true;
-            this.Sua.Width = 20;
-            // 
-            // Xoa
-            // 
-            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xoa.HeaderText = "";
-            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_delete_bin_96__1_;
-            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xoa.Name = "Xoa";
-            this.Xoa.ReadOnly = true;
-            this.Xoa.Width = 20;
             // 
             // label3
             // 
@@ -497,6 +382,8 @@
             // 
             // txtMssv
             // 
+            this.txtMssv.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtMssv.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtMssv.BackColor = System.Drawing.Color.Transparent;
             this.txtMssv.BorderRadius = 10;
             this.txtMssv.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -714,7 +601,7 @@
             this.pn_ThemSua.Controls.Add(this.cbGioiTinh);
             this.pn_ThemSua.Controls.Add(this.label4);
             this.pn_ThemSua.FillColor = System.Drawing.Color.White;
-            this.pn_ThemSua.Location = new System.Drawing.Point(14, 53);
+            this.pn_ThemSua.Location = new System.Drawing.Point(14, 52);
             this.pn_ThemSua.Name = "pn_ThemSua";
             this.pn_ThemSua.ShadowDecoration.Parent = this.pn_ThemSua;
             this.pn_ThemSua.Size = new System.Drawing.Size(847, 165);
@@ -745,25 +632,6 @@
             this.txtLop.ShadowDecoration.Parent = this.txtLop;
             this.txtLop.Size = new System.Drawing.Size(198, 36);
             this.txtLop.TabIndex = 47;
-            // 
-            // btnXThemSV
-            // 
-            this.btnXThemSV.BackColor = System.Drawing.Color.White;
-            this.btnXThemSV.Checked = true;
-            this.btnXThemSV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThemSV.CheckedState.Parent = this.btnXThemSV;
-            this.btnXThemSV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThemSV.HoverState.Parent = this.btnXThemSV;
-            this.btnXThemSV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnXThemSV.ImageRotate = 0F;
-            this.btnXThemSV.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnXThemSV.Location = new System.Drawing.Point(814, 5);
-            this.btnXThemSV.Name = "btnXThemSV";
-            this.btnXThemSV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnXThemSV.PressedState.Parent = this.btnXThemSV;
-            this.btnXThemSV.Size = new System.Drawing.Size(30, 31);
-            this.btnXThemSV.TabIndex = 44;
-            this.btnXThemSV.Click += new System.EventHandler(this.btnXThemSV_Click);
             // 
             // btnLuuSV
             // 
@@ -891,90 +759,6 @@
             this.label11.TabIndex = 37;
             this.label11.Text = "Đơn Vị :";
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_view_96;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn2.HeaderText = "";
-            this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_wrench_96;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn3.HeaderText = "";
-            this.dataGridViewImageColumn3.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_delete_bin_96__1_;
-            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackColor = System.Drawing.Color.Transparent;
-            this.btnNext.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnNext.CheckedState.Parent = this.btnNext;
-            this.btnNext.HoverState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnNext.HoverState.Parent = this.btnNext;
-            this.btnNext.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_double_right_801;
-            this.btnNext.ImageRotate = 0F;
-            this.btnNext.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnNext.Location = new System.Drawing.Point(97, 4);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.PressedState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnNext.PressedState.Parent = this.btnNext;
-            this.btnNext.Size = new System.Drawing.Size(45, 35);
-            this.btnNext.TabIndex = 48;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnprevious
-            // 
-            this.btnprevious.BackColor = System.Drawing.Color.Transparent;
-            this.btnprevious.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnprevious.CheckedState.Parent = this.btnprevious;
-            this.btnprevious.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
-            this.btnprevious.HoverState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnprevious.HoverState.Parent = this.btnprevious;
-            this.btnprevious.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_double_right_80;
-            this.btnprevious.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
-            this.btnprevious.ImageRotate = 0F;
-            this.btnprevious.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnprevious.Location = new System.Drawing.Point(22, 4);
-            this.btnprevious.Name = "btnprevious";
-            this.btnprevious.PressedState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
-            this.btnprevious.PressedState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnprevious.PressedState.Parent = this.btnprevious;
-            this.btnprevious.Size = new System.Drawing.Size(45, 35);
-            this.btnprevious.TabIndex = 47;
-            this.btnprevious.Click += new System.EventHandler(this.btnprevious_Click);
-            // 
-            // btnThemKQ
-            // 
-            this.btnThemKQ.BackColor = System.Drawing.Color.Transparent;
-            this.btnThemKQ.BorderRadius = 20;
-            this.btnThemKQ.CheckedState.Parent = this.btnThemKQ;
-            this.btnThemKQ.CustomImages.Parent = this.btnThemKQ;
-            this.btnThemKQ.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemKQ.ForeColor = System.Drawing.Color.White;
-            this.btnThemKQ.HoverState.Parent = this.btnThemKQ;
-            this.btnThemKQ.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
-            this.btnThemKQ.Location = new System.Drawing.Point(867, 167);
-            this.btnThemKQ.Name = "btnThemKQ";
-            this.btnThemKQ.ShadowDecoration.Parent = this.btnThemKQ;
-            this.btnThemKQ.Size = new System.Drawing.Size(164, 45);
-            this.btnThemKQ.TabIndex = 44;
-            this.btnThemKQ.Text = "Thêm Sinh Viên";
-            this.btnThemKQ.Click += new System.EventHandler(this.btnThemKQ_Click);
-            // 
             // guna2Panel1
             // 
             this.guna2Panel1.BorderRadius = 20;
@@ -999,6 +783,230 @@
             this.label15.Size = new System.Drawing.Size(18, 20);
             this.label15.TabIndex = 50;
             this.label15.Text = "1";
+            // 
+            // Mssv
+            // 
+            this.Mssv.DataPropertyName = "Mssv";
+            this.Mssv.HeaderText = "Mssv";
+            this.Mssv.Name = "Mssv";
+            this.Mssv.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày Sinh";
+            this.NgaySinh.Name = "NgaySinh";
+            this.NgaySinh.ReadOnly = true;
+            // 
+            // GioiTinh
+            // 
+            this.GioiTinh.DataPropertyName = "GioiTinh";
+            this.GioiTinh.HeaderText = "Giới Tính";
+            this.GioiTinh.Name = "GioiTinh";
+            this.GioiTinh.ReadOnly = true;
+            // 
+            // NoiSinh
+            // 
+            this.NoiSinh.DataPropertyName = "NoiSinh";
+            this.NoiSinh.HeaderText = "Nơi Sinh";
+            this.NoiSinh.Name = "NoiSinh";
+            this.NoiSinh.ReadOnly = true;
+            // 
+            // SDT
+            // 
+            this.SDT.DataPropertyName = "SDT";
+            this.SDT.HeaderText = "SDT";
+            this.SDT.Name = "SDT";
+            this.SDT.ReadOnly = true;
+            // 
+            // Lop
+            // 
+            this.Lop.DataPropertyName = "Lop";
+            this.Lop.HeaderText = "Lớp";
+            this.Lop.Name = "Lop";
+            this.Lop.ReadOnly = true;
+            // 
+            // DonVi
+            // 
+            this.DonVi.DataPropertyName = "DonVi";
+            this.DonVi.HeaderText = "Đơn Vị";
+            this.DonVi.Name = "DonVi";
+            this.DonVi.ReadOnly = true;
+            // 
+            // Khoa
+            // 
+            this.Khoa.DataPropertyName = "Khoa";
+            this.Khoa.HeaderText = "Khóa";
+            this.Khoa.Name = "Khoa";
+            this.Khoa.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_view_96;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Width = 20;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn2.HeaderText = "";
+            this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_wrench_96;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Width = 20;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_delete_bin_96__1_;
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            this.dataGridViewImageColumn3.Width = 20;
+            // 
+            // btnprevious
+            // 
+            this.btnprevious.BackColor = System.Drawing.Color.Transparent;
+            this.btnprevious.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnprevious.CheckedState.Parent = this.btnprevious;
+            this.btnprevious.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.btnprevious.HoverState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnprevious.HoverState.Parent = this.btnprevious;
+            this.btnprevious.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_double_right_80;
+            this.btnprevious.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.btnprevious.ImageRotate = 0F;
+            this.btnprevious.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnprevious.Location = new System.Drawing.Point(22, 4);
+            this.btnprevious.Name = "btnprevious";
+            this.btnprevious.PressedState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.btnprevious.PressedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnprevious.PressedState.Parent = this.btnprevious;
+            this.btnprevious.Size = new System.Drawing.Size(45, 35);
+            this.btnprevious.TabIndex = 47;
+            this.btnprevious.Click += new System.EventHandler(this.btnprevious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackColor = System.Drawing.Color.Transparent;
+            this.btnNext.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnNext.CheckedState.Parent = this.btnNext;
+            this.btnNext.HoverState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnNext.HoverState.Parent = this.btnNext;
+            this.btnNext.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_double_right_801;
+            this.btnNext.ImageRotate = 0F;
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnNext.Location = new System.Drawing.Point(97, 4);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.PressedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnNext.PressedState.Parent = this.btnNext;
+            this.btnNext.Size = new System.Drawing.Size(45, 35);
+            this.btnNext.TabIndex = 48;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnXThemSV
+            // 
+            this.btnXThemSV.BackColor = System.Drawing.Color.White;
+            this.btnXThemSV.Checked = true;
+            this.btnXThemSV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThemSV.CheckedState.Parent = this.btnXThemSV;
+            this.btnXThemSV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThemSV.HoverState.Parent = this.btnXThemSV;
+            this.btnXThemSV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnXThemSV.ImageRotate = 0F;
+            this.btnXThemSV.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnXThemSV.Location = new System.Drawing.Point(814, 5);
+            this.btnXThemSV.Name = "btnXThemSV";
+            this.btnXThemSV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnXThemSV.PressedState.Parent = this.btnXThemSV;
+            this.btnXThemSV.Size = new System.Drawing.Size(30, 31);
+            this.btnXThemSV.TabIndex = 44;
+            this.btnXThemSV.Click += new System.EventHandler(this.btnXThemSV_Click);
+            // 
+            // btnThemKQ
+            // 
+            this.btnThemKQ.BackColor = System.Drawing.Color.Transparent;
+            this.btnThemKQ.BorderRadius = 20;
+            this.btnThemKQ.CheckedState.Parent = this.btnThemKQ;
+            this.btnThemKQ.CustomImages.Parent = this.btnThemKQ;
+            this.btnThemKQ.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemKQ.ForeColor = System.Drawing.Color.White;
+            this.btnThemKQ.HoverState.Parent = this.btnThemKQ;
+            this.btnThemKQ.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
+            this.btnThemKQ.Location = new System.Drawing.Point(867, 167);
+            this.btnThemKQ.Name = "btnThemKQ";
+            this.btnThemKQ.ShadowDecoration.Parent = this.btnThemKQ;
+            this.btnThemKQ.Size = new System.Drawing.Size(164, 45);
+            this.btnThemKQ.TabIndex = 44;
+            this.btnThemKQ.Text = "Thêm Sinh Viên";
+            this.btnThemKQ.Click += new System.EventHandler(this.btnThemKQ_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.Transparent;
+            this.btnTimKiem.BorderRadius = 20;
+            this.btnTimKiem.CheckedState.Parent = this.btnTimKiem;
+            this.btnTimKiem.CustomImages.Parent = this.btnTimKiem;
+            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
+            this.btnTimKiem.HoverState.Parent = this.btnTimKiem;
+            this.btnTimKiem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_search_96;
+            this.btnTimKiem.Location = new System.Drawing.Point(418, 115);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.ShadowDecoration.Parent = this.btnTimKiem;
+            this.btnTimKiem.Size = new System.Drawing.Size(180, 36);
+            this.btnTimKiem.TabIndex = 50;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // Xem
+            // 
+            this.Xem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xem.HeaderText = "";
+            this.Xem.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_512;
+            this.Xem.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xem.Name = "Xem";
+            this.Xem.ReadOnly = true;
+            this.Xem.Width = 20;
+            // 
+            // Sua
+            // 
+            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sua.HeaderText = "";
+            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_5121;
+            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Sua.Name = "Sua";
+            this.Sua.ReadOnly = true;
+            this.Sua.Width = 20;
+            // 
+            // Xoa
+            // 
+            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xoa.HeaderText = "";
+            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5121;
+            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.ReadOnly = true;
+            this.Xoa.Width = 20;
             // 
             // THONGTIN_SINHVIEN
             // 
@@ -1033,7 +1041,6 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2ComboBox cbFillter_DonVi;
         private Guna.UI2.WinForms.Guna2TextBox txtSaerch;
-        private Guna.UI2.WinForms.Guna2DataGridView dtgv_SV;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2ComboBox cbFillter_Khoa;
         private System.Windows.Forms.Label label3;
@@ -1064,6 +1071,14 @@
         private Guna.UI2.WinForms.Guna2TextBox txtFillterLop;
         private Guna.UI2.WinForms.Guna2Button btnTimKiem;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
+        private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
+        private Guna.UI2.WinForms.Guna2ImageButton btnNext;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Label label15;
+        private Guna.UI2.WinForms.Guna2DataGridView dtgv_SV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mssv;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
@@ -1077,12 +1092,5 @@
         private System.Windows.Forms.DataGridViewImageColumn Xem;
         private System.Windows.Forms.DataGridViewImageColumn Sua;
         private System.Windows.Forms.DataGridViewImageColumn Xoa;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
-        private Guna.UI2.WinForms.Guna2ImageButton btnNext;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label label15;
     }
 }

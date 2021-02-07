@@ -10,6 +10,8 @@ namespace QuanLySinhVien5ToT.BLL
 {
     public class ThoiDiemSV_ThamGiaBLL
     {
+        private Don_ViDAL don_ViDAL = new Don_ViDAL();
+        private Sinh_VienDAL sinh_VienDAL = new Sinh_VienDAL();
         private Thoi_Gian_XetDAL Thoi_Gian_XetDAL = new Thoi_Gian_XetDAL();
         private ThoiDiemSV_ThamGiaDAL thoiDiemSV_ThamGiaDAL = new ThoiDiemSV_ThamGiaDAL();
         private GenericUnitOfWork unitOfWorkNV = new GenericUnitOfWork(Mydb.GetInstance());
@@ -37,10 +39,10 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return unitOfWorkNV.Repository<THOIDIEM_SV_THAMGIA>().GetAll(predicate);
         }
-        //public List<ThoiDiemSV_ThamGiaDTO> dssinhvienTG()
-        //{
-        //   return thoiDiemSV_ThamGiaDAL.getSV_TG();
-        //}
+        public List<ThoiDiemSV_ThamGiaDTO> dssinhvienTG()
+        {
+            return thoiDiemSV_ThamGiaDAL.getSV_TG();
+        }
         public Dictionary<string, string> showTime()
         {
             DicTimeFormatted = new Dictionary<string, string>();
@@ -65,6 +67,14 @@ namespace QuanLySinhVien5ToT.BLL
                 }
             }
             return null;
+        }
+        public List<Don_ViDTO> dsdonvi()
+        {
+            return don_ViDAL.GetDonVi();
+        }
+        public List<Sinh_VienDTO> dssinhvien()
+        {
+            return sinh_VienDAL.Getdssinhvien();
         }
     }
 }

@@ -73,6 +73,86 @@ namespace QuanLySinhVien5ToT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_512 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_5121 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-5121", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_5122 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-5122", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_5123 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-5123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_5124 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-5124", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_5125 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-5125", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_5126 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-5126", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14974663671582988848_5127 {
+            get {
+                object obj = ResourceManager.GetObject("14974663671582988848-5127", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1593944188_127_Tip_Hinh_nen_Powerpoint_mau_sang {
             get {
                 object obj = ResourceManager.GetObject("1593944188_127_Tip-Hinh-nen-Powerpoint-mau-sang", resourceCulture);
@@ -103,6 +183,16 @@ namespace QuanLySinhVien5ToT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _606_6065122_delete_bin_trash_png_free_download_transparent_delete {
+            get {
+                object obj = ResourceManager.GetObject("606-6065122_delete-bin-trash-png-free-download-transparent-delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_yellow_right_transparent_11547070739jcdbkgta1b {
             get {
                 object obj = ResourceManager.GetObject("arrow-yellow-right-transparent-11547070739jcdbkgta1b", resourceCulture);
@@ -126,6 +216,26 @@ namespace QuanLySinhVien5ToT.Properties {
         internal static System.Drawing.Bitmap Capture {
             get {
                 object obj = ResourceManager.GetObject("Capture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap find_vector_icon_png_260845 {
+            get {
+                object obj = ResourceManager.GetObject("find-vector-icon-png_260845", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap find_vector_icon_png_2608451 {
+            get {
+                object obj = ResourceManager.GetObject("find-vector-icon-png_2608451", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -743,9 +853,159 @@ namespace QuanLySinhVien5ToT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap maintenance_icon_tools_settings_or_repair_icons_vector_20461200 {
+            get {
+                object obj = ResourceManager.GetObject("maintenance-icon-tools-settings-or-repair-icons-vector-20461200", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_data_512 {
+            get {
+                object obj = ResourceManager.GetObject("search_data-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_data_5121 {
+            get {
+                object obj = ResourceManager.GetObject("search_data-5121", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_data_5122 {
+            get {
+                object obj = ResourceManager.GetObject("search_data-5122", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_data_5123 {
+            get {
+                object obj = ResourceManager.GetObject("search_data-5123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_data_5124 {
+            get {
+                object obj = ResourceManager.GetObject("search_data-5124", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_data_5125 {
+            get {
+                object obj = ResourceManager.GetObject("search_data-5125", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seo_23_512 {
+            get {
+                object obj = ResourceManager.GetObject("seo-23-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seo_23_5121 {
+            get {
+                object obj = ResourceManager.GetObject("seo-23-5121", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seo_23_5122 {
+            get {
+                object obj = ResourceManager.GetObject("seo-23-5122", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seo_23_5123 {
+            get {
+                object obj = ResourceManager.GetObject("seo-23-5123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seo_23_5124 {
+            get {
+                object obj = ResourceManager.GetObject("seo-23-5124", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seo_23_5125 {
+            get {
+                object obj = ResourceManager.GetObject("seo-23-5125", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seo_23_5126 {
+            get {
+                object obj = ResourceManager.GetObject("seo-23-5126", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tải_xuống {
             get {
                 object obj = ResourceManager.GetObject("tải xuống", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_file {
+            get {
+                object obj = ResourceManager.GetObject("view-file", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

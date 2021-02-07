@@ -40,18 +40,9 @@
             this.cbFillterLTC = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgv_TC = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenHoatDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTieuChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoaiHoatDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SuaTC = new System.Windows.Forms.DataGridViewImageColumn();
-            this.XoaHD = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnThemTC = new Guna.UI2.WinForms.Guna2Button();
             this.pn_ThemTC = new Guna.UI2.WinForms.Guna2Panel();
             this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnX_DV = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnLuuTC = new Guna.UI2.WinForms.Guna2Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTenTieuChuan = new Guna.UI2.WinForms.Guna2TextBox();
@@ -63,8 +54,19 @@
             this.label10 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label15 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenHoatDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTieuChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiHoatDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnX_DV = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnThemTC = new Guna.UI2.WinForms.Guna2Button();
+            this.SuaTC = new System.Windows.Forms.DataGridViewImageColumn();
+            this.XoaHD = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Sort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_TC)).BeginInit();
             this.pn_ThemTC.SuspendLayout();
@@ -248,6 +250,7 @@
             this.dtgv_TC.Location = new System.Drawing.Point(23, 231);
             this.dtgv_TC.Name = "dtgv_TC";
             this.dtgv_TC.RowHeadersVisible = false;
+            this.dtgv_TC.RowTemplate.Height = 40;
             this.dtgv_TC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgv_TC.Size = new System.Drawing.Size(999, 369);
             this.dtgv_TC.TabIndex = 21;
@@ -270,75 +273,10 @@
             this.dtgv_TC.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_TC.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dtgv_TC.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dtgv_TC.ThemeStyle.RowsStyle.Height = 22;
+            this.dtgv_TC.ThemeStyle.RowsStyle.Height = 40;
             this.dtgv_TC.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_TC.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_TC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_TC_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID.DataPropertyName = "MaTieuChuan";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Width = 46;
-            // 
-            // TenHoatDong
-            // 
-            this.TenHoatDong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenHoatDong.DataPropertyName = "TenTieuChuan";
-            this.TenHoatDong.HeaderText = "Tiêu Chuẩn";
-            this.TenHoatDong.Name = "TenHoatDong";
-            // 
-            // Cap
-            // 
-            this.Cap.DataPropertyName = "TenCapTieuChuan";
-            this.Cap.HeaderText = "Cấp";
-            this.Cap.Name = "Cap";
-            // 
-            // TenTieuChi
-            // 
-            this.TenTieuChi.DataPropertyName = "TenTieuChi";
-            this.TenTieuChi.HeaderText = "Tiêu Chí";
-            this.TenTieuChi.Name = "TenTieuChi";
-            // 
-            // LoaiHoatDong
-            // 
-            this.LoaiHoatDong.DataPropertyName = "TenLoaiTieuChuan";
-            this.LoaiHoatDong.HeaderText = "Loại TC";
-            this.LoaiHoatDong.Name = "LoaiHoatDong";
-            // 
-            // SuaTC
-            // 
-            this.SuaTC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.SuaTC.HeaderText = "";
-            this.SuaTC.Name = "SuaTC";
-            this.SuaTC.Width = 20;
-            // 
-            // XoaHD
-            // 
-            this.XoaHD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.XoaHD.HeaderText = "";
-            this.XoaHD.Name = "XoaHD";
-            this.XoaHD.Width = 20;
-            // 
-            // btnThemTC
-            // 
-            this.btnThemTC.BackColor = System.Drawing.Color.Transparent;
-            this.btnThemTC.BorderRadius = 20;
-            this.btnThemTC.CheckedState.Parent = this.btnThemTC;
-            this.btnThemTC.CustomImages.Parent = this.btnThemTC;
-            this.btnThemTC.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemTC.ForeColor = System.Drawing.Color.White;
-            this.btnThemTC.HoverState.Parent = this.btnThemTC;
-            this.btnThemTC.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
-            this.btnThemTC.Location = new System.Drawing.Point(863, 176);
-            this.btnThemTC.Name = "btnThemTC";
-            this.btnThemTC.ShadowDecoration.Parent = this.btnThemTC;
-            this.btnThemTC.Size = new System.Drawing.Size(159, 39);
-            this.btnThemTC.TabIndex = 22;
-            this.btnThemTC.Text = "Thêm Tiêu Chuẩn";
-            this.btnThemTC.Click += new System.EventHandler(this.btnThemTC_Click);
             // 
             // pn_ThemTC
             // 
@@ -399,25 +337,6 @@
             this.label3.Size = new System.Drawing.Size(26, 15);
             this.label3.TabIndex = 32;
             this.label3.Text = "ID :";
-            // 
-            // btnX_DV
-            // 
-            this.btnX_DV.BackColor = System.Drawing.Color.White;
-            this.btnX_DV.Checked = true;
-            this.btnX_DV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnX_DV.CheckedState.Parent = this.btnX_DV;
-            this.btnX_DV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnX_DV.HoverState.Parent = this.btnX_DV;
-            this.btnX_DV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnX_DV.ImageRotate = 0F;
-            this.btnX_DV.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnX_DV.Location = new System.Drawing.Point(772, 19);
-            this.btnX_DV.Name = "btnX_DV";
-            this.btnX_DV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnX_DV.PressedState.Parent = this.btnX_DV;
-            this.btnX_DV.Size = new System.Drawing.Size(30, 31);
-            this.btnX_DV.TabIndex = 31;
-            this.btnX_DV.Click += new System.EventHandler(this.btnX_DV_Click);
             // 
             // btnLuuTC
             // 
@@ -596,6 +515,57 @@
             this.label15.TabIndex = 50;
             this.label15.Text = "1";
             // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.DataPropertyName = "MaTieuChuan";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Width = 46;
+            // 
+            // TenHoatDong
+            // 
+            this.TenHoatDong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenHoatDong.DataPropertyName = "TenTieuChuan";
+            this.TenHoatDong.HeaderText = "Tiêu Chuẩn";
+            this.TenHoatDong.Name = "TenHoatDong";
+            // 
+            // Cap
+            // 
+            this.Cap.DataPropertyName = "TenCapTieuChuan";
+            this.Cap.HeaderText = "Cấp";
+            this.Cap.Name = "Cap";
+            // 
+            // TenTieuChi
+            // 
+            this.TenTieuChi.DataPropertyName = "TenTieuChi";
+            this.TenTieuChi.HeaderText = "Tiêu Chí";
+            this.TenTieuChi.Name = "TenTieuChi";
+            // 
+            // LoaiHoatDong
+            // 
+            this.LoaiHoatDong.DataPropertyName = "TenLoaiTieuChuan";
+            this.LoaiHoatDong.HeaderText = "Loại TC";
+            this.LoaiHoatDong.Name = "LoaiHoatDong";
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_5125;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 20;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn2.HeaderText = "";
+            this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5126;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 20;
+            // 
             // btnprevious
             // 
             this.btnprevious.BackColor = System.Drawing.Color.Transparent;
@@ -634,6 +604,61 @@
             this.btnNext.Size = new System.Drawing.Size(45, 35);
             this.btnNext.TabIndex = 48;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnX_DV
+            // 
+            this.btnX_DV.BackColor = System.Drawing.Color.White;
+            this.btnX_DV.Checked = true;
+            this.btnX_DV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnX_DV.CheckedState.Parent = this.btnX_DV;
+            this.btnX_DV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnX_DV.HoverState.Parent = this.btnX_DV;
+            this.btnX_DV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnX_DV.ImageRotate = 0F;
+            this.btnX_DV.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnX_DV.Location = new System.Drawing.Point(772, 19);
+            this.btnX_DV.Name = "btnX_DV";
+            this.btnX_DV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnX_DV.PressedState.Parent = this.btnX_DV;
+            this.btnX_DV.Size = new System.Drawing.Size(30, 31);
+            this.btnX_DV.TabIndex = 31;
+            this.btnX_DV.Click += new System.EventHandler(this.btnX_DV_Click);
+            // 
+            // btnThemTC
+            // 
+            this.btnThemTC.BackColor = System.Drawing.Color.Transparent;
+            this.btnThemTC.BorderRadius = 20;
+            this.btnThemTC.CheckedState.Parent = this.btnThemTC;
+            this.btnThemTC.CustomImages.Parent = this.btnThemTC;
+            this.btnThemTC.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemTC.ForeColor = System.Drawing.Color.White;
+            this.btnThemTC.HoverState.Parent = this.btnThemTC;
+            this.btnThemTC.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
+            this.btnThemTC.Location = new System.Drawing.Point(863, 176);
+            this.btnThemTC.Name = "btnThemTC";
+            this.btnThemTC.ShadowDecoration.Parent = this.btnThemTC;
+            this.btnThemTC.Size = new System.Drawing.Size(159, 39);
+            this.btnThemTC.TabIndex = 22;
+            this.btnThemTC.Text = "Thêm Tiêu Chuẩn";
+            this.btnThemTC.Click += new System.EventHandler(this.btnThemTC_Click);
+            // 
+            // SuaTC
+            // 
+            this.SuaTC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SuaTC.HeaderText = "";
+            this.SuaTC.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_5125;
+            this.SuaTC.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.SuaTC.Name = "SuaTC";
+            this.SuaTC.Width = 20;
+            // 
+            // XoaHD
+            // 
+            this.XoaHD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.XoaHD.HeaderText = "";
+            this.XoaHD.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5126;
+            this.XoaHD.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.XoaHD.Name = "XoaHD";
+            this.XoaHD.Width = 20;
             // 
             // QL_TIEUCHUAN
             // 
@@ -684,6 +709,8 @@
         private System.Windows.Forms.Label label15;
         private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
         private Guna.UI2.WinForms.Guna2ImageButton btnNext;
+        private Guna.UI2.WinForms.Guna2TextBox txtID;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenHoatDong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cap;
@@ -691,7 +718,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiHoatDong;
         private System.Windows.Forms.DataGridViewImageColumn SuaTC;
         private System.Windows.Forms.DataGridViewImageColumn XoaHD;
-        private Guna.UI2.WinForms.Guna2TextBox txtID;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
     }
 }
