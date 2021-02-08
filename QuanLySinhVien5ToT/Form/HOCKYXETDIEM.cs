@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLySinhVien5ToT.BLL;
+using QuanLySinhVien5ToT.DTO;
 
 namespace QuanLySinhVien5ToT
 {
@@ -16,66 +18,101 @@ namespace QuanLySinhVien5ToT
         {
             InitializeComponent();
         }
-
+        int pagenumber = 1;
+        int numberRecord = 5;
+        private int flagLuu = 0;
+        DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
+        HocKyXetDiemBLL hocKyXetDiemBLL = new HocKyXetDiemBLL();
         private void HOCKY_XETDIEM_Load(object sender, EventArgs e)
         {
-
+            loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+            loadcbFillter_TG();
+            loadcbThoiGian();
+            loadcbHK();
+            txtNam.MaxLength = 4;
         }
-
-        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        void loadHK(List<HocKy_XetDiemDTO> listHK)
         {
-
+            dtgvHocKy.DataSource = listHK;
+            flagLuu = 0;
         }
-
-        
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
         private void btnThemHocKy_Click(object sender, EventArgs e)
         {
-            dtgvHocKy.Width = 616;
+            dtgvHocKy.Width = 666;
             pn_ThemHocKy.Visible = true;
             btnLuuHocKy.Visible = true;
             lbTieuDe.Text = "Thêm Học Kỳ Xét";
+            txtMaHK.Enabled = false;
+            txtMaHK.Text = "";
+            txtNam.Text = "";
+
+            txtNam.BorderColor = Color.FromArgb(213, 218, 223);
+            txtNam.PlaceholderText = "bạn chưa nhập năm";
+            txtNam.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
         }
 
         private void btnXHocKy_Click(object sender, EventArgs e)
         {
-            dtgvHocKy.Width = 960;
+            dtgvHocKy.Width = 1010;
             pn_ThemHocKy.Visible = false;
             btnLuuHocKy.Visible = false;
         }
 
         private void btnLuuHocKy_Click(object sender, EventArgs e)
         {
-            dtgvHocKy.Width = 960;
-            pn_ThemHocKy.Visible = false;
-            btnLuuHocKy.Visible = false;
+            if (txtNam.Text == "")
+            {
+                txtNam.BorderColor = Color.Red;
+                txtNam.PlaceholderText = "";
+                txtNam.PlaceholderForeColor = Color.Red;
+            }
+            else
+            {
+                dtgvHocKy.Width = 1010;
+                pn_ThemHocKy.Visible = false;
+                btnLuuHocKy.Visible = false;
+                if (flagLuu == 0)
+                {
+
+                    HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim());
+                    if (hk == null)
+                    {
+                        hk = new HOCKY_XETDIEM();
+                        hk.HocKy = cbHK.Text;
+                        hk.Nam = Convert.ToInt32(txtNam.Text);
+                        hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
+                        hocKyXetDiemBLL.Add(hk);
+                        MessageBox.Show("Thêm Thành Công");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm Thất Bại");
+                        btnThemHocKy.Enabled = true;
+                    }
+                    loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }
+                else
+                {
+                    try
+                    {
+                        HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim());
+
+                        hk.HocKy = cbHK.Text;
+                        hk.Nam = Convert.ToInt32(txtNam.Text);
+                        hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
+                        btnThemHocKy.Enabled = true;
+                        hocKyXetDiemBLL.Edit(hk);
+                        MessageBox.Show("Sửa Thành Công");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        MessageBox.Show("Sửa thất bại");
+                        btnThemHocKy.Enabled = true;
+                    }
+                    loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }
+            }
+            
         }
 
         private void dtgvHocKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -83,12 +120,79 @@ namespace QuanLySinhVien5ToT
             string name = dtgvHocKy.Columns[e.ColumnIndex].Name;
             if (name == "Sua")
             {
-                dtgvHocKy.Width = 616;
+                dtgvHocKy.Width = 666;
                 pn_ThemHocKy.Visible = true;
                 btnLuuHocKy.Visible = true;
                 lbTieuDe.Text = "Sửa Học Kỳ Xét";
+                flagLuu = 1;
+                txtMaHK.Enabled = false;
+
+                txtNam.BorderColor = Color.FromArgb(213, 218, 223);
+                txtNam.PlaceholderText = "";
+                txtNam.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
+            }
+            DataGridViewRow row = this.dtgvHocKy.Rows[e.RowIndex];
+            txtMaHK.Text = row.Cells["MaHocKy"].Value.ToString();
+            cbHK.Text = row.Cells["HocKy"].Value.ToString();
+            txtNam.Text = row.Cells["Nam"].Value.ToString();
+            cbThoiGian.SelectedValue = hocKyXetDiemBLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
+        }
+        void loadcbFillter_TG()
+        {
+            cbFillter_TG.DataSource = new BindingSource(hocKyXetDiemBLL.showTime(), null);
+            cbFillter_TG.DisplayMember = "Value";
+            cbFillter_TG.ValueMember = "Key";
+        }
+        void loadcbThoiGian()
+        {
+            cbThoiGian.DataSource = new BindingSource(hocKyXetDiemBLL.showTime(), null);
+            cbThoiGian.DisplayMember = "Value";
+            cbThoiGian.ValueMember = "Key";
+        }
+        void loadcbHK()
+        {
+            cbHK.Items.Clear();
+            cbHK.Items.Add("Cuối");
+            cbHK.Items.Add("Đầu");
+            cbHK.Text = "Cuối";
+        }
+
+        private void txtNam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Bạn chỉ được nhập kí tự số !!!");
             }
         }
-        
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            var listFIllter = new List<HocKy_XetDiemDTO>();
+            listFIllter = hocKyXetDiemBLL.dsHK().Where(x => x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
+            dtgvHocKy.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+        }
+
+        private void btnprevious_Click(object sender, EventArgs e)
+        {
+            if (pagenumber - 1 > 0)
+            {
+                pagenumber--;
+                loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int totlalrecord = 0;
+            totlalrecord = db.HOCKY_XETDIEM.Count();
+            if (pagenumber - 1 < totlalrecord / numberRecord)
+            {
+                pagenumber++;
+                loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+
+            }
+        }
     }
 }

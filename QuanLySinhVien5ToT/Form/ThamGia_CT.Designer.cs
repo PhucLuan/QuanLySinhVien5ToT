@@ -32,7 +32,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgv_TT = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Mssv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenChuongTrinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Giai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThoiGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Xem = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Sort = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.label12 = new System.Windows.Forms.Label();
             this.cbFillter_DV = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -42,6 +52,7 @@
             this.cbFillterThoiGian = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.pn_ThemTT = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnXTT = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnLuuTT = new Guna.UI2.WinForms.Guna2Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cbThoiGian_TS = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -53,6 +64,7 @@
             this.cbGiai_TS = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pn_Xem = new Guna.UI2.WinForms.Guna2Panel();
             this.txtTenCT_Xem = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnX_Xem = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbThoiGian_Xem = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -64,24 +76,12 @@
             this.txtTenSV_Xem = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label15 = new System.Windows.Forms.Label();
-            this.Mssv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenChuongTrinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Giai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThoiGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnXTT = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnX_Xem = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnThemTT = new Guna.UI2.WinForms.Guna2Button();
-            this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
-            this.Xem = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_TT)).BeginInit();
             this.pn_Sort.SuspendLayout();
             this.pn_ThemTT.SuspendLayout();
@@ -158,6 +158,73 @@
             this.dtgv_TT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_TT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
+            // Mssv
+            // 
+            this.Mssv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Mssv.DataPropertyName = "Mssv";
+            this.Mssv.HeaderText = "Mssv";
+            this.Mssv.Name = "Mssv";
+            this.Mssv.Width = 64;
+            // 
+            // TenSinhVien
+            // 
+            this.TenSinhVien.DataPropertyName = "TenSinhVien";
+            this.TenSinhVien.HeaderText = "Tên Sinh Viên";
+            this.TenSinhVien.Name = "TenSinhVien";
+            // 
+            // DonVi
+            // 
+            this.DonVi.DataPropertyName = "DonVi";
+            this.DonVi.HeaderText = "Đơn Vị";
+            this.DonVi.Name = "DonVi";
+            // 
+            // TenChuongTrinh
+            // 
+            this.TenChuongTrinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TenChuongTrinh.DataPropertyName = "TenChuongTrinh";
+            this.TenChuongTrinh.HeaderText = "Tên Chương Trình";
+            this.TenChuongTrinh.Name = "TenChuongTrinh";
+            this.TenChuongTrinh.Width = 272;
+            // 
+            // Giai
+            // 
+            this.Giai.DataPropertyName = "Giai";
+            this.Giai.HeaderText = "Giải";
+            this.Giai.Name = "Giai";
+            // 
+            // ThoiGian
+            // 
+            this.ThoiGian.DataPropertyName = "ThoiGian";
+            this.ThoiGian.HeaderText = "Thời Gian";
+            this.ThoiGian.Name = "ThoiGian";
+            // 
+            // Xem
+            // 
+            this.Xem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xem.HeaderText = "";
+            this.Xem.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_5122;
+            this.Xem.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xem.Name = "Xem";
+            this.Xem.Width = 20;
+            // 
+            // Sua
+            // 
+            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sua.HeaderText = "";
+            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_5123;
+            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Sua.Name = "Sua";
+            this.Sua.Width = 20;
+            // 
+            // Xoa
+            // 
+            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xoa.HeaderText = "";
+            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5123;
+            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Width = 20;
+            // 
             // pn_Sort
             // 
             this.pn_Sort.BackColor = System.Drawing.Color.Transparent;
@@ -177,6 +244,24 @@
             this.pn_Sort.ShadowDecoration.Parent = this.pn_Sort;
             this.pn_Sort.Size = new System.Drawing.Size(842, 161);
             this.pn_Sort.TabIndex = 1;
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.Transparent;
+            this.btnTimKiem.BorderRadius = 20;
+            this.btnTimKiem.CheckedState.Parent = this.btnTimKiem;
+            this.btnTimKiem.CustomImages.Parent = this.btnTimKiem;
+            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
+            this.btnTimKiem.HoverState.Parent = this.btnTimKiem;
+            this.btnTimKiem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_search_96;
+            this.btnTimKiem.Location = new System.Drawing.Point(652, 112);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.ShadowDecoration.Parent = this.btnTimKiem;
+            this.btnTimKiem.Size = new System.Drawing.Size(180, 36);
+            this.btnTimKiem.TabIndex = 51;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // guna2Separator1
             // 
@@ -331,6 +416,25 @@
             this.pn_ThemTT.Size = new System.Drawing.Size(842, 161);
             this.pn_ThemTT.TabIndex = 25;
             this.pn_ThemTT.Visible = false;
+            // 
+            // btnXTT
+            // 
+            this.btnXTT.BackColor = System.Drawing.Color.White;
+            this.btnXTT.Checked = true;
+            this.btnXTT.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXTT.CheckedState.Parent = this.btnXTT;
+            this.btnXTT.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXTT.HoverState.Parent = this.btnXTT;
+            this.btnXTT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnXTT.ImageRotate = 0F;
+            this.btnXTT.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnXTT.Location = new System.Drawing.Point(802, 11);
+            this.btnXTT.Name = "btnXTT";
+            this.btnXTT.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnXTT.PressedState.Parent = this.btnXTT;
+            this.btnXTT.Size = new System.Drawing.Size(30, 31);
+            this.btnXTT.TabIndex = 30;
+            this.btnXTT.Click += new System.EventHandler(this.btnXTT_Click);
             // 
             // btnLuuTT
             // 
@@ -532,6 +636,25 @@
             this.txtTenCT_Xem.Size = new System.Drawing.Size(658, 34);
             this.txtTenCT_Xem.TabIndex = 36;
             // 
+            // btnX_Xem
+            // 
+            this.btnX_Xem.BackColor = System.Drawing.Color.White;
+            this.btnX_Xem.Checked = true;
+            this.btnX_Xem.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnX_Xem.CheckedState.Parent = this.btnX_Xem;
+            this.btnX_Xem.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnX_Xem.HoverState.Parent = this.btnX_Xem;
+            this.btnX_Xem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnX_Xem.ImageRotate = 0F;
+            this.btnX_Xem.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnX_Xem.Location = new System.Drawing.Point(802, 6);
+            this.btnX_Xem.Name = "btnX_Xem";
+            this.btnX_Xem.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnX_Xem.PressedState.Parent = this.btnX_Xem;
+            this.btnX_Xem.Size = new System.Drawing.Size(30, 31);
+            this.btnX_Xem.TabIndex = 31;
+            this.btnX_Xem.Click += new System.EventHandler(this.btnX_Xem_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -712,111 +835,6 @@
             this.label15.TabIndex = 50;
             this.label15.Text = "1";
             // 
-            // Mssv
-            // 
-            this.Mssv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Mssv.DataPropertyName = "Mssv";
-            this.Mssv.HeaderText = "Mssv";
-            this.Mssv.Name = "Mssv";
-            this.Mssv.Width = 64;
-            // 
-            // TenSinhVien
-            // 
-            this.TenSinhVien.DataPropertyName = "TenSinhVien";
-            this.TenSinhVien.HeaderText = "Tên Sinh Viên";
-            this.TenSinhVien.Name = "TenSinhVien";
-            // 
-            // DonVi
-            // 
-            this.DonVi.DataPropertyName = "DonVi";
-            this.DonVi.HeaderText = "Đơn Vị";
-            this.DonVi.Name = "DonVi";
-            // 
-            // TenChuongTrinh
-            // 
-            this.TenChuongTrinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TenChuongTrinh.DataPropertyName = "TenChuongTrinh";
-            this.TenChuongTrinh.HeaderText = "Tên Chương Trình";
-            this.TenChuongTrinh.Name = "TenChuongTrinh";
-            this.TenChuongTrinh.Width = 272;
-            // 
-            // Giai
-            // 
-            this.Giai.DataPropertyName = "Giai";
-            this.Giai.HeaderText = "Giải";
-            this.Giai.Name = "Giai";
-            // 
-            // ThoiGian
-            // 
-            this.ThoiGian.DataPropertyName = "ThoiGian";
-            this.ThoiGian.HeaderText = "Thời Gian";
-            this.ThoiGian.Name = "ThoiGian";
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_5122;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 20;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn2.HeaderText = "";
-            this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_5123;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 20;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn3.HeaderText = "";
-            this.dataGridViewImageColumn3.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5123;
-            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.Width = 20;
-            // 
-            // btnXTT
-            // 
-            this.btnXTT.BackColor = System.Drawing.Color.White;
-            this.btnXTT.Checked = true;
-            this.btnXTT.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXTT.CheckedState.Parent = this.btnXTT;
-            this.btnXTT.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXTT.HoverState.Parent = this.btnXTT;
-            this.btnXTT.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnXTT.ImageRotate = 0F;
-            this.btnXTT.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnXTT.Location = new System.Drawing.Point(802, 11);
-            this.btnXTT.Name = "btnXTT";
-            this.btnXTT.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnXTT.PressedState.Parent = this.btnXTT;
-            this.btnXTT.Size = new System.Drawing.Size(30, 31);
-            this.btnXTT.TabIndex = 30;
-            this.btnXTT.Click += new System.EventHandler(this.btnXTT_Click);
-            // 
-            // btnX_Xem
-            // 
-            this.btnX_Xem.BackColor = System.Drawing.Color.White;
-            this.btnX_Xem.Checked = true;
-            this.btnX_Xem.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnX_Xem.CheckedState.Parent = this.btnX_Xem;
-            this.btnX_Xem.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnX_Xem.HoverState.Parent = this.btnX_Xem;
-            this.btnX_Xem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnX_Xem.ImageRotate = 0F;
-            this.btnX_Xem.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnX_Xem.Location = new System.Drawing.Point(802, 6);
-            this.btnX_Xem.Name = "btnX_Xem";
-            this.btnX_Xem.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnX_Xem.PressedState.Parent = this.btnX_Xem;
-            this.btnX_Xem.Size = new System.Drawing.Size(30, 31);
-            this.btnX_Xem.TabIndex = 31;
-            this.btnX_Xem.Click += new System.EventHandler(this.btnX_Xem_Click);
-            // 
             // btnprevious
             // 
             this.btnprevious.BackColor = System.Drawing.Color.Transparent;
@@ -856,6 +874,30 @@
             this.btnNext.TabIndex = 48;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_5122;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn2.HeaderText = "";
+            this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_5123;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5123;
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            // 
             // btnThemTT
             // 
             this.btnThemTT.BackColor = System.Drawing.Color.Transparent;
@@ -873,51 +915,6 @@
             this.btnThemTT.TabIndex = 10;
             this.btnThemTT.Text = "Thêm Thông Tin ";
             this.btnThemTT.Click += new System.EventHandler(this.btnThemTT_Click);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.Color.Transparent;
-            this.btnTimKiem.BorderRadius = 20;
-            this.btnTimKiem.CheckedState.Parent = this.btnTimKiem;
-            this.btnTimKiem.CustomImages.Parent = this.btnTimKiem;
-            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.HoverState.Parent = this.btnTimKiem;
-            this.btnTimKiem.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_search_96;
-            this.btnTimKiem.Location = new System.Drawing.Point(652, 112);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.ShadowDecoration.Parent = this.btnTimKiem;
-            this.btnTimKiem.Size = new System.Drawing.Size(180, 36);
-            this.btnTimKiem.TabIndex = 51;
-            this.btnTimKiem.Text = "Tìm Kiếm";
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // Xem
-            // 
-            this.Xem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xem.HeaderText = "";
-            this.Xem.Image = global::QuanLySinhVien5ToT.Properties.Resources.search_data_5122;
-            this.Xem.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xem.Name = "Xem";
-            this.Xem.Width = 20;
-            // 
-            // Sua
-            // 
-            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sua.HeaderText = "";
-            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_5123;
-            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Sua.Name = "Sua";
-            this.Sua.Width = 20;
-            // 
-            // Xoa
-            // 
-            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xoa.HeaderText = "";
-            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_5123;
-            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xoa.Name = "Xoa";
-            this.Xoa.Width = 20;
             // 
             // THAMGIA_CT
             // 

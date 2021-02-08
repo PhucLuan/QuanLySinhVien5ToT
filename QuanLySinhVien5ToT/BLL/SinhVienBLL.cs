@@ -12,12 +12,18 @@ namespace QuanLySinhVien5ToT.BLL
 {
     public class SinhVienBLL
     {
+        private RoleDAL roleDAL = new RoleDAL();
         private Sinh_VienDAL Sinh_VienDAL = new Sinh_VienDAL();
         private Don_ViDAL Don_ViDAL = new Don_ViDAL();
         private GenericUnitOfWork unitOfWorkNV = new GenericUnitOfWork(Mydb.GetInstance());
         public void Add(SINH_VIEN entity)
         {
             unitOfWorkNV.Repository<SINH_VIEN>().Add(entity);
+            unitOfWorkNV.SaveChanges();
+        }
+        public void AddUser(USER entity)
+        {
+            unitOfWorkNV.Repository<USER>().Add(entity);
             unitOfWorkNV.SaveChanges();
         }
         public void Delete(SINH_VIEN entity)
@@ -32,6 +38,10 @@ namespace QuanLySinhVien5ToT.BLL
         public SINH_VIEN Get(Func<SINH_VIEN, bool> predicate)
         {
             return unitOfWorkNV.Repository<SINH_VIEN>().Get(predicate);
+        }
+        public USER GetUser(Func<USER, bool> predicate)
+        {
+            return unitOfWorkNV.Repository<USER>().Get(predicate);
         }
         public List<SINH_VIEN> GetAll(Func<SINH_VIEN,bool> predicate = null)
         {
@@ -57,7 +67,9 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return Don_ViDAL.GetDonVi();
         }
-        
-
+        public List<RoleDTO> dsrole()
+        {
+            return roleDAL.getRole();
+        }
     }
 }

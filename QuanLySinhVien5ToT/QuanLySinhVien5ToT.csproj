@@ -70,11 +70,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\EditLoaiDiemBLL.cs" />
+    <Compile Include="BLL\EditTieuChiBLL.cs" />
     <Compile Include="BLL\Edit_RoleBLL.cs" />
+    <Compile Include="BLL\HocKyXetDiemBLL.cs" />
     <Compile Include="BLL\KQ_Theo_tcBLL.cs" />
     <Compile Include="BLL\QL_Chuong_TrinhBLL.cs" />
     <Compile Include="BLL\QL_DiemBLL.cs" />
     <Compile Include="BLL\QL_DV_BLL.cs" />
+    <Compile Include="BLL\QL_NhanVienBLL.cs" />
+    <Compile Include="BLL\QuyDinhDiemBLL.cs" />
     <Compile Include="BLL\SinhVienBLL.cs" />
     <Compile Include="BLL\ThamGia_CT_BLL.cs" />
     <Compile Include="BLL\ThoiDiemSV_ThamGiaBLL.cs" />
@@ -93,6 +98,8 @@
     <Compile Include="DAL\DiemDAL.cs" />
     <Compile Include="DAL\HocKy_XetDiemDAL.cs" />
     <Compile Include="DAL\LoaiDiemDAL.cs" />
+    <Compile Include="DAL\NhanVienDAL.cs" />
+    <Compile Include="DAL\QuyDinhDiemDAL.cs" />
     <Compile Include="DAL\ThamGia_ChuongtrinhDAL.cs" />
     <Compile Include="DAL\ThoiDiemSV_ThamGiaDAL.cs" />
     <Compile Include="DAL\ThucHien_TieuChuanDAL.cs" />
@@ -138,6 +145,8 @@
     <Compile Include="DTO\Kq_Theo_tcDTO.cs" />
     <Compile Include="DTO\LoaiDiemDTO.cs" />
     <Compile Include="DTO\Loai_Tieu_ChuanDTO.cs" />
+    <Compile Include="DTO\NhanVienDTO.cs" />
+    <Compile Include="DTO\QuyDinhDiemDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\Sinh_VienDTO.cs" />
     <Compile Include="DTO\ThanGia_ChuongtrinhDTO.cs" />
@@ -627,6 +636,16 @@
       <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
       <LastGenOutput>DemoSV5TDataSet.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\14974663671582988848-51212.png" />
+    <None Include="Resources\seo-23-51211.png" />
+    <None Include="Resources\14974663671582988848-51211.png" />
+    <None Include="Resources\seo-23-51210.png" />
+    <None Include="Resources\14974663671582988848-51210.png" />
+    <None Include="Resources\seo-23-5129.png" />
+    <None Include="Resources\14974663671582988848-5129.png" />
+    <None Include="Resources\seo-23-5128.png" />
+    <None Include="Resources\14974663671582988848-5128.png" />
+    <None Include="Resources\seo-23-5127.png" />
     <None Include="Resources\14974663671582988848-5127.png" />
     <None Include="Resources\seo-23-5126.png" />
     <None Include="Resources\seo-23-5125.png" />

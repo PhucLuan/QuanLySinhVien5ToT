@@ -142,7 +142,6 @@ namespace QuanLySinhVien5ToT
                                 dtgv_Diem.Width = 730;
                                 btnLuuDiem.Visible = true;
                                 MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
-
                             }
                         }
                     }
