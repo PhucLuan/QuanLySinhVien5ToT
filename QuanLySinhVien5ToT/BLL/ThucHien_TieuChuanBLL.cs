@@ -71,7 +71,7 @@ namespace QuanLySinhVien5ToT.BLL
         }
         public List<Tieu_ChuanDTO> dstieuchuan()
         {
-            return Tieu_ChuanDAL.getTieuChuan();
+            return Tieu_ChuanDAL.getTieuChuanDiem();
         }
         public List<Don_ViDTO> dsdonvi()
         {

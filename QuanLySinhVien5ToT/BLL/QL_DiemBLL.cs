@@ -10,6 +10,7 @@ namespace QuanLySinhVien5ToT.BLL
 {
     public class QL_DiemBLL
     {
+        private Sinh_VienDAL sinh_VienDAL = new Sinh_VienDAL();
         private Don_ViDAL don_ViDAL = new Don_ViDAL();
         private LoaiDiemDAL loaiDiemDAL = new LoaiDiemDAL();
         private HocKy_XetDiemDAL hocKy_XetDiemDAL = new HocKy_XetDiemDAL();
@@ -74,6 +75,10 @@ namespace QuanLySinhVien5ToT.BLL
         public List<Don_ViDTO> dsdonvi() 
         {
             return don_ViDAL.GetDonVi();
+        }
+        public List<Sinh_VienDTO> dssinhvien()
+        {
+            return sinh_VienDAL.Getdssinhvien();
         }
     }
 }

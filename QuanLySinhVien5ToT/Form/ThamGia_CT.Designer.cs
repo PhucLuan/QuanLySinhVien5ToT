@@ -75,7 +75,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtTenSV_Xem = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lbNumber = new System.Windows.Forms.Label();
             this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -157,6 +157,8 @@
             this.dtgv_TT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_TT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_TT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
+            this.dtgv_TT.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgv_TT_CellFormatting);
+            this.dtgv_TT.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dtgv_TT_RowPostPaint);
             // 
             // Mssv
             // 
@@ -501,6 +503,8 @@
             // 
             // txtMssv_TS
             // 
+            this.txtMssv_TS.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtMssv_TS.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtMssv_TS.BackColor = System.Drawing.Color.Transparent;
             this.txtMssv_TS.BorderRadius = 10;
             this.txtMssv_TS.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -524,6 +528,7 @@
             this.txtMssv_TS.Size = new System.Drawing.Size(165, 34);
             this.txtMssv_TS.TabIndex = 25;
             this.txtMssv_TS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMssv_TS_KeyPress);
+            this.txtMssv_TS.Leave += new System.EventHandler(this.txtMssv_TS_Leave);
             // 
             // label3
             // 
@@ -813,7 +818,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BorderRadius = 20;
-            this.guna2Panel1.Controls.Add(this.label15);
+            this.guna2Panel1.Controls.Add(this.lbNumber);
             this.guna2Panel1.Controls.Add(this.btnprevious);
             this.guna2Panel1.Controls.Add(this.btnNext);
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
@@ -823,17 +828,17 @@
             this.guna2Panel1.Size = new System.Drawing.Size(164, 42);
             this.guna2Panel1.TabIndex = 50;
             // 
-            // label15
+            // lbNumber
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Gray;
-            this.label15.Location = new System.Drawing.Point(73, 9);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(18, 20);
-            this.label15.TabIndex = 50;
-            this.label15.Text = "1";
+            this.lbNumber.AutoSize = true;
+            this.lbNumber.BackColor = System.Drawing.Color.Transparent;
+            this.lbNumber.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumber.ForeColor = System.Drawing.Color.Gray;
+            this.lbNumber.Location = new System.Drawing.Point(73, 9);
+            this.lbNumber.Name = "lbNumber";
+            this.lbNumber.Size = new System.Drawing.Size(18, 20);
+            this.lbNumber.TabIndex = 50;
+            this.lbNumber.Text = "1";
             // 
             // btnprevious
             // 
@@ -978,7 +983,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtTenCT_Xem;
         private Guna.UI2.WinForms.Guna2TextBox txtDonVi_Xem;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbNumber;
         private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
         private Guna.UI2.WinForms.Guna2ImageButton btnNext;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;

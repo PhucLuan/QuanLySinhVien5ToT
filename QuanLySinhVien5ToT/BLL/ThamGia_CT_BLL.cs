@@ -81,5 +81,6 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return sinh_VienDAL.Getdssinhvien();
         }
+        
     }
 }

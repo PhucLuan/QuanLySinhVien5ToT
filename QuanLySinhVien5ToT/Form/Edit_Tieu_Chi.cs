@@ -27,6 +27,7 @@ namespace QuanLySinhVien5ToT
         private void Edit_Tieu_Chi_Load(object sender, EventArgs e)
         {
             loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+            maxlength();
         }
         void loadTC(List<Tieu_ChiDTO> listTC)
         {
@@ -115,13 +116,14 @@ namespace QuanLySinhVien5ToT
                         tc = new TIEU_CHI();
                         tc.MaTieuChi = txtMaTieuChi.Text;
                         tc.TenTieuChi = txtTenTC.Text;
+                        tc.TienDoTong = Convert.ToInt32(txtTienDoTong.Text);
                         btnThemTC.Enabled = true;
                         editTieuChiBLL.Add(tc);
-                        MessageBox.Show("Thêm Thành Công");
+                        MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Thêm Thất Bại");
+                        MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemTC.Enabled = true;
                     }
                     loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -133,13 +135,13 @@ namespace QuanLySinhVien5ToT
                         TIEU_CHI tc = editTieuChiBLL.Get(x => x.MaTieuChi.ToString() == txtMaTieuChi.Text.Trim());
 
                         tc.TenTieuChi = txtTenTC.Text;
+                        tc.TienDoTong = Convert.ToInt32(txtTienDoTong.Text); 
                         btnThemTC.Enabled = true;
-                        editTieuChiBLL.Edit(tc);
-                        MessageBox.Show("Sửa Thành Công");
+                        editTieuChiBLL.Edit(tc); MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (NullReferenceException)
                     {
-                        MessageBox.Show("Sửa thất bại");
+                        MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemTC.Enabled = true;
                     }
                     loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -157,6 +159,8 @@ namespace QuanLySinhVien5ToT
             txtMaTieuChi.DataBindings.Add("Text", dtgv_TC.DataSource, "MaTieuChi");
             txtTenTC.DataBindings.Clear();
             txtTenTC.DataBindings.Add("Text", dtgv_TC.DataSource, "TenTieuChi");
+            txtTienDoTong.DataBindings.Clear();
+            txtTienDoTong.DataBindings.Add("Text", dtgv_TC.DataSource, "TienDoTong");
         }
 
         private void btnprevious_Click(object sender, EventArgs e)
@@ -165,7 +169,8 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber--;
                 loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
         }
 
@@ -177,8 +182,15 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber++;
                 loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
+        }
+        void maxlength()
+        {
+            txtMaTieuChi.MaxLength = 15;
+            txtTenTC.MaxLength = 200;
+            txtTienDoTong.MaxLength = 3;
         }
     }
 }

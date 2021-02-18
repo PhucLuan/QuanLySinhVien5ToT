@@ -953,6 +953,16 @@ namespace QuanLySinhVien5ToT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap search_data_5126 {
+            get {
+                object obj = ResourceManager.GetObject("search_data-5126", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap seo_23_512 {
             get {
                 object obj = ResourceManager.GetObject("seo-23-512", resourceCulture);
@@ -1076,6 +1086,16 @@ namespace QuanLySinhVien5ToT.Properties {
         internal static System.Drawing.Bitmap view_file {
             get {
                 object obj = ResourceManager.GetObject("view-file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_file1 {
+            get {
+                object obj = ResourceManager.GetObject("view-file1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

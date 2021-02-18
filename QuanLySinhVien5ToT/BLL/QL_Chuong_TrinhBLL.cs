@@ -36,9 +36,9 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return unitOfWorkNV.Repository<CHUONG_TRINH>().GetAll(predicate);
         }
-        public List<Chuong_TrinhDTO> dschuongtrinh(int page, int recordNum)
+        public List<Chuong_TrinhDTO> dschuongtrinh()
         {
-            return Chuong_TrinhDAL.getchuongtrinh(page, recordNum);
+            return Chuong_TrinhDAL.getChuongTrinh();
         }
         public List<Don_ViDTO> dsdonvi()
         {

@@ -10,6 +10,8 @@ namespace QuanLySinhVien5ToT.BLL
 {
     public class KQ_Theo_tcBLL
     {
+        private Sinh_VienDAL sinh_VienDAL = new Sinh_VienDAL();
+        private Don_ViDAL don_ViDAL = new Don_ViDAL();
         private Thoi_Gian_XetDTO thoi_Gian_XetDTO = new Thoi_Gian_XetDTO();
         private Tieu_ChiDAL tieu_ChiDAL = new Tieu_ChiDAL();
         private Kq_Theo_tcDAL kq_Theo_TcDAL = new Kq_Theo_tcDAL();
@@ -42,9 +44,9 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return thoi_Gian_XetDAL.getthoigian();
         }
-        public List<Kq_Theo_tcDTO> DsKQ(int page, int recordNum)
+        public List<Kq_Theo_tcDTO> DsKQ()
         {
-            return kq_Theo_TcDAL.getKQ(page, recordNum);
+            return kq_Theo_TcDAL.getKQ();
         }
         public List<Tieu_ChiDTO> dstieuchi()
         {
@@ -74,6 +76,14 @@ namespace QuanLySinhVien5ToT.BLL
                 }
             }
             return null;
+        }
+        public List<Don_ViDTO> dsdonvi()
+        {
+            return don_ViDAL.GetDonVi();
+        }
+        public List<Sinh_VienDTO> dssinhvien()
+        {
+            return sinh_VienDAL.Getdssinhvien();
         }
     }
 }

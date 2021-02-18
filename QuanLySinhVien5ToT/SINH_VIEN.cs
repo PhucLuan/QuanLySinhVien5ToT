@@ -18,10 +18,10 @@ namespace QuanLySinhVien5ToT
         public SINH_VIEN()
         {
             this.DIEMs = new HashSet<DIEM>();
-            this.KQ_THEO_TIEUCHI = new HashSet<KQ_THEO_TIEUCHI>();
-            this.THAMGIA_CHUONGTRINH = new HashSet<THAMGIA_CHUONGTRINH>();
             this.THUCHIEN_TIEUCHUAN = new HashSet<THUCHIEN_TIEUCHUAN>();
             this.THOIDIEM_SV_THAMGIA = new HashSet<THOIDIEM_SV_THAMGIA>();
+            this.THAMGIA_CHUONGTRINH = new HashSet<THAMGIA_CHUONGTRINH>();
+            this.KQ_THEO_TIEUCHI = new HashSet<KQ_THEO_TIEUCHI>();
         }
     
         public string Mssv { get; set; }
@@ -39,14 +39,14 @@ namespace QuanLySinhVien5ToT
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DIEM> DIEMs { get; set; }
         public virtual DON_VI DON_VI { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
         public virtual USER USER { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<THAMGIA_CHUONGTRINH> THAMGIA_CHUONGTRINH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THUCHIEN_TIEUCHUAN> THUCHIEN_TIEUCHUAN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THOIDIEM_SV_THAMGIA> THOIDIEM_SV_THAMGIA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<THAMGIA_CHUONGTRINH> THAMGIA_CHUONGTRINH { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
     }
 }

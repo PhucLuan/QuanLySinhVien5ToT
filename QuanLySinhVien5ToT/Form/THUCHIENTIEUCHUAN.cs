@@ -36,6 +36,7 @@ namespace QuanLySinhVien5ToT
             loadcbFillterDV();
             SuggestTxtMssv();
             SuggestTxtSearch();
+            maxlength();
         }
         void loadTHTC(List<ThucHien_TieuChuanDTO> listthtc)
         {
@@ -69,15 +70,22 @@ namespace QuanLySinhVien5ToT
                 if (thtc == null)
                 {
                     thtc = new THUCHIEN_TIEUCHUAN();
-                    thtc.Mssv = txtMssv_TS.Text;
-                    thtc.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
-                    thtc.MaThoiGian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                    thucHien_TieuChuanBLL.Add(thtc);
-                    MessageBox.Show("Lưu Thành Công");
+                    if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
+                    {
+                        MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        thtc.Mssv = txtMssv_TS.Text;
+                        thtc.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
+                        thtc.MaThoiGian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                        thucHien_TieuChuanBLL.Add(thtc);
+                        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }                   
                 }
                 else
                 {
-                    MessageBox.Show("dữ liệu đã bị trùng");
+                    MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             
@@ -129,54 +137,83 @@ namespace QuanLySinhVien5ToT
 
         private void btnprevious_Click(object sender, EventArgs e)
         {
-            if (pagenumber - 1 > 0)
+            if (flagDT == 0)
             {
-                pagenumber--;
-                if (flagDT == 0)
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 1)
+            }
+            if (flagDT == 1)
+            {
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     var listfillter = new List<ThucHien_TieuChuanDTO>();
                     listfillter = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbThoiGian_TS.Text)).ToList();
                     dtgv_THTC.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 2)
+            }
+            if (flagDT == 2)
+            {
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     var listsearch = new List<ThucHien_TieuChuanDTO>();
                     listsearch = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).ToList();
                     dtgv_THTC.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
             }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int totlalrecord = 0;
-            totlalrecord = db.THUCHIEN_TIEUCHUAN.Count();
-            if (pagenumber - 1 < totlalrecord / numberRecord)
+            if (flagDT == 0)
             {
-                pagenumber++;
-                if (flagDT == 0)
+                int totlalrecord = 0;
+                totlalrecord = db.THUCHIEN_TIEUCHUAN.Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 1)
+            }
+            if (flagDT == 1)
+            {
+                int totlalrecord = 0;
+                totlalrecord = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbThoiGian_TS.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     var listfillter = new List<ThucHien_TieuChuanDTO>();
                     listfillter = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbThoiGian_TS.Text)).ToList();
                     dtgv_THTC.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 2)
+            }
+            if (flagDT == 2)
+            {
+                int totlalrecord = 0;
+                totlalrecord = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     var listsearch = new List<ThucHien_TieuChuanDTO>();
                     listsearch = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).ToList();
                     dtgv_THTC.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-
             }
         }
         void loadcbFillterTC()
@@ -226,18 +263,39 @@ namespace QuanLySinhVien5ToT
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            
+            pagenumber = 1;
             var listfillter = new List<ThucHien_TieuChuanDTO>();
-            listfillter = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbThoiGian_TS.Text)).ToList();
+            listfillter = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.DonVi.Contains(CbFillter_DV.Text) && x.TenTieuChuan.Contains(cbFillterTieuChuan.Text) && x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
             dtgv_THTC.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
             flagDT = 1;
+            lbNumber.Text = pagenumber.ToString();
+            if (dtgv_THTC.RowCount == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+            }
+                
+
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            var listsearch = new List<ThucHien_TieuChuanDTO>();
-            listsearch = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).ToList();
-            dtgv_THTC.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-            flagDT = 2;
+            if (string.IsNullOrEmpty(txtSearch.Text.Trim()))
+            {
+                loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                flagDT = 0;
+            }
+            else
+            {
+                var listsearch = new List<ThucHien_TieuChuanDTO>();
+                listsearch = thucHien_TieuChuanBLL.dsthuchienTC().Where(x => x.TenSinhVien.Contains(txtSearch.Text)).ToList();
+                dtgv_THTC.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                flagDT = 2;
+                pagenumber = 1;
+                lbNumber.Text = pagenumber.ToString();
+            }
+            
         }
 
         private void txtMssv_TS_KeyPress(object sender, KeyPressEventArgs e)
@@ -247,6 +305,18 @@ namespace QuanLySinhVien5ToT
                 e.Handled = true;
                 MessageBox.Show("Bạn chỉ được nhập kí tự số !!!");
             }
+        }
+
+        private void txtMssv_TS_Leave(object sender, EventArgs e)
+        {
+            //if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
+            //{
+            //    MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+        void maxlength()
+        {
+            txtMssv_TS.MaxLength = 11;
         }
     }
 }

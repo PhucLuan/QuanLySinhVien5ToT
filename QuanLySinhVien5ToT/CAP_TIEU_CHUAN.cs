@@ -17,16 +17,16 @@ namespace QuanLySinhVien5ToT
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CAP_TIEU_CHUAN()
         {
-            this.KQ_THEO_TIEUCHI = new HashSet<KQ_THEO_TIEUCHI>();
             this.TIEU_CHUAN = new HashSet<TIEU_CHUAN>();
+            this.KQ_THEO_TIEUCHI = new HashSet<KQ_THEO_TIEUCHI>();
         }
     
         public int MaCapTieuChuan { get; set; }
         public string TenCapTieuChuan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TIEU_CHUAN> TIEU_CHUAN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
     }
 }

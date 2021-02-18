@@ -140,12 +140,40 @@ namespace QuanLySinhVien5ToT
             }
             if (name == "Xoa")
             {
-                SINH_VIEN nv = Mydb.GetInstance().SINH_VIEN.Where(p => p.Mssv == txtMssv.Text.Trim()).SingleOrDefault();
-                USER user = Mydb.GetInstance().USERs.Where(p => p.IDuser == nv.IDuser).SingleOrDefault();
+                DialogResult dr = MessageBox.Show("Bạn chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    //try
+                    //{
 
-                Mydb.GetInstance().USERs.Remove(user);
-                sinhVienBLL.Delete(nv);
+                    //}
+                    //catch
+                    //{
+                    //    MessageBox.Show("Xóa không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    var getmssv = dtgv_SV["Mssv", e.RowIndex].Value.ToString();
+                    SINH_VIEN sv = Mydb.GetInstance().SINH_VIEN.Where(p => p.Mssv == getmssv).SingleOrDefault();
+                    USER user = Mydb.GetInstance().USERs.Where(p => p.IDuser == sv.IDuser).SingleOrDefault();
+                    //DIEM diem = Mydb.GetInstance().DIEMs.Where(p => p.Mssv == sv.Mssv).SingleOrDefault();
+                    //THAMGIA_CHUONGTRINH TGCT = Mydb.GetInstance().THAMGIA_CHUONGTRINH.Where(p => p.Mssv == sv.Mssv).SingleOrDefault();
+                    //THUCHIEN_TIEUCHUAN THTC = Mydb.GetInstance().THUCHIEN_TIEUCHUAN.Where(p => p.Mssv == sv.Mssv).SingleOrDefault();
+                    //THOIDIEM_SV_THAMGIA TDSV = Mydb.GetInstance().THOIDIEM_SV_THAMGIA.Where(p => p.Mssv == sv.Mssv).SingleOrDefault();
+                    //KQ_THEO_TIEUCHI KQ = Mydb.GetInstance().KQ_THEO_TIEUCHI.Where(p => p.Mssv == sv.Mssv).SingleOrDefault();
 
+
+                    Mydb.GetInstance().USERs.Remove(user);
+                    Mydb.GetInstance().DIEMs.Remove(Mydb.GetInstance().DIEMs.Single(p=>p.Mssv==getmssv));
+                    Mydb.GetInstance().THAMGIA_CHUONGTRINH.Remove(Mydb.GetInstance().THAMGIA_CHUONGTRINH.Single(p => p.Mssv == getmssv));
+                    Mydb.GetInstance().THUCHIEN_TIEUCHUAN.Remove(Mydb.GetInstance().THUCHIEN_TIEUCHUAN.Single(p => p.Mssv == getmssv));
+                    Mydb.GetInstance().THOIDIEM_SV_THAMGIA.Remove(Mydb.GetInstance().THOIDIEM_SV_THAMGIA.Single(p => p.Mssv == getmssv));
+                    Mydb.GetInstance().KQ_THEO_TIEUCHI.Remove(Mydb.GetInstance().KQ_THEO_TIEUCHI.Single(p => p.Mssv == getmssv));
+                    sinhVienBLL.Delete(sv);
+                    MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("sinh viên vẫn được giữ nguyên");
+                }
                 ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             }
         }
@@ -203,13 +231,16 @@ namespace QuanLySinhVien5ToT
                     if (sinhvien == null)
                     {
                         sinhvien = new SINH_VIEN();
-                        sinhvien.Mssv = txtMssv.Text;
-                        if (txtMssv.Text.Trim() == "")
+                        if (txtMssv.TextLength !=11 || txtSDT.TextLength!=10)
                         {
-                            MessageBox.Show("Mã Số Sinh Viên Không được để trống");
+                            if(txtMssv.TextLength != 11)
+                                MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (txtSDT.TextLength != 10)
+                                MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
+                            sinhvien.Mssv = txtMssv.Text;
                             sinhvien.HoTen = txtHoTen.Text;
                             sinhvien.NgaySinh = dtpkNgaySinh.Value;
                             sinhvien.GioiTinh = cbGioiTinh.Text;
@@ -224,12 +255,24 @@ namespace QuanLySinhVien5ToT
                             sinhvien.IDuser = iduser;
 
                             sinhVienBLL.Add(sinhvien);
-                            MessageBox.Show("Lưu Thành Công");
+                            MessageBox.Show("Lưu Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                        
                     }
                     else
                     {
-                        MessageBox.Show("Mã Số Sinh Viên Không Được Trùng!!!!!");
+                        MessageBox.Show("Mssv không được trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pn_Sort.Visible = false;
+                        pn_ThemSua.Visible = true;
+                        pn_ThemTaiKhoan.Visible = false;
+                        btnLuuSV.Visible = true;
+                        flagLuu = 0;
+                        pn_ThemSua.Enabled = true;
+                        txtMssv.Enabled = true;
+                        dtgv_SV.Height = 385;
+                        dtgv_SV.Location = new Point(14, 223);
+                        btnThemKQ.Location = new Point(867, 172);
+
                     }
                     ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                 }
@@ -238,24 +281,32 @@ namespace QuanLySinhVien5ToT
                     try
                     {
                         SINH_VIEN sv = sinhVienBLL.Get(x => x.Mssv.Trim() == txtMssv.Text.Trim());
+                        if ( txtSDT.TextLength != 10)
+                        {                          
+                            if (txtSDT.TextLength != 10)
+                                MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            sv.HoTen = txtHoTen.Text;
+                            sv.NgaySinh = dtpkNgaySinh.Value;
+                            sv.GioiTinh = cbGioiTinh.Text;
+                            sv.NoiSinh = txtNoiSinh.Text;
+                            sv.SDT = txtSDT.Text;
+                            sv.Lop = txtLop.Text;
+                            sv.DonVi = cbDonVi.Text;
+                            sv.Khoa = cbKhoa.Text;
+                            sv.Email = txtEmail.Text;
 
-                        sv.HoTen = txtHoTen.Text;
-                        sv.NgaySinh = dtpkNgaySinh.Value;
-                        sv.GioiTinh = cbGioiTinh.Text;
-                        sv.NoiSinh = txtNoiSinh.Text;
-                        sv.SDT = txtSDT.Text;
-                        sv.Lop = txtLop.Text;
-                        sv.DonVi = cbDonVi.Text;
-                        sv.Khoa = cbKhoa.Text;
-                        sv.Email = txtEmail.Text;
 
-
-                        sinhVienBLL.Edit(sv);
-                        MessageBox.Show("Sửa Thành Công");
+                            sinhVienBLL.Edit(sv);
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        
                     }
                     catch (NullReferenceException)
                     {
-                        MessageBox.Show("Vui lòng chọn nhân viên cần sửa thông tin");
+                        MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -359,66 +410,96 @@ namespace QuanLySinhVien5ToT
                 var listsearch = new List<Sinh_VienDTO>();
                 listsearch = sinhVienBLL.DsSinhVien().Where(x => x.HoTen.Contains(txtSaerch.Text.Trim())).ToList();
                 dtgv_SV.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-               
+                pagenumber = 1;
+                lbNumber.Text = pagenumber.ToString();
+
             }
         }
 
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            pagenumber = 1;
             var listFIllter = new List<Sinh_VienDTO>();
             listFIllter= sinhVienBLL.DsSinhVien().Where(x => x.DonVi.Contains(cbFillter_DonVi.Text) && x.Lop.Contains(txtFillterLop.Text) && x.Khoa.Contains(cbFillter_Khoa.Text)).ToList();
             dtgv_SV.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-            flagDT = 1;
+            flagDT = 1;          
+            lbNumber.Text = pagenumber.ToString();
+            if (dtgv_SV.RowCount == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+            }
         }
 
 
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int totlalrecord = 0;
-            totlalrecord = db.SINH_VIEN.Count();
-            if (pagenumber - 1 < totlalrecord / numberRecord)
+            if (flagDT == 0)
             {
-                pagenumber++;
-                if (flagDT == 0)
+                int totlalrecord = 0;
+                totlalrecord = db.SINH_VIEN.Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 1)
+            }
+            if (flagDT == 1)
+            {
+                int totlalrecord = 0;
+                totlalrecord = sinhVienBLL.DsSinhVien().Where(x => x.DonVi.Contains(cbFillter_DonVi.Text) && x.Lop.Contains(txtFillterLop.Text) && x.Khoa.Contains(cbFillter_Khoa.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     var listFIllter = new List<Sinh_VienDTO>();
                     listFIllter = sinhVienBLL.DsSinhVien().Where(x => x.DonVi.Contains(cbFillter_DonVi.Text) && x.Lop.Contains(txtFillterLop.Text) && x.Khoa.Contains(cbFillter_Khoa.Text)).ToList();
                     dtgv_SV.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-                    flagDT = 1;
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-
             }
+            
         }
 
         private void btnprevious_Click(object sender, EventArgs e)
         {
-            if (pagenumber - 1 > 0)
+            if (flagDT == 0)
             {
-                pagenumber--;
-                if (flagDT == 0)
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 1)
+            }
+            if (flagDT == 1)
+            {
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     var listFIllter = new List<Sinh_VienDTO>();
                     listFIllter = sinhVienBLL.DsSinhVien().Where(x => x.DonVi.Contains(cbFillter_DonVi.Text) && x.Lop.Contains(txtFillterLop.Text) && x.Khoa.Contains(cbFillter_Khoa.Text)).ToList();
                     dtgv_SV.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-                    flagDT = 1;
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-
-            }
+            }            
         }
         void maxlength()
         {
             txtMssv.MaxLength = 11;
             txtSDT.MaxLength = 10;
+            txtHoTen.MaxLength = 50;
+            txtNoiSinh.MaxLength = 100;
+            txtLop.MaxLength = 100;
+            txtEmail.MaxLength = 50;
+            txtUserName.MaxLength = 50;
+            txtPassword.MaxLength = 50;
         }
         private void txtMssv_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -543,6 +624,22 @@ namespace QuanLySinhVien5ToT
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtMssv_Leave(object sender, EventArgs e)
+        {
+            if(txtMssv.TextLength<11 || txtMssv.TextLength > 11)
+            {
+                MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtSDT_Leave(object sender, EventArgs e)
+        {
+            if (txtSDT.TextLength < 11 || txtSDT.TextLength > 11)
+            {
+                MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

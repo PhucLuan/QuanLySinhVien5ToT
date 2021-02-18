@@ -636,6 +636,12 @@
       <DependentUpon>DemoSV5TDataSet.edmx</DependentUpon>
       <LastGenOutput>DemoSV5TDataSet.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\14974663671582988848-51213.png" />
+    <None Include="Resources\seo-23-51214.png" />
+    <None Include="Resources\search_data-5126.png" />
+    <None Include="Resources\view-file1.png" />
+    <None Include="Resources\seo-23-51213.png" />
+    <None Include="Resources\seo-23-51212.png" />
     <None Include="Resources\14974663671582988848-51212.png" />
     <None Include="Resources\seo-23-51211.png" />
     <None Include="Resources\14974663671582988848-51211.png" />

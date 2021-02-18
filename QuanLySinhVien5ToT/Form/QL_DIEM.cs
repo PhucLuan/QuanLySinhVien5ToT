@@ -33,6 +33,8 @@ namespace QuanLySinhVien5ToT
             loadcbLoaiDiem_TS();
             loadcbThoiGian_Xem();
             loadcbFillter_DV();
+            SuggestTxtMssv();
+            SuggestTxtSearch();
         }
         void loadDiem(List<DiemDTO> listdiem)
         {
@@ -49,6 +51,9 @@ namespace QuanLySinhVien5ToT
             flagLuu = 0;
             txtMssv_TS.Text = "";
             txtDiem_TS.Text = "";
+            txtMssv_TS.ReadOnly = false;
+            cbThoiGian_TS.Enabled = true;
+            cbLoaiDiem_TS.Enabled = true;
 
             txtMssv_TS.BorderColor = Color.White;
             txtMssv_TS.PlaceholderText = "";
@@ -73,8 +78,7 @@ namespace QuanLySinhVien5ToT
                     txtDiem_TS.BorderColor = Color.Red;
                     txtDiem_TS.PlaceholderText = "bạn chưa nhập Điêm";
                     txtDiem_TS.PlaceholderForeColor = Color.Red;
-                }
-                
+                }               
             }
             else
             {
@@ -105,6 +109,7 @@ namespace QuanLySinhVien5ToT
                                 pn_Them_Sua.Visible = true;
                                 dtgv_Diem.Width = 730;
                                 btnLuuDiem.Visible = true;
+                                txtDiem_TS.Text = "";
                                 MessageBox.Show("Điểm rèn luyện phải >=75 và <=100");
                                 
                             }
@@ -123,6 +128,7 @@ namespace QuanLySinhVien5ToT
                                 pn_Them_Sua.Visible = true;
                                 dtgv_Diem.Width = 730;
                                 btnLuuDiem.Visible = true;
+                                txtDiem_TS.Text = "";
                                 MessageBox.Show("Điểm học tập phải >0 và <=10");
                                 
                             }
@@ -141,6 +147,7 @@ namespace QuanLySinhVien5ToT
                                 pn_Them_Sua.Visible = true;
                                 dtgv_Diem.Width = 730;
                                 btnLuuDiem.Visible = true;
+                                txtDiem_TS.Text = "";
                                 MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
                             }
                         }
@@ -160,7 +167,7 @@ namespace QuanLySinhVien5ToT
                         if (Convert.ToInt32(txtDiem_TS.Text) <= 100 && Convert.ToInt32(txtDiem_TS.Text) >= 50)
                         {
                             diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
-                            diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                            //diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                             QL_DiemBLL.Edit(diem);
                             MessageBox.Show("Sửa Thành Công");
                         }
@@ -169,7 +176,8 @@ namespace QuanLySinhVien5ToT
                             pn_Them_Sua.Visible = true;
                             dtgv_Diem.Width = 730;
                             btnLuuDiem.Visible = true;
-                            MessageBox.Show("Điểm rèn luyện phải >=75 và <=100");
+                            txtDiem_TS.Text = "";
+                            MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
 
                         }
                     }
@@ -178,7 +186,6 @@ namespace QuanLySinhVien5ToT
                         if (Convert.ToInt32(txtDiem_TS.Text) > 0 && Convert.ToInt32(txtDiem_TS.Text) <= 10)
                         {
                             diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
-                            diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                             QL_DiemBLL.Edit(diem);
                             MessageBox.Show("Sửa Thành Công");
                         }
@@ -187,6 +194,7 @@ namespace QuanLySinhVien5ToT
                             pn_Them_Sua.Visible = true;
                             dtgv_Diem.Width = 730;
                             btnLuuDiem.Visible = true;
+                            txtDiem_TS.Text = "";
                             MessageBox.Show("Điểm học tập phải >0 và <=10");
 
                         }
@@ -196,7 +204,6 @@ namespace QuanLySinhVien5ToT
                         if (Convert.ToInt32(txtDiem_TS.Text) >= 75)
                         {
                             diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
-                            diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                             QL_DiemBLL.Edit(diem);
                             MessageBox.Show("Sửa Thành Công");
                         }
@@ -224,6 +231,10 @@ namespace QuanLySinhVien5ToT
                 pn_ThongTinDiem.Visible = true;
                 btnLuuDiem.Visible = false;
                 dtgv_Diem.Width = 730;
+                txtTenSV_Xem.ReadOnly = true;
+                txtLD_Xem.ReadOnly = true;
+                txtDiem_Xem.ReadOnly = true;
+                cbThoiGian_Xem.Enabled = false;
             }
             if (name == "Sua")
             {
@@ -232,6 +243,9 @@ namespace QuanLySinhVien5ToT
                 btnLuuDiem.Visible = true;
                 dtgv_Diem.Width = 730;
                 lebal_Them_Sua.Text = "Sửa Thông Tin Điểm";
+                txtMssv_TS.ReadOnly = true;
+                cbThoiGian_TS.Enabled = false;
+                cbLoaiDiem_TS.Enabled = false;
                 flagLuu = 1;
 
                 txtMssv_TS.BorderColor = Color.White;
@@ -267,60 +281,89 @@ namespace QuanLySinhVien5ToT
             pn_ThongTinDiem.Visible = false;
             btnLuuDiem.Visible = false;
             dtgv_Diem.Width = 971;
+
             
         }
 
         private void btnprevious_Click(object sender, EventArgs e)
         {
-            if (pagenumber - 1 > 0)
+            if (flagDT == 0)
             {
-                pagenumber--;
-                if (flagDT == 0)
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     loadDiem(QL_DiemBLL.dsdiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 1)
+            }
+            if (flagDT == 1)
+            {
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     var listfillter = new List<DiemDTO>();
                     listfillter = QL_DiemBLL.dsdiem().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.HocKy.Contains(cbFIllter_TG.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).ToList();
                     dtgv_Diem.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-                    
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 2)
+            }
+            if (flagDT == 2)
+            {
+                if (pagenumber - 1 > 0)
                 {
+                    pagenumber--;
                     var listSearch = new List<DiemDTO>();
                     listSearch = QL_DiemBLL.dsdiem().Where(x => x.TenSinhVien.Contains(txtSearch.Text) || x.Mssv.Contains(txtSearch.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).ToList();
                     dtgv_Diem.DataSource = listSearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-
             }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int totlalrecord = 0;
-            totlalrecord = db.DIEMs.Count();
-            if (pagenumber - 1 < totlalrecord / numberRecord)
+            if (flagDT == 0)
             {
-                pagenumber++;
-                if (flagDT == 0)
+                int totlalrecord = 0;
+                totlalrecord = db.TIEU_CHUAN.Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     loadDiem(QL_DiemBLL.dsdiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 1)
+            }
+            if (flagDT == 1)
+            {
+                int totlalrecord = 0;
+                totlalrecord = QL_DiemBLL.dsdiem().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.HocKy.Contains(cbFIllter_TG.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     var listfillter = new List<DiemDTO>();
                     listfillter = QL_DiemBLL.dsdiem().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.HocKy.Contains(cbFIllter_TG.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).ToList();
                     dtgv_Diem.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-                    flagDT = 1;
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-                else if (flagDT == 2)
+            }
+            if (flagDT == 2)
+            {
+                int totlalrecord = 0;
+                totlalrecord = QL_DiemBLL.dsdiem().Where(x => x.TenSinhVien.Contains(txtSearch.Text) || x.Mssv.Contains(txtSearch.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
                 {
+                    pagenumber++;
                     var listSearch = new List<DiemDTO>();
                     listSearch = QL_DiemBLL.dsdiem().Where(x => x.TenSinhVien.Contains(txtSearch.Text) || x.Mssv.Contains(txtSearch.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).ToList();
                     dtgv_Diem.DataSource = listSearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
-
             }
         }
         void loadcbFillter_TG()
@@ -362,10 +405,19 @@ namespace QuanLySinhVien5ToT
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            pagenumber = 1;
             var listfillter = new List<DiemDTO>();
             listfillter = QL_DiemBLL.dsdiem().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.HocKy.Contains(cbFIllter_TG.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).ToList();
             dtgv_Diem.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
             flagDT = 1;
+            lbNumber.Text = pagenumber.ToString();
+            if (dtgv_Diem.RowCount == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadDiem(QL_DiemBLL.dsdiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                flagDT = 0;
+            }
+            
         }
 
         private void txtMssv_TS_KeyPress(object sender, KeyPressEventArgs e)
@@ -399,8 +451,17 @@ namespace QuanLySinhVien5ToT
                 listSearch = QL_DiemBLL.dsdiem().Where(x => x.TenSinhVien.Contains(txtSearch.Text) || x.Mssv.Contains(txtSearch.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text)).ToList();
                 dtgv_Diem.DataSource = listSearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
                 flagDT = 2;
-            }
-            
+                pagenumber = 1;
+                lbNumber.Text = pagenumber.ToString();
+            }            
+        }
+        void SuggestTxtMssv()
+        {
+            txtMssv_TS.AutoCompleteCustomSource.AddRange(QL_DiemBLL.dssinhvien().Select(x => x.Mssv).ToArray());
+        }
+        void SuggestTxtSearch()
+        {
+            txtSearch.AutoCompleteCustomSource.AddRange(QL_DiemBLL.dssinhvien().Select(x => x.HoTen).ToArray());
         }
     }
 }

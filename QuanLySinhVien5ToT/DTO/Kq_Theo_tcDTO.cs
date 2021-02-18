@@ -13,6 +13,7 @@ namespace QuanLySinhVien5ToT.DTO
         private Thoi_Gian_XetDTO thoi_Gian_XetDTO = new Thoi_Gian_XetDTO();
         public string Mssv { get; set; }
         public string HoTen { get; set; }
+        public string DonVi { get; set; }
         public string TenTieuChi { get; set; }
         public short? TienDoHDBatBuoc { get; set; }
         public bool? TienDoHDKhac { get; set; }

@@ -21,7 +21,6 @@ namespace QuanLySinhVien5ToT
         int pagenumber = 1;
         int numberRecord = 5;
         private int flagLuu = 0;
-        private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         ThoiGianXetBLL thoiGianXetBLL = new ThoiGianXetBLL();
         private void Edit_TGX_Load(object sender, EventArgs e)
@@ -72,16 +71,16 @@ namespace QuanLySinhVien5ToT
                 THOIGIAN_XET tg = thoiGianXetBLL.Get(x => x.MaThoiGian.ToString() ==txtMaTG.Text.Trim());
                 if (tg == null)
                 {                  
-                    tg = new THOIGIAN_XET();
-                    //tg.MaThoiGian = Convert.ToInt32(txtMaTG.Text);
+                    tg = new THOIGIAN_XET();                   
                     tg.TuNgay = dtpkTu.Value;
                     tg.DenNgay = dtpkDen.Value;
                     tg.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
                     thoiGianXetBLL.Add(tg);
+                    MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("dữ liệu thêm bị trùng!!!");
+                    MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 loadthoigian(thoiGianXetBLL.dsthoigian().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             }
@@ -104,9 +103,9 @@ namespace QuanLySinhVien5ToT
                     tg.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
                     thoiGianXetBLL.Edit(tg);
                 }
-                
 
-                MessageBox.Show("Sửa Thành Công");
+
+                MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadthoigian(thoiGianXetBLL.dsthoigian().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             }
 
@@ -147,7 +146,8 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber--;
                 loadthoigian(thoiGianXetBLL.dsthoigian().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
         }
 
@@ -159,7 +159,8 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber++;
                 loadthoigian(thoiGianXetBLL.dsthoigian().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
         }
 

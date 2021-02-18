@@ -19,7 +19,10 @@ namespace QuanLySinhVien5ToT.DAL
                         from dv in db.DON_VI
                         from sv in db.SINH_VIEN
                         from ct in db.CHUONG_TRINH
-                        where tgct.Mssv==sv.Mssv && sv.DonVi==dv.MaDonVi && tgct.MaThoiGian==tg.MaThoiGian && tgct.MaChuongTrinh==ct.MaChuongTrinh
+                        where tgct.Mssv==sv.Mssv && 
+                        sv.DonVi==dv.MaDonVi && 
+                        tgct.MaThoiGian==tg.MaThoiGian &&
+                        tgct.MaChuongTrinh==ct.MaChuongTrinh                        
                         select new ThanGia_ChuongtrinhDTO
                         {
                             Mssv=tgct.Mssv,

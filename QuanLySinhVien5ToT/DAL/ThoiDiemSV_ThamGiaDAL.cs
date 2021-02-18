@@ -25,6 +25,7 @@ namespace QuanLySinhVien5ToT.DAL
                                           TenSinhVien = sv.HoTen,
                                           Lop = sv.Lop,
                                           DonVi = dv.MaDonVi,
+                                          ThoiDiemDK=tdtt.ThoiGian_DK,
                                           ThoiGian = string.Concat(
                                                     SqlFunctions.DatePart("day", tg.TuNgay).ToString().Trim() + "/" +
                                                     SqlFunctions.DatePart("month", tg.TuNgay).ToString().Trim() + "/" +

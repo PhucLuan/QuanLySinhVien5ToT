@@ -13,5 +13,6 @@ namespace QuanLySinhVien5ToT.DTO
         public String Lop { get; set; }
         public String DonVi { get; set; }
         public String ThoiGian { get; set; }
+        public DateTime? ThoiDiemDK { get; set; }
     }
 }

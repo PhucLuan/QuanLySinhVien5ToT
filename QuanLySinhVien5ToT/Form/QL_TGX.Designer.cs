@@ -63,14 +63,12 @@
             this.txtMssv_TS = new Guna.UI2.WinForms.Guna2TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.Mssv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThoiGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbNumber = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dtpkTG_DK = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnXThem_TT = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -78,7 +76,14 @@
             this.btnThemKQ = new Guna.UI2.WinForms.Guna2Button();
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.btnXThongTin = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.Mssv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThoiGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThoiDiemDK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.XemChiTiet = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
             this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_sort.SuspendLayout();
             this.pn_XemChiTiet.SuspendLayout();
@@ -496,7 +501,9 @@
             this.Lop,
             this.DonVi,
             this.ThoiGian,
+            this.ThoiDiemDK,
             this.XemChiTiet,
+            this.Sua,
             this.Xoa});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -542,6 +549,8 @@
             // pn_Them_TT
             // 
             this.pn_Them_TT.BorderRadius = 20;
+            this.pn_Them_TT.Controls.Add(this.dtpkTG_DK);
+            this.pn_Them_TT.Controls.Add(this.label11);
             this.pn_Them_TT.Controls.Add(this.btnLuuTT);
             this.pn_Them_TT.Controls.Add(this.label5);
             this.pn_Them_TT.Controls.Add(this.cbThoiGian_TS);
@@ -554,7 +563,7 @@
             this.pn_Them_TT.Location = new System.Drawing.Point(747, 225);
             this.pn_Them_TT.Name = "pn_Them_TT";
             this.pn_Them_TT.ShadowDecoration.Parent = this.pn_Them_TT;
-            this.pn_Them_TT.Size = new System.Drawing.Size(290, 220);
+            this.pn_Them_TT.Size = new System.Drawing.Size(290, 262);
             this.pn_Them_TT.TabIndex = 47;
             this.pn_Them_TT.Visible = false;
             // 
@@ -568,7 +577,7 @@
             this.btnLuuTT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuTT.ForeColor = System.Drawing.Color.White;
             this.btnLuuTT.HoverState.Parent = this.btnLuuTT;
-            this.btnLuuTT.Location = new System.Drawing.Point(225, 171);
+            this.btnLuuTT.Location = new System.Drawing.Point(225, 216);
             this.btnLuuTT.Name = "btnLuuTT";
             this.btnLuuTT.ShadowDecoration.Parent = this.btnLuuTT;
             this.btnLuuTT.Size = new System.Drawing.Size(60, 35);
@@ -674,7 +683,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BorderRadius = 20;
-            this.guna2Panel1.Controls.Add(this.label15);
+            this.guna2Panel1.Controls.Add(this.lbNumber);
             this.guna2Panel1.Controls.Add(this.btnprevious);
             this.guna2Panel1.Controls.Add(this.btnNext);
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
@@ -684,48 +693,46 @@
             this.guna2Panel1.Size = new System.Drawing.Size(164, 42);
             this.guna2Panel1.TabIndex = 50;
             // 
-            // label15
+            // lbNumber
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Gray;
-            this.label15.Location = new System.Drawing.Point(73, 9);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(18, 20);
-            this.label15.TabIndex = 50;
-            this.label15.Text = "1";
+            this.lbNumber.AutoSize = true;
+            this.lbNumber.BackColor = System.Drawing.Color.Transparent;
+            this.lbNumber.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumber.ForeColor = System.Drawing.Color.Gray;
+            this.lbNumber.Location = new System.Drawing.Point(73, 9);
+            this.lbNumber.Name = "lbNumber";
+            this.lbNumber.Size = new System.Drawing.Size(18, 20);
+            this.lbNumber.TabIndex = 50;
+            this.lbNumber.Text = "1";
             // 
-            // Mssv
+            // label11
             // 
-            this.Mssv.DataPropertyName = "Mssv";
-            this.Mssv.HeaderText = "Mssv";
-            this.Mssv.Name = "Mssv";
-            this.Mssv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Location = new System.Drawing.Point(9, 185);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(86, 15);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "Thời Gian DK :";
             // 
-            // HoTen
+            // dtpkTG_DK
             // 
-            this.HoTen.DataPropertyName = "TenSinhVien";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            // 
-            // Lop
-            // 
-            this.Lop.DataPropertyName = "Lop";
-            this.Lop.HeaderText = "Lớp";
-            this.Lop.Name = "Lop";
-            // 
-            // DonVi
-            // 
-            this.DonVi.DataPropertyName = "DonVi";
-            this.DonVi.HeaderText = "Đơn Vị";
-            this.DonVi.Name = "DonVi";
-            // 
-            // ThoiGian
-            // 
-            this.ThoiGian.DataPropertyName = "ThoiGian";
-            this.ThoiGian.HeaderText = "Thời Gian";
-            this.ThoiGian.Name = "ThoiGian";
+            this.dtpkTG_DK.BackColor = System.Drawing.Color.Transparent;
+            this.dtpkTG_DK.BorderRadius = 20;
+            this.dtpkTG_DK.CheckedState.Parent = this.dtpkTG_DK;
+            this.dtpkTG_DK.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpkTG_DK.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpkTG_DK.HoverState.Parent = this.dtpkTG_DK;
+            this.dtpkTG_DK.Location = new System.Drawing.Point(101, 174);
+            this.dtpkTG_DK.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpkTG_DK.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpkTG_DK.Name = "dtpkTG_DK";
+            this.dtpkTG_DK.ShadowDecoration.Parent = this.dtpkTG_DK;
+            this.dtpkTG_DK.Size = new System.Drawing.Size(184, 36);
+            this.dtpkTG_DK.TabIndex = 51;
+            this.dtpkTG_DK.Value = new System.DateTime(2021, 2, 18, 16, 1, 48, 344);
             // 
             // dataGridViewImageColumn1
             // 
@@ -743,7 +750,16 @@
             this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources._606_6065122_delete_bin_trash_png_free_download_transparent_delete;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 20;
+            this.dataGridViewImageColumn2.Width = 164;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_512;
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.Width = 20;
             // 
             // btnprevious
             // 
@@ -876,6 +892,43 @@
             this.btnXThongTin.TabIndex = 14;
             this.btnXThongTin.Click += new System.EventHandler(this.guna2ImageButton5_Click);
             // 
+            // Mssv
+            // 
+            this.Mssv.DataPropertyName = "Mssv";
+            this.Mssv.HeaderText = "Mssv";
+            this.Mssv.Name = "Mssv";
+            this.Mssv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "TenSinhVien";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            // 
+            // Lop
+            // 
+            this.Lop.DataPropertyName = "Lop";
+            this.Lop.HeaderText = "Lớp";
+            this.Lop.Name = "Lop";
+            // 
+            // DonVi
+            // 
+            this.DonVi.DataPropertyName = "DonVi";
+            this.DonVi.HeaderText = "Đơn Vị";
+            this.DonVi.Name = "DonVi";
+            // 
+            // ThoiGian
+            // 
+            this.ThoiGian.DataPropertyName = "ThoiGian";
+            this.ThoiGian.HeaderText = "Thời Gian";
+            this.ThoiGian.Name = "ThoiGian";
+            // 
+            // ThoiDiemDK
+            // 
+            this.ThoiDiemDK.DataPropertyName = "ThoiDiemDK";
+            this.ThoiDiemDK.HeaderText = "Thời Điểm DK";
+            this.ThoiDiemDK.Name = "ThoiDiemDK";
+            // 
             // XemChiTiet
             // 
             this.XemChiTiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -884,6 +937,15 @@
             this.XemChiTiet.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.XemChiTiet.Name = "XemChiTiet";
             this.XemChiTiet.Width = 20;
+            // 
+            // Sua
+            // 
+            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sua.HeaderText = "";
+            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
+            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Sua.Name = "Sua";
+            this.Sua.Width = 20;
             // 
             // Xoa
             // 
@@ -961,15 +1023,20 @@
         private Guna.UI2.WinForms.Guna2Button btnTimKiem;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbNumber;
         private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
         private Guna.UI2.WinForms.Guna2ImageButton btnNext;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpkTG_DK;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mssv;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lop;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonVi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThoiGian;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThoiDiemDK;
         private System.Windows.Forms.DataGridViewImageColumn XemChiTiet;
+        private System.Windows.Forms.DataGridViewImageColumn Sua;
         private System.Windows.Forms.DataGridViewImageColumn Xoa;
     }
 }
