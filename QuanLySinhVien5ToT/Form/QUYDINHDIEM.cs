@@ -19,7 +19,7 @@ namespace QuanLySinhVien5ToT
             InitializeComponent();
         }
         int pagenumber = 1;
-        int numberRecord = 10;
+        int numberRecord = 8;
         private int flagLuu = 0;
         private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
@@ -49,7 +49,12 @@ namespace QuanLySinhVien5ToT
             pn_Sort.Visible = false;
             flagLuu = 0;
             txtMaQuyDinh_TS.Enabled = false;
-            cbTrangThai.Enabled = false;
+            cbTrangThai.Enabled = false;            
+            cbDonVi_TS.Enabled = true;
+            cbLoaiDiem_TS.Enabled = true;
+            cbTieuChuan_TS.Enabled = true;
+            cbThoiGian_TS.Enabled = true;
+            txtDiemToiThieu.Text = "";
             txtDiemToiThieu.BorderColor = Color.FromArgb(213, 218, 223);
             txtDiemToiThieu.PlaceholderText = "";
             txtDiemToiThieu.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
@@ -69,6 +74,7 @@ namespace QuanLySinhVien5ToT
                 cbLoaiDiem_TS.Enabled = false;
                 cbTieuChuan_TS.Enabled = false;
                 cbThoiGian_TS.Enabled = false;
+                cbTrangThai.Enabled = true;
 
                 txtDiemToiThieu.BorderColor = Color.FromArgb(213, 218, 223);
                 txtDiemToiThieu.PlaceholderText = "";
@@ -127,14 +133,15 @@ namespace QuanLySinhVien5ToT
                                 qd.Mathoigian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                                 qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
                                 quyDinhDiemBLL.Add(qd);
-                                MessageBox.Show("Lưu Thành Công");
+                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
                                 pn_ThemQuyDinh.Visible = true;
                                 btnLuuQuyDinh.Visible = true;
                                 pn_Sort.Visible = false;
-                                MessageBox.Show("Điểm rèn luyện phải >=75 và <=100");
+                                txtDiemToiThieu.Text = "";
+                                MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
 
                             }
                         }
@@ -148,13 +155,14 @@ namespace QuanLySinhVien5ToT
                                 qd.Mathoigian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                                 qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
                                 quyDinhDiemBLL.Add(qd);
-                                MessageBox.Show("Lưu Thành Công");
+                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
                                 pn_ThemQuyDinh.Visible = true;
                                 btnLuuQuyDinh.Visible = true;
                                 pn_Sort.Visible = false;
+                                txtDiemToiThieu.Text = "";
                                 MessageBox.Show("Điểm học tập không dược >10");
 
                             }
@@ -169,13 +177,14 @@ namespace QuanLySinhVien5ToT
                                 qd.Mathoigian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                                 qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
                                 quyDinhDiemBLL.Add(qd);
-                                MessageBox.Show("Lưu Thành Công");
+                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
                                 pn_ThemQuyDinh.Visible = true;
                                 btnLuuQuyDinh.Visible = true;
                                 pn_Sort.Visible = false;
+                                txtDiemToiThieu.Text = "";
                                 MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
                             }
                         }
@@ -183,7 +192,7 @@ namespace QuanLySinhVien5ToT
                     }
                     else
                     {
-                        MessageBox.Show("dữ liệu đã bị trùng");
+                        MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                 }
@@ -194,17 +203,31 @@ namespace QuanLySinhVien5ToT
                     {
                         if (Convert.ToInt32(txtDiemToiThieu.Text) <= 100 && Convert.ToInt32(txtDiemToiThieu.Text) >= 50)
                         {
-                            qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                            qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                            quyDinhDiemBLL.Edit(qd);
-                            MessageBox.Show("Sửa Thành Công");
+                            if (cbTrangThai.Text == "True")
+                            {
+                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem==Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
+                                qdd.TrangThai = Convert.ToBoolean("False");
+                                quyDinhDiemBLL.Edit(qdd);
+                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                                quyDinhDiemBLL.Edit(qd);
+                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                                quyDinhDiemBLL.Edit(qd);
+                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }                        
                         }
                         else
                         {
                             pn_ThemQuyDinh.Visible = true;
                             btnLuuQuyDinh.Visible = true;
                             pn_Sort.Visible = false;
-                            MessageBox.Show("Điểm rèn luyện phải >=75 và <=100");
+                            txtDiemToiThieu.Text = "";
+                            MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
 
                         }
                     }
@@ -212,16 +235,30 @@ namespace QuanLySinhVien5ToT
                     {
                         if (Convert.ToInt32(txtDiemToiThieu.Text) > 0 && Convert.ToInt32(txtDiemToiThieu.Text) <= 10)
                         {
-                            qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                            qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                            quyDinhDiemBLL.Edit(qd);
-                            MessageBox.Show("Sửa Thành Công");
+                            if (cbTrangThai.Text == "True")
+                            {
+                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
+                                qdd.TrangThai = Convert.ToBoolean("False");
+                                quyDinhDiemBLL.Edit(qdd);
+                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                                quyDinhDiemBLL.Edit(qd);
+                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                                quyDinhDiemBLL.Edit(qd);
+                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                         else
                         {
                             pn_ThemQuyDinh.Visible = true;
                             btnLuuQuyDinh.Visible = true;
                             pn_Sort.Visible = false;
+                            txtDiemToiThieu.Text = "";
                             MessageBox.Show("Điểm học tập không dược >10");
 
                         }
@@ -230,16 +267,30 @@ namespace QuanLySinhVien5ToT
                     {
                         if (Convert.ToInt32(txtDiemToiThieu.Text) >= 75)
                         {
-                            qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                            qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                            quyDinhDiemBLL.Edit(qd);
-                            MessageBox.Show("Sửa Thành Công");
+                            if (cbTrangThai.Text == "True")
+                            {
+                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
+                                qdd.TrangThai = Convert.ToBoolean("False");
+                                quyDinhDiemBLL.Edit(qdd);
+                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                                quyDinhDiemBLL.Edit(qd);
+                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                                quyDinhDiemBLL.Edit(qd);
+                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                         else
                         {
                             pn_ThemQuyDinh.Visible = true;
                             btnLuuQuyDinh.Visible = true;
                             pn_Sort.Visible = false;
+                            txtDiemToiThieu.Text = "";
                             MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
                         }
                     }
@@ -265,7 +316,6 @@ namespace QuanLySinhVien5ToT
             UC.Location = new Point(170, 48);
             this.dtgvQuyDinh.Enabled = false;
             this.btnSuaLD.Enabled = false;
-            //this.btnCurrentQD.Enabled = false;
             this.btnThemQuyDinh.Enabled = false;
             UC.Enabled = true;          
         }
@@ -330,10 +380,19 @@ namespace QuanLySinhVien5ToT
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            pagenumber = 1;
             var listFIllter = new List<QuyDinhDiemDTO>();
             listFIllter = quyDinhDiemBLL.dsQD().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text) && x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
             dtgvQuyDinh.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
             flagDT = 1;
+            lbNumber.Text = pagenumber.ToString();
+            if (dtgvQuyDinh.RowCount == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                flagDT = 0;
+            }
+            
         }
 
         private void btnprevious_Click(object sender, EventArgs e)
@@ -344,13 +403,16 @@ namespace QuanLySinhVien5ToT
                 if (flagDT == 0)
                 {
                     loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
                 else if (flagDT == 1)
                 {
                     var listFIllter = new List<QuyDinhDiemDTO>();
                     listFIllter = quyDinhDiemBLL.dsQD().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text) && x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
                     dtgvQuyDinh.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
 
             }
@@ -366,9 +428,11 @@ namespace QuanLySinhVien5ToT
                 {
                     pagenumber++;
                     loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
                 }
             }
-            if (flagDT == 0)
+            if (flagDT == 1)
             {
                 int totlalrecord = 0;
                 totlalrecord = quyDinhDiemBLL.dsQD().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text) && x.ThoiGian.Contains(cbFillter_TG.Text)).Count();
@@ -378,6 +442,8 @@ namespace QuanLySinhVien5ToT
                     var listFIllter = new List<QuyDinhDiemDTO>();
                     listFIllter = quyDinhDiemBLL.dsQD().Where(x => x.DonVi.Contains(cbFillter_DV.Text) && x.TenLoaiDiem.Contains(cbFillter_LD.Text) && x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
                     dtgvQuyDinh.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();               
                 }
             }
         }

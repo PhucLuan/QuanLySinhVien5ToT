@@ -20,6 +20,7 @@ namespace QuanLySinhVien5ToT
         }
         int pagenumber = 1;
         int numberRecord = 5;
+        private int flagDT = 0;
         private int flagLuu = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         HocKyXetDiemBLL hocKyXetDiemBLL = new HocKyXetDiemBLL();
@@ -47,7 +48,7 @@ namespace QuanLySinhVien5ToT
             txtNam.Text = "";
 
             txtNam.BorderColor = Color.FromArgb(213, 218, 223);
-            txtNam.PlaceholderText = "bạn chưa nhập năm";
+            txtNam.PlaceholderText = "";
             txtNam.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
         }
 
@@ -63,7 +64,7 @@ namespace QuanLySinhVien5ToT
             if (txtNam.Text == "")
             {
                 txtNam.BorderColor = Color.Red;
-                txtNam.PlaceholderText = "";
+                txtNam.PlaceholderText = "bạn chưa nhập năm";
                 txtNam.PlaceholderForeColor = Color.Red;
             }
             else
@@ -79,14 +80,28 @@ namespace QuanLySinhVien5ToT
                     {
                         hk = new HOCKY_XETDIEM();
                         hk.HocKy = cbHK.Text;
-                        hk.Nam = Convert.ToInt32(txtNam.Text);
-                        hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
-                        hocKyXetDiemBLL.Add(hk);
-                        MessageBox.Show("Thêm Thành Công");
+                        if (Convert.ToInt32(txtNam.Text) >= 2000 ||Convert.ToInt32(txtNam.Text) <= 2100)
+                        {
+                            hk.Nam = Convert.ToInt32(txtNam.Text);
+                            hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
+                            hocKyXetDiemBLL.Add(hk);
+                            MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("dữ liệu năm của bạn chưa đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dtgvHocKy.Width = 666;
+                            pn_ThemHocKy.Visible = true;
+                            btnLuuHocKy.Visible = true;
+                            lbTieuDe.Text = "Sửa Học Kỳ Xét";
+                            flagLuu = 1;
+                            txtMaHK.Enabled = false;
+                        }
+                        
                     }
                     else
                     {
-                        MessageBox.Show("Thêm Thất Bại");
+                        MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemHocKy.Enabled = true;
                     }
                     loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -98,15 +113,29 @@ namespace QuanLySinhVien5ToT
                         HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim());
 
                         hk.HocKy = cbHK.Text;
-                        hk.Nam = Convert.ToInt32(txtNam.Text);
-                        hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
-                        btnThemHocKy.Enabled = true;
-                        hocKyXetDiemBLL.Edit(hk);
-                        MessageBox.Show("Sửa Thành Công");
+                        if (Convert.ToInt32(txtNam.Text) >= 2000 || Convert.ToInt32(txtNam.Text) <= 2100)
+                        {
+                            hk.Nam = Convert.ToInt32(txtNam.Text);
+                            hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
+                            btnThemHocKy.Enabled = true;
+                            hocKyXetDiemBLL.Edit(hk);
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("dữ liệu năm của bạn chưa đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dtgvHocKy.Width = 666;
+                            pn_ThemHocKy.Visible = true;
+                            btnLuuHocKy.Visible = true;
+                            lbTieuDe.Text = "Sửa Học Kỳ Xét";
+                            flagLuu = 1;
+                            txtMaHK.Enabled = false;
+                        }
+                        
                     }
                     catch (NullReferenceException)
                     {
-                        MessageBox.Show("Sửa thất bại");
+                        MessageBox.Show("Sửa thất bại!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemHocKy.Enabled = true;
                     }
                     loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -168,30 +197,74 @@ namespace QuanLySinhVien5ToT
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            pagenumber = 1;
             var listFIllter = new List<HocKy_XetDiemDTO>();
             listFIllter = hocKyXetDiemBLL.dsHK().Where(x => x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
             dtgvHocKy.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+            flagDT = 1;
+            lbNumber.Text = pagenumber.ToString();
+            if (dtgvHocKy.RowCount == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                flagDT = 0;
+            }
+            
         }
 
         private void btnprevious_Click(object sender, EventArgs e)
         {
-            if (pagenumber - 1 > 0)
+            if (flagDT == 0)
             {
-                pagenumber--;
-                loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                if (pagenumber - 1 > 0)
+                {
+                    pagenumber--;
+                    loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
+            }
+            if (flagDT == 1)
+            {
+                if (pagenumber - 1 > 0)
+                {
+                    pagenumber--;
+                    var listFIllter = new List<HocKy_XetDiemDTO>();
+                    listFIllter = hocKyXetDiemBLL.dsHK().Where(x => x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
+                    dtgvHocKy.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
             }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int totlalrecord = 0;
-            totlalrecord = db.HOCKY_XETDIEM.Count();
-            if (pagenumber - 1 < totlalrecord / numberRecord)
+            if (flagDT == 0)
             {
-                pagenumber++;
-                loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int totlalrecord = 0;
+                totlalrecord = db.HOCKY_XETDIEM.Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
+                {
+                    pagenumber++;
+                    loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
+            }
+            if (flagDT == 1)
+            {
+                int totlalrecord = 0;
+                totlalrecord = hocKyXetDiemBLL.dsHK().Where(x => x.ThoiGian.Contains(cbFillter_TG.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
+                {
+                    pagenumber++;
+                    var listFIllter = new List<HocKy_XetDiemDTO>();
+                    listFIllter = hocKyXetDiemBLL.dsHK().Where(x => x.ThoiGian.Contains(cbFillter_TG.Text)).ToList();
+                    dtgvHocKy.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
             }
         }
     }

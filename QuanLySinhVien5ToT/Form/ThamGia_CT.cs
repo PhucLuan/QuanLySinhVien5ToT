@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLySinhVien5ToT.DTO;
 using QuanLySinhVien5ToT.BLL;
+using System.Reflection;
 
 namespace QuanLySinhVien5ToT
 {
@@ -101,6 +102,9 @@ namespace QuanLySinhVien5ToT
             txtDonVi_Xem.Text = row.Cells["DonVi"].Value.ToString();
             txtGiai_Xem.Text = row.Cells["Giai"].Value.ToString();
             cbThoiGian_Xem.SelectedValue = thamGia_CT_BLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
+
+            //EnumGiai.Giải_Nhất= row.Cells["Giai"].Value.ToString();
+            
         }
 
         private void btnXTT_Click(object sender, EventArgs e)
@@ -205,13 +209,9 @@ namespace QuanLySinhVien5ToT
         }
         void loadcbGiai_TS()
         {
-            cbGiai_TS.Items.Clear();
-            cbGiai_TS.Items.Add("Giải Nhất");
-            cbGiai_TS.Items.Add("Giải Nhì");
-            cbGiai_TS.Items.Add("Giải Ba");
-            cbGiai_TS.Items.Add("Giải Khuyến Khích");
-            cbGiai_TS.Items.Add("Không Có");
-            cbGiai_TS.Text = "Không Có";
+            cbGiai_TS.DataSource = new BindingSource(thamGia_CT_BLL.showGiai(), null);
+            cbGiai_TS.DisplayMember = "Value";
+            cbGiai_TS.ValueMember = "Key";
         }
         void loadcbFillterCT()
         {
@@ -377,26 +377,46 @@ namespace QuanLySinhVien5ToT
         }
         public enum EnumGiai
         {
-            Không,
-            Giải_Nhất,
-            Giải_Nhì,
-            Giải_Ba,
+            No,
+            Giai_Nhat,
+            Giai_Nhi,
+            Giai_Ba,
         }
 
         private void dtgv_TT_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
             //if (e.ColumnIndex == 4)
             //{
-            //    e.Value = EnumGiai(e.Value);
+            //    e.Value = ((EnumGiai)1).ToString();
             //}
+
         }
 
         private void dtgv_TT_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             //if (e.RowIndex == -1) return;
-            //dtgv_TT[4, e.RowIndex].Value = EnumGiai;
+            //dtgv_TT[4, e.RowIndex].Value = (EnumGiai)1;
         }
+        //public string Description(this Enum value)
+        //{
+        //    if (value == null)
+        //    {
+        //        throw new ArgumentNullException("value");
+        //    }
+
+        //    string description = value.ToString();
+        //    FieldInfo fieldInfo = value.GetType().GetField(description);
+        //    DescriptionAttribute[] attributes =
+        //       (DescriptionAttribute[])
+        //     fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+        //    if (attributes != null && attributes.Length > 0)
+        //    {
+        //        description = attributes[0].Description;
+        //    }
+
+        //    return description;
+        //}
     }
     
 }

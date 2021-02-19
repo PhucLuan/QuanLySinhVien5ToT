@@ -16,6 +16,8 @@ namespace QuanLySinhVien5ToT
     {
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         Edit_RoleBLL Edit_RoleBLL = new Edit_RoleBLL();
+        int pagenumber = 1;
+        int numberRecord = 5;
         private int flagLuu = 0;
         public Edit_Role()
         {
@@ -23,8 +25,8 @@ namespace QuanLySinhVien5ToT
         }
         private void Edit_Role_Load(object sender, EventArgs e)
         {
-            loadRole(Edit_RoleBLL.dsrole());
-
+            loadRole(Edit_RoleBLL.dsrole().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+            txtRole.MaxLength = 30;
         }
         void loadRole(List<RoleDTO> listRole)
         {
@@ -59,6 +61,11 @@ namespace QuanLySinhVien5ToT
                 binding();
                 flagLuu = 1;
                 txtID.Enabled = false;
+                btnThemRole.Enabled = false;
+
+                txtRole.BorderColor = Color.White;
+                txtRole.PlaceholderText = "";
+                txtRole.PlaceholderForeColor = Color.White;
             }
         }
 
@@ -67,6 +74,8 @@ namespace QuanLySinhVien5ToT
             pn_Them_Role.Visible = false;
             btnLuuRole.Visible = false;
             dtgv_Role.Width = 572;
+            btnThemRole.Enabled = true;
+            loadRole(Edit_RoleBLL.dsrole().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
 
         private void btnLuuRole_Click(object sender, EventArgs e)
@@ -89,33 +98,32 @@ namespace QuanLySinhVien5ToT
                     if (role == null)
                     {
                         role = new ROLE();
-                        //role.IDrole = Convert.ToInt32(txtID.Text);
                         role.Role1 = txtRole.Text;
                         Edit_RoleBLL.Add(role);
-                        MessageBox.Show("Thêm Thành Công");
+                        MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Thêm Thất Bại");
+                        MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     loadRole(Edit_RoleBLL.dsrole());
+                    btnThemRole.Enabled = true;
                 }
                 else
                 {
                     try
                     {
                         ROLE role = Edit_RoleBLL.Get(x => x.IDrole.ToString() == txtID.Text.Trim());
-
-                        //role.IDrole = Convert.ToInt32(txtID.Text);
                         role.Role1 = txtRole.Text;
                         Edit_RoleBLL.Edit(role);
-                        MessageBox.Show("Sửa Thành Công");
+                        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (NullReferenceException)
                     {
-                        MessageBox.Show("Sửa thất bại");
+                        MessageBox.Show("Sửa thất bại!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     loadRole(Edit_RoleBLL.dsrole());
+                    btnThemRole.Enabled = true;
                 }
             }
             
@@ -133,6 +141,29 @@ namespace QuanLySinhVien5ToT
             txtRole.DataBindings.Clear();
             txtRole.DataBindings.Add("Text", dtgv_Role.DataSource, "Role");
         }
-        
+
+        private void btnprevious_Click(object sender, EventArgs e)
+        {
+            if (pagenumber - 1 > 0)
+            {
+                pagenumber--;
+                loadRole(Edit_RoleBLL.dsrole().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int totlalrecord = 0;
+            totlalrecord = db.LOAI_DIEM.Count();
+            if (pagenumber - 1 < totlalrecord / numberRecord)
+            {
+                pagenumber++;
+                loadRole(Edit_RoleBLL.dsrole().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
+            }
+        }
     }
 }

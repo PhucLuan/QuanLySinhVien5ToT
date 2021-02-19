@@ -19,14 +19,18 @@ namespace QuanLySinhVien5ToT
             InitializeComponent();
         }
         private int flagLuu = 0;
+        private int flagDT = 0;
         int pagenumber = 1;
         int numberRecord = 8;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         User_RoleBLL User_RoleBLL = new User_RoleBLL();
         private void User_Role_Load(object sender, EventArgs e)
         {
-            loaddsuser(User_RoleBLL.dsusser(pagenumber, numberRecord));
+            loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             loadcbRole();
+            loadcbFillterRole();
+            maxlength();
+            SuggestTxtSearch();
         }
 
         void loaddsuser(List<UserDTO> listuser)
@@ -61,9 +65,10 @@ namespace QuanLySinhVien5ToT
                 pn_Them_User.Visible = true;
                 btnLuuUser.Visible = true;
                 dtgv_User.Width = 650;
+                txtUserID.Enabled = false;
                 lbTD.Text = "Sửa Thông Tin User";
                 flagLuu = 1;
-                txtUserID.Enabled = true;
+                btnThemUser.Enabled = false;
                 binding();
             }
         }
@@ -103,13 +108,14 @@ namespace QuanLySinhVien5ToT
                         us.Password = txtPassword.Text;
                         us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
                         User_RoleBLL.Add(us);
-                        MessageBox.Show("Thêm Thành Công");
+                        MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Thêm Thất Bại");
+                        MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    loaddsuser(User_RoleBLL.dsusser(pagenumber, numberRecord));
+                    loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    btnThemUser.Enabled = true;
                 }
                 else
                 {
@@ -122,13 +128,14 @@ namespace QuanLySinhVien5ToT
                         us.Password = txtPassword.Text;
                         us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
                         User_RoleBLL.Edit(us);
-                        MessageBox.Show("Sửa Thành Công");
+                        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (NullReferenceException)
                     {
-                        MessageBox.Show("Sửa thất bại");
+                        MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    loaddsuser(User_RoleBLL.dsusser(pagenumber, numberRecord));
+                    loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    btnThemUser.Enabled = true;
                 }
             }
             
@@ -139,7 +146,8 @@ namespace QuanLySinhVien5ToT
             pn_Them_User.Visible = false;
             btnLuuUser.Visible = false;
             dtgv_User.Width = 1011;
-            loaddsuser(User_RoleBLL.dsusser(pagenumber, numberRecord));
+            btnThemUser.Enabled = true;
+            loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
 
        
@@ -157,19 +165,51 @@ namespace QuanLySinhVien5ToT
             if (pagenumber - 1 > 0)
             {
                 pagenumber--;
-                loaddsuser(User_RoleBLL.dsusser(pagenumber, numberRecord));
+                if (flagDT == 0)
+                {
+                    loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
+                else if (flagDT == 1)
+                {
+                    var listfillter = new List<UserDTO>();
+                    listfillter = User_RoleBLL.dsusser().Where(x => x.Username.Contains(txtsearch.Text)).ToList();
+                    dtgv_User.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
 
             }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int totlalrecord = 0;
-            totlalrecord = db.USERs.Count();
-            if (pagenumber - 1 < totlalrecord / numberRecord)
+            if (flagDT == 0)
             {
-                pagenumber++;
-                loaddsuser(User_RoleBLL.dsusser(pagenumber, numberRecord));
+                int totlalrecord = 0;
+                totlalrecord = db.QUYDINH_DIEM.Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
+                {
+                    pagenumber++;
+                    loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
+            }
+            if (flagDT == 0)
+            {
+                int totlalrecord = 0;
+                totlalrecord = User_RoleBLL.dsusser().Where(x => x.Username.Contains(txtsearch.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
+                {
+                    pagenumber++;
+                    var listfillter = new List<UserDTO>();
+                    listfillter = User_RoleBLL.dsusser().Where(x => x.Username.Contains(txtsearch.Text)).ToList();
+                    dtgv_User.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
             }
         }
         void loadcbRole()
@@ -177,6 +217,12 @@ namespace QuanLySinhVien5ToT
             cbRole.DataSource = User_RoleBLL.dsrole();
             cbRole.DisplayMember = "Role";
             cbRole.ValueMember = "IDrole";
+        }
+        void loadcbFillterRole()
+        {
+            cbFillterRole.DataSource = User_RoleBLL.dsrole();
+            cbFillterRole.DisplayMember = "Role";
+            cbFillterRole.ValueMember = "IDrole";
         }
         void binding()
         {
@@ -188,6 +234,48 @@ namespace QuanLySinhVien5ToT
             txtPassword.DataBindings.Add("Text", dtgv_User.DataSource, "Password");
             cbRole.DataBindings.Clear();
             cbRole.DataBindings.Add("Text", dtgv_User.DataSource, "Role");
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtsearch.Text.Trim()))
+            {
+                loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                flagDT = 0;
+            }
+            else
+            {
+                var listSearch = new List<UserDTO>();
+                listSearch = User_RoleBLL.dsusser().Where(x => x.Username.Contains(txtsearch.Text)).ToList();
+                dtgv_User.DataSource = listSearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();                
+                pagenumber = 1;
+                lbNumber.Text = pagenumber.ToString();
+            }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            pagenumber = 1;
+            var listfillter = new List<UserDTO>();
+            listfillter = User_RoleBLL.dsusser().Where(x => x.Role.Contains(cbFillterRole.Text)).ToList();
+            dtgv_User.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+            flagDT = 1;
+            lbNumber.Text = pagenumber.ToString();
+            if (dtgv_User.RowCount == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                flagDT = 0;
+            }
+        }
+        void maxlength()
+        {
+            txtUsername.MaxLength = 50;
+            txtPassword.MaxLength = 50;
+        }
+        void SuggestTxtSearch()
+        {
+            txtsearch.AutoCompleteCustomSource.AddRange(User_RoleBLL.dsusser().Select(x => x.Username).ToArray());
         }
     }
 }

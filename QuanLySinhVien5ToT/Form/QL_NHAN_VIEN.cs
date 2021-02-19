@@ -29,11 +29,12 @@ namespace QuanLySinhVien5ToT
             loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             loadcbRole();
             TXTSEARCH();
+            maxlength();
         }
         void loadNV(List<NhanVienDTO> listNV)
         {
             dtgv_NV.DataSource = listNV;
-            flagLuu = 0;
+            flagDT = 0;
         }
         private void btnThemNV_Click(object sender, EventArgs e)
         {
@@ -41,6 +42,8 @@ namespace QuanLySinhVien5ToT
             btnLuuNV.Visible = false;
             pn_User.Visible = true;
             dtgv_NV.Width = 651;
+            flagLuu = 0;
+            txtIDnv.Enabled = true ;
 
             txtUsername.BorderColor = Color.White;
             txtUsername.PlaceholderText = "";
@@ -68,6 +71,7 @@ namespace QuanLySinhVien5ToT
                 txtIDnv.Enabled = false;
                 binding();
                 flagLuu = 1;
+                txtIDnv.Enabled = false;
 
                 txtEmail_TS.BorderColor = Color.White;
                 txtEmail_TS.PlaceholderText = "";
@@ -121,11 +125,11 @@ namespace QuanLySinhVien5ToT
                     int iduser = us.Last().IDuser;
                     nv.IDuser = iduser;
                     QL_NhanVienBLL.Add(nv);
-                    MessageBox.Show("Thêm Nhân viên Thành Công");
+                    MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("dữ liệu đã bị trùng");
+                    MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             }
@@ -140,11 +144,11 @@ namespace QuanLySinhVien5ToT
 
 
                     QL_NhanVienBLL.Edit(nv);
-                    MessageBox.Show("Sửa Thành Công");
+                    MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (NullReferenceException)
                 {
-                    MessageBox.Show("Vui lòng chọn nhân viên cần sửa thông tin");
+                    MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -201,7 +205,7 @@ namespace QuanLySinhVien5ToT
                     if (txtPassword.Text == txtXacNhan.Text)
                     {
                         QL_NhanVienBLL.AddUser(us);
-                        MessageBox.Show("Thêm User Thành Công");
+                        MessageBox.Show("Thêm User thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -210,13 +214,13 @@ namespace QuanLySinhVien5ToT
                         pn_User.Visible = true;
                         dtgv_NV.Width = 651;
                         cbRole.Enabled = false;
-                        MessageBox.Show("xác nhận mật khẩu không đúng");
+                        MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtXacNhan.Text = "";
                     }
                 }
                 else
                 {
-                    MessageBox.Show("username hoặc password của bạn đã bị trùng");
+                    MessageBox.Show("Username hoặc passwwork của bạn đã bị trùng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -253,7 +257,8 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber--;
                 loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
         }
 
@@ -265,7 +270,8 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber++;
                 loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
         }
 
@@ -281,13 +287,20 @@ namespace QuanLySinhVien5ToT
                 var listsearch = new List<NhanVienDTO>();
                 listsearch = QL_NhanVienBLL.dsnhanvien().Where(x => x.Name.Contains(txtSearch.Text.Trim())).ToList();
                 dtgv_NV.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-
             }
         }
 
         void TXTSEARCH()
         {
             txtSearch.AutoCompleteCustomSource.AddRange(QL_NhanVienBLL.dsnhanvien().Select(x => x.Name).ToArray());
+        }
+        void maxlength()
+        {
+            txtUsername.MaxLength = 50;
+            txtPassword.MaxLength = 50;
+            txtEmail_TS.MaxLength = 100;
+            txtTenNV_TS.MaxLength = 100;
+            txtXacNhan.MaxLength = 50;
         }
     }
 }

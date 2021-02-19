@@ -102,7 +102,7 @@ namespace QuanLySinhVien5ToT
                                 diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
                                 diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                                 QL_DiemBLL.Add(diem);
-                                MessageBox.Show("Lưu Thành Công");
+                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -110,7 +110,7 @@ namespace QuanLySinhVien5ToT
                                 dtgv_Diem.Width = 730;
                                 btnLuuDiem.Visible = true;
                                 txtDiem_TS.Text = "";
-                                MessageBox.Show("Điểm rèn luyện phải >=75 và <=100");
+                                MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
                                 
                             }
                         }
@@ -121,7 +121,7 @@ namespace QuanLySinhVien5ToT
                                 diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
                                 diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                                 QL_DiemBLL.Add(diem);
-                                MessageBox.Show("Lưu Thành Công");
+                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -140,7 +140,7 @@ namespace QuanLySinhVien5ToT
                                 diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
                                 diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                                 QL_DiemBLL.Add(diem);
-                                MessageBox.Show("Lưu Thành Công");
+                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -154,7 +154,7 @@ namespace QuanLySinhVien5ToT
                     }
                     else
                     {
-                        MessageBox.Show("dữ liệu thêm đã bị trùng");
+                        MessageBox.Show("Dữ Liệu Đã Bị Trùng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     loadDiem(QL_DiemBLL.dsdiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                 }
@@ -167,9 +167,8 @@ namespace QuanLySinhVien5ToT
                         if (Convert.ToInt32(txtDiem_TS.Text) <= 100 && Convert.ToInt32(txtDiem_TS.Text) >= 50)
                         {
                             diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
-                            //diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                             QL_DiemBLL.Edit(diem);
-                            MessageBox.Show("Sửa Thành Công");
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -187,7 +186,7 @@ namespace QuanLySinhVien5ToT
                         {
                             diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
                             QL_DiemBLL.Edit(diem);
-                            MessageBox.Show("Sửa Thành Công");
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -205,7 +204,7 @@ namespace QuanLySinhVien5ToT
                         {
                             diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
                             QL_DiemBLL.Edit(diem);
-                            MessageBox.Show("Sửa Thành Công");
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {

@@ -35,9 +35,9 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return unitOfWorkNV.Repository<USER>().GetAll(predicate);
         }
-        public List<UserDTO> dsusser(int page, int recordNum)
+        public List<UserDTO> dsusser()
         {
-            return UserDAL.Getdsuser(page, recordNum);
+            return UserDAL.Getdsuser();
         }
         public List<RoleDTO> dsrole()
         {

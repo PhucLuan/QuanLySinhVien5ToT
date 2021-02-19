@@ -10,7 +10,7 @@ namespace QuanLySinhVien5ToT.DAL
     public class UserDAL
     {
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
-        public List<UserDTO> Getdsuser(int page, int recordNum)
+        public List<UserDTO> Getdsuser()
         {
             List<UserDTO> UserDTO = new List<UserDTO>();
             UserDTO = (from us in db.USERs
@@ -22,10 +22,8 @@ namespace QuanLySinhVien5ToT.DAL
                               Username=us.Username,
                               Password=us.Password,
                               Role=role.Role1
-                          }).ToList();
-            List<UserDTO> Loadrecord = new List<UserDTO>();
-            Loadrecord = UserDTO.Skip((page - 1) * recordNum).Take(recordNum).ToList();
-            return Loadrecord;
+                          }).ToList();            
+            return UserDTO;
         }
     }
 }

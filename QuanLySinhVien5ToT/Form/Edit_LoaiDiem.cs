@@ -26,6 +26,7 @@ namespace QuanLySinhVien5ToT
         private void Edit_LoaiDiem_Load(object sender, EventArgs e)
         {
             loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+            txtTenLoai.MaxLength = 30;
         }
         void loadloaidiem(List<LoaiDiemDTO> listLD)
         {
@@ -68,12 +69,57 @@ namespace QuanLySinhVien5ToT
 
         private void btnLuuLĐ_Click(object sender, EventArgs e)
         {
-            
-            
+            if (txtTenLoai.Text == "" )
+            {
+                txtTenLoai.BorderColor = Color.Red;
+                txtTenLoai.PlaceholderText = "bạn chưa nhập mã tiêu chí";
+                txtTenLoai.PlaceholderForeColor = Color.Red;
+            }
+            else
+            {
+                pn_themLĐ.Visible = false;
+                btnLuuLĐ.Visible = false;
+                dtgv_LĐ.Width = 634;
+                if (flagLuu == 0)
+                {
+
+                    LOAI_DIEM ld = editLoaiDiemBLL.Get(x => x.MaLoaiDiem.ToString()==txtMaLoai.Text && x.TenLoaiDiem==txtTenLoai.Text);
+                    if (ld == null)
+                    {
+                        ld = new LOAI_DIEM();
+                        ld.TenLoaiDiem = txtTenLoai.Text;
+                        btnThemLĐ.Enabled = true;
+                        editLoaiDiemBLL.Add(ld);
+                        MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemLĐ.Enabled = true;
+                    }
+                    loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }
+                else
+                {
+                    try
+                    {
+                        LOAI_DIEM ld = editLoaiDiemBLL.Get(x => x.MaLoaiDiem.ToString() == txtMaLoai.Text);
+
+                        ld.TenLoaiDiem = txtTenLoai.Text;
+                        btnThemLĐ.Enabled = true;
+                        editLoaiDiemBLL.Edit(ld);
+                        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (NullReferenceException)
+                    {
+                        MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemLĐ.Enabled = true;
+                    }
+                    loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }
+            }
+
         }
-
-        
-
         private void btnX_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -103,7 +149,8 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber--;
                 loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
         }
 
@@ -115,7 +162,8 @@ namespace QuanLySinhVien5ToT
             {
                 pagenumber++;
                 loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-
+                int Number = pagenumber;
+                lbNumber.Text = Number.ToString();
             }
         }
     }
