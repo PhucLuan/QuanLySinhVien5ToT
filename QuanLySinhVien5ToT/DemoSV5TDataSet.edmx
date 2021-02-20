@@ -1429,7 +1429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EnumType Name="EnumGiai" a:ExternalTypeName="EnumGiai" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+        <EnumType Name="EnumGiai" a:ExternalTypeName="System.EnumGiai" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
           <Member Name="Giải_Nhất" Value="1" />
           <Member Name="Giải_Nhì" Value="2" />
           <Member Name="Giải_ba" Value="3" />

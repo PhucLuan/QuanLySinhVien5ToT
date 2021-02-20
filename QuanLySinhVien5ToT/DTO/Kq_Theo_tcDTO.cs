@@ -15,6 +15,7 @@ namespace QuanLySinhVien5ToT.DTO
         public string HoTen { get; set; }
         public string DonVi { get; set; }
         public string TenTieuChi { get; set; }
+        public string DanhGia { get; set; }
         public short? TienDoHDBatBuoc { get; set; }
         public bool? TienDoHDKhac { get; set; }
         public string ThoiGian { get; set; }

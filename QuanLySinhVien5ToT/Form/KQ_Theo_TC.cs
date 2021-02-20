@@ -38,6 +38,7 @@ namespace QuanLySinhVien5ToT
             SuggestTxtMssv();
             loadTDHDK();
             maxlength();
+            loadcbDanhGia_TS();
             showKQ(KQ_Theo_TcBLL.DsKQ().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
 
         }
@@ -88,12 +89,14 @@ namespace QuanLySinhVien5ToT
             txtTDBBThem_Sua.Text = row.Cells["TienDoHDBB"].Value.ToString();
             cbTDHDKThem_Sua.Text = row.Cells["TienDoHDKhac"].Value.ToString();
             cbThoiGianThem_Sua.SelectedValue = KQ_Theo_TcBLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
+            cbDanhGia_TS.Text = row.Cells["DanhGia"].Value.ToString();
 
             txtTenSinhVien.Text = row.Cells["TenSinhVien"].Value.ToString();
             txtTieuChi_Xem.Text = row.Cells["TieuChi"].Value.ToString();
             txtTDBB_Xem.Text = row.Cells["TienDoHDBB"].Value.ToString();
             txtTDHDK_Xem.Text = row.Cells["TienDoHDKhac"].Value.ToString();
             cbThoiGian_Xem.SelectedValue = KQ_Theo_TcBLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
+            txtDanhGia_Xem.Text = row.Cells["DanhGia"].Value.ToString();
         }
 
         private void btnX_XemChiTiet_Click(object sender, EventArgs e)
@@ -171,6 +174,7 @@ namespace QuanLySinhVien5ToT
                             kq.Mssv = txtMssvThem_Sua.Text;
                             kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
                             kq.MaThoiGian = Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
+                            kq.DanhGia = Convert.ToInt32(cbDanhGia_TS.SelectedValue);
                             if (Convert.ToInt32(txtTDBBThem_Sua.Text) > 7)
                             {
                                 txtTDBBThem_Sua.Text = "";
@@ -205,6 +209,7 @@ namespace QuanLySinhVien5ToT
                         {
                             kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
                             kq.TienDoHDKhac = Convert.ToBoolean(cbTDHDKThem_Sua.Text);
+                            kq.DanhGia = Convert.ToInt32(cbDanhGia_TS.SelectedValue);
                             KQ_Theo_TcBLL.Edit(kq);
                             MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -233,6 +238,12 @@ namespace QuanLySinhVien5ToT
             cbFillterThoiGian.DataSource = new BindingSource(KQ_Theo_TcBLL.showTime(), null);
             cbFillterThoiGian.DisplayMember = "Value";
             cbFillterThoiGian.ValueMember = "Key";
+        }
+        void loadcbDanhGia_TS()
+        {
+            cbDanhGia_TS.DataSource = new BindingSource(KQ_Theo_TcBLL.ShowDanhGia(), null);
+            cbDanhGia_TS.DisplayMember = "Value";
+            cbDanhGia_TS.ValueMember = "Key";
         }
 
         void loadTDHDK()

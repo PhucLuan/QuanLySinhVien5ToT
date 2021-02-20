@@ -17,7 +17,7 @@ namespace QuanLySinhVien5ToT.BLL
         private ThamGia_ChuongtrinhDAL thamGia_ChuongtrinhDAL = new ThamGia_ChuongtrinhDAL();
         private GenericUnitOfWork unitOfWorkNV = new GenericUnitOfWork(Mydb.GetInstance());
         private Dictionary<string, string> DicTimeFormatted;
-        private Dictionary<string, string> GiaiFormatted;
+        private Dictionary<int, string> DicGiaiThuong;
 
         public void Add(THAMGIA_CHUONGTRINH entity)
         {
@@ -55,19 +55,23 @@ namespace QuanLySinhVien5ToT.BLL
                 + ((DateTime)x.DenNgay).ToString("d/M/yyyy")));
             return DicTimeFormatted;
         }
-        public enum EnumGiai
+
+ 
+        
+
+        public Dictionary<int,string> ShowGiai()
         {
-            No,
-            Giai_Nhat,
-            Giai_Nhi,
-            Giai_Ba,
+            DicGiaiThuong = new Dictionary<int, string>()
+            {
+                {0,"Không có"},{1,"Giải nhất"},{2,"Giải nhì"},{3,"Giải ba"}
+            };
+            return DicGiaiThuong;
         }
-        public Dictionary<string, string> showGiai()
-        {
-            GiaiFormatted = new Dictionary<string, string>();
-            thamGia_ChuongtrinhDAL.getTG_CT().ForEach(x => GiaiFormatted.Add(x.Giai.ToString(), (x.Giai.ToString())));
-            return GiaiFormatted;
-        }
+        //public Dictionary<int, string> DicGiaiThuong = new Dictionary<int, string>()
+        //{
+        //    {0,"Không có"},{1,"Giải nhất"},{2,"Giải nhì"},{3,"Giải ba"}
+        //};
+
         public string GetIdFormattedDateTime(string value)
         {
             if (DicTimeFormatted != null)

@@ -18,6 +18,8 @@ namespace QuanLySinhVien5ToT.BLL
         private Thoi_Gian_XetDAL thoi_Gian_XetDAL = new Thoi_Gian_XetDAL();
         private GenericUnitOfWork unitOfWorkNV = new GenericUnitOfWork(Mydb.GetInstance());
         private Dictionary<string, string> DicTimeFormatted;
+        private Dictionary<int, string> DicDanhGia;
+
         public void Add(KQ_THEO_TIEUCHI entity)
         {
             unitOfWorkNV.Repository<KQ_THEO_TIEUCHI>().Add(entity);
@@ -62,6 +64,15 @@ namespace QuanLySinhVien5ToT.BLL
                 + ((DateTime)x.DenNgay).ToString("d/M/yyyy")));
             return DicTimeFormatted;
         }
+        public Dictionary<int,string> ShowDanhGia()
+        {
+            DicDanhGia = new Dictionary<int, string>()
+            {
+                { 0,"Không Đạt"},{ 1,"Cấp Trường"},{ 2,"Cấp Khoa"}
+            };
+            return DicDanhGia;
+        }
+        
 
         public string GetIdFormattedDateTime(string value)
         {

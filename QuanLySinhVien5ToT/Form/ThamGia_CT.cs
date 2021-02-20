@@ -101,10 +101,7 @@ namespace QuanLySinhVien5ToT
             txtTenCT_Xem.Text = row.Cells["TenChuongTrinh"].Value.ToString();
             txtDonVi_Xem.Text = row.Cells["DonVi"].Value.ToString();
             txtGiai_Xem.Text = row.Cells["Giai"].Value.ToString();
-            cbThoiGian_Xem.SelectedValue = thamGia_CT_BLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
-
-            //EnumGiai.Giải_Nhất= row.Cells["Giai"].Value.ToString();
-            
+            cbThoiGian_Xem.SelectedValue = thamGia_CT_BLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());            
         }
 
         private void btnXTT_Click(object sender, EventArgs e)
@@ -144,7 +141,7 @@ namespace QuanLySinhVien5ToT
                         {
                             tgct.Mssv = txtMssv_TS.Text;
                             tgct.MaChuongTrinh = Convert.ToInt32(cbTenCT_TS.SelectedValue.ToString());
-                            //tgct.Giai = cbGiai_TS.Text;
+                            tgct.Giai = Convert.ToInt32(cbGiai_TS.SelectedValue);
                             tgct.MaThoiGian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
                             thamGia_CT_BLL.Add(tgct);
                             MessageBox.Show("Lưu Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -161,7 +158,7 @@ namespace QuanLySinhVien5ToT
                     try
                     {
                         THAMGIA_CHUONGTRINH tgct = thamGia_CT_BLL.Get(x => x.Mssv.Trim() == txtMssv_TS.Text.Trim() && x.MaChuongTrinh == Convert.ToInt32(cbTenCT_TS.SelectedValue.ToString()) && x.MaThoiGian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString()));
-                        //tgct.Giai = cbGiai_TS.Text;
+                        tgct.Giai = Convert.ToInt32(cbGiai_TS.SelectedValue);
                         thamGia_CT_BLL.Edit(tgct);
                         MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadtgct(thamGia_CT_BLL.dsthamgiaCT().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -209,7 +206,7 @@ namespace QuanLySinhVien5ToT
         }
         void loadcbGiai_TS()
         {
-            cbGiai_TS.DataSource = new BindingSource(thamGia_CT_BLL.showGiai(), null);
+            cbGiai_TS.DataSource = new BindingSource(thamGia_CT_BLL.ShowGiai(), null);
             cbGiai_TS.DisplayMember = "Value";
             cbGiai_TS.ValueMember = "Key";
         }
