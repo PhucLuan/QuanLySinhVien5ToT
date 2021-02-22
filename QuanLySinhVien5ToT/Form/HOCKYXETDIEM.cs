@@ -110,28 +110,34 @@ namespace QuanLySinhVien5ToT
                 {
                     try
                     {
-                        HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim());
-
-                        hk.HocKy = cbHK.Text;
-                        if (Convert.ToInt32(txtNam.Text) >= 2000 || Convert.ToInt32(txtNam.Text) <= 2100)
+                        HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim() && x.HocKy==cbHK.Text && x.Nam==Convert.ToInt32(txtNam.Text.Trim())&& x.MaThoiGianXetDiem==Convert.ToInt32(cbThoiGian.SelectedValue.ToString()));
+                        if (hk == null)
                         {
-                            hk.Nam = Convert.ToInt32(txtNam.Text);
-                            hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
-                            btnThemHocKy.Enabled = true;
-                            hocKyXetDiemBLL.Edit(hk);
-                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            hk.HocKy = cbHK.Text;
+                            if (Convert.ToInt32(txtNam.Text) >= 2000 || Convert.ToInt32(txtNam.Text) <= 2100)
+                            {
+                                hk.Nam = Convert.ToInt32(txtNam.Text);
+                                hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
+                                btnThemHocKy.Enabled = true;
+                                hocKyXetDiemBLL.Edit(hk);
+                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("dữ liệu năm của bạn chưa đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                dtgvHocKy.Width = 666;
+                                pn_ThemHocKy.Visible = true;
+                                btnLuuHocKy.Visible = true;
+                                lbTieuDe.Text = "Sửa Học Kỳ Xét";
+                                flagLuu = 1;
+                                txtMaHK.Enabled = false;
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("dữ liệu năm của bạn chưa đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            dtgvHocKy.Width = 666;
-                            pn_ThemHocKy.Visible = true;
-                            btnLuuHocKy.Visible = true;
-                            lbTieuDe.Text = "Sửa Học Kỳ Xét";
-                            flagLuu = 1;
-                            txtMaHK.Enabled = false;
+                            MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            btnThemHocKy.Enabled = true;
                         }
-                        
                     }
                     catch (NullReferenceException)
                     {

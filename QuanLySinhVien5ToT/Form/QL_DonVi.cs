@@ -45,6 +45,7 @@ namespace QuanLySinhVien5ToT
             flagLuu = 0;
             txtTenDV.Text = "";
             txtMaDV.Text = "";
+            txtMaDV.ReadOnly = false;
 
             txtMaDV.BorderColor = Color.White;
             txtMaDV.PlaceholderText = "";
@@ -65,6 +66,7 @@ namespace QuanLySinhVien5ToT
                 btnLuuDV.Visible = true;
                 lbTieuDe.Text = "Sửa Đơn Vị";
                 btnThemDV.Enabled = false;
+                txtMaDV.ReadOnly = true;
                 Binding();
                 flagLuu = 1;
 
@@ -124,6 +126,7 @@ namespace QuanLySinhVien5ToT
                         btnThemDV.Enabled = true;
                     }
                     ShowDonVi(QL_DV_BLL.dsDonVi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    txtMaDV.ReadOnly = false;
                 }
                 else
                 {
@@ -143,6 +146,7 @@ namespace QuanLySinhVien5ToT
                     }
                     
                     ShowDonVi(QL_DV_BLL.dsDonVi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    txtMaDV.ReadOnly = false;
                 }
             }
             

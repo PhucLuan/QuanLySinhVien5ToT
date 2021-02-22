@@ -18,7 +18,9 @@ namespace QuanLySinhVien5ToT
         public string Email { get; set; }
         public string Name { get; set; }
         public Nullable<int> IDuser { get; set; }
+        public string DonVi { get; set; }
     
+        public virtual DON_VI DON_VI { get; set; }
         public virtual USER USER { get; set; }
     }
 }

@@ -198,14 +198,17 @@ namespace QuanLySinhVien5ToT
                 }
                 else
                 {
-                    QUYDINH_DIEM qd = quyDinhDiemBLL.Get(x => x.MaQuyDinhDiem == Convert.ToInt32(txtMaQuyDinh_TS.Text));
+                    QUYDINH_DIEM qd = quyDinhDiemBLL.Get(x => x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString())
+                    && x.MaDonVi.Trim() == cbDonVi_TS.Text
+                    && x.Mathoigian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString())
+                    && x.MaTieuChuan == Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString()));
                     if (cbLoaiDiem == "Điểm rèn luyện")
                     {
                         if (Convert.ToInt32(txtDiemToiThieu.Text) <= 100 && Convert.ToInt32(txtDiemToiThieu.Text) >= 50)
                         {
                             if (cbTrangThai.Text == "True")
                             {
-                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem==Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
+                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
                                 qdd.TrangThai = Convert.ToBoolean("False");
                                 quyDinhDiemBLL.Edit(qdd);
                                 qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
@@ -219,7 +222,7 @@ namespace QuanLySinhVien5ToT
                                 qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
                                 quyDinhDiemBLL.Edit(qd);
                                 MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }                        
+                            }
                         }
                         else
                         {
@@ -294,6 +297,7 @@ namespace QuanLySinhVien5ToT
                             MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
                         }
                     }
+
 
                     loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                 }

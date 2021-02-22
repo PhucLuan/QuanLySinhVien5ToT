@@ -87,6 +87,7 @@
           <Property Name="Email" Type="varchar" MaxLength="100" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="IDuser" Type="int" />
+          <Property Name="DonVi" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="QUYDINH_DIEM">
           <Key>
@@ -293,6 +294,18 @@
             </Principal>
             <Dependent Role="KQ_THEO_TIEUCHI">
               <PropertyRef Name="Mssv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN__DonVi__3B40CD36">
+          <End Role="DON_VI" Type="Self.DON_VI" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="DonVi" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -601,6 +614,10 @@
             <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
             <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
           </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN__DonVi__3B40CD36" Association="Self.FK__NHANVIEN__DonVi__3B40CD36">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
           <AssociationSet Name="FK__QUYDINH_D__MaDon__5535A963" Association="Self.FK__QUYDINH_D__MaDon__5535A963">
             <End Role="DON_VI" EntitySet="DON_VI" />
             <End Role="QUYDINH_DIEM" EntitySet="QUYDINH_DIEM" />
@@ -738,6 +755,7 @@
           <NavigationProperty Name="CHUONG_TRINH" Relationship="Self.FK__CHUONG_TR__DonVi__4AB81AF0" FromRole="DON_VI" ToRole="CHUONG_TRINH" />
           <NavigationProperty Name="QUYDINH_DIEM" Relationship="Self.FK__QUYDINH_D__MaDon__5535A963" FromRole="DON_VI" ToRole="QUYDINH_DIEM" />
           <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__SINH_VIEN__DonVi__59063A47" FromRole="DON_VI" ToRole="SINH_VIEN" />
+          <NavigationProperty Name="NHANVIENs" Relationship="DT_QL_SV5TOT_5Model.FK__NHANVIEN__DonVi__3B40CD36" FromRole="DON_VI" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="HOCKY_XETDIEM">
           <Key>
@@ -766,16 +784,6 @@
           <Property Name="MaLoaiTieuChuan" Nullable="false" Type="Boolean" />
           <Property Name="TenLoaiTieuChuan" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
           <NavigationProperty Name="TIEU_CHUAN" Relationship="Self.FK__TIEU_CHUA__MaLoa__619B8048" FromRole="LOAI_TIEU_CHUAN" ToRole="TIEU_CHUAN" />
-        </EntityType>
-        <EntityType Name="NHANVIEN">
-          <Key>
-            <PropertyRef Name="IDnv" />
-          </Key>
-          <Property Name="IDnv" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="Email" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Name" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="IDuser" Type="Int32" />
-          <NavigationProperty Name="USER" Relationship="Self.FK_NHANVIEN_USER" FromRole="NHANVIEN" ToRole="USER" />
         </EntityType>
         <EntityType Name="QUYDINH_DIEM">
           <Key>
@@ -874,9 +882,9 @@
           <Property Name="Username" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
           <Property Name="Password" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
           <Property Name="IDrole" Type="Int32" />
-          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN_USER" FromRole="USER" ToRole="NHANVIEN" />
           <NavigationProperty Name="ROLE" Relationship="Self.FK_USER_ROLE" FromRole="USER" ToRole="ROLE" />
           <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK_SINH_VIEN_USER" FromRole="USER" ToRole="SINH_VIEN" />
+          <NavigationProperty Name="NHANVIENs" Relationship="DT_QL_SV5TOT_5Model.FK_NHANVIEN_USER" FromRole="USER" ToRole="NHANVIEN" />
         </EntityType>
         <Association Name="FK__TIEU_CHUAN__Cap__6383C8BA">
           <End Type="Self.CAP_TIEU_CHUAN" Multiplicity="0..1" Role="CAP_TIEU_CHUAN" />
@@ -1010,18 +1018,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NHANVIEN_USER">
-          <End Type="Self.USER" Multiplicity="0..1" Role="USER" />
-          <End Type="Self.NHANVIEN" Multiplicity="*" Role="NHANVIEN" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="IDuser" />
-            </Principal>
-            <Dependent Role="NHANVIEN">
-              <PropertyRef Name="IDuser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__QUYDINH_D__MaTie__571DF1D5">
           <End Type="Self.TIEU_CHUAN" Multiplicity="0..1" Role="TIEU_CHUAN" />
           <End Type="Self.QUYDINH_DIEM" Multiplicity="*" Role="QUYDINH_DIEM" />
@@ -1090,7 +1086,6 @@
           <EntitySet Name="HOCKY_XETDIEM" EntityType="Self.HOCKY_XETDIEM" />
           <EntitySet Name="LOAI_DIEM" EntityType="Self.LOAI_DIEM" />
           <EntitySet Name="LOAI_TIEU_CHUAN" EntityType="Self.LOAI_TIEU_CHUAN" />
-          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
           <EntitySet Name="QUYDINH_DIEM" EntityType="Self.QUYDINH_DIEM" />
           <EntitySet Name="ROLEs" EntityType="Self.ROLE" />
           <EntitySet Name="SINH_VIEN" EntityType="Self.SINH_VIEN" />
@@ -1141,10 +1136,6 @@
           <AssociationSet Name="FK__TIEU_CHUA__MaLoa__619B8048" Association="Self.FK__TIEU_CHUA__MaLoa__619B8048">
             <End EntitySet="LOAI_TIEU_CHUAN" Role="LOAI_TIEU_CHUAN" />
             <End EntitySet="TIEU_CHUAN" Role="TIEU_CHUAN" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NHANVIEN_USER" Association="Self.FK_NHANVIEN_USER">
-            <End EntitySet="USERs" Role="USER" />
-            <End EntitySet="NHANVIENs" Role="NHANVIEN" />
           </AssociationSet>
           <AssociationSet Name="FK__QUYDINH_D__MaTie__571DF1D5" Association="Self.FK__QUYDINH_D__MaTie__571DF1D5">
             <End EntitySet="TIEU_CHUAN" Role="TIEU_CHUAN" />
@@ -1218,6 +1209,15 @@
           <AssociationSet Name="FK_KQ_THEO_TIEUCHI_THOIGIAN_XET" Association="DT_QL_SV5TOT_5Model.FK_KQ_THEO_TIEUCHI_THOIGIAN_XET">
             <End Role="THOIGIAN_XET" EntitySet="THOIGIAN_XET" />
             <End Role="KQ_THEO_TIEUCHI" EntitySet="KQ_THEO_TIEUCHI" />
+          </AssociationSet>
+          <EntitySet Name="NHANVIENs" EntityType="DT_QL_SV5TOT_5Model.NHANVIEN" />
+          <AssociationSet Name="FK__NHANVIEN__DonVi__3B40CD36" Association="DT_QL_SV5TOT_5Model.FK__NHANVIEN__DonVi__3B40CD36">
+            <End Role="DON_VI" EntitySet="DON_VI" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHANVIEN_USER" Association="DT_QL_SV5TOT_5Model.FK_NHANVIEN_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="THUCHIEN_TIEUCHUAN">
@@ -1435,6 +1435,42 @@
           <Member Name="Giải_ba" Value="3" />
           <Member Name="Không" Value="0" />
         </EnumType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="IDnv" />
+          </Key>
+          <Property Name="IDnv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IDuser" Type="Int32" />
+          <Property Name="DonVi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DON_VI" Relationship="DT_QL_SV5TOT_5Model.FK__NHANVIEN__DonVi__3B40CD36" FromRole="NHANVIEN" ToRole="DON_VI" />
+          <NavigationProperty Name="USER" Relationship="DT_QL_SV5TOT_5Model.FK_NHANVIEN_USER" FromRole="NHANVIEN" ToRole="USER" />
+        </EntityType>
+        <Association Name="FK__NHANVIEN__DonVi__3B40CD36">
+          <End Type="DT_QL_SV5TOT_5Model.DON_VI" Role="DON_VI" Multiplicity="0..1" />
+          <End Type="DT_QL_SV5TOT_5Model.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DON_VI">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="DonVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHANVIEN_USER">
+          <End Type="DT_QL_SV5TOT_5Model.USER" Role="USER" Multiplicity="0..1" />
+          <End Type="DT_QL_SV5TOT_5Model.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDuser" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="IDuser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1504,16 +1540,6 @@
               <MappingFragment StoreEntitySet="LOAI_TIEU_CHUAN">
                 <ScalarProperty Name="MaLoaiTieuChuan" ColumnName="MaLoaiTieuChuan" />
                 <ScalarProperty Name="TenLoaiTieuChuan" ColumnName="TenLoaiTieuChuan" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NHANVIENs">
-            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.NHANVIEN">
-              <MappingFragment StoreEntitySet="NHANVIEN">
-                <ScalarProperty Name="IDnv" ColumnName="IDnv" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="IDuser" ColumnName="IDuser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1644,6 +1670,17 @@
                 <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
                 <ScalarProperty Name="MaTieuChi" ColumnName="MaTieuChi" />
                 <ScalarProperty Name="Mssv" ColumnName="Mssv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="DT_QL_SV5TOT_5Model.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="DonVi" ColumnName="DonVi" />
+                <ScalarProperty Name="IDuser" ColumnName="IDuser" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IDnv" ColumnName="IDnv" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

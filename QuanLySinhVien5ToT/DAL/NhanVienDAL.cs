@@ -14,11 +14,14 @@ namespace QuanLySinhVien5ToT.DAL
         {
             List<NhanVienDTO> nhanVienDTOs = new List<NhanVienDTO>();
             nhanVienDTOs = (from nv in db.NHANVIENs
+                            from dv in db.DON_VI
+                            where nv.DonVi==dv.MaDonVi
                             select new NhanVienDTO
                             {
                                 IDnv=nv.IDnv,
                                 Email=nv.Email,
-                                Name=nv.Name,                              
+                                Name=nv.Name, 
+                                DonVi=nv.DonVi
                             }).ToList();
             return nhanVienDTOs;
         }

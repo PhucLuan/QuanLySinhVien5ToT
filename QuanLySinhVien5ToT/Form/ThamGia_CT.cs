@@ -362,58 +362,27 @@ namespace QuanLySinhVien5ToT
 
         private void txtMssv_TS_Leave(object sender, EventArgs e)
         {
-            if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
-            {
-                MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
+            //{
+            //    MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         void maxlength()
         {
             txtMssv_TS.MaxLength = 11;
            
         }
-        public enum EnumGiai
-        {
-            No,
-            Giai_Nhat,
-            Giai_Nhi,
-            Giai_Ba,
-        }
 
         private void dtgv_TT_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //if (e.ColumnIndex == 4)
-            //{
-            //    e.Value = ((EnumGiai)1).ToString();
-            //}
+            
 
         }
 
         private void dtgv_TT_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            //if (e.RowIndex == -1) return;
-            //dtgv_TT[4, e.RowIndex].Value = (EnumGiai)1;
+            
         }
-        //public string Description(this Enum value)
-        //{
-        //    if (value == null)
-        //    {
-        //        throw new ArgumentNullException("value");
-        //    }
-
-        //    string description = value.ToString();
-        //    FieldInfo fieldInfo = value.GetType().GetField(description);
-        //    DescriptionAttribute[] attributes =
-        //       (DescriptionAttribute[])
-        //     fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
-        //    if (attributes != null && attributes.Length > 0)
-        //    {
-        //        description = attributes[0].Description;
-        //    }
-
-        //    return description;
-        //}
     }
     
 }

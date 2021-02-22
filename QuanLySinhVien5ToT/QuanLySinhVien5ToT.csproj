@@ -75,6 +75,7 @@
     <Compile Include="BLL\Edit_RoleBLL.cs" />
     <Compile Include="BLL\HocKyXetDiemBLL.cs" />
     <Compile Include="BLL\KQ_Theo_tcBLL.cs" />
+    <Compile Include="BLL\LoginBLL.cs" />
     <Compile Include="BLL\QL_Chuong_TrinhBLL.cs" />
     <Compile Include="BLL\QL_DiemBLL.cs" />
     <Compile Include="BLL\QL_DV_BLL.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="DAL\QuyDinhDiemDAL.cs" />
     <Compile Include="DAL\ThamGia_ChuongtrinhDAL.cs" />
     <Compile Include="DAL\ThoiDiemSV_ThamGiaDAL.cs" />
+    <Compile Include="DAL\ThongTinPQ_DAL.cs" />
     <Compile Include="DAL\ThucHien_TieuChuanDAL.cs" />
     <Compile Include="DIEM.cs">
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
@@ -152,6 +154,7 @@
     <Compile Include="DTO\ThanGia_ChuongtrinhDTO.cs" />
     <Compile Include="DTO\ThoiDiemSV_ThamGiaDTO.cs" />
     <Compile Include="DTO\Thoi_Gian_XetDTO.cs" />
+    <Compile Include="DTO\ThongTinPQ_DTO.cs" />
     <Compile Include="DTO\ThucHien_TieuChuanDTO.cs" />
     <Compile Include="DTO\Tieu_ChiDTO.cs" />
     <Compile Include="DTO\Tieu_ChuanDTO.cs" />

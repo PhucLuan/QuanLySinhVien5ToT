@@ -32,11 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgv_NV = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ID_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Them_NV = new Guna.UI2.WinForms.Guna2Panel();
             this.txtIDnv = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,6 +64,14 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnThemNV = new Guna.UI2.WinForms.Guna2Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbDonVi = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.ID_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_NV)).BeginInit();
             this.pn_Them_NV.SuspendLayout();
             this.pn_User.SuspendLayout();
@@ -97,6 +100,7 @@
             this.ID_NV,
             this.Email,
             this.TenNV,
+            this.DonVi,
             this.Sua,
             this.Xoa});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -140,48 +144,12 @@
             this.dtgv_NV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_NV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_NV_CellContentClick);
             // 
-            // ID_NV
-            // 
-            this.ID_NV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID_NV.DataPropertyName = "IDnv";
-            this.ID_NV.HeaderText = "ID_NV";
-            this.ID_NV.Name = "ID_NV";
-            this.ID_NV.Width = 71;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            // 
-            // TenNV
-            // 
-            this.TenNV.DataPropertyName = "Name";
-            this.TenNV.HeaderText = "Tên";
-            this.TenNV.Name = "TenNV";
-            // 
-            // Sua
-            // 
-            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sua.HeaderText = "";
-            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
-            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Sua.Name = "Sua";
-            this.Sua.Width = 20;
-            // 
-            // Xoa
-            // 
-            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xoa.HeaderText = "";
-            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
-            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xoa.Name = "Xoa";
-            this.Xoa.Width = 20;
-            // 
             // pn_Them_NV
             // 
             this.pn_Them_NV.BorderRadius = 20;
+            this.pn_Them_NV.Controls.Add(this.label9);
             this.pn_Them_NV.Controls.Add(this.txtIDnv);
+            this.pn_Them_NV.Controls.Add(this.cbDonVi);
             this.pn_Them_NV.Controls.Add(this.label7);
             this.pn_Them_NV.Controls.Add(this.btnLuuNV);
             this.pn_Them_NV.Controls.Add(this.txtEmail_TS);
@@ -195,7 +163,7 @@
             this.pn_Them_NV.Location = new System.Drawing.Point(676, 116);
             this.pn_Them_NV.Name = "pn_Them_NV";
             this.pn_Them_NV.ShadowDecoration.Parent = this.pn_Them_NV;
-            this.pn_Them_NV.Size = new System.Drawing.Size(340, 233);
+            this.pn_Them_NV.Size = new System.Drawing.Size(340, 285);
             this.pn_Them_NV.TabIndex = 1;
             this.pn_Them_NV.Visible = false;
             // 
@@ -231,7 +199,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(15, 77);
+            this.label7.Location = new System.Drawing.Point(15, 76);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 15);
             this.label7.TabIndex = 42;
@@ -247,7 +215,7 @@
             this.btnLuuNV.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuNV.ForeColor = System.Drawing.Color.White;
             this.btnLuuNV.HoverState.Parent = this.btnLuuNV;
-            this.btnLuuNV.Location = new System.Drawing.Point(265, 190);
+            this.btnLuuNV.Location = new System.Drawing.Point(265, 237);
             this.btnLuuNV.Name = "btnLuuNV";
             this.btnLuuNV.ShadowDecoration.Parent = this.btnLuuNV;
             this.btnLuuNV.Size = new System.Drawing.Size(60, 35);
@@ -314,7 +282,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(15, 160);
+            this.label1.Location = new System.Drawing.Point(15, 161);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 15);
             this.label1.TabIndex = 19;
@@ -326,7 +294,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(15, 119);
+            this.label3.Location = new System.Drawing.Point(15, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 15);
             this.label3.TabIndex = 18;
@@ -441,7 +409,7 @@
             this.txtXacNhan.HoverState.Parent = this.txtXacNhan;
             this.txtXacNhan.Location = new System.Drawing.Point(91, 143);
             this.txtXacNhan.Name = "txtXacNhan";
-            this.txtXacNhan.PasswordChar = '\0';
+            this.txtXacNhan.PasswordChar = '*';
             this.txtXacNhan.PlaceholderText = "";
             this.txtXacNhan.SelectedText = "";
             this.txtXacNhan.ShadowDecoration.Parent = this.txtXacNhan;
@@ -529,7 +497,7 @@
             this.txtPassword.HoverState.Parent = this.txtPassword;
             this.txtPassword.Location = new System.Drawing.Point(91, 95);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderText = "";
             this.txtPassword.SelectedText = "";
             this.txtPassword.ShadowDecoration.Parent = this.txtPassword;
@@ -723,12 +691,89 @@
             this.btnThemNV.Text = "Thêm Nhân Viên";
             this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.Gray;
+            this.label9.Location = new System.Drawing.Point(17, 206);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 15);
+            this.label9.TabIndex = 56;
+            this.label9.Text = "Đơn Vi :";
+            // 
+            // cbDonVi
+            // 
+            this.cbDonVi.BackColor = System.Drawing.Color.Transparent;
+            this.cbDonVi.BorderRadius = 20;
+            this.cbDonVi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDonVi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.cbDonVi.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbDonVi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbDonVi.FocusedState.Parent = this.cbDonVi;
+            this.cbDonVi.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbDonVi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbDonVi.HoverState.Parent = this.cbDonVi;
+            this.cbDonVi.ItemHeight = 30;
+            this.cbDonVi.ItemsAppearance.Parent = this.cbDonVi;
+            this.cbDonVi.Location = new System.Drawing.Point(74, 195);
+            this.cbDonVi.Name = "cbDonVi";
+            this.cbDonVi.ShadowDecoration.Parent = this.cbDonVi;
+            this.cbDonVi.Size = new System.Drawing.Size(251, 36);
+            this.cbDonVi.TabIndex = 55;
+            // 
+            // ID_NV
+            // 
+            this.ID_NV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID_NV.DataPropertyName = "IDnv";
+            this.ID_NV.HeaderText = "ID_NV";
+            this.ID_NV.Name = "ID_NV";
+            this.ID_NV.Width = 71;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // TenNV
+            // 
+            this.TenNV.DataPropertyName = "Name";
+            this.TenNV.HeaderText = "Tên";
+            this.TenNV.Name = "TenNV";
+            // 
+            // DonVi
+            // 
+            this.DonVi.DataPropertyName = "DonVi";
+            this.DonVi.HeaderText = "Đơn Vị";
+            this.DonVi.Name = "DonVi";
+            // 
+            // Sua
+            // 
+            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sua.HeaderText = "";
+            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
+            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Sua.Name = "Sua";
+            this.Sua.Width = 20;
+            // 
+            // Xoa
+            // 
+            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xoa.HeaderText = "";
+            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
+            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Width = 20;
+            // 
             // QL_NHAN_VIEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.pn_User);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.btnThemNV);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.pn_Them_NV);
@@ -780,12 +825,15 @@
         private System.Windows.Forms.Label lbNumber;
         private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
         private Guna.UI2.WinForms.Guna2ImageButton btnNext;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.Label label9;
+        private Guna.UI2.WinForms.Guna2ComboBox cbDonVi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonVi;
         private System.Windows.Forms.DataGridViewImageColumn Sua;
         private System.Windows.Forms.DataGridViewImageColumn Xoa;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
     }
 }

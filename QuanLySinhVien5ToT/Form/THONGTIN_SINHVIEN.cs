@@ -27,8 +27,10 @@ namespace QuanLySinhVien5ToT
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         SinhVienBLL sinhVienBLL = new SinhVienBLL();
         //User_RoleBLL user_RoleBLL = new User_RoleBLL();
+        List<ThongTinPQ_DTO> listPQ_SV = Login.listPQ;
         private void THONGTIN_SINHVIEN_Load(object sender, EventArgs e)
         {
+            
             ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             loadcbFillterDonVi();
             loadcbFillterKhoa();
@@ -38,9 +40,20 @@ namespace QuanLySinhVien5ToT
             loadcbDonVi();
             TXTSEARCH();
             loadcbRole();
-            //SuggestTxtMssv();
+            //var listadmin = listPQ_SV.Select(x => x.Role).ToArray().First();
 
-            //Fillter();
+            if (listPQ_SV.Select(x => x.Role).ToArray().First()== "admin") 
+            {               
+                cbFillter_DonVi.Enabled = false;
+                cbDonVi.Enabled = false;
+                dtgv_SV.ReadOnly = true;               
+            }
+            else
+            {
+                cbFillter_DonVi.Enabled = true;
+                cbDonVi.Enabled = true;
+                dtgv_SV.ReadOnly = true;
+            }
         }
         void ShowSinhVien(List<Sinh_VienDTO> listsv)
         {
@@ -62,6 +75,17 @@ namespace QuanLySinhVien5ToT
             txtXacNhanMK.Text = "";
             txtUserName.Text = "";
             txtPassword.Text = "";
+
+            txtMssv.Enabled = true;
+            txtHoTen.Enabled = true;
+            dtpkNgaySinh.Enabled = true;
+            txtNoiSinh.Enabled = true;
+            cbGioiTinh.Enabled = true;
+            cbKhoa.Enabled = true;
+            cbDonVi.Enabled = true;
+            txtLop.Enabled = true;
+            txtSDT.Enabled = true;
+            txtEmail.Enabled = true;
 
             txtUserName.BorderColor = Color.FromArgb(213, 218, 223);
             txtUserName.PlaceholderText = "";
@@ -118,7 +142,16 @@ namespace QuanLySinhVien5ToT
                 btnLuuSV.Visible = false;
                 btnThemKQ.Enabled = false;
                 bindingSV();
-                pn_ThemSua.Enabled = false;
+                txtMssv.Enabled=false;
+                txtHoTen.Enabled = false;
+                dtpkNgaySinh.Enabled = false;
+                txtNoiSinh.Enabled = false;
+                cbGioiTinh.Enabled = false;
+                cbKhoa.Enabled = false;
+                cbDonVi.Enabled = false;
+                txtLop.Enabled = false;
+                txtSDT.Enabled = false;
+                txtEmail.Enabled = false;
             }
             if (name == "Sua")
             {
@@ -128,11 +161,19 @@ namespace QuanLySinhVien5ToT
                 btnLuuSV.Visible = true;
                 flagLuu = 1;
                 pn_ThemSua.Enabled = true;
-                txtMssv.Enabled = true;
                 dtgv_SV.Height = 385;
                 dtgv_SV.Location = new Point(14, 223);
                 btnThemKQ.Location = new Point(867, 172);
                 txtMssv.Enabled = false;
+                txtHoTen.Enabled = true;
+                dtpkNgaySinh.Enabled = true;
+                txtNoiSinh.Enabled = true;
+                cbGioiTinh.Enabled = true;
+                cbKhoa.Enabled = true;
+                cbDonVi.Enabled = true;
+                txtLop.Enabled = true;
+                txtSDT.Enabled = true;
+                txtEmail.Enabled = true;
                 clear();
                 maxlength();
                 designbtnSua();
@@ -255,7 +296,7 @@ namespace QuanLySinhVien5ToT
                             sinhvien.IDuser = iduser;
 
                             sinhVienBLL.Add(sinhvien);
-                            MessageBox.Show("Lưu Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         
                     }
@@ -354,8 +395,8 @@ namespace QuanLySinhVien5ToT
             cbFillter_DonVi.DataSource = sinhVienBLL.GetAlDonVi();
             cbFillter_DonVi.DisplayMember = "MaDonVi";
             cbFillter_DonVi.ValueMember = "MaDonVi";
-            cbFillter_DonVi.SelectedItem = null;
-            cbFillter_DonVi.Text = "BIT";
+            //cbFillter_DonVi.SelectedItem = null;
+            cbFillter_DonVi.Text = listPQ_SV.Select(x=>x.DonVi).ToArray().First().ToString();
         }
         void loadcbFillterKhoa()
         {
@@ -369,6 +410,13 @@ namespace QuanLySinhVien5ToT
             cbFillter_Khoa.Items.Add("K46");
             cbFillter_Khoa.SelectedItem = null;
             cbFillter_Khoa.Text = "K44";
+        }
+        void loadcbRole()
+        {
+            cbRole.DataSource = sinhVienBLL.dsrole();
+            cbRole.DisplayMember = "Role";
+            cbRole.ValueMember = "IDrole";
+            cbRole.Text = "user";
         }
         void loadtxtFillter()
         {
@@ -568,15 +616,15 @@ namespace QuanLySinhVien5ToT
                 designbtnSua();
                 USER us = sinhVienBLL.GetUser(x => x.Username.Trim()==txtUserName.Text.Trim()||x.Password.Trim()==txtPassword.Text.Trim());
                 if (us == null)
-                {
-                    us = new USER();
-                    us.Username = txtUserName.Text;
-                    us.Password = txtPassword.Text;
-                    us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
+                {                  
                     if (txtPassword.Text == txtXacNhanMK.Text)
                     {
+                        us = new USER();
+                        us.Username = txtUserName.Text;
+                        us.Password = sinhVienBLL.Mahoa(txtPassword.Text);
+                        us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
                         sinhVienBLL.AddUser(us);
-                        MessageBox.Show("Thêm User Thành Công");
+                        MessageBox.Show("Thêm User Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -588,25 +636,31 @@ namespace QuanLySinhVien5ToT
                         dtgv_SV.Location = new Point(14, 166);
                         btnThemKQ.Location = new Point(867, 116);
                         cbRole.Enabled = false;
-                        MessageBox.Show("xác nhận mật khẩu không đúng");
+                        MessageBox.Show("Xác nhận mật khẩu không đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtXacNhanMK.Text = "";
                     }
                 }
                 else
                 {
-                    MessageBox.Show("username hoặc password của bạn đã bị trùng");
+                    MessageBox.Show("Username hoặc password của bạn đã bị trùng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    pn_Sort.Visible = false;
+                    pn_ThemSua.Visible = false;
+                    pn_ThemTaiKhoan.Visible = true;
+                    btnLuuSV.Visible = false;
+
+                    dtgv_SV.Height = 442;
+                    dtgv_SV.Location = new Point(14, 166);
+                    btnThemKQ.Location = new Point(867, 116);
+                    cbRole.Enabled = false;
+                    txtXacNhanMK.Text = "";
+                    txtUserName.Text = "";
+                    txtPassword.Text = "";
                 }
                  
             }
             
         }
-        void loadcbRole()
-        {
-            cbRole.DataSource = sinhVienBLL.dsrole();
-            cbRole.DisplayMember = "Role";
-            cbRole.ValueMember = "IDrole";
-            cbRole.Text = "user";
-        }
+        
 
         private void btnXUser_Click(object sender, EventArgs e)
         {
@@ -628,18 +682,18 @@ namespace QuanLySinhVien5ToT
 
         private void txtMssv_Leave(object sender, EventArgs e)
         {
-            if(txtMssv.TextLength<11 || txtMssv.TextLength > 11)
-            {
-                MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if(txtMssv.TextLength<11 || txtMssv.TextLength > 11)
+            //{
+            //    MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void txtSDT_Leave(object sender, EventArgs e)
         {
-            if (txtSDT.TextLength < 11 || txtSDT.TextLength > 11)
-            {
-                MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (txtSDT.TextLength < 11 || txtSDT.TextLength > 11)
+            //{
+            //    MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }

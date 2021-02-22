@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using QuanLySinhVien5ToT.DTO;
 
 namespace QuanLySinhVien5ToT
 {
@@ -17,11 +17,13 @@ namespace QuanLySinhVien5ToT
         {
             InitializeComponent();
         }
+        List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
         private void TrangChu_Load(object sender, EventArgs e)
         {
-            Visible_pn();
-            showTrangChu();
-            pn_Menu.Width = 60;
+            
+            
+            
+
         }
 
         
@@ -78,7 +80,7 @@ namespace QuanLySinhVien5ToT
         private void Visible_pn()
         {
             pn_Diem_SubMenu.Visible = false;
-            pn_QD_SubMenu.Visible = false;
+           
             pn_SinhVienSubmenu.Visible = false;
             pn_TCvsCT_SubMenu.Visible = false;
         }
@@ -90,8 +92,7 @@ namespace QuanLySinhVien5ToT
                 pn_TCvsCT_SubMenu.Visible = false;
             if (pn_Diem_SubMenu.Visible == true)
                 pn_Diem_SubMenu.Visible = false;
-            if (pn_QD_SubMenu.Visible == true)
-                pn_QD_SubMenu.Visible = false;
+            
         }
         private void showMenu(Panel Submenu)
         {
@@ -236,33 +237,29 @@ namespace QuanLySinhVien5ToT
             showMenu(pn_Diem_SubMenu);
         }
 
-        private void btn_TD_QD_Click(object sender, EventArgs e)
-        {
-            showMenu(pn_QD_SubMenu);
-        }
+        
 
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
         {
-            showDangNhap();
-            //pn_DangNhap.Location = new Point(860, 23);
-            //pn_control.Controls.Add(pn_DangNhap);
+            showDangNhap();            
+                      
         }
         private void showDangNhap()
         {
-            if (pn_DangNhap.Visible == false && pictureBox_Arrow.Visible==false)
+            if (pn_DangNhap.Visible == false )
             {
-                //pn_DangNhap.Location = new Point(860, 23);
-                //pn_control.Controls.Add(pn_DangNhap);
-                //pn_DangNhap.BringToFront();
-                pn_DangNhap.Visible = true;
-                pictureBox_Arrow.Visible = true;
+
+                pn_DangNhap.BringToFront();
+                btn_DangNhap.BringToFront();
+                btn_DangXuat.BringToFront();
+                pn_DangNhap.Visible = true;               
                 btn_DangNhap.Visible = true;
                 btn_DangXuat.Visible = true;
+                
             }
             else
-            {
-                pn_DangNhap.Visible = false;
-                pictureBox_Arrow.Visible = false;
+            {               
+                pn_DangNhap.Visible = false;               
                 btn_DangNhap.Visible = false;
                 btn_DangXuat.Visible = false;
             }
@@ -289,6 +286,33 @@ namespace QuanLySinhVien5ToT
             US.Location = new Point(0, 0);
             pn_control.Controls.Add(US);
             HideSubMenu();
+        }
+
+        private void btn_DangNhap_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            lg.Location = new Point(375, 51);
+            pn_control.Controls.Add(lg);
+            lg.BringToFront();
+            //HideSubMenu();
+        }
+
+        private void Trang_Chu_Activated(object sender, EventArgs e)
+        {
+            Visible_pn();
+            showTrangChu();
+            pn_Menu.Width = 60;
+            if (!listPQ_TC.Any())
+            {
+                lbName.Visible = true;
+                btn_TTSV.Enabled = false;
+            }
+            else
+            {
+                lbName.Visible = true;
+                btn_TTSV.Enabled = true;
+                lbName.Text = listPQ_TC.Select(x => x.Name).ToArray().First().ToString();
+            }
         }
     }
 }

@@ -103,6 +103,7 @@ namespace QuanLySinhVien5ToT
                     USER us = User_RoleBLL.Get(x => x.IDuser.ToString() == txtUserID.Text.Trim());
                     if (us == null)
                     {
+                        txtPassword.Text = User_RoleBLL.Mahoa(txtPassword.Text);
                         us = new USER();
                         us.Username = txtUsername.Text;
                         us.Password = txtPassword.Text;

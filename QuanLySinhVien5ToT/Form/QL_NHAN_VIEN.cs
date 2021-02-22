@@ -30,6 +30,7 @@ namespace QuanLySinhVien5ToT
             loadcbRole();
             TXTSEARCH();
             maxlength();
+            loadcbDV();
         }
         void loadNV(List<NhanVienDTO> listNV)
         {
@@ -121,6 +122,7 @@ namespace QuanLySinhVien5ToT
                     nv = new NHANVIEN();
                     nv.Email = txtEmail_TS.Text;
                     nv.Name = txtTenNV_TS.Text;
+                    nv.DonVi = cbDonVi.Text;
                     List<USER> us = db.USERs.ToList();
                     int iduser = us.Last().IDuser;
                     nv.IDuser = iduser;
@@ -141,7 +143,7 @@ namespace QuanLySinhVien5ToT
 
                     nv.Email = txtEmail_TS.Text;
                     nv.Name = txtTenNV_TS.Text;
-
+                    nv.DonVi = cbDonVi.Text;
 
                     QL_NhanVienBLL.Edit(nv);
                     MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -198,12 +200,13 @@ namespace QuanLySinhVien5ToT
                 USER us = QL_NhanVienBLL.GetUser(x => x.Username.Trim() == txtUsername.Text.Trim() || x.Password.Trim() == txtPassword.Text.Trim());
                 if (us == null)
                 {
-                    us = new USER();
-                    us.Username = txtUsername.Text;
-                    us.Password = txtPassword.Text;
-                    us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
+                    
+                    us = new USER();                    
                     if (txtPassword.Text == txtXacNhan.Text)
                     {
+                        us.Username = txtUsername.Text;
+                        us.Password = QL_NhanVienBLL.Mahoa(txtPassword.Text);
+                        us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
                         QL_NhanVienBLL.AddUser(us);
                         MessageBox.Show("Thêm User thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -214,13 +217,18 @@ namespace QuanLySinhVien5ToT
                         pn_User.Visible = true;
                         dtgv_NV.Width = 651;
                         cbRole.Enabled = false;
-                        MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtXacNhan.Text = "";
+                        MessageBox.Show("xác nhận mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtXacNhan.Text = "";                     
                     }
                 }
                 else
                 {
                     MessageBox.Show("Username hoặc passwwork của bạn đã bị trùng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    pn_Them_NV.Visible = false;
+                    btnLuuNV.Visible = false;
+                    pn_User.Visible = true;
+                    dtgv_NV.Width = 651;
+                    txtIDnv.Enabled = true;
                 }
 
             }
@@ -240,6 +248,12 @@ namespace QuanLySinhVien5ToT
             cbRole.ValueMember = "IDrole";
             cbRole.Text = "user";
         }
+        void loadcbDV()
+        {
+            cbDonVi.DataSource = QL_NhanVienBLL.dsdonvi();
+            cbDonVi.DisplayMember = "MaDonVi";
+            cbDonVi.ValueMember = "MaDonVi";
+        }
         void binding()
         {
             txtIDnv.DataBindings.Clear();
@@ -248,6 +262,8 @@ namespace QuanLySinhVien5ToT
             txtEmail_TS.DataBindings.Add("Text", dtgv_NV.DataSource, "Email");
             txtTenNV_TS.DataBindings.Clear();
             txtTenNV_TS.DataBindings.Add("Text", dtgv_NV.DataSource, "Name");
+            cbDonVi.DataBindings.Clear();
+            cbDonVi.DataBindings.Add("Text", dtgv_NV.DataSource, "DonVi");
 
         }
 
@@ -301,6 +317,11 @@ namespace QuanLySinhVien5ToT
             txtEmail_TS.MaxLength = 100;
             txtTenNV_TS.MaxLength = 100;
             txtXacNhan.MaxLength = 50;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(QL_NhanVienBLL.Mahoa(txtPassword.Text));
         }
     }
 }

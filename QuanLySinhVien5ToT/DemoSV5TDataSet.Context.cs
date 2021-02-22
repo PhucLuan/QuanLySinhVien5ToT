@@ -32,7 +32,6 @@ namespace QuanLySinhVien5ToT
         public virtual DbSet<HOCKY_XETDIEM> HOCKY_XETDIEM { get; set; }
         public virtual DbSet<LOAI_DIEM> LOAI_DIEM { get; set; }
         public virtual DbSet<LOAI_TIEU_CHUAN> LOAI_TIEU_CHUAN { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<QUYDINH_DIEM> QUYDINH_DIEM { get; set; }
         public virtual DbSet<ROLE> ROLEs { get; set; }
         public virtual DbSet<SINH_VIEN> SINH_VIEN { get; set; }
@@ -45,5 +44,6 @@ namespace QuanLySinhVien5ToT
         public virtual DbSet<THOIDIEM_SV_THAMGIA> THOIDIEM_SV_THAMGIA { get; set; }
         public virtual DbSet<THAMGIA_CHUONGTRINH> THAMGIA_CHUONGTRINH { get; set; }
         public virtual DbSet<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
+        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
     }
 }

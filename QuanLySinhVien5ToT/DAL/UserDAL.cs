@@ -25,5 +25,9 @@ namespace QuanLySinhVien5ToT.DAL
                           }).ToList();            
             return UserDTO;
         }
+        //public int GetIDUser(string username, string passwword)
+        //{
+            
+        //}
     }
 }
