@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QuanLySinhVien5ToT.DAL;
 using QuanLySinhVien5ToT.DTO;
+using QuanLySinhVien5ToT.Services;
 
 namespace QuanLySinhVien5ToT.BLL
 {
@@ -21,6 +22,7 @@ namespace QuanLySinhVien5ToT.BLL
         public void Add(DIEM entity)
         {
             unitOfWorkNV.Repository<DIEM>().Add(entity);
+            ReviewScroreService.ReviewScrore(Mydb.GetInstance(), entity);
             unitOfWorkNV.SaveChanges();
         }
         public void Delete(DIEM entity)

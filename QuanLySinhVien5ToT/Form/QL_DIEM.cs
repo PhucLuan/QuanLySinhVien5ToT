@@ -95,62 +95,68 @@ namespace QuanLySinhVien5ToT
                         diem = new DIEM();
                         diem.Mssv = txtMssv_TS.Text;
                         diem.MaLoaiDiem = Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString());
-                        if (cbLoaiDiem== "Điểm rèn luyện")
-                        {
-                            if(Convert.ToInt32(txtDiem_TS.Text)<=100 && Convert.ToInt32(txtDiem_TS.Text) >=50)
-                            {
-                                diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
-                                diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                                QL_DiemBLL.Add(diem);
-                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                pn_Them_Sua.Visible = true;
-                                dtgv_Diem.Width = 730;
-                                btnLuuDiem.Visible = true;
-                                txtDiem_TS.Text = "";
-                                MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
+                        diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
+                        diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                        QL_DiemBLL.Add(diem);
+                        //if (cbLoaiDiem== "Điểm rèn luyện")
+                        //{
+                        //    if(Convert.ToInt32(txtDiem_TS.Text)<=100 && Convert.ToInt32(txtDiem_TS.Text) >=50)
+                        //    {
+                        //        diem = new DIEM();
+                        //        diem.Mssv = txtMssv_TS.Text;
+                        //        diem.MaLoaiDiem = Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString());
+                        //        diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
+                        //        diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                        //        QL_DiemBLL.Add(diem);
+                        //        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //    }
+                        //    else
+                        //    {
+                        //        pn_Them_Sua.Visible = true;
+                        //        dtgv_Diem.Width = 730;
+                        //        btnLuuDiem.Visible = true;
+                        //        txtDiem_TS.Text = "";
+                        //        MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
                                 
-                            }
-                        }
-                        if(cbLoaiDiem== "Điểm học tập" || cbLoaiDiem== "Điểm Kỹ năng mềm")
-                        {
-                            if(Convert.ToInt32(txtDiem_TS.Text)>0 && Convert.ToInt32(txtDiem_TS.Text) <= 10)
-                            {
-                                diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
-                                diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                                QL_DiemBLL.Add(diem);
-                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                pn_Them_Sua.Visible = true;
-                                dtgv_Diem.Width = 730;
-                                btnLuuDiem.Visible = true;
-                                txtDiem_TS.Text = "";
-                                MessageBox.Show("Điểm học tập phải >0 và <=10");
+                        //    }
+                        //}
+                        //if(cbLoaiDiem== "Điểm học tập" || cbLoaiDiem== "Điểm Kỹ năng mềm")
+                        //{
+                        //    if(Convert.ToInt32(txtDiem_TS.Text)>0 && Convert.ToInt32(txtDiem_TS.Text) <= 10)
+                        //    {
+                        //        diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
+                        //        diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                        //        QL_DiemBLL.Add(diem);
+                        //        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //    }
+                        //    else
+                        //    {
+                        //        pn_Them_Sua.Visible = true;
+                        //        dtgv_Diem.Width = 730;
+                        //        btnLuuDiem.Visible = true;
+                        //        txtDiem_TS.Text = "";
+                        //        MessageBox.Show("Điểm học tập phải >0 và <=10");
                                 
-                            }
-                        }
-                        if (cbLoaiDiem == "Điểm xếp loại đoàn viên")
-                        {
-                            if (Convert.ToInt32(txtDiem_TS.Text) >=75)
-                            {
-                                diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
-                                diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                                QL_DiemBLL.Add(diem);
-                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                pn_Them_Sua.Visible = true;
-                                dtgv_Diem.Width = 730;
-                                btnLuuDiem.Visible = true;
-                                txtDiem_TS.Text = "";
-                                MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
-                            }
-                        }
+                        //    }
+                        //}
+                        //if (cbLoaiDiem == "Điểm xếp loại đoàn viên")
+                        //{
+                        //    if (Convert.ToInt32(txtDiem_TS.Text) >=75)
+                        //    {
+                        //        diem.Diem1 = Convert.ToInt32(txtDiem_TS.Text);
+                        //        diem.MaHocKy = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                        //        QL_DiemBLL.Add(diem);
+                        //        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //    }
+                        //    else
+                        //    {
+                        //        pn_Them_Sua.Visible = true;
+                        //        dtgv_Diem.Width = 730;
+                        //        btnLuuDiem.Visible = true;
+                        //        txtDiem_TS.Text = "";
+                        //        MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
+                        //    }
+                        //}
                     }
                     else
                     {

@@ -42,18 +42,18 @@ namespace QuanLySinhVien5ToT
             loadcbRole();
             //var listadmin = listPQ_SV.Select(x => x.Role).ToArray().First();
 
-            if (listPQ_SV.Select(x => x.Role).ToArray().First()== "admin") 
-            {               
-                cbFillter_DonVi.Enabled = false;
-                cbDonVi.Enabled = false;
-                dtgv_SV.ReadOnly = true;               
-            }
-            else
-            {
-                cbFillter_DonVi.Enabled = true;
-                cbDonVi.Enabled = true;
-                dtgv_SV.ReadOnly = true;
-            }
+            //if (listPQ_SV.Select(x => x.Role).ToArray().First()== "admin") 
+            //{               
+            //    cbFillter_DonVi.Enabled = false;
+            //    cbDonVi.Enabled = false;
+            //    dtgv_SV.ReadOnly = true;               
+            //}
+            //else
+            //{
+            //    cbFillter_DonVi.Enabled = true;
+            //    cbDonVi.Enabled = true;
+            //    dtgv_SV.ReadOnly = true;
+            //}
         }
         void ShowSinhVien(List<Sinh_VienDTO> listsv)
         {
@@ -396,7 +396,7 @@ namespace QuanLySinhVien5ToT
             cbFillter_DonVi.DisplayMember = "MaDonVi";
             cbFillter_DonVi.ValueMember = "MaDonVi";
             //cbFillter_DonVi.SelectedItem = null;
-            cbFillter_DonVi.Text = listPQ_SV.Select(x=>x.DonVi).ToArray().First().ToString();
+            //cbFillter_DonVi.Text = listPQ_SV.Select(x=>x.DonVi).ToArray().First().ToString();
         }
         void loadcbFillterKhoa()
         {

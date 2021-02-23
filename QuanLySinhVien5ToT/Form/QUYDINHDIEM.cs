@@ -120,13 +120,14 @@ namespace QuanLySinhVien5ToT
                     && x.Mathoigian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString())
                     && x.MaTieuChuan == Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString()));
                     if (qd == null)
-                    {
-                        qd = new QUYDINH_DIEM();
-                        qd.MaLoaiDiem = Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString());
+                    {   
+                        
                         if (cbLoaiDiem == "Điểm rèn luyện")
                         {
                             if (Convert.ToInt32(txtDiemToiThieu.Text) <= 100 && Convert.ToInt32(txtDiemToiThieu.Text) >= 50)
                             {
+                                qd = new QUYDINH_DIEM();
+                                qd.MaLoaiDiem = Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString());
                                 qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
                                 qd.MaDonVi = cbDonVi_TS.Text;
                                 qd.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());

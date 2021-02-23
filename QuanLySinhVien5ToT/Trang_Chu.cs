@@ -17,12 +17,16 @@ namespace QuanLySinhVien5ToT
         {
             InitializeComponent();
         }
-        List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
+        
+
         private void TrangChu_Load(object sender, EventArgs e)
         {
             
+            Visible_pn();
+            showTrangChu();
+            pn_Menu.Width = 60;
             
-            
+
 
         }
 
@@ -294,18 +298,19 @@ namespace QuanLySinhVien5ToT
             lg.Location = new Point(375, 51);
             pn_control.Controls.Add(lg);
             lg.BringToFront();
-            //HideSubMenu();
         }
 
         private void Trang_Chu_Activated(object sender, EventArgs e)
         {
-            Visible_pn();
-            showTrangChu();
-            pn_Menu.Width = 60;
+            LoadPQ();
+        }
+        public void LoadPQ()
+        {
+            List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
             if (!listPQ_TC.Any())
             {
                 lbName.Visible = true;
-                btn_TTSV.Enabled = false;
+                btn_TTSV.Enabled = true;
             }
             else
             {
@@ -313,6 +318,11 @@ namespace QuanLySinhVien5ToT
                 btn_TTSV.Enabled = true;
                 lbName.Text = listPQ_TC.Select(x => x.Name).ToArray().First().ToString();
             }
+        }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+            Trang_Chu_Activated(sender, e);
         }
     }
 }
