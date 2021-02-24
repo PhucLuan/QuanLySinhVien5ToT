@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pn_ThemQuyDinh = new Guna.UI2.WinForms.Guna2Panel();
             this.cbTrangThai = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -113,7 +113,7 @@
             // cbTrangThai
             // 
             this.cbTrangThai.BackColor = System.Drawing.Color.Transparent;
-            this.cbTrangThai.BorderRadius = 20;
+            this.cbTrangThai.BorderRadius = 10;
             this.cbTrangThai.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrangThai.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -156,7 +156,7 @@
             // 
             // txtMaQuyDinh_TS
             // 
-            this.txtMaQuyDinh_TS.BorderRadius = 20;
+            this.txtMaQuyDinh_TS.BorderRadius = 10;
             this.txtMaQuyDinh_TS.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaQuyDinh_TS.DefaultText = "";
             this.txtMaQuyDinh_TS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -181,7 +181,7 @@
             // cbThoiGian_TS
             // 
             this.cbThoiGian_TS.BackColor = System.Drawing.Color.Transparent;
-            this.cbThoiGian_TS.BorderRadius = 20;
+            this.cbThoiGian_TS.BorderRadius = 10;
             this.cbThoiGian_TS.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbThoiGian_TS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbThoiGian_TS.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -232,7 +232,7 @@
             // cbTieuChuan_TS
             // 
             this.cbTieuChuan_TS.BackColor = System.Drawing.Color.Transparent;
-            this.cbTieuChuan_TS.BorderRadius = 20;
+            this.cbTieuChuan_TS.BorderRadius = 10;
             this.cbTieuChuan_TS.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbTieuChuan_TS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTieuChuan_TS.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -294,7 +294,7 @@
             // cbDonVi_TS
             // 
             this.cbDonVi_TS.BackColor = System.Drawing.Color.Transparent;
-            this.cbDonVi_TS.BorderRadius = 20;
+            this.cbDonVi_TS.BorderRadius = 10;
             this.cbDonVi_TS.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbDonVi_TS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDonVi_TS.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -338,7 +338,7 @@
             // cbLoaiDiem_TS
             // 
             this.cbLoaiDiem_TS.BackColor = System.Drawing.Color.Transparent;
-            this.cbLoaiDiem_TS.BorderRadius = 20;
+            this.cbLoaiDiem_TS.BorderRadius = 10;
             this.cbLoaiDiem_TS.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbLoaiDiem_TS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLoaiDiem_TS.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -349,10 +349,10 @@
             this.cbLoaiDiem_TS.HoverState.Parent = this.cbLoaiDiem_TS;
             this.cbLoaiDiem_TS.ItemHeight = 30;
             this.cbLoaiDiem_TS.ItemsAppearance.Parent = this.cbLoaiDiem_TS;
-            this.cbLoaiDiem_TS.Location = new System.Drawing.Point(89, 93);
+            this.cbLoaiDiem_TS.Location = new System.Drawing.Point(118, 93);
             this.cbLoaiDiem_TS.Name = "cbLoaiDiem_TS";
             this.cbLoaiDiem_TS.ShadowDecoration.Parent = this.cbLoaiDiem_TS;
-            this.cbLoaiDiem_TS.Size = new System.Drawing.Size(275, 36);
+            this.cbLoaiDiem_TS.Size = new System.Drawing.Size(246, 36);
             this.cbLoaiDiem_TS.TabIndex = 46;
             // 
             // label4
@@ -369,7 +369,7 @@
             // 
             // txtDiemToiThieu
             // 
-            this.txtDiemToiThieu.BorderRadius = 20;
+            this.txtDiemToiThieu.BorderRadius = 10;
             this.txtDiemToiThieu.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDiemToiThieu.DefaultText = "";
             this.txtDiemToiThieu.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -391,11 +391,12 @@
             this.txtDiemToiThieu.Size = new System.Drawing.Size(246, 36);
             this.txtDiemToiThieu.TabIndex = 45;
             this.txtDiemToiThieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiemToiThieu_KeyPress);
+            this.txtDiemToiThieu.Leave += new System.EventHandler(this.txtDiemToiThieu_Leave);
             // 
             // cbFillter_DV
             // 
             this.cbFillter_DV.BackColor = System.Drawing.Color.Transparent;
-            this.cbFillter_DV.BorderRadius = 20;
+            this.cbFillter_DV.BorderRadius = 10;
             this.cbFillter_DV.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbFillter_DV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFillter_DV.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -475,7 +476,7 @@
             // cbFillter_LD
             // 
             this.cbFillter_LD.BackColor = System.Drawing.Color.Transparent;
-            this.cbFillter_LD.BorderRadius = 20;
+            this.cbFillter_LD.BorderRadius = 10;
             this.cbFillter_LD.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbFillter_LD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFillter_LD.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -495,7 +496,7 @@
             // cbFillter_TG
             // 
             this.cbFillter_TG.BackColor = System.Drawing.Color.Transparent;
-            this.cbFillter_TG.BorderRadius = 20;
+            this.cbFillter_TG.BorderRadius = 10;
             this.cbFillter_TG.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbFillter_TG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFillter_TG.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -526,21 +527,21 @@
             // 
             // dtgvQuyDinh
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dtgvQuyDinh.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dtgvQuyDinh.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvQuyDinh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvQuyDinh.BackgroundColor = System.Drawing.Color.White;
             this.dtgvQuyDinh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvQuyDinh.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgvQuyDinh.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvQuyDinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvQuyDinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvQuyDinh.ColumnHeadersHeight = 40;
             this.dtgvQuyDinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaQuyDinhDiem,
@@ -552,14 +553,14 @@
             this.TrangThai,
             this.Sua,
             this.Xoa});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvQuyDinh.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvQuyDinh.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvQuyDinh.EnableHeadersVisualStyles = false;
             this.dtgvQuyDinh.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgvQuyDinh.Location = new System.Drawing.Point(16, 258);

@@ -40,6 +40,7 @@ namespace QuanLySinhVien5ToT
             loadcbDonVi();
             TXTSEARCH();
             loadcbRole();
+            maxlength();
             //var listadmin = listPQ_SV.Select(x => x.Role).ToArray().First();
 
             //if (listPQ_SV.Select(x => x.Role).ToArray().First()== "admin") 
@@ -63,19 +64,38 @@ namespace QuanLySinhVien5ToT
 
         private void btnThemKQ_Click(object sender, EventArgs e)
         {
+            clearThemUser();
+            editbtnThem();
+            dtgv_SV.Height = 442;
+            dtgv_SV.Location = new Point(14, 166);
+            btnThemKQ.Location = new Point(867, 116);
+                        
+
+            txtUserName.BorderColor = Color.FromArgb(213, 218, 223);
+            txtUserName.PlaceholderText = "";
+
+            txtPassword.BorderColor = Color.FromArgb(213, 218, 223);
+            txtPassword.PlaceholderText = "";
+
+            txtXacNhanMK.BorderColor = Color.FromArgb(213, 218, 223);
+            txtXacNhanMK.PlaceholderText = "";
+
+            //MessageBox.Show("Bạn phải tạo tài khoản trước");
+        }
+        void editbtnThem()
+        {
             pn_Sort.Visible = false;
             pn_ThemSua.Visible = false;
             pn_ThemTaiKhoan.Visible = true;
             btnLuuSV.Visible = false;
-
-            dtgv_SV.Height = 442;
-            dtgv_SV.Location = new Point(14, 166);
-            btnThemKQ.Location = new Point(867, 116);
-            cbRole.Enabled = false;
-            txtXacNhanMK.Text = "";
-            txtUserName.Text = "";
-            txtPassword.Text = "";
-
+            cbRole.Enabled = false; 
+        }
+        void editbtnTiepTheo()
+        {
+            pn_Sort.Visible = false;
+            pn_ThemSua.Visible = true;
+            pn_ThemTaiKhoan.Visible = false;
+            btnLuuSV.Visible = true;
             txtMssv.Enabled = true;
             txtHoTen.Enabled = true;
             dtpkNgaySinh.Enabled = true;
@@ -86,22 +106,49 @@ namespace QuanLySinhVien5ToT
             txtLop.Enabled = true;
             txtSDT.Enabled = true;
             txtEmail.Enabled = true;
-
-            txtUserName.BorderColor = Color.FromArgb(213, 218, 223);
-            txtUserName.PlaceholderText = "";
-            txtUserName.PlaceholderForeColor = Color.Red;
-
-            txtPassword.BorderColor = Color.FromArgb(213, 218, 223);
-            txtPassword.PlaceholderText = "";
-            txtPassword.PlaceholderForeColor = Color.Red;
-
-            txtXacNhanMK.BorderColor = Color.FromArgb(213, 218, 223);
-            txtXacNhanMK.PlaceholderText = "";
-            txtXacNhanMK.PlaceholderForeColor = Color.Red;
-            MessageBox.Show("Bạn phải tạo tài khoản trước");
         }
-
-        void clear()
+        void editbtnxem()
+        {
+            pn_Sort.Visible = false;
+            pn_ThemSua.Visible = true;
+            btnLuuSV.Visible = false;
+            btnThemKQ.Enabled = false;
+            txtMssv.Enabled = false;
+            txtHoTen.Enabled = false;
+            dtpkNgaySinh.Enabled = false;
+            txtNoiSinh.Enabled = false;
+            cbGioiTinh.Enabled = false;
+            cbKhoa.Enabled = false;
+            cbDonVi.Enabled = false;
+            txtLop.Enabled = false;
+            txtSDT.Enabled = false;
+            txtEmail.Enabled = false;
+        }
+        void editbtnsua()
+        {
+            pn_Sort.Visible = false;
+            pn_ThemSua.Visible = true;
+            pn_ThemTaiKhoan.Visible = false;
+            btnLuuSV.Visible = true;
+            pn_ThemSua.Enabled = true;
+            txtMssv.Enabled = false;
+            txtHoTen.Enabled = true;
+            dtpkNgaySinh.Enabled = true;
+            txtNoiSinh.Enabled = true;
+            cbGioiTinh.Enabled = true;
+            cbKhoa.Enabled = true;
+            cbDonVi.Enabled = true;
+            txtLop.Enabled = true;
+            txtSDT.Enabled = true;
+            txtEmail.Enabled = true;
+        }
+        void clearThemUser()
+        {
+            txtXacNhanMK.Text = "";
+            txtUserName.Text = "";
+            txtPassword.Text = "";
+        }
+        void clearThemSV()
         {
             txtMssv.Text = "";
             txtHoTen.Text = "";
@@ -114,67 +161,34 @@ namespace QuanLySinhVien5ToT
         {
             txtMssv.BorderColor = Color.FromArgb(213, 218, 223);
             txtMssv.PlaceholderText = "";
-            txtMssv.PlaceholderForeColor = Color.White;
             txtHoTen.BorderColor = Color.FromArgb(213, 218, 223);
             txtHoTen.PlaceholderText = "";
-            txtHoTen.PlaceholderForeColor = Color.White;
             txtNoiSinh.BorderColor = Color.FromArgb(213, 218, 223);
             txtNoiSinh.PlaceholderText = "";
-            txtNoiSinh.PlaceholderForeColor = Color.White;
             txtEmail.BorderColor = Color.FromArgb(213, 218, 223);
             txtEmail.PlaceholderText = "";
-            txtEmail.PlaceholderForeColor = Color.White;
             txtSDT.BorderColor = Color.FromArgb(213, 218, 223);
             txtSDT.PlaceholderText = "";
-            txtSDT.PlaceholderForeColor = Color.White;
             txtLop.BorderColor = Color.FromArgb(213, 218, 223);
             txtLop.PlaceholderText = "";
-            txtLop.PlaceholderForeColor = Color.White;
         }
+        
 
         private void dtgv_SV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string name = dtgv_SV.Columns[e.ColumnIndex].Name;
             if (name == "Xem")
             {
-                pn_Sort.Visible = false;
-                pn_ThemSua.Visible = true;
-                btnLuuSV.Visible = false;
-                btnThemKQ.Enabled = false;
-                bindingSV();
-                txtMssv.Enabled=false;
-                txtHoTen.Enabled = false;
-                dtpkNgaySinh.Enabled = false;
-                txtNoiSinh.Enabled = false;
-                cbGioiTinh.Enabled = false;
-                cbKhoa.Enabled = false;
-                cbDonVi.Enabled = false;
-                txtLop.Enabled = false;
-                txtSDT.Enabled = false;
-                txtEmail.Enabled = false;
+                editbtnxem();
+                bindingSV();               
             }
             if (name == "Sua")
-            {
-                pn_Sort.Visible = false;
-                pn_ThemSua.Visible = true;
-                pn_ThemTaiKhoan.Visible = false;
-                btnLuuSV.Visible = true;
-                flagLuu = 1;
-                pn_ThemSua.Enabled = true;
+            {              
+                flagLuu = 1;               
                 dtgv_SV.Height = 385;
                 dtgv_SV.Location = new Point(14, 223);
                 btnThemKQ.Location = new Point(867, 172);
-                txtMssv.Enabled = false;
-                txtHoTen.Enabled = true;
-                dtpkNgaySinh.Enabled = true;
-                txtNoiSinh.Enabled = true;
-                cbGioiTinh.Enabled = true;
-                cbKhoa.Enabled = true;
-                cbDonVi.Enabled = true;
-                txtLop.Enabled = true;
-                txtSDT.Enabled = true;
-                txtEmail.Enabled = true;
-                clear();
+                editbtnsua();
                 maxlength();
                 designbtnSua();
                 bindingSV();
@@ -261,96 +275,70 @@ namespace QuanLySinhVien5ToT
                 }                
             }
             else
-            {
-                pn_Sort.Visible = true;
-                pn_ThemSua.Visible = false;
-                btnLuuSV.Visible = false;
-                btnThemKQ.Enabled = true;
+            {               
                 if (flagLuu == 0)
                 {
                     SINH_VIEN sinhvien = sinhVienBLL.Get(x => x.Mssv.Trim() == txtMssv.Text.Trim());
                     if (sinhvien == null)
                     {
                         sinhvien = new SINH_VIEN();
-                        if (txtMssv.TextLength !=11 || txtSDT.TextLength!=10)
-                        {
-                            if(txtMssv.TextLength != 11)
-                                MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            if (txtSDT.TextLength != 10)
-                                MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            sinhvien.Mssv = txtMssv.Text;
-                            sinhvien.HoTen = txtHoTen.Text;
-                            sinhvien.NgaySinh = dtpkNgaySinh.Value;
-                            sinhvien.GioiTinh = cbGioiTinh.Text;
-                            sinhvien.NoiSinh = txtNoiSinh.Text;
-                            sinhvien.SDT = txtSDT.Text;
-                            sinhvien.Lop = txtLop.Text;
-                            sinhvien.DonVi = cbDonVi.Text;
-                            sinhvien.Khoa = cbKhoa.Text;
-                            sinhvien.Email = txtEmail.Text;
-                            List<USER> us = db.USERs.ToList();
-                            int iduser = us.Last().IDuser;
-                            sinhvien.IDuser = iduser;
+                        sinhvien.Mssv = txtMssv.Text;
+                        sinhvien.HoTen = txtHoTen.Text;
+                        sinhvien.NgaySinh = dtpkNgaySinh.Value;
+                        sinhvien.GioiTinh = cbGioiTinh.Text;
+                        sinhvien.NoiSinh = txtNoiSinh.Text;
+                        sinhvien.SDT = txtSDT.Text;
+                        sinhvien.Lop = txtLop.Text;
+                        sinhvien.DonVi = cbDonVi.Text;
+                        sinhvien.Khoa = cbKhoa.Text;
+                        sinhvien.Email = txtEmail.Text;
+                        List<USER> us = db.USERs.ToList();
+                        int iduser = us.Last().IDuser;
+                        sinhvien.IDuser = iduser;
 
-                            sinhVienBLL.Add(sinhvien);
-                            MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        
+                        sinhVienBLL.Add(sinhvien);
+                        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        pn_Sort.Visible = true;
+                        pn_ThemSua.Visible = false;
+                        btnLuuSV.Visible = false;
+                        btnThemKQ.Enabled = true;
                     }
                     else
                     {
                         MessageBox.Show("Mssv không được trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        pn_Sort.Visible = false;
-                        pn_ThemSua.Visible = true;
-                        pn_ThemTaiKhoan.Visible = false;
-                        btnLuuSV.Visible = true;
-                        flagLuu = 0;
-                        pn_ThemSua.Enabled = true;
-                        txtMssv.Enabled = true;
-                        dtgv_SV.Height = 385;
-                        dtgv_SV.Location = new Point(14, 223);
-                        btnThemKQ.Location = new Point(867, 172);
-
-                    }
-                    ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadntnTT();
+                    }                   
                 }
                 else
                 {
                     try
                     {
                         SINH_VIEN sv = sinhVienBLL.Get(x => x.Mssv.Trim() == txtMssv.Text.Trim());
-                        if ( txtSDT.TextLength != 10)
-                        {                          
-                            if (txtSDT.TextLength != 10)
-                                MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            sv.HoTen = txtHoTen.Text;
-                            sv.NgaySinh = dtpkNgaySinh.Value;
-                            sv.GioiTinh = cbGioiTinh.Text;
-                            sv.NoiSinh = txtNoiSinh.Text;
-                            sv.SDT = txtSDT.Text;
-                            sv.Lop = txtLop.Text;
-                            sv.DonVi = cbDonVi.Text;
-                            sv.Khoa = cbKhoa.Text;
-                            sv.Email = txtEmail.Text;
+                        sv.HoTen = txtHoTen.Text;
+                        sv.NgaySinh = dtpkNgaySinh.Value;
+                        sv.GioiTinh = cbGioiTinh.Text;
+                        sv.NoiSinh = txtNoiSinh.Text;
+                        sv.SDT = txtSDT.Text;
+                        sv.Lop = txtLop.Text;
+                        sv.DonVi = cbDonVi.Text;
+                        sv.Khoa = cbKhoa.Text;
+                        sv.Email = txtEmail.Text;
 
+                        sinhVienBLL.Edit(sv);
+                        MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        pn_Sort.Visible = true;
+                        pn_ThemSua.Visible = false;
+                        btnLuuSV.Visible = false;
+                        btnThemKQ.Enabled = true;
 
-                            sinhVienBLL.Edit(sv);
-                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    ShowSinhVien(sinhVienBLL.DsSinhVien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadntnTT();
+                    }                
                 }
             }
         }
@@ -575,7 +563,15 @@ namespace QuanLySinhVien5ToT
         {
             txtMssv.AutoCompleteCustomSource.AddRange(sinhVienBLL.DsSinhVien().Select(x => x.Mssv).ToArray());
         }
-
+        void loadntnTT()
+        {
+            dtgv_SV.Height = 385;
+            dtgv_SV.Location = new Point(14, 223);
+            btnThemKQ.Location = new Point(867, 172);
+            editbtnTiepTheo();
+            clearThemSV();
+            designbtnSua();
+        }
         private void btnTiepTheo_Click(object sender, EventArgs e)
         {
             if(txtUserName.Text=="" || txtPassword.Text == "" || txtXacNhanMK.Text=="")
@@ -600,21 +596,10 @@ namespace QuanLySinhVien5ToT
                 }
             }
             else
-            {
-                pn_Sort.Visible = false;
-                pn_ThemSua.Visible = true;
-                pn_ThemTaiKhoan.Visible = false;
-                btnLuuSV.Visible = true;
-                flagLuu = 0;
-                pn_ThemSua.Enabled = true;
-                txtMssv.Enabled = true;
-                dtgv_SV.Height = 385;
-                dtgv_SV.Location = new Point(14, 223);
-                btnThemKQ.Location = new Point(867, 172);
-                clear();
-                maxlength();
-                designbtnSua();
-                USER us = sinhVienBLL.GetUser(x => x.Username.Trim()==txtUserName.Text.Trim()||x.Password.Trim()==txtPassword.Text.Trim());
+            {                
+                string UserName =sinhVienBLL.Mahoa(txtUserName.Text);
+                string password =sinhVienBLL.Mahoa(txtPassword.Text);
+                USER us = sinhVienBLL.GetUser(x => x.Username.Trim()== UserName.Trim()||x.Password.Trim()== password.Trim());
                 if (us == null)
                 {                  
                     if (txtPassword.Text == txtXacNhanMK.Text)
@@ -625,36 +610,27 @@ namespace QuanLySinhVien5ToT
                         us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
                         sinhVienBLL.AddUser(us);
                         MessageBox.Show("Thêm User Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadntnTT();
                     }
                     else
                     {
-                        pn_Sort.Visible = false;
-                        pn_ThemSua.Visible = false;
-                        pn_ThemTaiKhoan.Visible = true;
-                        btnLuuSV.Visible = false;                       
-                        dtgv_SV.Height = 442;
-                        dtgv_SV.Location = new Point(14, 166);
-                        btnThemKQ.Location = new Point(867, 116);
-                        cbRole.Enabled = false;
+                        //pn_Sort.Visible = false;
+                        //pn_ThemSua.Visible = false;
+                        //pn_ThemTaiKhoan.Visible = true;
+                        //btnLuuSV.Visible = false;                       
+                        //dtgv_SV.Height = 442;
+                        //dtgv_SV.Location = new Point(14, 166);
+                        //btnThemKQ.Location = new Point(867, 116);
+                        //cbRole.Enabled = false;
+                        btnThemKQ_Click(sender, e);
                         MessageBox.Show("Xác nhận mật khẩu không đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtXacNhanMK.Text = "";
-                    }
+                    }                   
                 }
                 else
                 {
                     MessageBox.Show("Username hoặc password của bạn đã bị trùng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    pn_Sort.Visible = false;
-                    pn_ThemSua.Visible = false;
-                    pn_ThemTaiKhoan.Visible = true;
-                    btnLuuSV.Visible = false;
-
-                    dtgv_SV.Height = 442;
-                    dtgv_SV.Location = new Point(14, 166);
-                    btnThemKQ.Location = new Point(867, 116);
-                    cbRole.Enabled = false;
-                    txtXacNhanMK.Text = "";
-                    txtUserName.Text = "";
-                    txtPassword.Text = "";
+                    btnThemKQ_Click(sender, e);
                 }
                  
             }
@@ -682,18 +658,89 @@ namespace QuanLySinhVien5ToT
 
         private void txtMssv_Leave(object sender, EventArgs e)
         {
-            //if(txtMssv.TextLength<11 || txtMssv.TextLength > 11)
-            //{
-            //    MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            if (txtMssv.TextLength < 11)
+            {
+                txtMssv.Text = "";
+                txtMssv.BorderColor = Color.Red;
+                txtMssv.PlaceholderText = "chưa nhập đủ 11 kí tự";
+                txtMssv.PlaceholderForeColor = Color.Red;
+            }
+            else
+            {
+                txtMssv.BorderColor = Color.FromArgb(226, 226, 226);
+            }
         }
 
         private void txtSDT_Leave(object sender, EventArgs e)
         {
-            //if (txtSDT.TextLength < 11 || txtSDT.TextLength > 11)
-            //{
-            //    MessageBox.Show("SDT phải có 10 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            if (txtSDT.TextLength < 10 || txtSDT.TextLength > 10)
+            {               
+                txtSDT.Text = "";
+                txtSDT.BorderColor = Color.Red;
+                txtSDT.PlaceholderText = "SDT phải đủ 10 số";
+                txtSDT.PlaceholderForeColor = Color.Red;
+            }
+            else
+            {
+                txtSDT.BorderColor = Color.FromArgb(226, 226, 226);
+            }
+        }
+
+        private void txtUserName_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
+                txtUserName.BorderColor = Color.Red;
+            else
+                txtUserName.BorderColor = Color.FromArgb(226, 226, 226);
+
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
+                txtPassword.BorderColor = Color.Red;
+            else
+                txtPassword.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtXacNhanMK_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtXacNhanMK.Text.Trim()))
+                txtXacNhanMK.BorderColor = Color.Red;
+            else
+                txtXacNhanMK.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtHoTen_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtHoTen.Text.Trim()))
+                txtHoTen.BorderColor = Color.Red;
+            else
+                txtHoTen.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtNoiSinh_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNoiSinh.Text.Trim()))
+                txtNoiSinh.BorderColor = Color.Red;
+            else
+                txtNoiSinh.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtLop_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLop.Text.Trim()))
+                txtLop.BorderColor = Color.Red;
+            else
+                txtLop.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail.Text.Trim()))
+                txtEmail.BorderColor = Color.Red;
+            else
+                txtEmail.BorderColor = Color.FromArgb(226, 226, 226);
         }
     }
 }

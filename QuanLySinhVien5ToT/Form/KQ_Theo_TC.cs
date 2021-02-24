@@ -56,31 +56,25 @@ namespace QuanLySinhVien5ToT
                 pn_XemChiTiet.Visible = true;
                 dtgv_KQTTC.Width = 674;
                 btnX_XemChiTiet.Enabled = true;
-                txtTenSinhVien.ReadOnly = true;
-                txtTDHDK_Xem.ReadOnly = true;
-                txtTDBB_Xem.ReadOnly = true;
+                txtTenSinhVien.Enabled = false;
+                txtTDHDK_Xem.Enabled = false;
+                txtTDBB_Xem.Enabled = false;
                 cbThoiGian_Xem.Enabled = false;
-                txtTieuChi_Xem.ReadOnly = true;
+                txtTieuChi_Xem.Enabled = false;
+                txtDanhGia_Xem.Enabled = false;
+                cbThoiGian_Xem.FillColor = Color.FromArgb(226, 226, 226);
 
             }
             if (name == "Sua")
             {
-                pn_XemChiTiet.Visible = false;
-                pn_Them_SuaKQ.Visible = true;
-                dtgv_KQTTC.Width = 674;
-                btnLuuKQ.Visible = true;
+                editbtnSua();
                 flagLuu = 1;
-                txtMssvThem_Sua.Enabled = false;
-                cbTCThem_Sua.Enabled = false;
-                cbThoiGianThem_Sua.Enabled = false;
-
-                txtMssvThem_Sua.BorderColor = Color.White;
-                txtMssvThem_Sua.PlaceholderText = "";
-                txtMssvThem_Sua.PlaceholderForeColor = Color.White;
-                txtTDBBThem_Sua.BorderColor = Color.White;
+                cbTCThem_Sua.FillColor = Color.FromArgb(226, 226, 226);
+                cbThoiGianThem_Sua.FillColor = Color.FromArgb(226, 226, 226);
+                txtMssvThem_Sua.BorderColor = Color.FromArgb(213, 218, 223);
+                txtMssvThem_Sua.PlaceholderText = "";;
+                txtTDBBThem_Sua.BorderColor = Color.FromArgb(213, 218, 223);
                 txtTDBBThem_Sua.PlaceholderText = "";
-                txtTDBBThem_Sua.PlaceholderForeColor = Color.White;
-                
             }
 
             DataGridViewRow row = this.dtgv_KQTTC.Rows[e.RowIndex];
@@ -114,28 +108,45 @@ namespace QuanLySinhVien5ToT
 
         private void btnThemKQ_Click(object sender, EventArgs e)
         {
+            editbtnThem();
+            flagLuu = 0;
+            cbTCThem_Sua.FillColor = Color.White;
+            cbThoiGianThem_Sua.FillColor = Color.White;
+            txtMssvThem_Sua.BorderColor = Color.FromArgb(213, 218, 223);
+            txtMssvThem_Sua.PlaceholderText = "";
+            txtTDBBThem_Sua.BorderColor = Color.FromArgb(213, 218, 223);
+            txtTDBBThem_Sua.PlaceholderText = "";   
+        }
+        void editbtnSua()
+        {
             pn_XemChiTiet.Visible = false;
             pn_Them_SuaKQ.Visible = true;
             dtgv_KQTTC.Width = 674;
-            btnLuuKQ.Visible = true;
-            flagLuu = 0;
+            btnLuuKQ.Visible = true;            
+            txtMssvThem_Sua.Enabled = false;
+            cbTCThem_Sua.Enabled = false;
+            cbThoiGianThem_Sua.Enabled = false;
+        }
+        void editbtnThem()
+        {
+            pn_XemChiTiet.Visible = false;
+            pn_Them_SuaKQ.Visible = true;
+            dtgv_KQTTC.Width = 674;
+            btnLuuKQ.Visible = true;            
             txtMssvThem_Sua.Text = "";
             txtTDBBThem_Sua.Text = "";
-            
+
             txtMssvThem_Sua.Enabled = true;
             cbThoiGianThem_Sua.Enabled = true;
             cbTCThem_Sua.Enabled = true;
-
-            txtMssvThem_Sua.BorderColor = Color.White;
-            txtMssvThem_Sua.PlaceholderText = "";
-            txtMssvThem_Sua.PlaceholderForeColor = Color.White;
-            txtTDBBThem_Sua.BorderColor = Color.White;
-            txtTDBBThem_Sua.PlaceholderText = "";
-            txtTDBBThem_Sua.PlaceholderForeColor = Color.White;
-            
-           
         }
-
+        void loadbtnluu()
+        {
+            pn_XemChiTiet.Visible = false;
+            pn_Them_SuaKQ.Visible = false;
+            dtgv_KQTTC.Width = 981;
+            btnLuuKQ.Visible = false;
+        }
         private void btnLuuKQ_Click(object sender, EventArgs e)
         {
             if (txtMssvThem_Sua.Text == "" ||  txtTDBBThem_Sua.Text == "")
@@ -154,66 +165,43 @@ namespace QuanLySinhVien5ToT
                 }                
             }
             else
-            {
-                pn_XemChiTiet.Visible = false;
-                pn_Them_SuaKQ.Visible = false;
-                dtgv_KQTTC.Width = 981;
-                btnLuuKQ.Visible = false;
+            {               
                 if (flagLuu == 0)
                 {
                     KQ_THEO_TIEUCHI kq = KQ_Theo_TcBLL.Get(x => x.Mssv.Trim() == txtMssvThem_Sua.Text.Trim() && x.MaTieuChi.Trim() == cbTCThem_Sua.Text.Trim() && x.MaThoiGian == Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue));
                     if (kq == null)
                     {
                         kq = new KQ_THEO_TIEUCHI();
-                        if (txtMssvThem_Sua.TextLength < 11 || txtMssvThem_Sua.TextLength > 11)
-                        {
-                            MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            kq.Mssv = txtMssvThem_Sua.Text;
-                            kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
-                            kq.MaThoiGian = Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
-                            kq.DanhGia = Convert.ToInt32(cbDanhGia_TS.SelectedValue);
-                            if (Convert.ToInt32(txtTDBBThem_Sua.Text) > 7)
-                            {
-                                txtTDBBThem_Sua.Text = "";
-                                MessageBox.Show("Số tiến độ không được vượt quá 7");
-                            }
-                            else
-                            {
-                                kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
-                                kq.TienDoHDKhac = Convert.ToBoolean(cbTDHDKThem_Sua.Text);
-                                KQ_Theo_TcBLL.Add(kq);
-                                MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }                        
+                        kq.Mssv = txtMssvThem_Sua.Text;
+                        kq.MaTieuChi = cbTCThem_Sua.SelectedValue.ToString();
+                        kq.MaThoiGian = Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString());
+                        kq.DanhGia = Convert.ToInt32(cbDanhGia_TS.SelectedValue);
+                        kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
+                        kq.TienDoHDKhac = Convert.ToBoolean(cbTDHDKThem_Sua.Text);
+                        KQ_Theo_TcBLL.Add(kq);
+                        MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        showKQ(KQ_Theo_TcBLL.DsKQ().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     else
                     {
-                        MessageBox.Show("Thêm thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Dữ liệu đã bị trùng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemKQ_Click(sender, e);
                     }
-                    showKQ(KQ_Theo_TcBLL.DsKQ().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    
                 }
                 else
                 {
                     try
                     {
                         KQ_THEO_TIEUCHI kq = KQ_Theo_TcBLL.Get(x => x.Mssv.Trim() == txtMssvThem_Sua.Text.Trim() && x.MaTieuChi.Trim() == cbTCThem_Sua.SelectedValue.ToString() && x.MaThoiGian == Convert.ToInt32(cbThoiGianThem_Sua.SelectedValue.ToString()));
-                        if (Int32.Parse(txtTDBBThem_Sua.Text) > 7)
-                        {
-                            txtTDBBThem_Sua.Text = "";
-                            MessageBox.Show("Số tiến độ không được vượt quá 7");
-                        }
-                        else
-                        {
-                            kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
-                            kq.TienDoHDKhac = Convert.ToBoolean(cbTDHDKThem_Sua.Text);
-                            kq.DanhGia = Convert.ToInt32(cbDanhGia_TS.SelectedValue);
-                            KQ_Theo_TcBLL.Edit(kq);
-                            MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        kq.TienDoHDBatBuoc = Convert.ToInt16(txtTDBBThem_Sua.Text);
+                        kq.TienDoHDKhac = Convert.ToBoolean(cbTDHDKThem_Sua.Text);
+                        kq.DanhGia = Convert.ToInt32(cbDanhGia_TS.SelectedValue);
+                        KQ_Theo_TcBLL.Edit(kq);
+                        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         showKQ(KQ_Theo_TcBLL.DsKQ().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     catch (NullReferenceException)
                     {
@@ -442,12 +430,35 @@ namespace QuanLySinhVien5ToT
         {
             txtMssvThem_Sua.MaxLength = 11;
             txtTDBBThem_Sua.MaxLength = 3;
-
+        }     
+        private void txtMssvThem_Sua_Leave(object sender, EventArgs e)
+        {
+            if (txtMssvThem_Sua.TextLength < 11)
+            {
+                txtMssvThem_Sua.Text = "";
+                txtMssvThem_Sua.BorderColor = Color.Red;
+                txtMssvThem_Sua.PlaceholderText = "chưa nhập đủ 11 kí tự";
+                txtMssvThem_Sua.PlaceholderForeColor = Color.Red;                
+            }
+            else
+            {
+                txtMssvThem_Sua.BorderColor = Color.FromArgb(226, 226, 226);
+            }
         }
 
-        private void cbTDHDKThem_Sua_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtTDBBThem_Sua_Leave(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(txtTDBBThem_Sua.Text.Trim()) || Convert.ToInt32(txtTDBBThem_Sua.Text) >= 7)
+            {
+                txtTDBBThem_Sua.Text = "";
+                txtTDBBThem_Sua.BorderColor = Color.Red;
+                txtTDBBThem_Sua.PlaceholderText = "tiến độ phải <=7";
+                txtTDBBThem_Sua.PlaceholderForeColor = Color.Red;               
+            }
+            else
+            {
+                txtTDBBThem_Sua.BorderColor = Color.FromArgb(226, 226, 226);
+            }
         }
     }
 }

@@ -191,6 +191,7 @@
             this.txtTenLoai.ShadowDecoration.Parent = this.txtTenLoai;
             this.txtTenLoai.Size = new System.Drawing.Size(271, 36);
             this.txtTenLoai.TabIndex = 24;
+            this.txtTenLoai.Leave += new System.EventHandler(this.txtTenLoai_Leave);
             // 
             // btnThemLĐ
             // 

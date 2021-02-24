@@ -55,11 +55,18 @@ namespace QuanLySinhVien5ToT
             cbTieuChuan_TS.Enabled = true;
             cbThoiGian_TS.Enabled = true;
             txtDiemToiThieu.Text = "";
+
+            cbDonVi_TS.FillColor = Color.White;
+            cbLoaiDiem_TS.FillColor = Color.White;
+            cbTieuChuan_TS.FillColor = Color.White;
+            cbThoiGian_TS.FillColor = Color.White;
+            designbtn();
+        }
+        void designbtn()
+        {
             txtDiemToiThieu.BorderColor = Color.FromArgb(213, 218, 223);
             txtDiemToiThieu.PlaceholderText = "";
-            txtDiemToiThieu.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
         }
-
         private void dtgvQuyDinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string name = dtgvQuyDinh.Columns[e.ColumnIndex].Name;
@@ -76,9 +83,12 @@ namespace QuanLySinhVien5ToT
                 cbThoiGian_TS.Enabled = false;
                 cbTrangThai.Enabled = true;
 
-                txtDiemToiThieu.BorderColor = Color.FromArgb(213, 218, 223);
-                txtDiemToiThieu.PlaceholderText = "";
-                txtDiemToiThieu.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
+                cbDonVi_TS.FillColor = Color.FromArgb(226, 226, 226);
+                cbLoaiDiem_TS.FillColor = Color.FromArgb(226, 226, 226);
+                cbTieuChuan_TS.FillColor = Color.FromArgb(226, 226, 226);
+                cbThoiGian_TS.FillColor = Color.FromArgb(226, 226, 226);
+
+                designbtn();
             }
             
             DataGridViewRow row = this.dtgvQuyDinh.Rows[e.RowIndex];
@@ -98,7 +108,12 @@ namespace QuanLySinhVien5ToT
             btnLuuQuyDinh.Visible = false;
             pn_Sort.Visible = true;
         }
-
+        void loadbtnluu()
+        {
+            pn_ThemQuyDinh.Visible = false;
+            btnLuuQuyDinh.Visible = false;
+            pn_Sort.Visible = true;
+        }
         private void btnLuuQuyDinh_Click(object sender, EventArgs e)
         {
             if (txtDiemToiThieu.Text == "")
@@ -110,9 +125,6 @@ namespace QuanLySinhVien5ToT
             else
             {
                 string cbLoaiDiem = cbLoaiDiem_TS.Text;
-                pn_ThemQuyDinh.Visible = false;
-                btnLuuQuyDinh.Visible = false;
-                pn_Sort.Visible = true;
                 if (flagLuu == 0)
                 {
                     QUYDINH_DIEM qd = quyDinhDiemBLL.Get(x => x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString())
@@ -120,187 +132,65 @@ namespace QuanLySinhVien5ToT
                     && x.Mathoigian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString())
                     && x.MaTieuChuan == Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString()));
                     if (qd == null)
-                    {   
-                        
-                        if (cbLoaiDiem == "Điểm rèn luyện")
-                        {
-                            if (Convert.ToInt32(txtDiemToiThieu.Text) <= 100 && Convert.ToInt32(txtDiemToiThieu.Text) >= 50)
-                            {
-                                qd = new QUYDINH_DIEM();
-                                qd.MaLoaiDiem = Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString());
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                qd.MaDonVi = cbDonVi_TS.Text;
-                                qd.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
-                                qd.Mathoigian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                quyDinhDiemBLL.Add(qd);
-                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                pn_ThemQuyDinh.Visible = true;
-                                btnLuuQuyDinh.Visible = true;
-                                pn_Sort.Visible = false;
-                                txtDiemToiThieu.Text = "";
-                                MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
-
-                            }
-                        }
-                        if (cbLoaiDiem == "Điểm học tập" || cbLoaiDiem == "Điểm Kỹ năng mềm")
-                        {
-                            if (Convert.ToInt32(txtDiemToiThieu.Text) > 0 && Convert.ToInt32(txtDiemToiThieu.Text) <= 10)
-                            {
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                qd.MaDonVi = cbDonVi_TS.Text;
-                                qd.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
-                                qd.Mathoigian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                quyDinhDiemBLL.Add(qd);
-                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                pn_ThemQuyDinh.Visible = true;
-                                btnLuuQuyDinh.Visible = true;
-                                pn_Sort.Visible = false;
-                                txtDiemToiThieu.Text = "";
-                                MessageBox.Show("Điểm học tập không dược >10");
-
-                            }
-                        }
-                        if (cbLoaiDiem == "Điểm xếp loại đoàn viên")
-                        {
-                            if (Convert.ToInt32(txtDiemToiThieu.Text) >= 75)
-                            {
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                qd.MaDonVi = cbDonVi_TS.Text;
-                                qd.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
-                                qd.Mathoigian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                quyDinhDiemBLL.Add(qd);
-                                MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                pn_ThemQuyDinh.Visible = true;
-                                btnLuuQuyDinh.Visible = true;
-                                pn_Sort.Visible = false;
-                                txtDiemToiThieu.Text = "";
-                                MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
-                            }
-                        }
+                    {
+                        qd = new QUYDINH_DIEM();
+                        qd.MaLoaiDiem = Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString());
+                        qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                        qd.MaDonVi = cbDonVi_TS.Text;
+                        qd.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
+                        qd.Mathoigian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                        qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                        quyDinhDiemBLL.Add(qd);
+                        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
 
                     }
                     else
                     {
                         MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemQuyDinh_Click(sender, e);
                     }
-                    loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    
                 }
                 else
                 {
-                    QUYDINH_DIEM qd = quyDinhDiemBLL.Get(x => x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString())
-                    && x.MaDonVi.Trim() == cbDonVi_TS.Text
-                    && x.Mathoigian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString())
-                    && x.MaTieuChuan == Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString()));
-                    if (cbLoaiDiem == "Điểm rèn luyện")
+                    try
                     {
-                        if (Convert.ToInt32(txtDiemToiThieu.Text) <= 100 && Convert.ToInt32(txtDiemToiThieu.Text) >= 50)
+                        QUYDINH_DIEM qd = quyDinhDiemBLL.Get(x => x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString())
+                        && x.MaDonVi.Trim() == cbDonVi_TS.Text
+                        && x.Mathoigian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString())
+                        && x.MaTieuChuan == Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString()));
+
+                        if (cbTrangThai.Text == "True")
                         {
-                            if (cbTrangThai.Text == "True")
-                            {
-                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
-                                qdd.TrangThai = Convert.ToBoolean("False");
-                                quyDinhDiemBLL.Edit(qdd);
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                quyDinhDiemBLL.Edit(qd);
-                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                quyDinhDiemBLL.Edit(qd);
-                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
+                            qdd.TrangThai = Convert.ToBoolean("False");
+                            quyDinhDiemBLL.Edit(qdd);
+                            qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                            qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                            quyDinhDiemBLL.Edit(qd);
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                            loadbtnluu();
                         }
                         else
                         {
-                            pn_ThemQuyDinh.Visible = true;
-                            btnLuuQuyDinh.Visible = true;
-                            pn_Sort.Visible = false;
-                            txtDiemToiThieu.Text = "";
-                            MessageBox.Show("Điểm rèn luyện phải >=50 và <=100");
-
+                            qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                            qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
+                            quyDinhDiemBLL.Edit(qd);
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                            loadbtnluu();
                         }
+                        
                     }
-                    if (cbLoaiDiem == "Điểm học tập" || cbLoaiDiem == "Điểm Kỹ năng mềm")
+                    catch (Exception)
                     {
-                        if (Convert.ToInt32(txtDiemToiThieu.Text) > 0 && Convert.ToInt32(txtDiemToiThieu.Text) <= 10)
-                        {
-                            if (cbTrangThai.Text == "True")
-                            {
-                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
-                                qdd.TrangThai = Convert.ToBoolean("False");
-                                quyDinhDiemBLL.Edit(qdd);
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                quyDinhDiemBLL.Edit(qd);
-                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                quyDinhDiemBLL.Edit(qd);
-                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                        else
-                        {
-                            pn_ThemQuyDinh.Visible = true;
-                            btnLuuQuyDinh.Visible = true;
-                            pn_Sort.Visible = false;
-                            txtDiemToiThieu.Text = "";
-                            MessageBox.Show("Điểm học tập không dược >10");
-
-                        }
-                    }
-                    if (cbLoaiDiem == "Điểm xếp loại đoàn viên")
-                    {
-                        if (Convert.ToInt32(txtDiemToiThieu.Text) >= 75)
-                        {
-                            if (cbTrangThai.Text == "True")
-                            {
-                                QUYDINH_DIEM qdd = quyDinhDiemBLL.Get(x => x.TrangThai == Convert.ToBoolean("True") && x.MaDonVi == cbDonVi_TS.Text && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue));
-                                qdd.TrangThai = Convert.ToBoolean("False");
-                                quyDinhDiemBLL.Edit(qdd);
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                quyDinhDiemBLL.Edit(qd);
-                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                qd.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                                qd.DiemToiThieu = Convert.ToInt32(txtDiemToiThieu.Text);
-                                quyDinhDiemBLL.Edit(qd);
-                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                        else
-                        {
-                            pn_ThemQuyDinh.Visible = true;
-                            btnLuuQuyDinh.Visible = true;
-                            pn_Sort.Visible = false;
-                            txtDiemToiThieu.Text = "";
-                            MessageBox.Show("Điểm xếp loại đoàn viên phải >=75");
-                        }
-                    }
-
-
-                    loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        MessageBox.Show("Sửa thất bại!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemQuyDinh_Click(sender, e); 
+                    }                    
+                    
                 }
             }
             
@@ -449,6 +339,52 @@ namespace QuanLySinhVien5ToT
                     dtgvQuyDinh.DataSource = listFIllter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
                     int Number = pagenumber;
                     lbNumber.Text = Number.ToString();               
+                }
+            }
+        }
+        void QDdiemtoithieu()
+        {
+            txtDiemToiThieu.Text = "";
+            txtDiemToiThieu.BorderColor = Color.Red;
+            txtDiemToiThieu.PlaceholderForeColor = Color.Red;
+        }
+        private void txtDiemToiThieu_Leave(object sender, EventArgs e)
+        {
+            string cbLoaiDiem = cbLoaiDiem_TS.Text;
+            if (cbLoaiDiem == "Điểm rèn luyện")
+            {
+                if (txtDiemToiThieu.Text == "" || Convert.ToInt32(txtDiemToiThieu.Text) > 100 || Convert.ToInt32(txtDiemToiThieu.Text) < 50)
+                {
+                    QDdiemtoithieu();
+                    txtDiemToiThieu.PlaceholderText = "Điểm phải >=50 và <=100";
+                }
+                else
+                {
+                    txtDiemToiThieu.BorderColor = Color.FromArgb(226, 226, 226);
+                }
+            }
+            if (cbLoaiDiem == "Điểm học tập" || cbLoaiDiem == "Điểm Kỹ năng mềm")
+            {
+                if (txtDiemToiThieu.Text == "" || Convert.ToInt32(txtDiemToiThieu.Text) == 0 || Convert.ToInt32(txtDiemToiThieu.Text) > 10)
+                {
+                    QDdiemtoithieu();
+                    txtDiemToiThieu.PlaceholderText = "Điểm phải >0 và <=10";
+                }
+                else
+                {
+                    txtDiemToiThieu.BorderColor = Color.FromArgb(226, 226, 226);
+                }
+                if (cbLoaiDiem == "Điểm xếp loại đoàn viên")
+                {
+                    if (txtDiemToiThieu.Text == "" || Convert.ToInt32(txtDiemToiThieu.Text) < 75 || Convert.ToInt32(txtDiemToiThieu.Text) > 100)
+                    {
+                        QDdiemtoithieu();
+                        txtDiemToiThieu.PlaceholderText = "Điểm phải >=75 và <=100";
+                    }
+                    else
+                    {
+                        txtDiemToiThieu.BorderColor = Color.FromArgb(226, 226, 226);
+                    }
                 }
             }
         }

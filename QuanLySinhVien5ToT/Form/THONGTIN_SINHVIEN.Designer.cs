@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pn_Sort = new Guna.UI2.WinForms.Guna2Panel();
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -99,11 +100,14 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnThemKQ = new Guna.UI2.WinForms.Guna2Button();
+            this.pnX = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pn_Sort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_SV)).BeginInit();
             this.pn_ThemSua.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.pn_ThemTaiKhoan.SuspendLayout();
+            this.pnX.SuspendLayout();
             this.SuspendLayout();
             // 
             // pn_Sort
@@ -282,21 +286,21 @@
             // 
             // dtgv_SV
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dtgv_SV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
+            this.dtgv_SV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.dtgv_SV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_SV.BackgroundColor = System.Drawing.Color.White;
             this.dtgv_SV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgv_SV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_SV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv_SV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv_SV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.dtgv_SV.ColumnHeadersHeight = 40;
             this.dtgv_SV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Mssv,
@@ -312,14 +316,14 @@
             this.Xem,
             this.Sua,
             this.Xoa});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgv_SV.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgv_SV.DefaultCellStyle = dataGridViewCellStyle33;
             this.dtgv_SV.EnableHeadersVisualStyles = false;
             this.dtgv_SV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_SV.Location = new System.Drawing.Point(14, 223);
@@ -563,6 +567,7 @@
             this.txtHoTen.ShadowDecoration.Parent = this.txtHoTen;
             this.txtHoTen.Size = new System.Drawing.Size(209, 36);
             this.txtHoTen.TabIndex = 24;
+            this.txtHoTen.Leave += new System.EventHandler(this.txtHoTen_Leave);
             // 
             // label6
             // 
@@ -661,6 +666,7 @@
             this.txtNoiSinh.ShadowDecoration.Parent = this.txtNoiSinh;
             this.txtNoiSinh.Size = new System.Drawing.Size(209, 36);
             this.txtNoiSinh.TabIndex = 36;
+            this.txtNoiSinh.Leave += new System.EventHandler(this.txtNoiSinh_Leave);
             // 
             // cbKhoa
             // 
@@ -709,10 +715,10 @@
             // pn_ThemSua
             // 
             this.pn_ThemSua.BorderRadius = 20;
+            this.pn_ThemSua.Controls.Add(this.pnX);
             this.pn_ThemSua.Controls.Add(this.label19);
             this.pn_ThemSua.Controls.Add(this.label18);
             this.pn_ThemSua.Controls.Add(this.txtLop);
-            this.pn_ThemSua.Controls.Add(this.btnXThemSV);
             this.pn_ThemSua.Controls.Add(this.btnLuuSV);
             this.pn_ThemSua.Controls.Add(this.cbDonVi);
             this.pn_ThemSua.Controls.Add(this.label11);
@@ -745,7 +751,7 @@
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.label19.ForeColor = System.Drawing.Color.Gray;
-            this.label19.Location = new System.Drawing.Point(563, 56);
+            this.label19.Location = new System.Drawing.Point(552, 56);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(42, 15);
             this.label19.TabIndex = 49;
@@ -757,7 +763,7 @@
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.label18.ForeColor = System.Drawing.Color.Gray;
-            this.label18.Location = new System.Drawing.Point(562, 16);
+            this.label18.Location = new System.Drawing.Point(551, 16);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(36, 15);
             this.label18.TabIndex = 48;
@@ -787,6 +793,7 @@
             this.txtLop.ShadowDecoration.Parent = this.txtLop;
             this.txtLop.Size = new System.Drawing.Size(198, 36);
             this.txtLop.TabIndex = 47;
+            this.txtLop.Leave += new System.EventHandler(this.txtLop_Leave);
             // 
             // btnXThemSV
             // 
@@ -799,11 +806,11 @@
             this.btnXThemSV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
             this.btnXThemSV.ImageRotate = 0F;
             this.btnXThemSV.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnXThemSV.Location = new System.Drawing.Point(814, 5);
+            this.btnXThemSV.Location = new System.Drawing.Point(3, 3);
             this.btnXThemSV.Name = "btnXThemSV";
             this.btnXThemSV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnXThemSV.PressedState.Parent = this.btnXThemSV;
-            this.btnXThemSV.Size = new System.Drawing.Size(30, 31);
+            this.btnXThemSV.Size = new System.Drawing.Size(26, 31);
             this.btnXThemSV.TabIndex = 44;
             this.btnXThemSV.Click += new System.EventHandler(this.btnXThemSV_Click);
             // 
@@ -874,7 +881,7 @@
             this.txtSDT.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSDT.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSDT.HoverState.Parent = this.txtSDT;
-            this.txtSDT.Location = new System.Drawing.Point(605, 5);
+            this.txtSDT.Location = new System.Drawing.Point(594, 5);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.PasswordChar = '\0';
             this.txtSDT.PlaceholderText = "";
@@ -901,7 +908,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.HoverState.Parent = this.txtEmail;
-            this.txtEmail.Location = new System.Drawing.Point(605, 45);
+            this.txtEmail.Location = new System.Drawing.Point(594, 45);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "";
@@ -909,6 +916,7 @@
             this.txtEmail.ShadowDecoration.Parent = this.txtEmail;
             this.txtEmail.Size = new System.Drawing.Size(203, 36);
             this.txtEmail.TabIndex = 41;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // label12
             // 
@@ -1064,6 +1072,7 @@
             this.txtUserName.ShadowDecoration.Parent = this.txtUserName;
             this.txtUserName.Size = new System.Drawing.Size(203, 36);
             this.txtUserName.TabIndex = 54;
+            this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
             // 
             // txtPassword
             // 
@@ -1089,6 +1098,7 @@
             this.txtPassword.ShadowDecoration.Parent = this.txtPassword;
             this.txtPassword.Size = new System.Drawing.Size(203, 36);
             this.txtPassword.TabIndex = 55;
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // label17
             // 
@@ -1126,6 +1136,7 @@
             this.txtXacNhanMK.ShadowDecoration.Parent = this.txtXacNhanMK;
             this.txtXacNhanMK.Size = new System.Drawing.Size(218, 36);
             this.txtXacNhanMK.TabIndex = 52;
+            this.txtXacNhanMK.Leave += new System.EventHandler(this.txtXacNhanMK_Leave);
             // 
             // btnTiepTheo
             // 
@@ -1221,6 +1232,23 @@
             this.btnThemKQ.Text = "Thêm Sinh Viên";
             this.btnThemKQ.Click += new System.EventHandler(this.btnThemKQ_Click);
             // 
+            // pnX
+            // 
+            this.pnX.BackColor = System.Drawing.Color.Transparent;
+            this.pnX.BorderRadius = 20;
+            this.pnX.Controls.Add(this.btnXThemSV);
+            this.pnX.FillColor = System.Drawing.Color.White;
+            this.pnX.Location = new System.Drawing.Point(807, 0);
+            this.pnX.Name = "pnX";
+            this.pnX.ShadowDecoration.Parent = this.pnX;
+            this.pnX.Size = new System.Drawing.Size(40, 37);
+            this.pnX.TabIndex = 50;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 20;
+            this.guna2Elipse1.TargetControl = this.dtgv_SV;
+            // 
             // THONGTIN_SINHVIEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1245,6 +1273,7 @@
             this.guna2Panel1.PerformLayout();
             this.pn_ThemTaiKhoan.ResumeLayout(false);
             this.pn_ThemTaiKhoan.PerformLayout();
+            this.pnX.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1319,5 +1348,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private System.Windows.Forms.Label label18;
         private Guna.UI2.WinForms.Guna2ImageButton btnXUser;
+        private Guna.UI2.WinForms.Guna2Panel pnX;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

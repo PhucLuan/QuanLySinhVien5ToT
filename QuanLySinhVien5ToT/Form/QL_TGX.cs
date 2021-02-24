@@ -41,6 +41,11 @@ namespace QuanLySinhVien5ToT
             dtgv_ThongTin.DataSource = listtt;
             flagDT = 0;
         }
+        void designbtn()
+        {
+            txtMssv_TS.BorderColor = Color.FromArgb(213, 218, 223);
+            txtMssv_TS.PlaceholderText = "";
+        }
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string name = dtgv_ThongTin.Columns[e.ColumnIndex].Name;
@@ -55,6 +60,7 @@ namespace QuanLySinhVien5ToT
                 txtDonVi_Xem.Enabled = false;
                 txtLop_Xem.Enabled = false;
                 cbThoiGian_Xem.Enabled = false;
+                designbtn();
             }
             if (name == "Sua")
             {
@@ -62,10 +68,9 @@ namespace QuanLySinhVien5ToT
                 btnLuuTT.Visible = true;
                 pn_XemChiTiet.Visible = false;
                 dtgv_ThongTin.Width = 726;
-                txtMssv_TS.ReadOnly = true;
+                txtMssv_TS.Enabled = false;
                 cbThoiGian_TS.Enabled = false;
-                dtpkTG_DK.Value = DateTime.Now;
-                flagLuu = 2;
+                flagLuu = 1;
             }
 
             DataGridViewRow row = this.dtgv_ThongTin.Rows[e.RowIndex];
@@ -77,7 +82,7 @@ namespace QuanLySinhVien5ToT
 
             txtMssv_TS.Text = row.Cells["Mssv"].Value.ToString();
             cbThoiGian_TS.SelectedValue = thoiDiemSV_ThamGiaBLL.GetIdFormattedDateTime(row.Cells["ThoiGian"].Value.ToString());
-            //dtpkTG_DK.Text = row.Cells["ThoiDiemDK"].Value.ToString();
+            dtpkTG_DK.Text = row.Cells["ThoiDiemDK"].Value.ToString();
         }
         private void guna2ImageButton5_Click(object sender, EventArgs e)
         {
@@ -96,20 +101,24 @@ namespace QuanLySinhVien5ToT
 
         private void btnThemTT_Click(object sender, EventArgs e)
         {
+            designbtn();
             dtgv_ThongTin.Width = 726;
             pn_Them_TT.Visible = true;
             btnLuuTT.Visible = true;
             pn_XemChiTiet.Visible = false;
             txtMssv_TS.Text = "";
-            flagLuu = 0;
+            flagLuu = 0;           
             dtpkTG_DK.Value = DateTime.Now;
-
-            txtMssv_TS.BorderColor = Color.FromArgb(213, 218, 223); 
-            txtMssv_TS.PlaceholderText = "";
-            txtMssv_TS.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
         }
 
         private void btnXThem_TT_Click(object sender, EventArgs e)
+        {
+            dtgv_ThongTin.Width = 1008;
+            pn_Them_TT.Visible = false;
+            btnLuuTT.Visible = false;
+            pn_XemChiTiet.Visible = false;
+        }
+        void loadbtnluu()
         {
             dtgv_ThongTin.Width = 1008;
             pn_Them_TT.Visible = false;
@@ -126,10 +135,6 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                dtgv_ThongTin.Width = 1008;
-                pn_Them_TT.Visible = false;
-                btnLuuTT.Visible = false;
-                pn_XemChiTiet.Visible = false;
                 if (flagLuu == 0)
                 {
                     THOIDIEM_SV_THAMGIA tdtt = thoiDiemSV_ThamGiaBLL.Get(x => x.Mssv.Trim() == txtMssv_TS.Text.Trim() && x.MaThoiGian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString()));
@@ -148,11 +153,13 @@ namespace QuanLySinhVien5ToT
                             thoiDiemSV_ThamGiaBLL.Add(tdtt);
                             MessageBox.Show("Lưu Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadlistsv(thoiDiemSV_ThamGiaBLL.dssinhvienTG().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                            loadbtnluu();
                         }
                     }
                     else
                     {
                         MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemTT_Click(sender, e);
                     }
                 }
                 else
@@ -165,10 +172,12 @@ namespace QuanLySinhVien5ToT
                         thoiDiemSV_ThamGiaBLL.Edit(tdtt);
                         MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadlistsv(thoiDiemSV_ThamGiaBLL.dssinhvienTG().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemTT_Click(sender, e);
                     }
                 }
                 
@@ -328,6 +337,21 @@ namespace QuanLySinhVien5ToT
         void SuggestTxtMssv()
         {
             txtMssv_TS.AutoCompleteCustomSource.AddRange(thoiDiemSV_ThamGiaBLL.dssinhvien().Select(x => x.Mssv).ToArray());
+        }
+
+        private void txtMssv_TS_Leave(object sender, EventArgs e)
+        {
+            if (txtMssv_TS.TextLength < 11)
+            {
+                txtMssv_TS.Text = "";
+                txtMssv_TS.BorderColor = Color.Red;
+                txtMssv_TS.PlaceholderText = "chưa nhập đủ 11 kí tự";
+                txtMssv_TS.PlaceholderForeColor = Color.Red;
+            }
+            else
+            {
+                txtMssv_TS.BorderColor = Color.FromArgb(226, 226, 226);
+            }
         }
     }
 }

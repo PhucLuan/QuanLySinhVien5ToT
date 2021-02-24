@@ -37,41 +37,49 @@ namespace QuanLySinhVien5ToT
 
         private void btnThemTC_Click(object sender, EventArgs e)
         {
+            edibtnThem();
+            flagLuu = 0;
+            designbtn();
+        }
+        void edibtnThem()
+        {
             pn_ThemTieuChi.Visible = true;
             btnLuuTC.Visible = true;
+            btnThemTC.Enabled = true;
+            txtMaTieuChi.Enabled = true;
             dtgv_TC.Width = 352;
             lbTC.Text = "Thêm Tiêu Chí";
             txtMaTieuChi.Text = "";
-            txtTenTC.Text = "";
-            btnThemTC.Enabled = true;
+            txtTenTC.Text = "";           
+            txtTienDoTong.Text = "";
+        }
+        void editbtnSua()
+        {
+            pn_ThemTieuChi.Visible = true;
+            btnLuuTC.Visible = true;
+            txtMaTieuChi.Enabled = false;
+            btnThemTC.Enabled = false;
+            dtgv_TC.Width = 352;
+            lbTC.Text = "Sửa Tiêu Chí";           
+        }
+        void designbtn()
+        {
             txtMaTieuChi.BorderColor = Color.FromArgb(213, 218, 223);
             txtMaTieuChi.PlaceholderText = "";
-            txtMaTieuChi.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
             txtTenTC.BorderColor = Color.FromArgb(213, 218, 223);
             txtTenTC.PlaceholderText = "";
-            txtTenTC.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
+            txtTienDoTong.BorderColor = Color.FromArgb(213, 218, 223);
+            txtTienDoTong.PlaceholderText = "";
         }
-
         private void dtgv_TC_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string name = dtgv_TC.Columns[e.ColumnIndex].Name;
             if (name == "Sua")
             {
-                pn_ThemTieuChi.Visible = true;
-                btnLuuTC.Visible = true;
-                dtgv_TC.Width = 352;
-                lbTC.Text = "Sửa Tiêu Chí";
-                txtMaTieuChi.Enabled = false;
-                btnThemTC.Enabled = false;
+                editbtnSua();
                 binding();
                 flagLuu = 1;
-
-                txtMaTieuChi.BorderColor = Color.FromArgb(213, 218, 223);
-                txtMaTieuChi.PlaceholderText = "";
-                txtMaTieuChi.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
-                txtTenTC.BorderColor = Color.FromArgb(213, 218, 223);
-                txtTenTC.PlaceholderText = "";
-                txtTenTC.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
+                designbtn();
             }
         }
 
@@ -83,7 +91,12 @@ namespace QuanLySinhVien5ToT
             btnThemTC.Enabled = true;
             loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
-
+        void loadbtnluu()
+        {
+            pn_ThemTieuChi.Visible = false;
+            btnLuuTC.Visible = false;
+            dtgv_TC.Width = 659;
+        }
         private void btnLuuTC_Click(object sender, EventArgs e)
         {
             
@@ -101,12 +114,16 @@ namespace QuanLySinhVien5ToT
                     txtTenTC.PlaceholderText = "bạn chưa nhập tên tiêu chí";
                     txtTenTC.PlaceholderForeColor = Color.Red;
                 }
+                if (string.IsNullOrEmpty(txtTienDoTong.Text.Trim()))
+                {
+                    txtTienDoTong.BorderColor = Color.Red;
+                    txtTienDoTong.PlaceholderText = "bạn chưa nhập tên tiêu chí";
+                    txtTienDoTong.PlaceholderForeColor = Color.Red;
+                }
             }
             else
             {
-                pn_ThemTieuChi.Visible = false;
-                btnLuuTC.Visible = false;
-                dtgv_TC.Width = 659;
+                
                 if (flagLuu == 0)
                 {
 
@@ -120,13 +137,16 @@ namespace QuanLySinhVien5ToT
                         btnThemTC.Enabled = true;
                         editTieuChiBLL.Add(tc);
                         MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     else
                     {
                         MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemTC.Enabled = true;
+                        btnThemTC_Click(sender, e);
                     }
-                    loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    
                 }
                 else
                 {
@@ -138,13 +158,14 @@ namespace QuanLySinhVien5ToT
                         tc.TienDoTong = Convert.ToInt32(txtTienDoTong.Text); 
                         btnThemTC.Enabled = true;
                         editTieuChiBLL.Edit(tc); MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemTC.Enabled = true;
-                    }
-                    loadTC(editTieuChiBLL.dstieuchi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    }                    
                 }
             }
         }
@@ -191,6 +212,30 @@ namespace QuanLySinhVien5ToT
             txtMaTieuChi.MaxLength = 15;
             txtTenTC.MaxLength = 200;
             txtTienDoTong.MaxLength = 3;
+        }
+
+        private void txtMaTieuChi_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaTieuChi.Text.Trim()))
+                txtMaTieuChi.BorderColor = Color.Red;
+            else
+                txtMaTieuChi.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtTenTC_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenTC.Text.Trim()))
+                txtTenTC.BorderColor = Color.Red;
+            else
+                txtTenTC.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtTienDoTong_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTienDoTong.Text.Trim()))
+                txtTienDoTong.BorderColor = Color.Red;
+            else
+                txtTienDoTong.BorderColor = Color.FromArgb(226, 226, 226);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace QuanLySinhVien5ToT
             dtpkTu.Value = DateTime.Now;
             dtpkDen.Value = DateTime.Now;
             cbTrangThai.Enabled = false;
-            txtMaTG.Enabled = false;
+            txtMaTG.Enabled = true;
         }
 
         private void dtgvTG_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -61,11 +61,15 @@ namespace QuanLySinhVien5ToT
                 cbTrangThai.Enabled = true;
             }
         }
-
-        private void btnLuuTime_Click(object sender, EventArgs e)
+        void editbtnLuu()
         {
+            loadthoigian(thoiGianXetBLL.dsthoigian().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
             pn_ThemXoaSua.Visible = false;
             dtgvTG.Width = 746;
+        }
+        private void btnLuuTime_Click(object sender, EventArgs e)
+        {
+            
             if (flagLuu == 0)
             {
                 THOIGIAN_XET tg = thoiGianXetBLL.Get(x => x.MaThoiGian.ToString() ==txtMaTG.Text.Trim());
@@ -77,36 +81,45 @@ namespace QuanLySinhVien5ToT
                     tg.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
                     thoiGianXetBLL.Add(tg);
                     MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    editbtnLuu();
                 }
                 else
                 {
                     MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                loadthoigian(thoiGianXetBLL.dsthoigian().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                }              
             }
             else
             {
-                THOIGIAN_XET tg = thoiGianXetBLL.Get(x => x.MaThoiGian == Convert.ToInt32(txtMaTG.Text.Trim()));
-
-                tg.TuNgay = dtpkTu.Value;
-                tg.DenNgay = dtpkDen.Value;
-                if (cbTrangThai.Text == "True")
+                try
                 {
-                    THOIGIAN_XET tgx = thoiGianXetBLL.Get(x => x.TrangThai == Convert.ToBoolean("True"));
-                    tgx.TrangThai = Convert.ToBoolean("False");
-                    thoiGianXetBLL.Edit(tgx);
-                    tg.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                    thoiGianXetBLL.Edit(tg);
+                    THOIGIAN_XET tg = thoiGianXetBLL.Get(x => x.MaThoiGian == Convert.ToInt32(txtMaTG.Text.Trim()));
+
+                    tg.TuNgay = dtpkTu.Value;
+                    tg.DenNgay = dtpkDen.Value;
+                    if (cbTrangThai.Text == "True")
+                    {
+                        THOIGIAN_XET tgx = thoiGianXetBLL.Get(x => x.TrangThai == Convert.ToBoolean("True"));
+                        tgx.TrangThai = Convert.ToBoolean("False");
+                        thoiGianXetBLL.Edit(tgx);
+                        tg.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                        thoiGianXetBLL.Edit(tg);
+                        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        editbtnLuu();
+                    }
+                    else
+                    {
+                        tg.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
+                        thoiGianXetBLL.Edit(tg);
+                        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        editbtnLuu();
+                    }
+                   
                 }
-                else
+                catch (Exception)
                 {
-                    tg.TrangThai = Convert.ToBoolean(cbTrangThai.Text);
-                    thoiGianXetBLL.Edit(tg);
+                    MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-
-                MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadthoigian(thoiGianXetBLL.dsthoigian().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                
             }
 
         }
@@ -164,6 +177,12 @@ namespace QuanLySinhVien5ToT
             }
         }
 
-        
+        private void txtMaTG_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaTG.Text.Trim()))
+                txtMaTG.BorderColor = Color.Red;
+            else
+                txtMaTG.BorderColor = Color.FromArgb(226, 226, 226);
+        }
     }
 }

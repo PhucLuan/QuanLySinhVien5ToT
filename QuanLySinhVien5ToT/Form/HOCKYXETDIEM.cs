@@ -46,19 +46,25 @@ namespace QuanLySinhVien5ToT
             txtMaHK.Enabled = false;
             txtMaHK.Text = "";
             txtNam.Text = "";
-
+            designbtn();
+        }
+        void designbtn()
+        {
             txtNam.BorderColor = Color.FromArgb(213, 218, 223);
             txtNam.PlaceholderText = "";
-            txtNam.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
         }
-
         private void btnXHocKy_Click(object sender, EventArgs e)
         {
             dtgvHocKy.Width = 1010;
             pn_ThemHocKy.Visible = false;
             btnLuuHocKy.Visible = false;
         }
-
+        void loadbtnluu()
+        {
+            dtgvHocKy.Width = 1010;
+            pn_ThemHocKy.Visible = false;
+            btnLuuHocKy.Visible = false;
+        }
         private void btnLuuHocKy_Click(object sender, EventArgs e)
         {
             if (txtNam.Text == "")
@@ -69,69 +75,45 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                dtgvHocKy.Width = 1010;
-                pn_ThemHocKy.Visible = false;
-                btnLuuHocKy.Visible = false;
+                
                 if (flagLuu == 0)
                 {
 
-                    HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim());
+                    HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.HocKy==cbHK.Text && x.Nam.ToString()==txtNam.Text && x.MaThoiGianXetDiem==Convert.ToInt32(cbThoiGian.SelectedValue));
                     if (hk == null)
                     {
                         hk = new HOCKY_XETDIEM();
                         hk.HocKy = cbHK.Text;
-                        if (Convert.ToInt32(txtNam.Text) >= 2000 ||Convert.ToInt32(txtNam.Text) <= 2100)
-                        {
-                            hk.Nam = Convert.ToInt32(txtNam.Text);
-                            hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
-                            hocKyXetDiemBLL.Add(hk);
-                            MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("dữ liệu năm của bạn chưa đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            dtgvHocKy.Width = 666;
-                            pn_ThemHocKy.Visible = true;
-                            btnLuuHocKy.Visible = true;
-                            lbTieuDe.Text = "Sửa Học Kỳ Xét";
-                            flagLuu = 1;
-                            txtMaHK.Enabled = false;
-                        }
-                        
+                        hk.Nam = Convert.ToInt32(txtNam.Text);
+                        hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
+                        hocKyXetDiemBLL.Add(hk);
+                        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     else
                     {
                         MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemHocKy_Click(sender, e);
                         btnThemHocKy.Enabled = true;
                     }
-                    loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    
                 }
                 else
                 {
                     try
                     {
-                        HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim() && x.HocKy==cbHK.Text && x.Nam==Convert.ToInt32(txtNam.Text.Trim())&& x.MaThoiGianXetDiem==Convert.ToInt32(cbThoiGian.SelectedValue.ToString()));
+                        HOCKY_XETDIEM hk = hocKyXetDiemBLL.Get(x => x.MaHocKy.ToString() == txtMaHK.Text.Trim() && x.HocKy == cbHK.Text && x.Nam == Convert.ToInt32(txtNam.Text.Trim()) && x.MaThoiGianXetDiem == Convert.ToInt32(cbThoiGian.SelectedValue.ToString()));
                         if (hk == null)
                         {
                             hk.HocKy = cbHK.Text;
-                            if (Convert.ToInt32(txtNam.Text) >= 2000 || Convert.ToInt32(txtNam.Text) <= 2100)
-                            {
-                                hk.Nam = Convert.ToInt32(txtNam.Text);
-                                hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
-                                btnThemHocKy.Enabled = true;
-                                hocKyXetDiemBLL.Edit(hk);
-                                MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("dữ liệu năm của bạn chưa đúng!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                dtgvHocKy.Width = 666;
-                                pn_ThemHocKy.Visible = true;
-                                btnLuuHocKy.Visible = true;
-                                lbTieuDe.Text = "Sửa Học Kỳ Xét";
-                                flagLuu = 1;
-                                txtMaHK.Enabled = false;
-                            }
+                            hk.Nam = Convert.ToInt32(txtNam.Text);
+                            hk.MaThoiGianXetDiem = Convert.ToInt32(cbThoiGian.SelectedValue.ToString());
+                            btnThemHocKy.Enabled = true;
+                            hocKyXetDiemBLL.Edit(hk);
+                            MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                            loadbtnluu();
                         }
                         else
                         {
@@ -142,9 +124,9 @@ namespace QuanLySinhVien5ToT
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemHocKy_Click(sender, e); 
                         btnThemHocKy.Enabled = true;
-                    }
-                    loadHK(hocKyXetDiemBLL.dsHK().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    }                
                 }
             }
             
@@ -162,9 +144,7 @@ namespace QuanLySinhVien5ToT
                 flagLuu = 1;
                 txtMaHK.Enabled = false;
 
-                txtNam.BorderColor = Color.FromArgb(213, 218, 223);
-                txtNam.PlaceholderText = "";
-                txtNam.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
+                designbtn();
             }
             DataGridViewRow row = this.dtgvHocKy.Rows[e.RowIndex];
             txtMaHK.Text = row.Cells["MaHocKy"].Value.ToString();
@@ -272,6 +252,19 @@ namespace QuanLySinhVien5ToT
                     lbNumber.Text = Number.ToString();
                 }
             }
+        }
+
+        private void txtNam_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNam.Text.Trim()))
+                txtNam.BorderColor = Color.Red;
+            else
+                txtNam.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtMaHK_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 }

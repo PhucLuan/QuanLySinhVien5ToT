@@ -43,9 +43,12 @@ namespace QuanLySinhVien5ToT
             txtMaLoai.Text = "";
             txtMaLoai.Enabled = false;
             flagLuu = 0;
+            designbtn();
+        }
+        void designbtn()
+        {
             txtTenLoai.BorderColor = Color.FromArgb(213, 218, 223);
             txtTenLoai.PlaceholderText = "";
-            txtTenLoai.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
         }
 
         private void dtgv_LĐ_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -60,13 +63,16 @@ namespace QuanLySinhVien5ToT
                 txtMaLoai.Enabled = false;
                 btnThemLĐ.Enabled = false;
                 binding();
+                designbtn();
                 flagLuu = 1;
-                txtTenLoai.BorderColor = Color.FromArgb(213, 218, 223);
-                txtTenLoai.PlaceholderText = "";
-                txtTenLoai.PlaceholderForeColor = Color.FromArgb(213, 218, 223);
             }
         }
-
+        void loadbtnluu()
+        {
+            pn_themLĐ.Visible = false;
+            btnLuuLĐ.Visible = false;
+            dtgv_LĐ.Width = 634;
+        }
         private void btnLuuLĐ_Click(object sender, EventArgs e)
         {
             if (txtTenLoai.Text == "" )
@@ -77,9 +83,7 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                pn_themLĐ.Visible = false;
-                btnLuuLĐ.Visible = false;
-                dtgv_LĐ.Width = 634;
+                
                 if (flagLuu == 0)
                 {
 
@@ -91,13 +95,15 @@ namespace QuanLySinhVien5ToT
                         btnThemLĐ.Enabled = true;
                         editLoaiDiemBLL.Add(ld);
                         MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     else
                     {
                         MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemLĐ.Enabled = true;
-                    }
-                    loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        btnThemLĐ_Click(sender, e);
+                    }                    
                 }
                 else
                 {
@@ -109,13 +115,16 @@ namespace QuanLySinhVien5ToT
                         btnThemLĐ.Enabled = true;
                         editLoaiDiemBLL.Edit(ld);
                         MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu(); 
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemLĐ.Enabled = true;
+                        btnThemLĐ_Click(sender, e);
                     }
-                    loadloaidiem(editLoaiDiemBLL.dsloaidiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    
                 }
             }
 
@@ -165,6 +174,14 @@ namespace QuanLySinhVien5ToT
                 int Number = pagenumber;
                 lbNumber.Text = Number.ToString();
             }
+        }
+
+        private void txtTenLoai_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenLoai.Text.Trim()))
+                txtTenLoai.BorderColor = Color.Red;
+            else
+                txtTenLoai.BorderColor = Color.FromArgb(226, 226, 226);
         }
     }
 }

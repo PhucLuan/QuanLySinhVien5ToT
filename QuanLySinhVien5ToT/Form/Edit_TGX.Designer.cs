@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgvTG = new Guna.UI2.WinForms.Guna2DataGridView();
             this.MaThoiGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TuNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,21 +68,21 @@
             // 
             // dtgvTG
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dtgvTG.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dtgvTG.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvTG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvTG.BackgroundColor = System.Drawing.Color.White;
             this.dtgvTG.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvTG.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgvTG.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvTG.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvTG.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvTG.ColumnHeadersHeight = 40;
             this.dtgvTG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaThoiGian,
@@ -91,14 +91,14 @@
             this.TrangThai,
             this.Sua,
             this.Apply});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvTG.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvTG.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvTG.EnableHeadersVisualStyles = false;
             this.dtgvTG.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgvTG.Location = new System.Drawing.Point(18, 117);
@@ -212,7 +212,7 @@
             // txtMaTG
             // 
             this.txtMaTG.BackColor = System.Drawing.Color.Transparent;
-            this.txtMaTG.BorderRadius = 20;
+            this.txtMaTG.BorderRadius = 10;
             this.txtMaTG.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaTG.DefaultText = "";
             this.txtMaTG.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -233,6 +233,7 @@
             this.txtMaTG.ShadowDecoration.Parent = this.txtMaTG;
             this.txtMaTG.Size = new System.Drawing.Size(200, 36);
             this.txtMaTG.TabIndex = 50;
+            this.txtMaTG.Leave += new System.EventHandler(this.txtMaTG_Leave);
             // 
             // label2
             // 
@@ -331,7 +332,7 @@
             // cbTrangThai
             // 
             this.cbTrangThai.BackColor = System.Drawing.Color.Transparent;
-            this.cbTrangThai.BorderRadius = 20;
+            this.cbTrangThai.BorderRadius = 10;
             this.cbTrangThai.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrangThai.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -350,6 +351,8 @@
             // 
             // dtpkTu
             // 
+            this.dtpkTu.BackColor = System.Drawing.Color.Transparent;
+            this.dtpkTu.BorderRadius = 10;
             this.dtpkTu.CheckedState.Parent = this.dtpkTu;
             this.dtpkTu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpkTu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -365,6 +368,8 @@
             // 
             // dtpkDen
             // 
+            this.dtpkDen.BackColor = System.Drawing.Color.Transparent;
+            this.dtpkDen.BorderRadius = 10;
             this.dtpkDen.CheckedState.Parent = this.dtpkDen;
             this.dtpkDen.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpkDen.Format = System.Windows.Forms.DateTimePickerFormat.Short;

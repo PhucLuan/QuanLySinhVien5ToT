@@ -45,12 +45,23 @@ namespace QuanLySinhVien5ToT
             pn_Sort.Visible = false;
             pn_Them_Sua.Visible = true;
             btnLuu.Visible = true;
+            txtID.Enabled = false;
             flagluu = 0;
             txtChuongTrinh.Text = "";
             txtID.Text = "";
-            txtID.Enabled = false;
+            desingbtn();
         }
-
+        void desingbtn()
+        {
+            txtChuongTrinh.BorderColor = Color.FromArgb(226, 226, 226);
+            txtChuongTrinh.PlaceholderText = "";
+        }
+        void loadbtnluu()
+        {
+            pn_Sort.Visible = true;
+            pn_Them_Sua.Visible = false;
+            btnLuu.Visible = false;
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtChuongTrinh.Text.Trim()))
@@ -61,9 +72,7 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                pn_Sort.Visible = true;
-                pn_Them_Sua.Visible = false;
-                btnLuu.Visible = false;
+                
                 if (flagluu == 0)
                 {
                     CHUONG_TRINH ct = QL_Chuong_TrinhBLL.Get(x => x.MaChuongTrinh.ToString() == txtID.Text.Trim());
@@ -74,9 +83,10 @@ namespace QuanLySinhVien5ToT
                         ct.MaTieuChuan = Convert.ToInt32(cbTieuChuan.SelectedValue.ToString());
                         ct.ThoiGianDienRa = dtpkThoiGian.Value;
                         ct.DonViToChuc = cbDonVi.Text;
-                        QL_Chuong_TrinhBLL.Add(ct);
-                        ShowChuongTrinh(QL_Chuong_TrinhBLL.dschuongtrinh().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        QL_Chuong_TrinhBLL.Add(ct);                       
                         MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ShowChuongTrinh(QL_Chuong_TrinhBLL.dschuongtrinh().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                         btnThemHD.Enabled = true;
                     }
                     else
@@ -95,8 +105,9 @@ namespace QuanLySinhVien5ToT
                         ct.ThoiGianDienRa = dtpkThoiGian.Value;
                         ct.DonViToChuc = cbDonVi.Text;
                         QL_Chuong_TrinhBLL.Edit(ct);
-                        ShowChuongTrinh(QL_Chuong_TrinhBLL.dschuongtrinh().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                         MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ShowChuongTrinh(QL_Chuong_TrinhBLL.dschuongtrinh().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();                       
                         btnThemHD.Enabled = true;
                     }
                     catch (NullReferenceException)
@@ -127,8 +138,10 @@ namespace QuanLySinhVien5ToT
                 btnLuu.Visible = true;
                 flagluu = 1;
                 btnThemHD.Enabled = false;
-                binding();
                 txtID.Enabled = false;
+                binding();
+                desingbtn(); ;
+                
             }
         }
 
@@ -289,5 +302,6 @@ namespace QuanLySinhVien5ToT
         {
             txtSearch.AutoCompleteCustomSource.AddRange(QL_Chuong_TrinhBLL.dschuongtrinh().Select(x => x.TenChuongTrinh).ToArray());
         }
+        
     }
 }

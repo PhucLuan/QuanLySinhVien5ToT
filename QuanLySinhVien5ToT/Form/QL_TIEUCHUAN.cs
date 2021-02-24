@@ -41,6 +41,7 @@ namespace QuanLySinhVien5ToT
         void dsTieuChuan(List<Tieu_ChuanDTO> litstc)
         {
             dtgv_TC.DataSource = litstc;
+            flagDT = 0;
         }
         private void btnThemTC_Click(object sender, EventArgs e)
         {
@@ -52,6 +53,8 @@ namespace QuanLySinhVien5ToT
             txtTenTieuChuan.Text = "";
             txtID.Text = "";
             txtID.Enabled = false;
+            txtID.Enabled = false;
+            desingbtn(); 
         }
 
         private void dtgv_TC_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -62,13 +65,26 @@ namespace QuanLySinhVien5ToT
                 pn_Sort.Visible = false;
                 pn_ThemTC.Visible = true;
                 btnLuuTC.Visible = true;
-                flagLuu = 1;
-                binding();
                 txtID.Enabled = false;
                 btnThemTC.Enabled = false;
+                flagLuu = 1;
+                binding();
+                desingbtn();
+                
             }
         }
-
+        void desingbtn()
+        {
+            txtTenTieuChuan.BorderColor = Color.FromArgb(226, 226, 226);
+            txtTenTieuChuan.PlaceholderText = "";
+        }
+        void loadbtnluu()
+        {
+            pn_Sort.Visible = true;
+            pn_ThemTC.Visible = false;
+            btnLuuTC.Visible = false;
+            btnThemTC.Enabled = true;
+        }
         private void btnLuuTC_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtTenTieuChuan.Text.Trim()))
@@ -78,11 +94,7 @@ namespace QuanLySinhVien5ToT
                 txtTenTieuChuan.PlaceholderForeColor = Color.Red;
             }
             else
-            {
-                pn_Sort.Visible = true;
-                pn_ThemTC.Visible = false;
-                btnLuuTC.Visible = false;
-                btnThemTC.Enabled = true;
+            {               
                 if (flagLuu == 0)
                 {
                     TIEU_CHUAN tieuchuan = Tieu_ChuanBLL.Get(x => x.MaTieuChuan.ToString() == txtID.Text.Trim());
@@ -94,13 +106,15 @@ namespace QuanLySinhVien5ToT
                         tieuchuan.MaTieuChi = cbTieuChi.SelectedValue.ToString();
                         tieuchuan.MaLoaiTieuChuan = Convert.ToBoolean(cbLTC.SelectedValue.ToString());
                         tieuchuan.QuyDinhGiai = Convert.ToBoolean(cbQDGiai.Text);
-                        Tieu_ChuanBLL.Add(tieuchuan);
-                        dsTieuChuan(Tieu_ChuanBLL.dsTieuChuan().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        Tieu_ChuanBLL.Add(tieuchuan);                        
                         MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dsTieuChuan(Tieu_ChuanBLL.dsTieuChuan().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        loadbtnluu();
                     }
                     else
                     {
                         MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemTC_Click(sender, e);
                     }
                 }
                 else
@@ -115,12 +129,14 @@ namespace QuanLySinhVien5ToT
                         tc.MaLoaiTieuChuan = Convert.ToBoolean(cbLTC.SelectedValue.ToString());
                         tc.QuyDinhGiai = Convert.ToBoolean(cbQDGiai.Text);
                         Tieu_ChuanBLL.Edit(tc);
-                        dsTieuChuan(Tieu_ChuanBLL.dsTieuChuan().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                         MessageBox.Show("Sửa Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dsTieuChuan(Tieu_ChuanBLL.dsTieuChuan().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());                 
+                        loadbtnluu();
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemTC_Click(sender, e);
                     }
                 }
             }
@@ -311,6 +327,14 @@ namespace QuanLySinhVien5ToT
         void suggestTxtsearch()
         {
             txtseach.AutoCompleteCustomSource.AddRange(Tieu_ChuanBLL.dsTieuChuan().Select(x => x.TenTieuChuan).ToArray());
+        }
+
+        private void txtTenTieuChuan_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenTieuChuan.Text.Trim()))
+                txtTenTieuChuan.BorderColor = Color.Red;
+            else
+                txtTenTieuChuan.BorderColor = Color.FromArgb(226, 226, 226);
         }
     }
 }

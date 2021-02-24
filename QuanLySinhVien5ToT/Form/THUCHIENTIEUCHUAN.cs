@@ -61,31 +61,26 @@ namespace QuanLySinhVien5ToT
                 txtMssv_TS.PlaceholderForeColor = Color.Red;
             }
             else
-            {
-                pn_ThemTT.Visible = false;
-                pn_Sort.Visible = true;
-                btnLuuTT.Visible = false;
-                pn_Xem.Visible = false;
+            {                
                 THUCHIEN_TIEUCHUAN thtc = thucHien_TieuChuanBLL.Get(x => x.Mssv.Trim() == txtMssv_TS.Text.Trim() && x.MaTieuChuan == Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString()) && x.MaThoiGian == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString()));
                 if (thtc == null)
                 {
                     thtc = new THUCHIEN_TIEUCHUAN();
-                    if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
-                    {
-                        MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        thtc.Mssv = txtMssv_TS.Text;
-                        thtc.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
-                        thtc.MaThoiGian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
-                        thucHien_TieuChuanBLL.Add(thtc);
-                        MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }                   
+                    thtc.Mssv = txtMssv_TS.Text;
+                    thtc.MaTieuChuan = Convert.ToInt32(cbTieuChuan_TS.SelectedValue.ToString());
+                    thtc.MaThoiGian = Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString());
+                    thucHien_TieuChuanBLL.Add(thtc);
+                    MessageBox.Show("Thêm Thành Công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    pn_ThemTT.Visible = false;
+                    pn_Sort.Visible = true;
+                    btnLuuTT.Visible = false;
+                    pn_Xem.Visible = false;
                 }
                 else
                 {
                     MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnThemTT_Click(sender, e);
                 }
             }
             
@@ -113,7 +108,7 @@ namespace QuanLySinhVien5ToT
                 txtTenTieuChuan_Xem.Enabled = false;
                 txtDonVi_Xem.Enabled = false;
                 cbThoiGian_Xem.Enabled = false;
-
+                cbThoiGian_Xem.FillColor = Color.FromArgb(220, 220, 220);
             }
             DataGridViewRow row = this.dtgv_THTC.Rows[e.RowIndex];
             txtTenSinhVien_Xem.Text = row.Cells["TenSinhVien"].Value.ToString();
@@ -300,19 +295,25 @@ namespace QuanLySinhVien5ToT
 
         private void txtMssv_TS_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (txtMssv_TS.TextLength < 11)
             {
-                e.Handled = true;
-                MessageBox.Show("Bạn chỉ được nhập kí tự số !!!");
+                txtMssv_TS.Text = "";
+                txtMssv_TS.BorderColor = Color.Red;
+                txtMssv_TS.PlaceholderText = "chưa nhập đủ 11 kí tự";
+                txtMssv_TS.PlaceholderForeColor = Color.Red;
+            }
+            else
+            {
+                txtMssv_TS.BorderColor = Color.FromArgb(226, 226, 226);
             }
         }
 
         private void txtMssv_TS_Leave(object sender, EventArgs e)
         {
-            //if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
-            //{
-            //    MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
+            {
+                MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         void maxlength()
         {
