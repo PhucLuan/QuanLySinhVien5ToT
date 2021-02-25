@@ -54,6 +54,7 @@
             this.lbNumber = new System.Windows.Forms.Label();
             this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_LĐ)).BeginInit();
             this.pn_themLĐ.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -432,6 +433,11 @@
             this.btnNext.TabIndex = 48;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 20;
+            this.guna2Elipse2.TargetControl = this.dtgv_LĐ;
+            // 
             // Edit_LoaiDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,5 +484,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiDiem;
         private System.Windows.Forms.DataGridViewImageColumn Sua;
         private System.Windows.Forms.DataGridViewImageColumn Xoa;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
     }
 }

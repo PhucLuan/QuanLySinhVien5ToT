@@ -28,12 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgv_NV = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.ID_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Them_NV = new Guna.UI2.WinForms.Guna2Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtIDnv = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cbDonVi = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLuuNV = new Guna.UI2.WinForms.Guna2Button();
             this.txtEmail_TS = new Guna.UI2.WinForms.Guna2TextBox();
@@ -64,14 +73,7 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnThemNV = new Guna.UI2.WinForms.Guna2Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbDonVi = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.ID_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_NV)).BeginInit();
             this.pn_Them_NV.SuspendLayout();
             this.pn_User.SuspendLayout();
@@ -144,6 +146,50 @@
             this.dtgv_NV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_NV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_NV_CellContentClick);
             // 
+            // ID_NV
+            // 
+            this.ID_NV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID_NV.DataPropertyName = "IDnv";
+            this.ID_NV.HeaderText = "ID_NV";
+            this.ID_NV.Name = "ID_NV";
+            this.ID_NV.Width = 71;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // TenNV
+            // 
+            this.TenNV.DataPropertyName = "Name";
+            this.TenNV.HeaderText = "Tên";
+            this.TenNV.Name = "TenNV";
+            // 
+            // DonVi
+            // 
+            this.DonVi.DataPropertyName = "DonVi";
+            this.DonVi.HeaderText = "Đơn Vị";
+            this.DonVi.Name = "DonVi";
+            // 
+            // Sua
+            // 
+            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sua.HeaderText = "";
+            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
+            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Sua.Name = "Sua";
+            this.Sua.Width = 20;
+            // 
+            // Xoa
+            // 
+            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xoa.HeaderText = "";
+            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
+            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Width = 20;
+            // 
             // pn_Them_NV
             // 
             this.pn_Them_NV.BorderRadius = 20;
@@ -167,10 +213,22 @@
             this.pn_Them_NV.TabIndex = 1;
             this.pn_Them_NV.Visible = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.Gray;
+            this.label9.Location = new System.Drawing.Point(17, 206);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 15);
+            this.label9.TabIndex = 56;
+            this.label9.Text = "Đơn Vi :";
+            // 
             // txtIDnv
             // 
             this.txtIDnv.BackColor = System.Drawing.Color.Transparent;
-            this.txtIDnv.BorderRadius = 20;
+            this.txtIDnv.BorderRadius = 10;
             this.txtIDnv.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtIDnv.DefaultText = "";
             this.txtIDnv.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -178,7 +236,6 @@
             this.txtIDnv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtIDnv.DisabledState.Parent = this.txtIDnv;
             this.txtIDnv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtIDnv.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtIDnv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIDnv.FocusedState.Parent = this.txtIDnv;
             this.txtIDnv.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -192,6 +249,27 @@
             this.txtIDnv.ShadowDecoration.Parent = this.txtIDnv;
             this.txtIDnv.Size = new System.Drawing.Size(251, 36);
             this.txtIDnv.TabIndex = 43;
+            // 
+            // cbDonVi
+            // 
+            this.cbDonVi.BackColor = System.Drawing.Color.Transparent;
+            this.cbDonVi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.cbDonVi.BorderRadius = 10;
+            this.cbDonVi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDonVi.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbDonVi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbDonVi.FocusedState.Parent = this.cbDonVi;
+            this.cbDonVi.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbDonVi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbDonVi.HoverState.Parent = this.cbDonVi;
+            this.cbDonVi.ItemHeight = 30;
+            this.cbDonVi.ItemsAppearance.Parent = this.cbDonVi;
+            this.cbDonVi.Location = new System.Drawing.Point(74, 195);
+            this.cbDonVi.Name = "cbDonVi";
+            this.cbDonVi.ShadowDecoration.Parent = this.cbDonVi;
+            this.cbDonVi.Size = new System.Drawing.Size(251, 36);
+            this.cbDonVi.TabIndex = 55;
             // 
             // label7
             // 
@@ -227,7 +305,7 @@
             // txtEmail_TS
             // 
             this.txtEmail_TS.BackColor = System.Drawing.Color.Transparent;
-            this.txtEmail_TS.BorderRadius = 20;
+            this.txtEmail_TS.BorderRadius = 10;
             this.txtEmail_TS.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmail_TS.DefaultText = "";
             this.txtEmail_TS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -235,7 +313,6 @@
             this.txtEmail_TS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEmail_TS.DisabledState.Parent = this.txtEmail_TS;
             this.txtEmail_TS.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEmail_TS.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtEmail_TS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail_TS.FocusedState.Parent = this.txtEmail_TS;
             this.txtEmail_TS.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -249,11 +326,12 @@
             this.txtEmail_TS.ShadowDecoration.Parent = this.txtEmail_TS;
             this.txtEmail_TS.Size = new System.Drawing.Size(251, 36);
             this.txtEmail_TS.TabIndex = 22;
+            this.txtEmail_TS.Leave += new System.EventHandler(this.txtEmail_TS_Leave);
             // 
             // txtTenNV_TS
             // 
             this.txtTenNV_TS.BackColor = System.Drawing.Color.Transparent;
-            this.txtTenNV_TS.BorderRadius = 20;
+            this.txtTenNV_TS.BorderRadius = 10;
             this.txtTenNV_TS.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTenNV_TS.DefaultText = "";
             this.txtTenNV_TS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -261,7 +339,6 @@
             this.txtTenNV_TS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTenNV_TS.DisabledState.Parent = this.txtTenNV_TS;
             this.txtTenNV_TS.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenNV_TS.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtTenNV_TS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTenNV_TS.FocusedState.Parent = this.txtTenNV_TS;
             this.txtTenNV_TS.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -275,6 +352,7 @@
             this.txtTenNV_TS.ShadowDecoration.Parent = this.txtTenNV_TS;
             this.txtTenNV_TS.Size = new System.Drawing.Size(251, 36);
             this.txtTenNV_TS.TabIndex = 21;
+            this.txtTenNV_TS.Leave += new System.EventHandler(this.txtTenNV_TS_Leave);
             // 
             // label1
             // 
@@ -393,7 +471,7 @@
             // txtXacNhan
             // 
             this.txtXacNhan.BackColor = System.Drawing.Color.Transparent;
-            this.txtXacNhan.BorderRadius = 20;
+            this.txtXacNhan.BorderRadius = 10;
             this.txtXacNhan.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtXacNhan.DefaultText = "";
             this.txtXacNhan.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -401,7 +479,6 @@
             this.txtXacNhan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtXacNhan.DisabledState.Parent = this.txtXacNhan;
             this.txtXacNhan.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtXacNhan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtXacNhan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtXacNhan.FocusedState.Parent = this.txtXacNhan;
             this.txtXacNhan.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -415,6 +492,7 @@
             this.txtXacNhan.ShadowDecoration.Parent = this.txtXacNhan;
             this.txtXacNhan.Size = new System.Drawing.Size(234, 36);
             this.txtXacNhan.TabIndex = 54;
+            this.txtXacNhan.Leave += new System.EventHandler(this.txtXacNhan_Leave);
             // 
             // label8
             // 
@@ -460,10 +538,10 @@
             // cbRole
             // 
             this.cbRole.BackColor = System.Drawing.Color.Transparent;
-            this.cbRole.BorderRadius = 20;
+            this.cbRole.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.cbRole.BorderRadius = 10;
             this.cbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRole.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.cbRole.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbRole.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbRole.FocusedState.Parent = this.cbRole;
@@ -481,7 +559,7 @@
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.Transparent;
-            this.txtPassword.BorderRadius = 20;
+            this.txtPassword.BorderRadius = 10;
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.DefaultText = "";
             this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -489,7 +567,6 @@
             this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPassword.DisabledState.Parent = this.txtPassword;
             this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.FocusedState.Parent = this.txtPassword;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -503,11 +580,12 @@
             this.txtPassword.ShadowDecoration.Parent = this.txtPassword;
             this.txtPassword.Size = new System.Drawing.Size(234, 36);
             this.txtPassword.TabIndex = 48;
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // txtUsername
             // 
             this.txtUsername.BackColor = System.Drawing.Color.Transparent;
-            this.txtUsername.BorderRadius = 20;
+            this.txtUsername.BorderRadius = 10;
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsername.DefaultText = "";
             this.txtUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -515,7 +593,6 @@
             this.txtUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtUsername.DisabledState.Parent = this.txtUsername;
             this.txtUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUsername.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUsername.FocusedState.Parent = this.txtUsername;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -529,6 +606,7 @@
             this.txtUsername.ShadowDecoration.Parent = this.txtUsername;
             this.txtUsername.Size = new System.Drawing.Size(234, 36);
             this.txtUsername.TabIndex = 47;
+            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // label4
             // 
@@ -691,82 +769,10 @@
             this.btnThemNV.Text = "Thêm Nhân Viên";
             this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
             // 
-            // label9
+            // guna2Elipse1
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(17, 206);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 15);
-            this.label9.TabIndex = 56;
-            this.label9.Text = "Đơn Vi :";
-            // 
-            // cbDonVi
-            // 
-            this.cbDonVi.BackColor = System.Drawing.Color.Transparent;
-            this.cbDonVi.BorderRadius = 20;
-            this.cbDonVi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDonVi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.cbDonVi.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbDonVi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbDonVi.FocusedState.Parent = this.cbDonVi;
-            this.cbDonVi.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbDonVi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbDonVi.HoverState.Parent = this.cbDonVi;
-            this.cbDonVi.ItemHeight = 30;
-            this.cbDonVi.ItemsAppearance.Parent = this.cbDonVi;
-            this.cbDonVi.Location = new System.Drawing.Point(74, 195);
-            this.cbDonVi.Name = "cbDonVi";
-            this.cbDonVi.ShadowDecoration.Parent = this.cbDonVi;
-            this.cbDonVi.Size = new System.Drawing.Size(251, 36);
-            this.cbDonVi.TabIndex = 55;
-            // 
-            // ID_NV
-            // 
-            this.ID_NV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID_NV.DataPropertyName = "IDnv";
-            this.ID_NV.HeaderText = "ID_NV";
-            this.ID_NV.Name = "ID_NV";
-            this.ID_NV.Width = 71;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            // 
-            // TenNV
-            // 
-            this.TenNV.DataPropertyName = "Name";
-            this.TenNV.HeaderText = "Tên";
-            this.TenNV.Name = "TenNV";
-            // 
-            // DonVi
-            // 
-            this.DonVi.DataPropertyName = "DonVi";
-            this.DonVi.HeaderText = "Đơn Vị";
-            this.DonVi.Name = "DonVi";
-            // 
-            // Sua
-            // 
-            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sua.HeaderText = "";
-            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
-            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Sua.Name = "Sua";
-            this.Sua.Width = 20;
-            // 
-            // Xoa
-            // 
-            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xoa.HeaderText = "";
-            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
-            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xoa.Name = "Xoa";
-            this.Xoa.Width = 20;
+            this.guna2Elipse1.BorderRadius = 20;
+            this.guna2Elipse1.TargetControl = this.dtgv_NV;
             // 
             // QL_NHAN_VIEN
             // 
@@ -835,5 +841,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DonVi;
         private System.Windows.Forms.DataGridViewImageColumn Sua;
         private System.Windows.Forms.DataGridViewImageColumn Xoa;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

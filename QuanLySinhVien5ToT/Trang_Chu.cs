@@ -13,11 +13,11 @@ namespace QuanLySinhVien5ToT
 {
     public partial class Trang_Chu : Form
     {
-        public Trang_Chu()
+        public  Trang_Chu()
         {
             InitializeComponent();
+            
         }
-        
 
         private void TrangChu_Load(object sender, EventArgs e)
         {
@@ -25,9 +25,6 @@ namespace QuanLySinhVien5ToT
             Visible_pn();
             showTrangChu();
             pn_Menu.Width = 60;
-            
-
-
         }
 
         
@@ -45,8 +42,6 @@ namespace QuanLySinhVien5ToT
                     enumExpended = true;
                     pn_Menu.Width = 255;
                     pn_Menu.BringToFront();
-                    //pn_logo.BringToFront();
-                    
                 }
             }
             else
@@ -66,7 +61,7 @@ namespace QuanLySinhVien5ToT
         }
         private void guna2Button8_CheckedChanged(object sender, EventArgs e)
         {
-            if (guna2Button8.Checked) 
+            if (btnTD_SV_TG.Checked) 
             {
                 
             } 
@@ -75,7 +70,7 @@ namespace QuanLySinhVien5ToT
         private void guna2Button2_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (guna2Button2.Checked)
+            if (btnTieuChuan.Checked)
             {
                 
             }
@@ -98,133 +93,25 @@ namespace QuanLySinhVien5ToT
                 pn_Diem_SubMenu.Visible = false;
             
         }
+        
         private void showMenu(Panel Submenu)
         {
-            if (Submenu.Visible == false)
+            List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
+            if (!listPQ_TC.Any())
             {
-                HideSubMenu();
-                Submenu.Visible = true;
+                MessageBox.Show("Bạn phải đăng nhập trước");
             }
             else
-                Submenu.Visible = false;
-        }
-
-       
-
-        
-        private void btn_TTSV_Click(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            THONGTIN_SINHVIEN SV = new THONGTIN_SINHVIEN();
-            SV.Location = new Point(0, 0);
-            pn_control.Controls.Add(SV);
-            HideSubMenu();
-        }
-
-        private void guna2Button9_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            THAMGIA_CT TGCT = new THAMGIA_CT();
-            TGCT.Location = new Point(0, 0);
-            pn_control.Controls.Add(TGCT);
-            HideSubMenu();
-        }
-
-        private void guna2Button10_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            THUCHIENTIEUCHUAN THTC = new THUCHIENTIEUCHUAN();
-            THTC.Location = new Point(0, 0);
-            pn_control.Controls.Add(THTC);
-            HideSubMenu();
-        }
-
-        private void guna2Button1_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            KQ_Theo_TC KQ = new KQ_Theo_TC();
-            KQ.Location = new Point(0, 0);
-            pn_control.Controls.Add(KQ);
-            HideSubMenu();
-        }
-
-        private void guna2Button8_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QL_TGX TGX = new QL_TGX();
-            TGX.Location = new Point(0, 0);
-            pn_control.Controls.Add(TGX);
-            HideSubMenu();
-        }
-
-        private void guna2Button2_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QL_TIEUCHUAN QLTieuChuan = new QL_TIEUCHUAN();
-            QLTieuChuan.Location = new Point(0, 0);
-            pn_control.Controls.Add(QLTieuChuan);
-            HideSubMenu();
-        }
-
-        private void guna2Button3_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QL_CT QLCT = new QL_CT();
-            QLCT.Location = new Point(0, 0);
-            pn_control.Controls.Add(QLCT);
-            HideSubMenu();
-        }
-
-        private void guna2Button6_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QL_DIEM Diem = new QL_DIEM();
-            Diem.Location = new Point(0, 0);
-            pn_control.Controls.Add(Diem);
-            HideSubMenu();
-        }
-
-        private void guna2Button7_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            HOCKYXETDIEM HK = new HOCKYXETDIEM();
-            HK.Location = new Point(0, 0);
-            pn_control.Controls.Add(HK);
-            HideSubMenu();
-        }
-
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QUYDINHDIEM QDĐ = new QUYDINHDIEM();
-            QDĐ.Location = new Point(0, 0);
-            pn_control.Controls.Add(QDĐ);
-            HideSubMenu();
-        }
-
-        private void guna2Button11_Click_1(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QUYDINH_GIAI QDG = new QUYDINH_GIAI();
-            QDG.Location = new Point(0, 0);
-            pn_control.Controls.Add(QDG);
-            HideSubMenu();
-        }
-        private void guna2Button12_Click(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QL_DonVi QV = new QL_DonVi();
-            QV.Location = new Point(0, 0);
-            pn_control.Controls.Add(QV);
-            HideSubMenu();
-        }
-        private void guna2Button13_Click(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            QL_NHAN_VIEN QLNV= new QL_NHAN_VIEN();
-            QLNV.Location = new Point(0, 0);
-            pn_control.Controls.Add(QLNV);
-            HideSubMenu();
+            {
+                if (Submenu.Visible == false)
+                {
+                    HideSubMenu();
+                    Submenu.Visible = true;
+                }
+                else
+                    Submenu.Visible = false;
+            }
+            
         }
         private void btn_TD_SV_Click(object sender, EventArgs e)
         {
@@ -256,15 +143,11 @@ namespace QuanLySinhVien5ToT
                 pn_DangNhap.BringToFront();
                 btn_DangNhap.BringToFront();
                 btn_DangXuat.BringToFront();
-                pn_DangNhap.Visible = true;               
-                btn_DangNhap.Visible = true;
-                btn_DangXuat.Visible = true;
-                
+                pn_DangNhap.Visible = true;                               
             }
             else
             {               
                 pn_DangNhap.Visible = false;               
-                btn_DangNhap.Visible = false;
                 btn_DangXuat.Visible = false;
             }
                
@@ -283,15 +166,6 @@ namespace QuanLySinhVien5ToT
             showTrangChu();
         }
 
-        private void guna2Button14_Click(object sender, EventArgs e)
-        {
-            pn_control.Controls.Clear();
-            User_Role US = new User_Role();
-            US.Location = new Point(0, 0);
-            pn_control.Controls.Add(US);
-            HideSubMenu();
-        }
-
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
             Login lg = new Login();
@@ -302,27 +176,176 @@ namespace QuanLySinhVien5ToT
 
         private void Trang_Chu_Activated(object sender, EventArgs e)
         {
-            LoadPQ();
-        }
-        public void LoadPQ()
-        {
             List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
             if (!listPQ_TC.Any())
             {
                 lbName.Visible = true;
-                btn_TTSV.Enabled = true;
+                btn_Information.Visible = false;
+                btn_DangNhap.Visible = true;
+                btn_DangXuat.Visible = false;
             }
             else
             {
+                btn_Information.Visible = true;
+                btn_DangNhap.Visible = false;
+                btn_DangXuat.Visible = true;
                 lbName.Visible = true;
-                btn_TTSV.Enabled = true;
                 lbName.Text = listPQ_TC.Select(x => x.Name).ToArray().First().ToString();
             }
         }
-
-        public void button1_Click(object sender, EventArgs e)
+        public void LoadPQ()
         {
-            Trang_Chu_Activated(sender, e);
+            this.Refresh();
+        }
+        private void pn_control_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_TTSV_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            THONGTIN_SINHVIEN SV = new THONGTIN_SINHVIEN();
+            SV.Location = new Point(0, 0);
+            pn_control.Controls.Add(SV);
+            HideSubMenu();
+        }
+        private void btnThamGia_CT_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            THAMGIA_CT TGCT = new THAMGIA_CT();
+            TGCT.Location = new Point(0, 0);
+            pn_control.Controls.Add(TGCT);
+            HideSubMenu();
+        }
+
+        private void btnThucHen_TC_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            THUCHIENTIEUCHUAN THTC = new THUCHIENTIEUCHUAN();
+            THTC.Location = new Point(0, 0);
+            pn_control.Controls.Add(THTC);
+            HideSubMenu();
+        }
+
+        private void btnKQ_Theo_TC_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            KQ_Theo_TC KQ = new KQ_Theo_TC();
+            KQ.Location = new Point(0, 0);
+            pn_control.Controls.Add(KQ);
+            HideSubMenu();
+        }
+
+        private void btnTD_SV_TG_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            QL_TGX TGX = new QL_TGX();
+            TGX.Location = new Point(0, 0);
+            pn_control.Controls.Add(TGX);
+            HideSubMenu();
+        }
+
+        private void btnTieuChuan_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            QL_TIEUCHUAN QLTieuChuan = new QL_TIEUCHUAN();
+            QLTieuChuan.Location = new Point(0, 0);
+            pn_control.Controls.Add(QLTieuChuan);
+            HideSubMenu();
+        }
+
+        private void btnChuongTrinh_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            QL_CT QLCT = new QL_CT();
+            QLCT.Location = new Point(0, 0);
+            pn_control.Controls.Add(QLCT);
+            HideSubMenu();
+        }
+
+        private void btnDiem_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            QL_DIEM Diem = new QL_DIEM();
+            Diem.Location = new Point(0, 0);
+            pn_control.Controls.Add(Diem);
+            HideSubMenu();
+        }
+
+        private void btnHK_Xet_Diem_Click_1(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            HOCKYXETDIEM HK = new HOCKYXETDIEM();
+            HK.Location = new Point(0, 0);
+            pn_control.Controls.Add(HK);
+            HideSubMenu();
+        }
+
+        private void btnQD_Diem_Click(object sender, EventArgs e)
+        {
+            pn_control.Controls.Clear();
+            QUYDINHDIEM QDĐ = new QUYDINHDIEM();
+            QDĐ.Location = new Point(0, 0);
+            pn_control.Controls.Add(QDĐ);
+            HideSubMenu();
+        }
+
+        private void btnDonVi_Click(object sender, EventArgs e)
+        { 
+            List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
+            if (!listPQ_TC.Any())
+            {
+                MessageBox.Show("bạn phải đăng nhập trước");
+            }
+            else
+            {
+                pn_control.Controls.Clear();
+                QL_DonVi QV = new QL_DonVi();
+                QV.Location = new Point(0, 0);
+                pn_control.Controls.Add(QV);
+                HideSubMenu();
+            }            
+        }
+
+        private void btnQL_NhanVien_Click(object sender, EventArgs e)
+        {
+            List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
+            if (!listPQ_TC.Any())
+            {
+                MessageBox.Show("bạn phải đăng nhập trước");
+            }
+            else
+            {
+                pn_control.Controls.Clear();
+                QL_NHAN_VIEN QLNV = new QL_NHAN_VIEN();
+                QLNV.Location = new Point(0, 0);
+                pn_control.Controls.Add(QLNV);
+                HideSubMenu();
+            }           
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
+            if (!listPQ_TC.Any())
+            {
+                MessageBox.Show("bạn phải đăng nhập trước");
+            }
+            else
+            {
+                pn_control.Controls.Clear();
+                User_Role US = new User_Role();
+                US.Location = new Point(0, 0);
+                pn_control.Controls.Add(US);
+                HideSubMenu();
+            }
+            
+        }
+
+        private void guna2ImageButton4_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

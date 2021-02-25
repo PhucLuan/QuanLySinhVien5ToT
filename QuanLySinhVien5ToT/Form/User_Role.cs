@@ -48,14 +48,16 @@ namespace QuanLySinhVien5ToT
             txtPassword.Text = "";
             txtUserID.Text = "";
             txtUserID.Enabled = false;
-            txtUsername.BorderColor = Color.White;
-            txtUsername.PlaceholderText = "";
-            txtUsername.PlaceholderForeColor = Color.White;
-            txtPassword.BorderColor = Color.White;
-            txtPassword.PlaceholderText = "";
-            txtPassword.PlaceholderForeColor = Color.White;
+            designbtn();
         }
+        void designbtn()
+        {
+            txtUsername.BorderColor = Color.FromArgb(213, 218, 223);
+            txtUsername.PlaceholderText = "";
 
+            txtPassword.BorderColor = Color.FromArgb(213, 218, 223);
+            txtPassword.PlaceholderText = "";
+        }
         private void dtgv_User_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string name = dtgv_User.Columns[e.ColumnIndex].Name;
@@ -70,9 +72,15 @@ namespace QuanLySinhVien5ToT
                 flagLuu = 1;
                 btnThemUser.Enabled = false;
                 binding();
+                designbtn();
             }
         }
-
+        void loadbtnluu()
+        {
+            pn_Them_User.Visible = false;
+            btnLuuUser.Visible = false;
+            dtgv_User.Width = 1011;
+        }
         private void btnLuuUser_Click(object sender, EventArgs e)
         {
             
@@ -94,29 +102,28 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                pn_Them_User.Visible = false;
-                btnLuuUser.Visible = false;
-                dtgv_User.Width = 1011;
                 if (flagLuu == 0)
                 {
 
                     USER us = User_RoleBLL.Get(x => x.IDuser.ToString() == txtUserID.Text.Trim());
                     if (us == null)
                     {
-                        txtPassword.Text = User_RoleBLL.Mahoa(txtPassword.Text);
                         us = new USER();
                         us.Username = txtUsername.Text;
-                        us.Password = txtPassword.Text;
+                        us.Password = User_RoleBLL.Mahoa(txtPassword.Text);
                         us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
                         User_RoleBLL.Add(us);
                         MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        btnThemUser.Enabled = true;
+                        loadbtnluu();
                     }
                     else
                     {
                         MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemUser_Click(sender, e);
                     }
-                    loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-                    btnThemUser.Enabled = true;
+                    
                 }
                 else
                 {
@@ -126,17 +133,19 @@ namespace QuanLySinhVien5ToT
 
                         us.IDuser = Convert.ToInt32(txtUserID.Text);
                         us.Username = txtUsername.Text;
-                        us.Password = txtPassword.Text;
+                        us.Password = User_RoleBLL.Mahoa(txtPassword.Text);
                         us.IDrole = Convert.ToInt32(cbRole.SelectedValue.ToString());
                         User_RoleBLL.Edit(us);
                         MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        btnThemUser.Enabled = true;
+                        loadbtnluu();
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnThemUser_Click(sender, e); 
                     }
-                    loaddsuser(User_RoleBLL.dsusser().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-                    btnThemUser.Enabled = true;
                 }
             }
             
@@ -180,7 +189,14 @@ namespace QuanLySinhVien5ToT
                     int Number = pagenumber;
                     lbNumber.Text = Number.ToString();
                 }
-
+                else if (flagDT == 2)
+                {
+                    var listfillter = new List<UserDTO>();
+                    listfillter = User_RoleBLL.dsusser().Where(x => x.Role.Contains(cbFillterRole.Text)).ToList();
+                    dtgv_User.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
             }
         }
 
@@ -198,7 +214,7 @@ namespace QuanLySinhVien5ToT
                     lbNumber.Text = Number.ToString();
                 }
             }
-            if (flagDT == 0)
+            if (flagDT == 1)
             {
                 int totlalrecord = 0;
                 totlalrecord = User_RoleBLL.dsusser().Where(x => x.Username.Contains(txtsearch.Text)).Count();
@@ -207,6 +223,20 @@ namespace QuanLySinhVien5ToT
                     pagenumber++;
                     var listfillter = new List<UserDTO>();
                     listfillter = User_RoleBLL.dsusser().Where(x => x.Username.Contains(txtsearch.Text)).ToList();
+                    dtgv_User.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
+            }
+            if(flagDT == 2)
+            {
+                int totlalrecord = 0;
+                totlalrecord = User_RoleBLL.dsusser().Where(x => x.Role.Contains(cbFillterRole.Text)).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
+                {
+                    pagenumber++;
+                    var listfillter = new List<UserDTO>();
+                    listfillter = User_RoleBLL.dsusser().Where(x => x.Role.Contains(cbFillterRole.Text)).ToList();
                     dtgv_User.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
                     int Number = pagenumber;
                     lbNumber.Text = Number.ToString();
@@ -246,6 +276,7 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
+                flagDT = 1;
                 var listSearch = new List<UserDTO>();
                 listSearch = User_RoleBLL.dsusser().Where(x => x.Username.Contains(txtsearch.Text)).ToList();
                 dtgv_User.DataSource = listSearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();                
@@ -260,7 +291,7 @@ namespace QuanLySinhVien5ToT
             var listfillter = new List<UserDTO>();
             listfillter = User_RoleBLL.dsusser().Where(x => x.Role.Contains(cbFillterRole.Text)).ToList();
             dtgv_User.DataSource = listfillter.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
-            flagDT = 1;
+            flagDT = 2;
             lbNumber.Text = pagenumber.ToString();
             if (dtgv_User.RowCount == 0)
             {

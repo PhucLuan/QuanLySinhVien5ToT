@@ -75,6 +75,7 @@ namespace QuanLySinhVien5ToT
         }
         private void btnLuuDiem_Click(object sender, EventArgs e)
         {
+            
             if (txtMssv_TS.Text == "" || txtDiem_TS.Text == "")
             {
                 if (string.IsNullOrEmpty(txtMssv_TS.Text.Trim()))
@@ -83,16 +84,10 @@ namespace QuanLySinhVien5ToT
                     txtMssv_TS.PlaceholderText = "bạn chưa nhập Mssv";
                     txtMssv_TS.PlaceholderForeColor = Color.Red;
                 }
-                if (string.IsNullOrEmpty(txtDiem_TS.Text.Trim()))
-                {
-                    txtDiem_TS.BorderColor = Color.Red;
-                    txtDiem_TS.PlaceholderText = "bạn chưa nhập Điêm";
-                    txtDiem_TS.PlaceholderForeColor = Color.Red;
-                }               
+                txtDiem_TS_Leave(sender, e);
             }
             else
-            {              
-                
+            {
                 if (flagLuu == 0)
                 {
                     DIEM diem = QL_DiemBLL.Get(x => x.Mssv.Trim() == txtMssv_TS.Text.Trim() && x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString()) && x.MaHocKy == Convert.ToInt32(cbThoiGian_TS.SelectedValue.ToString()));
@@ -126,7 +121,7 @@ namespace QuanLySinhVien5ToT
                         loadDiem(QL_DiemBLL.dsdiem().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                         loadbtnluu();
                     }
-                    catch (Exception)
+                    catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemDiem_Click(sender, e);
@@ -377,15 +372,17 @@ namespace QuanLySinhVien5ToT
         void QDdiemtoithieu()
         {
             txtDiem_TS.Text = "";
+            //MessageBox.Show("Điểm sai!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             txtDiem_TS.BorderColor = Color.Red;
             txtDiem_TS.PlaceholderForeColor = Color.Red;
+
         }
         private void txtDiem_TS_Leave(object sender, EventArgs e)
         {
             string cbLoaiDiem = cbLoaiDiem_TS.Text;
             if (cbLoaiDiem == "Điểm rèn luyện")
             {
-                if (txtDiem_TS.Text=="" ||Convert.ToInt32(txtDiem_TS.Text) > 100 || Convert.ToInt32(txtDiem_TS.Text) < 50)
+                if (txtDiem_TS.Text == "" || Convert.ToInt32(txtDiem_TS.Text) > 100 || Convert.ToInt32(txtDiem_TS.Text) < 50)
                 {
                     QDdiemtoithieu();
                     txtDiem_TS.PlaceholderText = "Điểm phải >=50 và <=100";
@@ -397,7 +394,7 @@ namespace QuanLySinhVien5ToT
             }
             if (cbLoaiDiem == "Điểm học tập" || cbLoaiDiem == "Điểm Kỹ năng mềm")
             {
-                if (txtDiem_TS.Text == ""|| Convert.ToInt32(txtDiem_TS.Text) == 0 || Convert.ToInt32(txtDiem_TS.Text) > 10)
+                if (txtDiem_TS.Text == "" || Convert.ToInt32(txtDiem_TS.Text) == 0 || Convert.ToInt32(txtDiem_TS.Text) > 10)
                 {
                     QDdiemtoithieu();
                     txtDiem_TS.PlaceholderText = "Điểm phải >0 và <=10";
@@ -408,7 +405,7 @@ namespace QuanLySinhVien5ToT
                 }
                 if (cbLoaiDiem == "Điểm xếp loại đoàn viên")
                 {
-                    if (txtDiem_TS.Text == ""|| Convert.ToInt32(txtDiem_TS.Text) < 75 || Convert.ToInt32(txtDiem_TS.Text)>100)
+                    if (txtDiem_TS.Text == "" || Convert.ToInt32(txtDiem_TS.Text) < 75 || Convert.ToInt32(txtDiem_TS.Text) > 100)
                     {
                         QDdiemtoithieu();
                         txtDiem_TS.PlaceholderText = "Điểm phải >=75 và <=100";
@@ -419,6 +416,10 @@ namespace QuanLySinhVien5ToT
                     }
                 }
             }
+        }
+        void checkdiem()
+        {
+            
         }
 
         private void txtMssv_TS_Leave(object sender, EventArgs e)

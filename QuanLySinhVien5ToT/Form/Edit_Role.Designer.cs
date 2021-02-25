@@ -33,6 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgv_Role = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.ID_Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Them_Role = new Guna.UI2.WinForms.Guna2Panel();
             this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,20 +45,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbTD = new System.Windows.Forms.Label();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            this.btnXpn_Role = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.ID_Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnXRole = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnXpn_Role = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnThemRole = new Guna.UI2.WinForms.Guna2Button();
-            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbNumber = new System.Windows.Forms.Label();
             this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_Role)).BeginInit();
             this.pn_Them_Role.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -124,6 +125,38 @@
             this.dtgv_Role.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_Role.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_Role_CellContentClick);
             // 
+            // ID_Role
+            // 
+            this.ID_Role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID_Role.DataPropertyName = "IDrole";
+            this.ID_Role.HeaderText = "ID";
+            this.ID_Role.Name = "ID_Role";
+            this.ID_Role.Width = 46;
+            // 
+            // Role
+            // 
+            this.Role.DataPropertyName = "Role";
+            this.Role.HeaderText = "Role";
+            this.Role.Name = "Role";
+            // 
+            // Sua
+            // 
+            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sua.HeaderText = "";
+            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
+            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Sua.Name = "Sua";
+            this.Sua.Width = 20;
+            // 
+            // Xoa
+            // 
+            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xoa.HeaderText = "";
+            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
+            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Width = 20;
+            // 
             // pn_Them_Role
             // 
             this.pn_Them_Role.BackColor = System.Drawing.Color.Transparent;
@@ -147,7 +180,7 @@
             // txtID
             // 
             this.txtID.BackColor = System.Drawing.Color.Transparent;
-            this.txtID.BorderRadius = 20;
+            this.txtID.BorderRadius = 10;
             this.txtID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtID.DefaultText = "";
             this.txtID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -155,7 +188,6 @@
             this.txtID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtID.DisabledState.Parent = this.txtID;
             this.txtID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtID.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtID.FocusedState.Parent = this.txtID;
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -204,7 +236,7 @@
             // txtRole
             // 
             this.txtRole.BackColor = System.Drawing.Color.Transparent;
-            this.txtRole.BorderRadius = 20;
+            this.txtRole.BorderRadius = 10;
             this.txtRole.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRole.DefaultText = "";
             this.txtRole.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -212,7 +244,6 @@
             this.txtRole.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtRole.DisabledState.Parent = this.txtRole;
             this.txtRole.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtRole.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtRole.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRole.FocusedState.Parent = this.txtRole;
             this.txtRole.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -226,6 +257,7 @@
             this.txtRole.ShadowDecoration.Parent = this.txtRole;
             this.txtRole.Size = new System.Drawing.Size(226, 36);
             this.txtRole.TabIndex = 49;
+            this.txtRole.Leave += new System.EventHandler(this.txtRole_Leave);
             // 
             // label3
             // 
@@ -259,24 +291,29 @@
             this.guna2Separator2.Size = new System.Drawing.Size(230, 10);
             this.guna2Separator2.TabIndex = 19;
             // 
+            // btnXpn_Role
+            // 
+            this.btnXpn_Role.BackColor = System.Drawing.Color.White;
+            this.btnXpn_Role.Checked = true;
+            this.btnXpn_Role.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXpn_Role.CheckedState.Parent = this.btnXpn_Role;
+            this.btnXpn_Role.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXpn_Role.HoverState.Parent = this.btnXpn_Role;
+            this.btnXpn_Role.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnXpn_Role.ImageRotate = 0F;
+            this.btnXpn_Role.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnXpn_Role.Location = new System.Drawing.Point(207, 10);
+            this.btnXpn_Role.Name = "btnXpn_Role";
+            this.btnXpn_Role.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnXpn_Role.PressedState.Parent = this.btnXpn_Role;
+            this.btnXpn_Role.Size = new System.Drawing.Size(30, 31);
+            this.btnXpn_Role.TabIndex = 20;
+            this.btnXpn_Role.Click += new System.EventHandler(this.btnXRole_Click);
+            // 
             // guna2Elipse1
             // 
             this.guna2Elipse1.BorderRadius = 20;
             this.guna2Elipse1.TargetControl = this;
-            // 
-            // ID_Role
-            // 
-            this.ID_Role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID_Role.DataPropertyName = "IDrole";
-            this.ID_Role.HeaderText = "ID";
-            this.ID_Role.Name = "ID_Role";
-            this.ID_Role.Width = 46;
-            // 
-            // Role
-            // 
-            this.Role.DataPropertyName = "Role";
-            this.Role.HeaderText = "Role";
-            this.Role.Name = "Role";
             // 
             // dataGridViewImageColumn1
             // 
@@ -285,7 +322,6 @@
             this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 20;
             // 
             // dataGridViewImageColumn2
             // 
@@ -294,7 +330,6 @@
             this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 20;
             // 
             // btnXRole
             // 
@@ -315,25 +350,6 @@
             this.btnXRole.TabIndex = 51;
             this.btnXRole.Click += new System.EventHandler(this.btnXRole_Click_1);
             // 
-            // btnXpn_Role
-            // 
-            this.btnXpn_Role.BackColor = System.Drawing.Color.White;
-            this.btnXpn_Role.Checked = true;
-            this.btnXpn_Role.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXpn_Role.CheckedState.Parent = this.btnXpn_Role;
-            this.btnXpn_Role.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXpn_Role.HoverState.Parent = this.btnXpn_Role;
-            this.btnXpn_Role.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnXpn_Role.ImageRotate = 0F;
-            this.btnXpn_Role.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnXpn_Role.Location = new System.Drawing.Point(207, 10);
-            this.btnXpn_Role.Name = "btnXpn_Role";
-            this.btnXpn_Role.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnXpn_Role.PressedState.Parent = this.btnXpn_Role;
-            this.btnXpn_Role.Size = new System.Drawing.Size(30, 31);
-            this.btnXpn_Role.TabIndex = 20;
-            this.btnXpn_Role.Click += new System.EventHandler(this.btnXRole_Click);
-            // 
             // btnThemRole
             // 
             this.btnThemRole.BackColor = System.Drawing.Color.Transparent;
@@ -351,24 +367,6 @@
             this.btnThemRole.TabIndex = 46;
             this.btnThemRole.Text = "Thêm Role";
             this.btnThemRole.Click += new System.EventHandler(this.btnThemRole_Click);
-            // 
-            // Sua
-            // 
-            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sua.HeaderText = "";
-            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
-            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Sua.Name = "Sua";
-            this.Sua.Width = 20;
-            // 
-            // Xoa
-            // 
-            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xoa.HeaderText = "";
-            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
-            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xoa.Name = "Xoa";
-            this.Xoa.Width = 20;
             // 
             // guna2Panel2
             // 
@@ -434,6 +432,11 @@
             this.btnNext.TabIndex = 48;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 20;
+            this.guna2Elipse2.TargetControl = this.dtgv_Role;
+            // 
             // Edit_Role
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,5 +484,6 @@
         private System.Windows.Forms.Label lbNumber;
         private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
         private Guna.UI2.WinForms.Guna2ImageButton btnNext;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
     }
 }

@@ -15,7 +15,6 @@ namespace QuanLySinhVien5ToT
 {
     public partial class Login : UserControl
     {
-        Trang_Chu TrangChu;
         public Login()
         {
             InitializeComponent();
@@ -48,15 +47,12 @@ namespace QuanLySinhVien5ToT
                 USER us = User_RoleBLL.Get(x => x.Username == txtUsername.Text.Trim() && x.Password == txtPassword.Text.Trim());
                 if (us != null)
                 {
-                    this.Hide();                   
-                    MessageBox.Show("Đăng nhập thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);                    
-                                   
+                    this.Hide();                                                                                           
                     listPQ = loginBLL.dsPQ(txtUsername.Text, txtPassword.Text);
-                    //TrangChu.Hide();
                     Trang_Chu TC = new Trang_Chu();
                     TC.LoadPQ();
+                    MessageBox.Show("Đăng nhập thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //TC.Refresh();
-                    //TC.Show();
                 }
                 else
                 {

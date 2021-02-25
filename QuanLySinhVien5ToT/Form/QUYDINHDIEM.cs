@@ -118,13 +118,10 @@ namespace QuanLySinhVien5ToT
         {
             if (txtDiemToiThieu.Text == "")
             {
-                txtDiemToiThieu.BorderColor = Color.Red;
-                txtDiemToiThieu.PlaceholderText = "bạn chưa nhập Điểm Tối Thiểu";
-                txtDiemToiThieu.PlaceholderForeColor = Color.Red;
+                txtDiemToiThieu_Leave(sender, e);
             }
             else
             {
-                string cbLoaiDiem = cbLoaiDiem_TS.Text;
                 if (flagLuu == 0)
                 {
                     QUYDINH_DIEM qd = quyDinhDiemBLL.Get(x => x.MaLoaiDiem == Convert.ToInt32(cbLoaiDiem_TS.SelectedValue.ToString())
@@ -151,7 +148,7 @@ namespace QuanLySinhVien5ToT
                         MessageBox.Show("dữ liệu đã bị trùng !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemQuyDinh_Click(sender, e);
                     }
-                    
+
                 }
                 else
                 {
@@ -183,17 +180,20 @@ namespace QuanLySinhVien5ToT
                             loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
                             loadbtnluu();
                         }
-                        
+
                     }
-                    catch (Exception)
+                    catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        btnThemQuyDinh_Click(sender, e); 
-                    }                    
-                    
+                        btnThemQuyDinh_Click(sender, e);
+                    }
+
                 }
             }
             
+
+
+
         }
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)

@@ -45,15 +45,8 @@ namespace QuanLySinhVien5ToT
             flagLuu = 0;
             txtTenDV.Text = "";
             txtMaDV.Text = "";
-            txtMaDV.ReadOnly = false;
-
-            txtMaDV.BorderColor = Color.White;
-            txtMaDV.PlaceholderText = "";
-            txtMaDV.PlaceholderForeColor = Color.White;
-
-            txtTenDV.BorderColor = Color.White;
-            txtTenDV.PlaceholderText = "";
-            txtTenDV.PlaceholderForeColor = Color.White;
+            txtMaDV.Enabled = true;
+            dessignbtn();            
         }
 
         private void dtgv_DV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -66,17 +59,11 @@ namespace QuanLySinhVien5ToT
                 btnLuuDV.Visible = true;
                 lbTieuDe.Text = "Sửa Đơn Vị";
                 btnThemDV.Enabled = false;
-                txtMaDV.ReadOnly = true;
+                txtMaDV.Enabled = false;
                 Binding();
-                flagLuu = 1;
+                dessignbtn();
+                flagLuu = 1;               
 
-                txtMaDV.BorderColor = Color.White;
-                txtMaDV.PlaceholderText = "";
-                txtMaDV.PlaceholderForeColor = Color.White;
-
-                txtTenDV.BorderColor = Color.White;
-                txtTenDV.PlaceholderText = "bạn chưa nhập tên đơn vị";
-                txtTenDV.PlaceholderForeColor = Color.White;
             }
             if (name == "Xoa")
             {
@@ -85,7 +72,20 @@ namespace QuanLySinhVien5ToT
 
             }
         }
+        void dessignbtn()
+        {
+            txtMaDV.BorderColor = Color.FromArgb(226, 226, 226);
+            txtMaDV.PlaceholderText = "";
 
+            txtTenDV.BorderColor = Color.FromArgb(226, 226, 226);
+            txtTenDV.PlaceholderText = "";
+        }
+        void loadbtnluu()
+        {
+            dtgv_DV.Width = 985;
+            pn_ThemSua_DV.Visible = false;
+            btnLuuDV.Visible = false;
+        }
         private void btnLuuDV_Click(object sender, EventArgs e)
         {
             if(txtMaDV.Text=="" || txtTenDV.Text == "")
@@ -105,9 +105,7 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                dtgv_DV.Width = 985;
-                pn_ThemSua_DV.Visible = false;
-                btnLuuDV.Visible = false;
+                
                 if (flagLuu == 0)
                 {
                     DON_VI donvi = QL_DV_BLL.Get(x => x.MaDonVi.Trim() == txtMaDV.Text.Trim());
@@ -119,14 +117,16 @@ namespace QuanLySinhVien5ToT
                         btnThemDV.Enabled = true;
                         QL_DV_BLL.Add(donvi);
                         MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ShowDonVi(QL_DV_BLL.dsDonVi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        txtMaDV.ReadOnly = false;
+                        loadbtnluu();
                     }
                     else
                     {
                         MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemDV.Enabled = true;
                     }
-                    ShowDonVi(QL_DV_BLL.dsDonVi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-                    txtMaDV.ReadOnly = false;
+                    
                 }
                 else
                 {
@@ -138,15 +138,15 @@ namespace QuanLySinhVien5ToT
                         QL_DV_BLL.Edit(dv);
                         btnThemDV.Enabled = true;
                         MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ShowDonVi(QL_DV_BLL.dsDonVi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                        txtMaDV.ReadOnly = false;
+                        loadbtnluu();
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         btnThemDV.Enabled = true;
                     }
-                    
-                    ShowDonVi(QL_DV_BLL.dsDonVi().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-                    txtMaDV.ReadOnly = false;
                 }
             }
             
@@ -217,6 +217,22 @@ namespace QuanLySinhVien5ToT
         {
             txtMaDV.MaxLength = 15;
             txtTenDV.MaxLength = 100;
+        }
+
+        private void txtMaDV_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaDV.Text.Trim()))
+                txtMaDV.BorderColor = Color.Red;
+            else
+                txtMaDV.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtTenDV_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenDV.Text.Trim()))
+                txtTenDV.BorderColor = Color.Red;
+            else
+                txtTenDV.BorderColor = Color.FromArgb(226, 226, 226);
         }
     }
 }

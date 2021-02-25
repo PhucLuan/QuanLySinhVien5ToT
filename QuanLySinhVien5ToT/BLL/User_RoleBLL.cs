@@ -80,5 +80,6 @@ namespace QuanLySinhVien5ToT.BLL
                 return MyHashMD5(hash);
             }
         }
+        
     }
 }

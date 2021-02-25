@@ -28,32 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgv_DV = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.MaDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.pn_ThemSua_DV = new Guna.UI2.WinForms.Guna2Panel();
             this.btnLuuDV = new Guna.UI2.WinForms.Guna2Button();
             this.lbTenDV = new System.Windows.Forms.Label();
             this.lbMaDV = new System.Windows.Forms.Label();
             this.txtTenDV = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnX_DV = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lbTieuDe = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.txtMaDV = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSearch_DV = new Guna.UI2.WinForms.Guna2TextBox();
-            this.MaDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnX_DV = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnThemDV = new Guna.UI2.WinForms.Guna2Button();
-            this.Sua = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Xoa = new System.Windows.Forms.DataGridViewImageColumn();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbNumber = new System.Windows.Forms.Label();
             this.btnprevious = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnNext = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_DV)).BeginInit();
             this.pn_ThemSua_DV.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -123,6 +125,38 @@
             this.dtgv_DV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dtgv_DV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_DV_CellContentClick);
             // 
+            // MaDonVi
+            // 
+            this.MaDonVi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MaDonVi.DataPropertyName = "MaDonVi";
+            this.MaDonVi.HeaderText = "Mã";
+            this.MaDonVi.Name = "MaDonVi";
+            this.MaDonVi.Width = 52;
+            // 
+            // TenDonVi
+            // 
+            this.TenDonVi.DataPropertyName = "TenDonVi";
+            this.TenDonVi.HeaderText = "Tên Đơn Vị";
+            this.TenDonVi.Name = "TenDonVi";
+            // 
+            // Sua
+            // 
+            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sua.HeaderText = "";
+            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
+            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Sua.Name = "Sua";
+            this.Sua.Width = 20;
+            // 
+            // Xoa
+            // 
+            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Xoa.HeaderText = "";
+            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
+            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Width = 20;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -164,7 +198,7 @@
             this.btnLuuDV.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuDV.ForeColor = System.Drawing.Color.White;
             this.btnLuuDV.HoverState.Parent = this.btnLuuDV;
-            this.btnLuuDV.Location = new System.Drawing.Point(258, 210);
+            this.btnLuuDV.Location = new System.Drawing.Point(259, 216);
             this.btnLuuDV.Name = "btnLuuDV";
             this.btnLuuDV.ShadowDecoration.Parent = this.btnLuuDV;
             this.btnLuuDV.Size = new System.Drawing.Size(60, 35);
@@ -200,7 +234,8 @@
             // txtTenDV
             // 
             this.txtTenDV.BackColor = System.Drawing.Color.Transparent;
-            this.txtTenDV.BorderRadius = 20;
+            this.txtTenDV.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(221)))), ((int)(((byte)(226)))));
+            this.txtTenDV.BorderRadius = 10;
             this.txtTenDV.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTenDV.DefaultText = "";
             this.txtTenDV.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -208,7 +243,6 @@
             this.txtTenDV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTenDV.DisabledState.Parent = this.txtTenDV;
             this.txtTenDV.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenDV.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtTenDV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTenDV.FocusedState.Parent = this.txtTenDV;
             this.txtTenDV.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -222,6 +256,26 @@
             this.txtTenDV.ShadowDecoration.Parent = this.txtTenDV;
             this.txtTenDV.Size = new System.Drawing.Size(295, 36);
             this.txtTenDV.TabIndex = 23;
+            this.txtTenDV.Leave += new System.EventHandler(this.txtTenDV_Leave);
+            // 
+            // btnX_DV
+            // 
+            this.btnX_DV.BackColor = System.Drawing.Color.White;
+            this.btnX_DV.Checked = true;
+            this.btnX_DV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnX_DV.CheckedState.Parent = this.btnX_DV;
+            this.btnX_DV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnX_DV.HoverState.Parent = this.btnX_DV;
+            this.btnX_DV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnX_DV.ImageRotate = 0F;
+            this.btnX_DV.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnX_DV.Location = new System.Drawing.Point(288, 15);
+            this.btnX_DV.Name = "btnX_DV";
+            this.btnX_DV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnX_DV.PressedState.Parent = this.btnX_DV;
+            this.btnX_DV.Size = new System.Drawing.Size(30, 31);
+            this.btnX_DV.TabIndex = 19;
+            this.btnX_DV.Click += new System.EventHandler(this.btnX_DV_Click);
             // 
             // lbTieuDe
             // 
@@ -246,7 +300,8 @@
             // txtMaDV
             // 
             this.txtMaDV.BackColor = System.Drawing.Color.Transparent;
-            this.txtMaDV.BorderRadius = 20;
+            this.txtMaDV.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(221)))), ((int)(((byte)(226)))));
+            this.txtMaDV.BorderRadius = 10;
             this.txtMaDV.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaDV.DefaultText = "";
             this.txtMaDV.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -254,7 +309,6 @@
             this.txtMaDV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtMaDV.DisabledState.Parent = this.txtMaDV;
             this.txtMaDV.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaDV.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtMaDV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaDV.FocusedState.Parent = this.txtMaDV;
             this.txtMaDV.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -269,6 +323,7 @@
             this.txtMaDV.Size = new System.Drawing.Size(295, 36);
             this.txtMaDV.TabIndex = 22;
             this.txtMaDV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDV_KeyPress);
+            this.txtMaDV.Leave += new System.EventHandler(this.txtMaDV_Leave);
             // 
             // txtSearch_DV
             // 
@@ -298,20 +353,6 @@
             this.txtSearch_DV.TabIndex = 26;
             this.txtSearch_DV.TextChanged += new System.EventHandler(this.txtSearch_DV_TextChanged);
             // 
-            // MaDonVi
-            // 
-            this.MaDonVi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MaDonVi.DataPropertyName = "MaDonVi";
-            this.MaDonVi.HeaderText = "Mã";
-            this.MaDonVi.Name = "MaDonVi";
-            this.MaDonVi.Width = 52;
-            // 
-            // TenDonVi
-            // 
-            this.TenDonVi.DataPropertyName = "TenDonVi";
-            this.TenDonVi.HeaderText = "Tên Đơn Vị";
-            this.TenDonVi.Name = "TenDonVi";
-            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -319,7 +360,6 @@
             this.dataGridViewImageColumn1.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 20;
             // 
             // dataGridViewImageColumn2
             // 
@@ -328,26 +368,6 @@
             this.dataGridViewImageColumn2.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 20;
-            // 
-            // btnX_DV
-            // 
-            this.btnX_DV.BackColor = System.Drawing.Color.White;
-            this.btnX_DV.Checked = true;
-            this.btnX_DV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnX_DV.CheckedState.Parent = this.btnX_DV;
-            this.btnX_DV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnX_DV.HoverState.Parent = this.btnX_DV;
-            this.btnX_DV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnX_DV.ImageRotate = 0F;
-            this.btnX_DV.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnX_DV.Location = new System.Drawing.Point(288, 15);
-            this.btnX_DV.Name = "btnX_DV";
-            this.btnX_DV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnX_DV.PressedState.Parent = this.btnX_DV;
-            this.btnX_DV.Size = new System.Drawing.Size(30, 31);
-            this.btnX_DV.TabIndex = 19;
-            this.btnX_DV.Click += new System.EventHandler(this.btnX_DV_Click);
             // 
             // btnThemDV
             // 
@@ -366,24 +386,6 @@
             this.btnThemDV.TabIndex = 24;
             this.btnThemDV.Text = "Thêm Đơn Vị";
             this.btnThemDV.Click += new System.EventHandler(this.btnThemDV_Click);
-            // 
-            // Sua
-            // 
-            this.Sua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sua.HeaderText = "";
-            this.Sua.Image = global::QuanLySinhVien5ToT.Properties.Resources.seo_23_51210;
-            this.Sua.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Sua.Name = "Sua";
-            this.Sua.Width = 20;
-            // 
-            // Xoa
-            // 
-            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Xoa.HeaderText = "";
-            this.Xoa.Image = global::QuanLySinhVien5ToT.Properties.Resources._14974663671582988848_51210;
-            this.Xoa.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Xoa.Name = "Xoa";
-            this.Xoa.Width = 20;
             // 
             // guna2Panel1
             // 
@@ -449,6 +451,11 @@
             this.btnNext.TabIndex = 48;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 20;
+            this.guna2Elipse1.TargetControl = this.dtgv_DV;
+            // 
             // QL_DonVi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,5 +504,6 @@
         private System.Windows.Forms.Label lbNumber;
         private Guna.UI2.WinForms.Guna2ImageButton btnprevious;
         private Guna.UI2.WinForms.Guna2ImageButton btnNext;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

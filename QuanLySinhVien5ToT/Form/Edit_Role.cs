@@ -43,9 +43,8 @@ namespace QuanLySinhVien5ToT
             txtID.Text = "";
             txtRole.Text = "";
             txtID.Enabled = false;
-            txtRole.BorderColor = Color.White;
+            txtRole.BorderColor = Color.FromArgb(213, 218, 223);
             txtRole.PlaceholderText = "";
-            txtRole.PlaceholderForeColor = Color.White;
         }
 
         private void dtgv_Role_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -63,9 +62,8 @@ namespace QuanLySinhVien5ToT
                 txtID.Enabled = false;
                 btnThemRole.Enabled = false;
 
-                txtRole.BorderColor = Color.White;
+                txtRole.BorderColor = Color.FromArgb(213, 218, 223);
                 txtRole.PlaceholderText = "";
-                txtRole.PlaceholderForeColor = Color.White;
             }
         }
 
@@ -77,7 +75,12 @@ namespace QuanLySinhVien5ToT
             btnThemRole.Enabled = true;
             loadRole(Edit_RoleBLL.dsrole().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
-
+        void loadbtnluu()
+        {
+            pn_Them_Role.Visible = false;
+            btnLuuRole.Visible = false;
+            dtgv_Role.Width = 572;
+        }
         private void btnLuuRole_Click(object sender, EventArgs e)
         {
             if (txtRole.Text == "")
@@ -88,9 +91,6 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                pn_Them_Role.Visible = false;
-                btnLuuRole.Visible = false;
-                dtgv_Role.Width = 572;
                 if (flagLuu == 0)
                 {
 
@@ -101,13 +101,15 @@ namespace QuanLySinhVien5ToT
                         role.Role1 = txtRole.Text;
                         Edit_RoleBLL.Add(role);
                         MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadRole(Edit_RoleBLL.dsrole());
+                        btnThemRole.Enabled = true;
+                        loadbtnluu();
                     }
                     else
                     {
                         MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    loadRole(Edit_RoleBLL.dsrole());
-                    btnThemRole.Enabled = true;
+                    
                 }
                 else
                 {
@@ -117,13 +119,14 @@ namespace QuanLySinhVien5ToT
                         role.Role1 = txtRole.Text;
                         Edit_RoleBLL.Edit(role);
                         MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadRole(Edit_RoleBLL.dsrole());
+                        btnThemRole.Enabled = true;
+                        loadbtnluu();
                     }
                     catch (NullReferenceException)
                     {
                         MessageBox.Show("Sửa thất bại!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    loadRole(Edit_RoleBLL.dsrole());
-                    btnThemRole.Enabled = true;
                 }
             }
             
@@ -164,6 +167,14 @@ namespace QuanLySinhVien5ToT
                 int Number = pagenumber;
                 lbNumber.Text = Number.ToString();
             }
+        }
+
+        private void txtRole_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtRole.Text.Trim()))
+                txtRole.BorderColor = Color.Red;
+            else
+                txtRole.BorderColor = Color.FromArgb(226, 226, 226);
         }
     }
 }

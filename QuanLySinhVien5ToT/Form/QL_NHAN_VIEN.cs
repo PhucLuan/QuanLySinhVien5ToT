@@ -45,18 +45,19 @@ namespace QuanLySinhVien5ToT
             dtgv_NV.Width = 651;
             flagLuu = 0;
             txtIDnv.Enabled = true ;
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtXacNhan.Text = "";
 
-            txtUsername.BorderColor = Color.White;
+            txtUsername.BorderColor = Color.FromArgb(213, 218, 223);
             txtUsername.PlaceholderText = "";
-            txtUsername.PlaceholderForeColor = Color.White;
 
-            txtPassword.BorderColor = Color.White;
+            txtPassword.BorderColor = Color.FromArgb(213, 218, 223);
             txtPassword.PlaceholderText = "";
-            txtPassword.PlaceholderForeColor = Color.White;
 
-            txtXacNhan.BorderColor = Color.White;
+            txtXacNhan.BorderColor = Color.FromArgb(213, 218, 223);
             txtXacNhan.PlaceholderText = "";
-            txtXacNhan.PlaceholderForeColor = Color.White;
+
         }
 
         private void dtgv_NV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -73,17 +74,17 @@ namespace QuanLySinhVien5ToT
                 binding();
                 flagLuu = 1;
                 txtIDnv.Enabled = false;
-
-                txtEmail_TS.BorderColor = Color.White;
-                txtEmail_TS.PlaceholderText = "";
-                txtEmail_TS.PlaceholderForeColor = Color.White;
-
-                txtTenNV_TS.BorderColor = Color.White;
-                txtTenNV_TS.PlaceholderText = "";
-                txtTenNV_TS.PlaceholderForeColor = Color.White;
+                DesignbtnTT();
             }
         }
+        void DesignbtnTT()
+        {
+            txtEmail_TS.BorderColor = Color.FromArgb(213, 218, 223);
+            txtEmail_TS.PlaceholderText = "";
 
+            txtTenNV_TS.BorderColor = Color.FromArgb(213, 218, 223);
+            txtTenNV_TS.PlaceholderText = "";
+        }
         private void btnXThemNV_Click(object sender, EventArgs e)
         {
             pn_Them_NV.Visible = false;
@@ -92,7 +93,13 @@ namespace QuanLySinhVien5ToT
             dtgv_NV.Width = 996;
             loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
-
+        void loadbtnluu()
+        {
+            pn_Them_NV.Visible = false;
+            btnLuuNV.Visible = false;
+            pn_User.Visible = false;
+            dtgv_NV.Width = 996;
+        }
         private void btnLuuNV_Click(object sender, EventArgs e)
         {
             if(txtEmail_TS.Text=="" || txtTenNV_TS.Text == "")
@@ -109,31 +116,30 @@ namespace QuanLySinhVien5ToT
                     txtTenNV_TS.PlaceholderText = "bạn chưa nhập tên";
                     txtTenNV_TS.PlaceholderForeColor = Color.Red;
                 }
-            }
-            pn_Them_NV.Visible = false;
-            btnLuuNV.Visible = false;
-            pn_User.Visible = false;
-            dtgv_NV.Width = 996;
+            }            
             if (flagLuu == 0)
             {
-                NHANVIEN nv = QL_NhanVienBLL.Get(x => x.IDnv.ToString() == txtIDnv.Text.Trim());
+                NHANVIEN nv = QL_NhanVienBLL.Get(x => x.Name==txtTenNV_TS.Text || x.Email==txtEmail_TS.Text);
                 if (nv == null)
                 {
                     nv = new NHANVIEN();
-                    nv.Email = txtEmail_TS.Text;
-                    nv.Name = txtTenNV_TS.Text;
+                    nv.Email = txtEmail_TS.Text.Trim();
+                    nv.Name = txtTenNV_TS.Text.Trim();
                     nv.DonVi = cbDonVi.Text;
                     List<USER> us = db.USERs.ToList();
                     int iduser = us.Last().IDuser;
                     nv.IDuser = iduser;
                     QL_NhanVienBLL.Add(nv);
                     MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    loadbtnluu();
                 }
                 else
                 {
                     MessageBox.Show("Dữ liệu đã bị trùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    loadbtnTT();
+                    DesignbtnTT();
+                }               
             }
             else
             {
@@ -147,16 +153,28 @@ namespace QuanLySinhVien5ToT
 
                     QL_NhanVienBLL.Edit(nv);
                     MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    loadbtnluu();
                 }
                 catch (NullReferenceException)
                 {
                     MessageBox.Show("Sửa thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    loadbtnTT();
+                    DesignbtnTT();
+                }              
             }
         }
-
+        void loadbtnTT()
+        {
+            pn_Them_NV.Visible = true;
+            btnLuuNV.Visible = true;
+            pn_User.Visible = false;
+            dtgv_NV.Width = 651;
+            txtIDnv.Enabled = false;
+            txtEmail_TS.Text = "";
+            txtTenNV_TS.Text = "";
+            lbTD.Text = "Thêm Nhân Viên";
+        }
         private void btnTiepTheo_Click(object sender, EventArgs e)
         {
             if (txtUsername.Text == "" || txtPassword.Text == "" || txtXacNhan.Text == "")
@@ -182,21 +200,8 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                pn_Them_NV.Visible = true;
-                btnLuuNV.Visible = true;
-                pn_User.Visible = false;
-                dtgv_NV.Width = 651;
-                txtIDnv.Enabled = false;
-                lbTD.Text = "Thêm Nhân Viên";
-
-                txtEmail_TS.BorderColor = Color.White;
-                txtEmail_TS.PlaceholderText = "";
-                txtEmail_TS.PlaceholderForeColor = Color.White;
-
-                txtTenNV_TS.BorderColor = Color.White;
-                txtTenNV_TS.PlaceholderText = "";
-                txtTenNV_TS.PlaceholderForeColor = Color.White;
-
+                loadbtnTT();
+                DesignbtnTT();
                 USER us = QL_NhanVienBLL.GetUser(x => x.Username.Trim() == txtUsername.Text.Trim() || x.Password.Trim() == txtPassword.Text.Trim());
                 if (us == null)
                 {
@@ -211,24 +216,15 @@ namespace QuanLySinhVien5ToT
                         MessageBox.Show("Thêm User thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
-                    {
-                        pn_Them_NV.Visible = false;
-                        btnLuuNV.Visible = false;
-                        pn_User.Visible = true;
-                        dtgv_NV.Width = 651;
-                        cbRole.Enabled = false;
+                    {                        
                         MessageBox.Show("xác nhận mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtXacNhan.Text = "";                     
+                        btnThemNV_Click(sender, e);                    
                     }
                 }
                 else
                 {
                     MessageBox.Show("Username hoặc passwwork của bạn đã bị trùng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    pn_Them_NV.Visible = false;
-                    btnLuuNV.Visible = false;
-                    pn_User.Visible = true;
-                    dtgv_NV.Width = 651;
-                    txtIDnv.Enabled = true;
+                    btnThemNV_Click(sender, e);
                 }
 
             }
@@ -269,26 +265,60 @@ namespace QuanLySinhVien5ToT
 
         private void btnprevious_Click(object sender, EventArgs e)
         {
-            if (pagenumber - 1 > 0)
+            if (flagDT == 0)
             {
-                pagenumber--;
-                loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-                int Number = pagenumber;
-                lbNumber.Text = Number.ToString();
+                if (pagenumber - 1 > 0)
+                {
+                    pagenumber--;
+                    loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
             }
+            if (flagDT == 1)
+            {
+                if (pagenumber - 1 > 0)
+                {
+                    pagenumber--;
+                    var listsearch = new List<NhanVienDTO>();
+                    listsearch = QL_NhanVienBLL.dsnhanvien().Where(x => x.Name.Contains(txtSearch.Text.Trim())).ToList();
+                    dtgv_NV.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
+            }
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int totlalrecord = 0;
-            totlalrecord = db.NHANVIENs.Count();
-            if (pagenumber - 1 < totlalrecord / numberRecord)
+            if (flagDT == 0)
             {
-                pagenumber++;
-                loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
-                int Number = pagenumber;
-                lbNumber.Text = Number.ToString();
+                int totlalrecord = 0;
+                totlalrecord = db.NHANVIENs.Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
+                {
+                    pagenumber++;
+                    loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
             }
+            if (flagDT == 1)
+            {
+                int totlalrecord = 0;
+                totlalrecord = QL_NhanVienBLL.dsnhanvien().Where(x => x.Name.Contains(txtSearch.Text.Trim())).Count();
+                if (pagenumber - 1 < totlalrecord / numberRecord)
+                {
+                    pagenumber++;
+                    var listsearch = new List<NhanVienDTO>();
+                    listsearch = QL_NhanVienBLL.dsnhanvien().Where(x => x.Name.Contains(txtSearch.Text.Trim())).ToList();
+                    dtgv_NV.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                    int Number = pagenumber;
+                    lbNumber.Text = Number.ToString();
+                }
+            }
+
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -303,6 +333,9 @@ namespace QuanLySinhVien5ToT
                 var listsearch = new List<NhanVienDTO>();
                 listsearch = QL_NhanVienBLL.dsnhanvien().Where(x => x.Name.Contains(txtSearch.Text.Trim())).ToList();
                 dtgv_NV.DataSource = listsearch.Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList();
+                flagDT = 1;
+                pagenumber = 1;
+                lbNumber.Text = pagenumber.ToString();
             }
         }
 
@@ -319,9 +352,44 @@ namespace QuanLySinhVien5ToT
             txtXacNhan.MaxLength = 50;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void txtUsername_Leave(object sender, EventArgs e)
         {
-            MessageBox.Show(QL_NhanVienBLL.Mahoa(txtPassword.Text));
+            if (string.IsNullOrEmpty(txtUsername.Text.Trim()))
+                txtUsername.BorderColor = Color.Red;
+            else
+                txtUsername.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
+                txtPassword.BorderColor = Color.Red;
+            else
+                txtPassword.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtXacNhan_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtXacNhan.Text.Trim()))
+                txtXacNhan.BorderColor = Color.Red;
+            else
+                txtXacNhan.BorderColor = Color.FromArgb(226, 226, 226);
+        }      
+
+        private void txtTenNV_TS_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenNV_TS.Text.Trim()))
+                txtTenNV_TS.BorderColor = Color.Red;
+            else
+                txtTenNV_TS.BorderColor = Color.FromArgb(226, 226, 226);
+        }
+
+        private void txtEmail_TS_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail_TS.Text.Trim()))
+                txtEmail_TS.BorderColor = Color.Red;
+            else
+                txtEmail_TS.BorderColor = Color.FromArgb(226, 226, 226);
         }
     }
 }
