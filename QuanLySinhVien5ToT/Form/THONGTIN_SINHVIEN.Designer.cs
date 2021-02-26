@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pn_Sort = new Guna.UI2.WinForms.Guna2Panel();
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -72,10 +72,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pn_ThemSua = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnX = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnXThemSV = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.txtLop = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnXThemSV = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnLuuSV = new Guna.UI2.WinForms.Guna2Button();
             this.cbDonVi = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -100,14 +101,13 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnThemKQ = new Guna.UI2.WinForms.Guna2Button();
-            this.pnX = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pn_Sort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_SV)).BeginInit();
             this.pn_ThemSua.SuspendLayout();
+            this.pnX.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.pn_ThemTaiKhoan.SuspendLayout();
-            this.pnX.SuspendLayout();
             this.SuspendLayout();
             // 
             // pn_Sort
@@ -286,21 +286,21 @@
             // 
             // dtgv_SV
             // 
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
-            this.dtgv_SV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dtgv_SV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgv_SV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_SV.BackgroundColor = System.Drawing.Color.White;
             this.dtgv_SV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgv_SV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_SV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv_SV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv_SV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgv_SV.ColumnHeadersHeight = 40;
             this.dtgv_SV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Mssv,
@@ -316,14 +316,14 @@
             this.Xem,
             this.Sua,
             this.Xoa});
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgv_SV.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgv_SV.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgv_SV.EnableHeadersVisualStyles = false;
             this.dtgv_SV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_SV.Location = new System.Drawing.Point(14, 223);
@@ -745,6 +745,37 @@
             this.pn_ThemSua.TabIndex = 46;
             this.pn_ThemSua.Visible = false;
             // 
+            // pnX
+            // 
+            this.pnX.BackColor = System.Drawing.Color.Transparent;
+            this.pnX.BorderRadius = 20;
+            this.pnX.Controls.Add(this.btnXThemSV);
+            this.pnX.FillColor = System.Drawing.Color.White;
+            this.pnX.Location = new System.Drawing.Point(807, 0);
+            this.pnX.Name = "pnX";
+            this.pnX.ShadowDecoration.Parent = this.pnX;
+            this.pnX.Size = new System.Drawing.Size(40, 37);
+            this.pnX.TabIndex = 50;
+            // 
+            // btnXThemSV
+            // 
+            this.btnXThemSV.BackColor = System.Drawing.Color.White;
+            this.btnXThemSV.Checked = true;
+            this.btnXThemSV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThemSV.CheckedState.Parent = this.btnXThemSV;
+            this.btnXThemSV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnXThemSV.HoverState.Parent = this.btnXThemSV;
+            this.btnXThemSV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
+            this.btnXThemSV.ImageRotate = 0F;
+            this.btnXThemSV.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnXThemSV.Location = new System.Drawing.Point(3, 3);
+            this.btnXThemSV.Name = "btnXThemSV";
+            this.btnXThemSV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnXThemSV.PressedState.Parent = this.btnXThemSV;
+            this.btnXThemSV.Size = new System.Drawing.Size(26, 31);
+            this.btnXThemSV.TabIndex = 44;
+            this.btnXThemSV.Click += new System.EventHandler(this.btnXThemSV_Click);
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -794,25 +825,6 @@
             this.txtLop.Size = new System.Drawing.Size(198, 36);
             this.txtLop.TabIndex = 47;
             this.txtLop.Leave += new System.EventHandler(this.txtLop_Leave);
-            // 
-            // btnXThemSV
-            // 
-            this.btnXThemSV.BackColor = System.Drawing.Color.White;
-            this.btnXThemSV.Checked = true;
-            this.btnXThemSV.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThemSV.CheckedState.Parent = this.btnXThemSV;
-            this.btnXThemSV.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnXThemSV.HoverState.Parent = this.btnXThemSV;
-            this.btnXThemSV.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_macos_close_96;
-            this.btnXThemSV.ImageRotate = 0F;
-            this.btnXThemSV.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnXThemSV.Location = new System.Drawing.Point(3, 3);
-            this.btnXThemSV.Name = "btnXThemSV";
-            this.btnXThemSV.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnXThemSV.PressedState.Parent = this.btnXThemSV;
-            this.btnXThemSV.Size = new System.Drawing.Size(26, 31);
-            this.btnXThemSV.TabIndex = 44;
-            this.btnXThemSV.Click += new System.EventHandler(this.btnXThemSV_Click);
             // 
             // btnLuuSV
             // 
@@ -1232,18 +1244,6 @@
             this.btnThemKQ.Text = "Thêm Sinh Viên";
             this.btnThemKQ.Click += new System.EventHandler(this.btnThemKQ_Click);
             // 
-            // pnX
-            // 
-            this.pnX.BackColor = System.Drawing.Color.Transparent;
-            this.pnX.BorderRadius = 20;
-            this.pnX.Controls.Add(this.btnXThemSV);
-            this.pnX.FillColor = System.Drawing.Color.White;
-            this.pnX.Location = new System.Drawing.Point(807, 0);
-            this.pnX.Name = "pnX";
-            this.pnX.ShadowDecoration.Parent = this.pnX;
-            this.pnX.Size = new System.Drawing.Size(40, 37);
-            this.pnX.TabIndex = 50;
-            // 
             // guna2Elipse1
             // 
             this.guna2Elipse1.BorderRadius = 20;
@@ -1269,11 +1269,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_SV)).EndInit();
             this.pn_ThemSua.ResumeLayout(false);
             this.pn_ThemSua.PerformLayout();
+            this.pnX.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.pn_ThemTaiKhoan.ResumeLayout(false);
             this.pn_ThemTaiKhoan.PerformLayout();
-            this.pnX.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

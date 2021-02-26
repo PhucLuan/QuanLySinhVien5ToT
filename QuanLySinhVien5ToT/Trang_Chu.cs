@@ -26,10 +26,6 @@ namespace QuanLySinhVien5ToT
             showTrangChu();
             pn_Menu.Width = 60;
         }
-
-        
-
-       
         private bool enumExpended = false;
 
         private void DetectMouse_Tick(object sender, EventArgs e)
@@ -191,6 +187,8 @@ namespace QuanLySinhVien5ToT
                 btn_DangXuat.Visible = true;
                 lbName.Visible = true;
                 lbName.Text = listPQ_TC.Select(x => x.Name).ToArray().First().ToString();
+                lbDonVi.Text = listPQ_TC.Select(x => x.DonVi).ToArray().First().ToString();
+                lbRole.Text = listPQ_TC.Select(x => x.Role).ToArray().First().ToString();
             }
         }
         public void LoadPQ()
@@ -248,11 +246,27 @@ namespace QuanLySinhVien5ToT
 
         private void btnTieuChuan_Click(object sender, EventArgs e)
         {
-            pn_control.Controls.Clear();
-            QL_TIEUCHUAN QLTieuChuan = new QL_TIEUCHUAN();
-            QLTieuChuan.Location = new Point(0, 0);
-            pn_control.Controls.Add(QLTieuChuan);
-            HideSubMenu();
+            List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
+            if (!listPQ_TC.Any())
+            {
+                MessageBox.Show("bạn phải đăng nhập trước");
+            }
+            else
+            {
+                if (listPQ_TC.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    MessageBox.Show("bạn không có quyền vào chức năng này");
+                }
+                else
+                {
+                    pn_control.Controls.Clear();
+                    QL_TIEUCHUAN QLTieuChuan = new QL_TIEUCHUAN();
+                    QLTieuChuan.Location = new Point(0, 0);
+                    pn_control.Controls.Add(QLTieuChuan);
+                    HideSubMenu();
+                }
+            }
+            
         }
 
         private void btnChuongTrinh_Click(object sender, EventArgs e)
@@ -275,11 +289,28 @@ namespace QuanLySinhVien5ToT
 
         private void btnHK_Xet_Diem_Click_1(object sender, EventArgs e)
         {
-            pn_control.Controls.Clear();
-            HOCKYXETDIEM HK = new HOCKYXETDIEM();
-            HK.Location = new Point(0, 0);
-            pn_control.Controls.Add(HK);
-            HideSubMenu();
+            List<ThongTinPQ_DTO> listPQ_TC = Login.listPQ;
+            if (!listPQ_TC.Any())
+            {
+                MessageBox.Show("bạn phải đăng nhập trước");
+            }
+            else
+            {
+                if (listPQ_TC.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    MessageBox.Show("bạn không có quyền vào chức năng này");
+                }
+                else
+                {
+                    pn_control.Controls.Clear();
+                    HOCKYXETDIEM HK = new HOCKYXETDIEM();
+                    HK.Location = new Point(0, 0);
+                    pn_control.Controls.Add(HK);
+                    HideSubMenu();
+                }
+
+            }
+            
         }
 
         private void btnQD_Diem_Click(object sender, EventArgs e)
@@ -300,11 +331,18 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                pn_control.Controls.Clear();
-                QL_DonVi QV = new QL_DonVi();
-                QV.Location = new Point(0, 0);
-                pn_control.Controls.Add(QV);
-                HideSubMenu();
+                if (listPQ_TC.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    MessageBox.Show("bạn không có quyền vào chức năng này");
+                }
+                else
+                {
+                    pn_control.Controls.Clear();
+                    QL_DonVi QV = new QL_DonVi();
+                    QV.Location = new Point(0, 0);
+                    pn_control.Controls.Add(QV);
+                    HideSubMenu();
+                }               
             }            
         }
 
@@ -334,11 +372,19 @@ namespace QuanLySinhVien5ToT
             }
             else
             {
-                pn_control.Controls.Clear();
-                User_Role US = new User_Role();
-                US.Location = new Point(0, 0);
-                pn_control.Controls.Add(US);
-                HideSubMenu();
+                if (listPQ_TC.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    MessageBox.Show("bạn không có quyền vào chức năng này");
+                }
+                else
+                {
+                    pn_control.Controls.Clear();
+                    User_Role US = new User_Role();
+                    US.Location = new Point(0, 0);
+                    pn_control.Controls.Add(US);
+                    HideSubMenu();
+                }
+                
             }
             
         }

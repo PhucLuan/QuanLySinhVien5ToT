@@ -41,20 +41,35 @@ namespace QuanLySinhVien5ToT
             TXTSEARCH();
             loadcbRole();
             maxlength();
-            //var listadmin = listPQ_SV.Select(x => x.Role).ToArray().First();
-
-            //if (listPQ_SV.Select(x => x.Role).ToArray().First()== "admin") 
-            //{               
-            //    cbFillter_DonVi.Enabled = false;
-            //    cbDonVi.Enabled = false;
-            //    dtgv_SV.ReadOnly = true;               
-            //}
-            //else
-            //{
-            //    cbFillter_DonVi.Enabled = true;
-            //    cbDonVi.Enabled = true;
-            //    dtgv_SV.ReadOnly = true;
-            //}
+            loadPQ();
+            //var listadmin = listPQ_SV.Select(x => x.Role).ToArray().First();           
+        }
+        void loadPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                cbFillter_DonVi.Enabled = false;                
+                dtgv_SV.ReadOnly = true;
+                cbFillter_DonVi.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+                
+            }
+            else
+            {
+                cbFillter_DonVi.Enabled = true;                
+                dtgv_SV.ReadOnly = true;
+            }
+        }
+        void loadbtnPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                cbDonVi.Enabled = false;
+                cbDonVi.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+            }
+            else
+            {
+                cbDonVi.Enabled = true;
+            }
         }
         void ShowSinhVien(List<Sinh_VienDTO> listsv)
         {
@@ -173,7 +188,17 @@ namespace QuanLySinhVien5ToT
             txtLop.PlaceholderText = "";
         }
         
-
+        void loadbtnSua()
+        {
+            flagLuu = 1;
+            dtgv_SV.Height = 385;
+            dtgv_SV.Location = new Point(14, 223);
+            btnThemKQ.Location = new Point(867, 172);
+            editbtnsua();
+            maxlength();
+            designbtnSua();
+            bindingSV();
+        }
         private void dtgv_SV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string name = dtgv_SV.Columns[e.ColumnIndex].Name;
@@ -183,15 +208,26 @@ namespace QuanLySinhVien5ToT
                 bindingSV();               
             }
             if (name == "Sua")
-            {              
-                flagLuu = 1;               
-                dtgv_SV.Height = 385;
-                dtgv_SV.Location = new Point(14, 223);
-                btnThemKQ.Location = new Point(867, 172);
-                editbtnsua();
-                maxlength();
-                designbtnSua();
-                bindingSV();
+            {
+                DataGridViewRow row = this.dtgv_SV.Rows[e.RowIndex];
+                if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    if (row.Cells["DonVi"].Value.ToString() == listPQ_SV.Select(x => x.DonVi).ToArray().First())
+                    {
+                        loadbtnSua();
+                        cbDonVi.Enabled = false;
+                        cbDonVi.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("bạn không được quyền sửa");
+                    }
+                }
+                else
+                {
+                    loadbtnSua();
+                }
+                
             }
             if (name == "Xoa")
             {
@@ -384,7 +420,7 @@ namespace QuanLySinhVien5ToT
             cbFillter_DonVi.DisplayMember = "MaDonVi";
             cbFillter_DonVi.ValueMember = "MaDonVi";
             //cbFillter_DonVi.SelectedItem = null;
-            //cbFillter_DonVi.Text = listPQ_SV.Select(x=>x.DonVi).ToArray().First().ToString();
+            
         }
         void loadcbFillterKhoa()
         {
@@ -557,12 +593,16 @@ namespace QuanLySinhVien5ToT
         }
         void TXTSEARCH()
         {
-            txtSaerch.AutoCompleteCustomSource.AddRange(sinhVienBLL.DsSinhVien().Select(x => x.HoTen).ToArray());
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                txtSaerch.AutoCompleteCustomSource.AddRange(sinhVienBLL.DsSinhVien().Where(x=>x.DonVi==cbFillter_DonVi.Text).Select(x => x.HoTen).ToArray());
+            }
+            else
+            {
+                txtSaerch.AutoCompleteCustomSource.AddRange(sinhVienBLL.DsSinhVien().Select(x => x.HoTen).ToArray());
+            }               
         }
-        void SuggestTxtMssv()
-        {
-            txtMssv.AutoCompleteCustomSource.AddRange(sinhVienBLL.DsSinhVien().Select(x => x.Mssv).ToArray());
-        }
+
         void loadntnTT()
         {
             dtgv_SV.Height = 385;
@@ -571,6 +611,7 @@ namespace QuanLySinhVien5ToT
             editbtnTiepTheo();
             clearThemSV();
             designbtnSua();
+            loadbtnPQ(); 
         }
         private void btnTiepTheo_Click(object sender, EventArgs e)
         {

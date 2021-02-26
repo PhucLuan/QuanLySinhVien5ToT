@@ -24,6 +24,7 @@ namespace QuanLySinhVien5ToT
         private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         QuyDinhDiemBLL quyDinhDiemBLL = new QuyDinhDiemBLL();
+        List<ThongTinPQ_DTO> listPQ_SV = Login.listPQ;
         private void QUYDINHDIEM_Load(object sender, EventArgs e)
         {
             loadQDD(quyDinhDiemBLL.dsQD().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -35,11 +36,27 @@ namespace QuanLySinhVien5ToT
             loadcbFillter_TG();
             loadcbFillter_DV();
             loadcbFillter_LD();
+            loadPQ();
         }
         void loadQDD (List<QuyDinhDiemDTO> listQD)
         {
             dtgvQuyDinh.DataSource = listQD;
             flagDT = 0;
+        }
+        void loadPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                cbFillter_DV.Enabled = false;
+                dtgvQuyDinh.ReadOnly = true;
+                cbFillter_DV.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+
+            }
+            else
+            {
+                cbFillter_DV.Enabled = true;
+                dtgvQuyDinh.ReadOnly = true;
+            }
         }
         private void btnThemQuyDinh_Click(object sender, EventArgs e)
         {
@@ -67,31 +84,54 @@ namespace QuanLySinhVien5ToT
             txtDiemToiThieu.BorderColor = Color.FromArgb(213, 218, 223);
             txtDiemToiThieu.PlaceholderText = "";
         }
+        void loadbtnSua()
+        {
+            pn_ThemQuyDinh.Visible = true;
+            btnLuuQuyDinh.Visible = true;
+            pn_Sort.Visible = false;
+            flagLuu = 1;
+            txtMaQuyDinh_TS.Enabled = false;
+            cbDonVi_TS.Enabled = false;
+            cbLoaiDiem_TS.Enabled = false;
+            cbTieuChuan_TS.Enabled = false;
+            cbThoiGian_TS.Enabled = false;
+            cbTrangThai.Enabled = true;
+
+            cbDonVi_TS.FillColor = Color.FromArgb(226, 226, 226);
+            cbLoaiDiem_TS.FillColor = Color.FromArgb(226, 226, 226);
+            cbTieuChuan_TS.FillColor = Color.FromArgb(226, 226, 226);
+            cbThoiGian_TS.FillColor = Color.FromArgb(226, 226, 226);
+        }
         private void dtgvQuyDinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridViewRow row = this.dtgvQuyDinh.Rows[e.RowIndex];
             string name = dtgvQuyDinh.Columns[e.ColumnIndex].Name;
             if (name == "Sua")
-            {               
-                pn_ThemQuyDinh.Visible = true;
-                btnLuuQuyDinh.Visible = true;
-                pn_Sort.Visible = false;
-                flagLuu = 1;
-                txtMaQuyDinh_TS.Enabled = false;
-                cbDonVi_TS.Enabled = false;
-                cbLoaiDiem_TS.Enabled = false;
-                cbTieuChuan_TS.Enabled = false;
-                cbThoiGian_TS.Enabled = false;
-                cbTrangThai.Enabled = true;
+            {
+                if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    if (row.Cells["DonVi"].Value.ToString() == listPQ_SV.Select(x => x.DonVi).ToArray().First())
+                    {
+                        loadbtnSua();
+                        designbtn();
+                        flagLuu = 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("bạn không được quyền sửa");
+                    }
+                }
+                else
+                {
+                    loadbtnSua();
+                    designbtn();
+                    flagLuu = 1;
+                }
 
-                cbDonVi_TS.FillColor = Color.FromArgb(226, 226, 226);
-                cbLoaiDiem_TS.FillColor = Color.FromArgb(226, 226, 226);
-                cbTieuChuan_TS.FillColor = Color.FromArgb(226, 226, 226);
-                cbThoiGian_TS.FillColor = Color.FromArgb(226, 226, 226);
-
-                designbtn();
+                
             }
             
-            DataGridViewRow row = this.dtgvQuyDinh.Rows[e.RowIndex];
+            
             txtMaQuyDinh_TS.Text = row.Cells["MaQuyDinhDiem"].Value.ToString();
             cbTieuChuan_TS.Text = row.Cells["TenTieuChuan"].Value.ToString();
             txtDiemToiThieu.Text = row.Cells["DiemToiThieu"].Value.ToString();

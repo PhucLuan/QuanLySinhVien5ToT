@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Guna.UI2.WinForms;
 using QuanLySinhVien5ToT.DAL;
 using QuanLySinhVien5ToT.DTO;
 using QuanLySinhVien5ToT.Services;
@@ -16,6 +17,7 @@ namespace QuanLySinhVien5ToT.BLL
         private LoaiDiemDAL loaiDiemDAL = new LoaiDiemDAL();
         private HocKy_XetDiemDAL hocKy_XetDiemDAL = new HocKy_XetDiemDAL();
         private DiemDAL diemDAL = new DiemDAL();
+        private check_IP_mssv check_IP_Mssv = new check_IP_mssv();
         private GenericUnitOfWork unitOfWorkNV = new GenericUnitOfWork(Mydb.GetInstance());
         private Dictionary<string, string> DicTimeFormatted;
 
@@ -81,6 +83,10 @@ namespace QuanLySinhVien5ToT.BLL
         public List<Sinh_VienDTO> dssinhvien()
         {
             return sinh_VienDAL.Getdssinhvien();
+        }
+        public void check_input_mssv(Guna2TextBox textBox)
+        {
+            check_IP_Mssv.check_Input_Mssv(textBox);
         }
     }
 }

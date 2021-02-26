@@ -24,6 +24,7 @@ namespace QuanLySinhVien5ToT
         private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         QL_NhanVienBLL QL_NhanVienBLL = new QL_NhanVienBLL();
+        List<ThongTinPQ_DTO> listPQ_SV = Login.listPQ;
         private void QL_NHAN_VIEN_Load(object sender, EventArgs e)
         {
             loadNV(QL_NhanVienBLL.dsnhanvien().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -31,6 +32,23 @@ namespace QuanLySinhVien5ToT
             TXTSEARCH();
             maxlength();
             loadcbDV();
+            loadPQ();
+        }
+        void loadPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                cbDonVi.Enabled = false;
+                dtgv_NV.ReadOnly = true;
+                cbDonVi.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+                btnThemNV.Enabled = false;
+            }
+            else
+            {
+                btnThemNV.Enabled = true;
+                cbDonVi.Enabled = true;
+                dtgv_NV.ReadOnly = true;
+            }
         }
         void loadNV(List<NhanVienDTO> listNV)
         {
@@ -59,22 +77,47 @@ namespace QuanLySinhVien5ToT
             txtXacNhan.PlaceholderText = "";
 
         }
-
+        void laodbtnSua()
+        {
+            pn_Them_NV.Visible = true;
+            btnLuuNV.Visible = true;
+            pn_User.Visible = false;
+            dtgv_NV.Width = 651;
+            lbTD.Text = "Sửa Nhân Viên";
+            txtIDnv.Enabled = false;
+            
+            txtIDnv.Enabled = false;
+        }
         private void dtgv_NV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridViewRow row = this.dtgv_NV.Rows[e.RowIndex];
             string name = dtgv_NV.Columns[e.ColumnIndex].Name;
             if (name == "Sua")
             {
-                pn_Them_NV.Visible = true;
-                btnLuuNV.Visible = true;
-                pn_User.Visible = false;
-                dtgv_NV.Width = 651;
-                lbTD.Text = "Sửa Nhân Viên";
-                txtIDnv.Enabled = false;
-                binding();
+                if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    if (row.Cells["DonVi"].Value.ToString() == listPQ_SV.Select(x => x.DonVi).ToArray().First())
+                    {
+                        laodbtnSua();
+                        flagLuu = 1;
+                        binding();
+                        DesignbtnTT();
+                    }
+                    else
+                    {
+                        MessageBox.Show("bạn không được quyền sửa");
+                    }
+                }
+                else
+                {
+                    laodbtnSua();
+                    flagLuu = 1;
+                    binding();
+                    DesignbtnTT();
+                }
+                
                 flagLuu = 1;
-                txtIDnv.Enabled = false;
-                DesignbtnTT();
+                
             }
         }
         void DesignbtnTT()

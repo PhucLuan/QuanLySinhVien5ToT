@@ -29,24 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Guna.UI2.AnimatorNS.Animation animation2 = new Guna.UI2.AnimatorNS.Animation();
+            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Trang_Chu));
             this.pn_Menu = new Guna.UI2.WinForms.Guna2Panel();
             this.btnUser = new Guna.UI2.WinForms.Guna2Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnQL_NhanVien = new Guna.UI2.WinForms.Guna2Button();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnDonVi = new Guna.UI2.WinForms.Guna2Button();
             this.pn_Diem_SubMenu = new System.Windows.Forms.Panel();
             this.btnDiem = new Guna.UI2.WinForms.Guna2Button();
             this.btnQD_Diem = new Guna.UI2.WinForms.Guna2Button();
             this.btnHK_Xet_Diem = new Guna.UI2.WinForms.Guna2Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btn__TD_DiemSV = new Guna.UI2.WinForms.Guna2Button();
             this.pn_TCvsCT_SubMenu = new System.Windows.Forms.Panel();
             this.btnTieuChuan = new Guna.UI2.WinForms.Guna2Button();
             this.btnChuongTrinh = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btn_TD_CT = new Guna.UI2.WinForms.Guna2Button();
             this.pn_SinhVienSubmenu = new System.Windows.Forms.Panel();
             this.btn_TTSV = new Guna.UI2.WinForms.Guna2Button();
@@ -55,6 +58,7 @@
             this.btnTD_SV_TG = new Guna.UI2.WinForms.Guna2Button();
             this.btnThucHen_TC = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btn_TD_SV = new Guna.UI2.WinForms.Guna2Button();
             this.pn_logo = new System.Windows.Forms.Panel();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -62,23 +66,19 @@
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
             this.pn_control = new Guna.UI2.WinForms.Guna2Panel();
             this.pn_DangNhap = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            this.lbRole = new System.Windows.Forms.Label();
+            this.lbDonVi = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
             this.btn_DangXuat = new Guna.UI2.WinForms.Guna2Button();
             this.lbName = new System.Windows.Forms.Label();
             this.btn_DangNhap = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            this.DetectMouse = new System.Windows.Forms.Timer(this.components);
-            this.label17 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btn_Information = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.DetectMouse = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pn_Menu.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -176,6 +176,24 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(255, 37);
             this.panel8.TabIndex = 38;
+            // 
+            // guna2ImageButton5
+            // 
+            this.guna2ImageButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
+            this.guna2ImageButton5.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton5.CheckedState.Parent = this.guna2ImageButton5;
+            this.guna2Transition1.SetDecoration(this.guna2ImageButton5, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2ImageButton5.HoverState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton5.HoverState.Parent = this.guna2ImageButton5;
+            this.guna2ImageButton5.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_crowd_64;
+            this.guna2ImageButton5.ImageRotate = 0F;
+            this.guna2ImageButton5.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton5.Location = new System.Drawing.Point(12, 6);
+            this.guna2ImageButton5.Name = "guna2ImageButton5";
+            this.guna2ImageButton5.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton5.PressedState.Parent = this.guna2ImageButton5;
+            this.guna2ImageButton5.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton5.TabIndex = 46;
             // 
             // btnDonVi
             // 
@@ -280,6 +298,24 @@
             this.panel4.Size = new System.Drawing.Size(255, 37);
             this.panel4.TabIndex = 38;
             // 
+            // guna2ImageButton3
+            // 
+            this.guna2ImageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
+            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton3.CheckedState.Parent = this.guna2ImageButton3;
+            this.guna2Transition1.SetDecoration(this.guna2ImageButton3, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton3.HoverState.Parent = this.guna2ImageButton3;
+            this.guna2ImageButton3.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_leaderboard_64;
+            this.guna2ImageButton3.ImageRotate = 0F;
+            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(22, 22);
+            this.guna2ImageButton3.Location = new System.Drawing.Point(12, 3);
+            this.guna2ImageButton3.Name = "guna2ImageButton3";
+            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton3.PressedState.Parent = this.guna2ImageButton3;
+            this.guna2ImageButton3.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton3.TabIndex = 44;
+            // 
             // btn__TD_DiemSV
             // 
             this.btn__TD_DiemSV.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(69)))), ((int)(((byte)(119)))));
@@ -362,6 +398,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(255, 37);
             this.panel2.TabIndex = 42;
+            // 
+            // guna2ImageButton2
+            // 
+            this.guna2ImageButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
+            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton2.CheckedState.Parent = this.guna2ImageButton2;
+            this.guna2Transition1.SetDecoration(this.guna2ImageButton2, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton2.HoverState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_timezone_100;
+            this.guna2ImageButton2.ImageRotate = 0F;
+            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton2.Location = new System.Drawing.Point(13, 4);
+            this.guna2ImageButton2.Name = "guna2ImageButton2";
+            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton2.PressedState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton2.TabIndex = 43;
             // 
             // btn_TD_CT
             // 
@@ -508,6 +562,24 @@
             this.panel1.Size = new System.Drawing.Size(255, 37);
             this.panel1.TabIndex = 42;
             // 
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton1.CheckedState.Parent = this.guna2ImageButton1;
+            this.guna2Transition1.SetDecoration(this.guna2ImageButton1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(27, 27);
+            this.guna2ImageButton1.HoverState.Parent = this.guna2ImageButton1;
+            this.guna2ImageButton1.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_student_male_1001;
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(13, 4);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.PressedState.Parent = this.guna2ImageButton1;
+            this.guna2ImageButton1.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton1.TabIndex = 0;
+            // 
             // btn_TD_SV
             // 
             this.btn_TD_SV.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(69)))), ((int)(((byte)(119)))));
@@ -566,22 +638,22 @@
             // 
             this.guna2Transition1.AnimationType = Guna.UI2.AnimatorNS.AnimationType.HorizSlide;
             this.guna2Transition1.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(0);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.guna2Transition1.DefaultAnimation = animation2;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation1;
             // 
             // pn_control
             // 
@@ -600,8 +672,8 @@
             this.pn_DangNhap.BackColor = System.Drawing.SystemColors.Window;
             this.pn_DangNhap.BorderColor = System.Drawing.Color.Black;
             this.pn_DangNhap.Controls.Add(this.guna2Separator2);
-            this.pn_DangNhap.Controls.Add(this.label3);
-            this.pn_DangNhap.Controls.Add(this.label2);
+            this.pn_DangNhap.Controls.Add(this.lbRole);
+            this.pn_DangNhap.Controls.Add(this.lbDonVi);
             this.pn_DangNhap.Controls.Add(this.label1);
             this.pn_DangNhap.Controls.Add(this.label17);
             this.pn_DangNhap.Controls.Add(this.guna2Separator3);
@@ -615,6 +687,67 @@
             this.pn_DangNhap.Size = new System.Drawing.Size(228, 155);
             this.pn_DangNhap.TabIndex = 0;
             this.pn_DangNhap.Visible = false;
+            // 
+            // guna2Separator2
+            // 
+            this.guna2Separator2.BackColor = System.Drawing.Color.White;
+            this.guna2Transition1.SetDecoration(this.guna2Separator2, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2Separator2.Location = new System.Drawing.Point(9, 92);
+            this.guna2Separator2.Name = "guna2Separator2";
+            this.guna2Separator2.Size = new System.Drawing.Size(204, 10);
+            this.guna2Separator2.TabIndex = 58;
+            // 
+            // lbRole
+            // 
+            this.lbRole.AutoSize = true;
+            this.lbRole.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.lbRole, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.lbRole.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lbRole.ForeColor = System.Drawing.Color.Gray;
+            this.lbRole.Location = new System.Drawing.Point(65, 71);
+            this.lbRole.Name = "lbRole";
+            this.lbRole.Size = new System.Drawing.Size(41, 15);
+            this.lbRole.TabIndex = 57;
+            this.lbRole.Text = "admin";
+            // 
+            // lbDonVi
+            // 
+            this.lbDonVi.AutoSize = true;
+            this.lbDonVi.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.lbDonVi, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.lbDonVi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lbDonVi.ForeColor = System.Drawing.Color.Gray;
+            this.lbDonVi.Location = new System.Drawing.Point(65, 46);
+            this.lbDonVi.Name = "lbDonVi";
+            this.lbDonVi.Size = new System.Drawing.Size(26, 15);
+            this.lbDonVi.TabIndex = 56;
+            this.lbDonVi.Text = "BIT";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(8, 71);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "Role :";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.label17, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.Gray;
+            this.label17.Location = new System.Drawing.Point(8, 46);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(51, 15);
+            this.label17.TabIndex = 54;
+            this.label17.Text = "Đơn Vị :";
             // 
             // guna2Separator3
             // 
@@ -691,72 +824,6 @@
             this.guna2Button5.Text = "HOME";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
-            // DetectMouse
-            // 
-            this.DetectMouse.Enabled = true;
-            this.DetectMouse.Tick += new System.EventHandler(this.DetectMouse_Tick);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.label17, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.Color.Gray;
-            this.label17.Location = new System.Drawing.Point(8, 46);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(51, 15);
-            this.label17.TabIndex = 54;
-            this.label17.Text = "Đơn Vị :";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(8, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "Role :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.label2, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(65, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 15);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "BIT";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.label3, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(65, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 15);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "admin";
-            // 
-            // guna2Separator2
-            // 
-            this.guna2Separator2.BackColor = System.Drawing.Color.White;
-            this.guna2Transition1.SetDecoration(this.guna2Separator2, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2Separator2.Location = new System.Drawing.Point(9, 92);
-            this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(204, 10);
-            this.guna2Separator2.TabIndex = 58;
-            // 
             // guna2ImageButton4
             // 
             this.guna2ImageButton4.CheckedState.Image = global::QuanLySinhVien5ToT.Properties.Resources._15446417841;
@@ -775,78 +842,6 @@
             this.guna2ImageButton4.TabIndex = 0;
             this.guna2ImageButton4.Click += new System.EventHandler(this.guna2ImageButton4_Click);
             // 
-            // guna2ImageButton5
-            // 
-            this.guna2ImageButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
-            this.guna2ImageButton5.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton5.CheckedState.Parent = this.guna2ImageButton5;
-            this.guna2Transition1.SetDecoration(this.guna2ImageButton5, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2ImageButton5.HoverState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton5.HoverState.Parent = this.guna2ImageButton5;
-            this.guna2ImageButton5.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_crowd_64;
-            this.guna2ImageButton5.ImageRotate = 0F;
-            this.guna2ImageButton5.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton5.Location = new System.Drawing.Point(12, 6);
-            this.guna2ImageButton5.Name = "guna2ImageButton5";
-            this.guna2ImageButton5.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton5.PressedState.Parent = this.guna2ImageButton5;
-            this.guna2ImageButton5.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton5.TabIndex = 46;
-            // 
-            // guna2ImageButton3
-            // 
-            this.guna2ImageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
-            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton3.CheckedState.Parent = this.guna2ImageButton3;
-            this.guna2Transition1.SetDecoration(this.guna2ImageButton3, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton3.HoverState.Parent = this.guna2ImageButton3;
-            this.guna2ImageButton3.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_leaderboard_64;
-            this.guna2ImageButton3.ImageRotate = 0F;
-            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(22, 22);
-            this.guna2ImageButton3.Location = new System.Drawing.Point(12, 3);
-            this.guna2ImageButton3.Name = "guna2ImageButton3";
-            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton3.PressedState.Parent = this.guna2ImageButton3;
-            this.guna2ImageButton3.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton3.TabIndex = 44;
-            // 
-            // guna2ImageButton2
-            // 
-            this.guna2ImageButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
-            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton2.CheckedState.Parent = this.guna2ImageButton2;
-            this.guna2Transition1.SetDecoration(this.guna2ImageButton2, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton2.HoverState.Parent = this.guna2ImageButton2;
-            this.guna2ImageButton2.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_timezone_100;
-            this.guna2ImageButton2.ImageRotate = 0F;
-            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton2.Location = new System.Drawing.Point(13, 4);
-            this.guna2ImageButton2.Name = "guna2ImageButton2";
-            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton2.PressedState.Parent = this.guna2ImageButton2;
-            this.guna2ImageButton2.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton2.TabIndex = 43;
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(94)))));
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton1.CheckedState.Parent = this.guna2ImageButton1;
-            this.guna2Transition1.SetDecoration(this.guna2ImageButton1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(27, 27);
-            this.guna2ImageButton1.HoverState.Parent = this.guna2ImageButton1;
-            this.guna2ImageButton1.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_student_male_1001;
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(13, 4);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.PressedState.Parent = this.guna2ImageButton1;
-            this.guna2ImageButton1.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton1.TabIndex = 0;
-            // 
             // btn_Information
             // 
             this.guna2Transition1.SetDecoration(this.btn_Information, Guna.UI2.AnimatorNS.DecorationType.None);
@@ -861,6 +856,11 @@
             this.btn_Information.TabStop = false;
             this.btn_Information.Visible = false;
             this.btn_Information.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click);
+            // 
+            // DetectMouse
+            // 
+            this.DetectMouse.Enabled = true;
+            this.DetectMouse.Tick += new System.EventHandler(this.DetectMouse_Tick);
             // 
             // dataGridViewImageColumn1
             // 
@@ -952,8 +952,8 @@
         private Guna.UI2.WinForms.Guna2Button btnUser;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator3;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbRole;
+        private System.Windows.Forms.Label lbDonVi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label17;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton4;

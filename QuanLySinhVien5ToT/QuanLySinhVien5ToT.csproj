@@ -300,6 +300,7 @@
     <Compile Include="ROLE.cs">
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\check_IP_mssv.cs" />
     <Compile Include="Services\ReviewScroreService.cs" />
     <Compile Include="SINH_VIEN.cs">
       <DependentUpon>DemoSV5TDataSet.tt</DependentUpon>

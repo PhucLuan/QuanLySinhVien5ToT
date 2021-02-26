@@ -25,6 +25,7 @@ namespace QuanLySinhVien5ToT
         private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         ThucHien_TieuChuanBLL thucHien_TieuChuanBLL = new ThucHien_TieuChuanBLL();
+        List<ThongTinPQ_DTO> listPQ_SV = Login.listPQ;
         private void THUCHIENTIEUCHUAN_Load(object sender, EventArgs e)
         {
             loadTHTC(thucHien_TieuChuanBLL.dsthuchienTC().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -37,6 +38,22 @@ namespace QuanLySinhVien5ToT
             SuggestTxtMssv();
             SuggestTxtSearch();
             maxlength();
+            loadPQ();
+        }
+        void loadPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                CbFillter_DV.Enabled = false;
+                dtgv_THTC.ReadOnly = true;
+                CbFillter_DV.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+
+            }
+            else
+            {
+                CbFillter_DV.Enabled = true;
+                dtgv_THTC.ReadOnly = true;
+            }
         }
         void loadTHTC(List<ThucHien_TieuChuanDTO> listthtc)
         {
@@ -54,11 +71,12 @@ namespace QuanLySinhVien5ToT
 
         private void btnLuuTT_Click(object sender, EventArgs e)
         {
-            if (txtMssv_TS.Text == "")
+            if (txtMssv_TS.TextLength<=11)
             {
-                txtMssv_TS.BorderColor = Color.Red;
-                txtMssv_TS.PlaceholderText = "bạn chưa nhập Mssv";
-                txtMssv_TS.PlaceholderForeColor = Color.Red;
+                //txtMssv_TS.BorderColor = Color.Red;
+                //txtMssv_TS.PlaceholderText = "bạn chưa nhập Mssv";
+                //txtMssv_TS.PlaceholderForeColor = Color.Red;
+                thucHien_TieuChuanBLL.check_input_mssv(txtMssv_TS);
             }
             else
             {                
@@ -249,11 +267,25 @@ namespace QuanLySinhVien5ToT
         }
         void SuggestTxtMssv()
         {
-            txtMssv_TS.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Select(x => x.Mssv).ToArray());
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                txtMssv_TS.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Where(x => x.DonVi == listPQ_SV.Select(y => y.DonVi).ToArray().First()).Select(x => x.Mssv).ToArray());
+            }
+            else
+            {
+                txtMssv_TS.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Select(x => x.Mssv).ToArray());
+            }
         }
         void SuggestTxtSearch()
         {
-            txtSearch.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Select(x => x.HoTen).ToArray());
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                txtSearch.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Where(x => x.DonVi == CbFillter_DV.Text).Select(x => x.HoTen).ToArray());
+            }
+            else
+            {
+                txtSearch.AutoCompleteCustomSource.AddRange(thucHien_TieuChuanBLL.dssinhvien().Select(x => x.HoTen).ToArray());
+            }          
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -310,10 +342,7 @@ namespace QuanLySinhVien5ToT
 
         private void txtMssv_TS_Leave(object sender, EventArgs e)
         {
-            if (txtMssv_TS.TextLength < 11 || txtMssv_TS.TextLength > 11)
-            {
-                MessageBox.Show("Mssv phải có 11 số !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            thucHien_TieuChuanBLL.check_input_mssv(txtMssv_TS);
         }
         void maxlength()
         {

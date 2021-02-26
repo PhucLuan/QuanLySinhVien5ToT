@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using QuanLySinhVien5ToT.DAL;
 using QuanLySinhVien5ToT.DTO;
+using QuanLySinhVien5ToT.Services;
 
 namespace QuanLySinhVien5ToT.BLL
 {
@@ -16,6 +20,7 @@ namespace QuanLySinhVien5ToT.BLL
         private Thoi_Gian_XetDAL thoi_Gian_XetDAL = new Thoi_Gian_XetDAL();
         private ThamGia_ChuongtrinhDAL thamGia_ChuongtrinhDAL = new ThamGia_ChuongtrinhDAL();
         private GenericUnitOfWork unitOfWorkNV = new GenericUnitOfWork(Mydb.GetInstance());
+        private check_IP_mssv check_IP_Mssv = new check_IP_mssv();
         private Dictionary<string, string> DicTimeFormatted;
         private Dictionary<int, string> DicGiaiThuong;
 
@@ -67,10 +72,6 @@ namespace QuanLySinhVien5ToT.BLL
             };
             return DicGiaiThuong;
         }
-        //public Dictionary<int, string> DicGiaiThuong = new Dictionary<int, string>()
-        //{
-        //    {0,"Không có"},{1,"Giải nhất"},{2,"Giải nhì"},{3,"Giải ba"}
-        //};
 
         public string GetIdFormattedDateTime(string value)
         {
@@ -98,6 +99,10 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return sinh_VienDAL.Getdssinhvien();
         }
-        
+        public void check_input_mssv(Guna2TextBox textBox)
+        {
+            check_IP_Mssv.check_Input_Mssv(textBox);
+        }
+
     }
 }

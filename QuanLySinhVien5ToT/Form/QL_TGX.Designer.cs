@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pn_sort = new Guna.UI2.WinForms.Guna2Panel();
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.txtFillter_Lop = new Guna.UI2.WinForms.Guna2TextBox();
@@ -85,7 +85,7 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnThemTT = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThemKQ = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTGX = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pn_sort.SuspendLayout();
             this.pn_XemChiTiet.SuspendLayout();
@@ -517,21 +517,21 @@
             // 
             // dtgv_ThongTin
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dtgv_ThongTin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dtgv_ThongTin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgv_ThongTin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_ThongTin.BackgroundColor = System.Drawing.Color.White;
             this.dtgv_ThongTin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgv_ThongTin.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtgv_ThongTin.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv_ThongTin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv_ThongTin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgv_ThongTin.ColumnHeadersHeight = 40;
             this.dtgv_ThongTin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Mssv,
@@ -543,14 +543,14 @@
             this.XemChiTiet,
             this.Sua,
             this.Xoa});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgv_ThongTin.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgv_ThongTin.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgv_ThongTin.EnableHeadersVisualStyles = false;
             this.dtgv_ThongTin.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgv_ThongTin.Location = new System.Drawing.Point(15, 225);
@@ -936,23 +936,23 @@
             this.btnThemTT.Text = "Thêm Thông Tin ";
             this.btnThemTT.Click += new System.EventHandler(this.btnThemTT_Click);
             // 
-            // btnThemKQ
+            // btnTGX
             // 
-            this.btnThemKQ.BackColor = System.Drawing.Color.Transparent;
-            this.btnThemKQ.BorderRadius = 20;
-            this.btnThemKQ.CheckedState.Parent = this.btnThemKQ;
-            this.btnThemKQ.CustomImages.Parent = this.btnThemKQ;
-            this.btnThemKQ.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemKQ.ForeColor = System.Drawing.Color.White;
-            this.btnThemKQ.HoverState.Parent = this.btnThemKQ;
-            this.btnThemKQ.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
-            this.btnThemKQ.Location = new System.Drawing.Point(747, 115);
-            this.btnThemKQ.Name = "btnThemKQ";
-            this.btnThemKQ.ShadowDecoration.Parent = this.btnThemKQ;
-            this.btnThemKQ.Size = new System.Drawing.Size(290, 45);
-            this.btnThemKQ.TabIndex = 45;
-            this.btnThemKQ.Text = "Edit Thời Gian Xét";
-            this.btnThemKQ.Click += new System.EventHandler(this.btnThemKQ_Click);
+            this.btnTGX.BackColor = System.Drawing.Color.Transparent;
+            this.btnTGX.BorderRadius = 20;
+            this.btnTGX.CheckedState.Parent = this.btnTGX;
+            this.btnTGX.CustomImages.Parent = this.btnTGX;
+            this.btnTGX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTGX.ForeColor = System.Drawing.Color.White;
+            this.btnTGX.HoverState.Parent = this.btnTGX;
+            this.btnTGX.Image = global::QuanLySinhVien5ToT.Properties.Resources.icons8_plus_96;
+            this.btnTGX.Location = new System.Drawing.Point(747, 115);
+            this.btnTGX.Name = "btnTGX";
+            this.btnTGX.ShadowDecoration.Parent = this.btnTGX;
+            this.btnTGX.Size = new System.Drawing.Size(290, 45);
+            this.btnTGX.TabIndex = 45;
+            this.btnTGX.Text = "Edit Thời Gian Xét";
+            this.btnTGX.Click += new System.EventHandler(this.btnThemKQ_Click);
             // 
             // guna2Elipse1
             // 
@@ -966,7 +966,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.pn_Them_TT);
             this.Controls.Add(this.btnThemTT);
-            this.Controls.Add(this.btnThemKQ);
+            this.Controls.Add(this.btnTGX);
             this.Controls.Add(this.pn_sort);
             this.Controls.Add(this.pn_XemChiTiet);
             this.Controls.Add(this.dtgv_ThongTin);
@@ -1007,7 +1007,7 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2ComboBox cbFillter_DV;
-        private Guna.UI2.WinForms.Guna2Button btnThemKQ;
+        private Guna.UI2.WinForms.Guna2Button btnTGX;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2ComboBox cbThoiGian_Xem;
         private Guna.UI2.WinForms.Guna2Panel pn_Them_TT;

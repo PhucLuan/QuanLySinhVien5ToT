@@ -23,6 +23,7 @@ namespace QuanLySinhVien5ToT
         private int flagLuu = 0;
         private int flagDT = 0;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
+        List<ThongTinPQ_DTO> listPQ_SV = Login.listPQ;
         ThoiDiemSV_ThamGiaBLL thoiDiemSV_ThamGiaBLL = new ThoiDiemSV_ThamGiaBLL();
         private void QL_TGX_Load(object sender, EventArgs e)
         {
@@ -33,9 +34,25 @@ namespace QuanLySinhVien5ToT
             loadcbFillter_DV();
             TXTSEARCH();
             SuggestTxtMssv();
+            loadPQ();
             txtMssv_TS.MaxLength = 11;
         }
-
+        void loadPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                cbFillter_DV.Enabled = false;
+                dtgv_ThongTin.ReadOnly = true;
+                btnTGX.Enabled = false;
+                cbFillter_DV.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+            }
+            else
+            {
+                btnTGX.Enabled = true;
+                cbFillter_DV.Enabled = true;
+                dtgv_ThongTin.ReadOnly = true;
+            }
+        }
         void loadlistsv (List<ThoiDiemSV_ThamGiaDTO> listtt)
         {
             dtgv_ThongTin.DataSource = listtt;
@@ -46,8 +63,19 @@ namespace QuanLySinhVien5ToT
             txtMssv_TS.BorderColor = Color.FromArgb(213, 218, 223);
             txtMssv_TS.PlaceholderText = "";
         }
+        void loadbtnSua()
+        {
+            pn_Them_TT.Visible = true;
+            btnLuuTT.Visible = true;
+            pn_XemChiTiet.Visible = false;
+            dtgv_ThongTin.Width = 726;
+            txtMssv_TS.Enabled = false;
+            cbThoiGian_TS.Enabled = false;
+            cbThoiGian_TS.FillColor = Color.FromArgb(226, 226, 226);
+        }
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridViewRow row = this.dtgv_ThongTin.Rows[e.RowIndex];
             string name = dtgv_ThongTin.Columns[e.ColumnIndex].Name;
             if (name == "XemChiTiet")
             {
@@ -64,16 +92,27 @@ namespace QuanLySinhVien5ToT
             }
             if (name == "Sua")
             {
-                pn_Them_TT.Visible = true;
-                btnLuuTT.Visible = true;
-                pn_XemChiTiet.Visible = false;
-                dtgv_ThongTin.Width = 726;
-                txtMssv_TS.Enabled = false;
-                cbThoiGian_TS.Enabled = false;
-                flagLuu = 1;
+                if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    if (row.Cells["DonVi"].Value.ToString() == listPQ_SV.Select(x => x.DonVi).ToArray().First())
+                    {
+                        loadbtnSua();
+                        flagLuu = 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("bạn không được quyền sửa");
+                    }
+                }
+                else
+                {
+                    loadbtnSua();
+                    flagLuu = 1;
+                }
+                
             }
 
-            DataGridViewRow row = this.dtgv_ThongTin.Rows[e.RowIndex];
+            
             txtMssv_Xem.Text = row.Cells["Mssv"].Value.ToString();
             txtHoTen_Xem.Text= row.Cells["HoTen"].Value.ToString();
             txtDonVi_Xem.Text= row.Cells["DonVi"].Value.ToString();
@@ -90,6 +129,7 @@ namespace QuanLySinhVien5ToT
             pn_Them_TT.Visible = false;
             btnLuuTT.Visible = false;
             pn_XemChiTiet.Visible = false;
+
         }
         private void btnThemKQ_Click(object sender, EventArgs e)
         {
@@ -107,8 +147,12 @@ namespace QuanLySinhVien5ToT
             btnLuuTT.Visible = true;
             pn_XemChiTiet.Visible = false;
             txtMssv_TS.Text = "";
-            flagLuu = 0;           
+            flagLuu = 0;
             dtpkTG_DK.Value = DateTime.Now;
+            txtMssv_TS.Enabled = true;
+            cbThoiGian_TS.Enabled = true;
+            dtpkTG_DK.Enabled = true;
+            cbThoiGian_TS.FillColor = Color.White;
         }
 
         private void btnXThem_TT_Click(object sender, EventArgs e)
@@ -127,11 +171,12 @@ namespace QuanLySinhVien5ToT
         }
         private void btnLuuTT_Click(object sender, EventArgs e)
         {
-            if (txtMssv_TS.Text == "")
+            if (Convert.ToInt32(txtMssv_TS.TextLength) <=11 )
             {
-                txtMssv_TS.BorderColor = Color.Red;
-                txtMssv_TS.PlaceholderText = "bạn chưa nhập Mssv";
-                txtMssv_TS.PlaceholderForeColor = Color.Red;
+                thoiDiemSV_ThamGiaBLL.check_input_mssv(txtMssv_TS);
+                //txtMssv_TS.BorderColor = Color.Red;
+                //txtMssv_TS.PlaceholderText = "bạn chưa nhập Mssv";
+                //txtMssv_TS.PlaceholderForeColor = Color.Red;
             }
             else
             {
@@ -332,26 +377,31 @@ namespace QuanLySinhVien5ToT
         }
         void TXTSEARCH()
         {
-            txtSearch.AutoCompleteCustomSource.AddRange(thoiDiemSV_ThamGiaBLL.dssinhvien().Select(x => x.HoTen).ToArray());
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                txtSearch.AutoCompleteCustomSource.AddRange(thoiDiemSV_ThamGiaBLL.dssinhvien().Where(x => x.DonVi == listPQ_SV.Select(y => y.DonVi).ToArray().First()).Select(x => x.Mssv).ToArray());
+            }
+            else
+            {
+                txtSearch.AutoCompleteCustomSource.AddRange(thoiDiemSV_ThamGiaBLL.dssinhvien().Select(x => x.HoTen).ToArray());
+            }
+            
         }
         void SuggestTxtMssv()
         {
-            txtMssv_TS.AutoCompleteCustomSource.AddRange(thoiDiemSV_ThamGiaBLL.dssinhvien().Select(x => x.Mssv).ToArray());
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                txtMssv_TS.AutoCompleteCustomSource.AddRange(thoiDiemSV_ThamGiaBLL.dssinhvien().Where(x => x.DonVi == listPQ_SV.Select(y => y.DonVi).ToArray().First()).Select(x => x.Mssv).ToArray());
+            }
+            else
+            {
+                txtMssv_TS.AutoCompleteCustomSource.AddRange(thoiDiemSV_ThamGiaBLL.dssinhvien().Select(x => x.Mssv).ToArray());
+            }           
         }
 
         private void txtMssv_TS_Leave(object sender, EventArgs e)
         {
-            if (txtMssv_TS.TextLength < 11)
-            {
-                txtMssv_TS.Text = "";
-                txtMssv_TS.BorderColor = Color.Red;
-                txtMssv_TS.PlaceholderText = "chưa nhập đủ 11 kí tự";
-                txtMssv_TS.PlaceholderForeColor = Color.Red;
-            }
-            else
-            {
-                txtMssv_TS.BorderColor = Color.FromArgb(226, 226, 226);
-            }
+            thoiDiemSV_ThamGiaBLL.check_input_mssv(txtMssv_TS);
         }
     }
 }

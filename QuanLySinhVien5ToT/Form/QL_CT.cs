@@ -25,6 +25,7 @@ namespace QuanLySinhVien5ToT
         int numberRecord = 3;
         DT_QL_SV5TOT_5Entities2 db = Mydb.GetInstance();
         QL_Chuong_TrinhBLL QL_Chuong_TrinhBLL = new QL_Chuong_TrinhBLL();
+        List<ThongTinPQ_DTO> listPQ_SV = Login.listPQ;
         private void QL_CT_Load(object sender, EventArgs e)
         {
             ShowChuongTrinh(QL_Chuong_TrinhBLL.dschuongtrinh().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
@@ -33,9 +34,38 @@ namespace QuanLySinhVien5ToT
             loadcbTieuChuan();
             loadcbFillterDV();
             loadcbFillterTC();
+            loadPQ();
             txtChuongTrinh.MaxLength = 500;
         }
-        
+        void loadPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                cbFillter_DV.Enabled = false;
+                dtgv_CT.ReadOnly = true;
+                cbFillter_DV.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+
+            }
+            else
+            {
+                cbFillter_DV.Enabled = true;
+                dtgv_CT.ReadOnly = true;
+            }
+        }
+        void loadbtnPQ()
+        {
+            if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+            {
+                cbDonVi.Enabled = false;
+                cbDonVi.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+                cbDonVi.FillColor = Color.FromArgb(226, 226, 226);
+            }
+            else
+            {
+                cbDonVi.Enabled = true;
+                cbDonVi.FillColor = Color.White;
+            }
+        }
         void ShowChuongTrinh(List<Chuong_TrinhDTO> listct)
         {
             dtgv_CT.DataSource = listct;
@@ -49,7 +79,9 @@ namespace QuanLySinhVien5ToT
             flagluu = 0;
             txtChuongTrinh.Text = "";
             txtID.Text = "";
+            
             desingbtn();
+            loadbtnPQ();
         }
         void desingbtn()
         {
@@ -61,6 +93,7 @@ namespace QuanLySinhVien5ToT
             pn_Sort.Visible = true;
             pn_Them_Sua.Visible = false;
             btnLuu.Visible = false;
+            cbDonVi.FillColor = Color.FromArgb(226, 226, 226);
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -127,21 +160,43 @@ namespace QuanLySinhVien5ToT
             btnThemHD.Enabled = true;
             ShowChuongTrinh(QL_Chuong_TrinhBLL.dschuongtrinh().Skip((pagenumber - 1) * numberRecord).Take(numberRecord).ToList());
         }
-
+        void loadbtnSua()
+        {
+            pn_Sort.Visible = false;
+            pn_Them_Sua.Visible = true;
+            btnLuu.Visible = true;            
+            btnThemHD.Enabled = false;
+            txtID.Enabled = false;
+        }
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridViewRow row = this.dtgv_CT.Rows[e.RowIndex];
             string name = dtgv_CT.Columns[e.ColumnIndex].Name;
             if (name == "SuaCT")
             {
-                pn_Sort.Visible = false;
-                pn_Them_Sua.Visible = true;
-                btnLuu.Visible = true;
-                flagluu = 1;
-                btnThemHD.Enabled = false;
-                txtID.Enabled = false;
-                binding();
-                desingbtn(); ;
-                
+                if (listPQ_SV.Select(x => x.Role).ToArray().First() == "admin")
+                {
+                    if (row.Cells["DonViToChuc"].Value.ToString() == listPQ_SV.Select(x => x.DonVi).ToArray().First())
+                    {
+                        loadbtnSua();
+                        binding();
+                        desingbtn();
+                        flagluu = 1;
+                        cbDonVi.Enabled = false;
+                        cbDonVi.Text = listPQ_SV.Select(x => x.DonVi).ToArray().First().ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("bạn không được quyền sửa");
+                    }
+                }
+                else
+                {
+                    cbDonVi.Enabled = true;
+                    loadbtnSua();
+                    binding();
+                    desingbtn();
+                }                             
             }
         }
 
