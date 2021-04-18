@@ -20,6 +20,7 @@ namespace QuanLySinhVien5ToT
             this.CHUONG_TRINH = new HashSet<CHUONG_TRINH>();
             this.QUYDINH_DIEM = new HashSet<QUYDINH_DIEM>();
             this.SINH_VIEN = new HashSet<SINH_VIEN>();
+            this.NHANVIENs = new HashSet<NHANVIEN>();
         }
     
         public string MaDonVi { get; set; }
@@ -31,5 +32,7 @@ namespace QuanLySinhVien5ToT
         public virtual ICollection<QUYDINH_DIEM> QUYDINH_DIEM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SINH_VIEN> SINH_VIEN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
     }
 }

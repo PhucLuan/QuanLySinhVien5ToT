@@ -20,6 +20,7 @@ namespace QuanLySinhVien5ToT.DAL
                                      MaThoiGian=tg.MaThoiGian,
                                      TuNgay=tg.TuNgay,
                                      DenNgay=tg.DenNgay,
+                                     TrangThai=tg.TrangThai
                                  }).ToList();
             return thoi_Gian_XetDTOs;
         }

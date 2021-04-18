@@ -20,6 +20,7 @@ namespace QuanLySinhVien5ToT
         public string MaDonVi { get; set; }
         public Nullable<int> MaTieuChuan { get; set; }
         public Nullable<int> Mathoigian { get; set; }
+        public Nullable<bool> TrangThai { get; set; }
     
         public virtual DON_VI DON_VI { get; set; }
         public virtual LOAI_DIEM LOAI_DIEM { get; set; }

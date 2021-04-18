@@ -26,24 +26,24 @@ namespace QuanLySinhVien5ToT
         }
     
         public virtual DbSet<CAP_TIEU_CHUAN> CAP_TIEU_CHUAN { get; set; }
-        public virtual DbSet<CURRENT_QUYDINH_DIEM> CURRENT_QUYDINH_DIEM { get; set; }
-        public virtual DbSet<CURRENT_TIME> CURRENT_TIME { get; set; }
         public virtual DbSet<CHUONG_TRINH> CHUONG_TRINH { get; set; }
         public virtual DbSet<DIEM> DIEMs { get; set; }
         public virtual DbSet<DON_VI> DON_VI { get; set; }
         public virtual DbSet<HOCKY_XETDIEM> HOCKY_XETDIEM { get; set; }
-        public virtual DbSet<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
         public virtual DbSet<LOAI_DIEM> LOAI_DIEM { get; set; }
         public virtual DbSet<LOAI_TIEU_CHUAN> LOAI_TIEU_CHUAN { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<QUYDINH_DIEM> QUYDINH_DIEM { get; set; }
         public virtual DbSet<ROLE> ROLEs { get; set; }
         public virtual DbSet<SINH_VIEN> SINH_VIEN { get; set; }
         public virtual DbSet<TIEU_CHI> TIEU_CHI { get; set; }
         public virtual DbSet<TIEU_CHUAN> TIEU_CHUAN { get; set; }
-        public virtual DbSet<THAMGIA_CHUONGTRINH> THAMGIA_CHUONGTRINH { get; set; }
         public virtual DbSet<THOIGIAN_XET> THOIGIAN_XET { get; set; }
-        public virtual DbSet<THUCHIEN_TIEUCHUAN> THUCHIEN_TIEUCHUAN { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
+        public virtual DbSet<THUCHIEN_TIEUCHUAN> THUCHIEN_TIEUCHUAN { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<THOIDIEM_SV_THAMGIA> THOIDIEM_SV_THAMGIA { get; set; }
+        public virtual DbSet<THAMGIA_CHUONGTRINH> THAMGIA_CHUONGTRINH { get; set; }
+        public virtual DbSet<KQ_THEO_TIEUCHI> KQ_THEO_TIEUCHI { get; set; }
+        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
     }
 }

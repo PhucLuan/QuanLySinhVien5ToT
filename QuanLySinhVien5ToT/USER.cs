@@ -17,8 +17,8 @@ namespace QuanLySinhVien5ToT
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USER()
         {
-            this.NHANVIENs = new HashSet<NHANVIEN>();
             this.SINH_VIEN = new HashSet<SINH_VIEN>();
+            this.NHANVIENs = new HashSet<NHANVIEN>();
         }
     
         public int IDuser { get; set; }
@@ -26,10 +26,10 @@ namespace QuanLySinhVien5ToT
         public string Password { get; set; }
         public Nullable<int> IDrole { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
         public virtual ROLE ROLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SINH_VIEN> SINH_VIEN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
     }
 }

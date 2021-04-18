@@ -17,7 +17,9 @@ namespace QuanLySinhVien5ToT.DAL
                             select new Tieu_ChiDTO
                             {
                                 MaTieuChi=tc.MaTieuChi,
-                                TenTieuChi=tc.TenTieuChi
+                                TenTieuChi=tc.TenTieuChi,
+                                TienDoTong=tc.TienDoTong
+                                
                             }).ToList();
             return tieu_ChiDTOs;
         }

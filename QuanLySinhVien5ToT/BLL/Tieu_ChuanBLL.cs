@@ -37,9 +37,9 @@ namespace QuanLySinhVien5ToT.BLL
         {
             return unitOfWorkNV.Repository<TIEU_CHUAN>().GetAll(predicate);
         }
-        public List<Tieu_ChuanDTO> dsTieuChuan(int page, int recordNum)
+        public List<Tieu_ChuanDTO> dsTieuChuan()
         {
-            return Tieu_ChuanDAL.getTieuChuanRecord(page, recordNum);
+            return Tieu_ChuanDAL.getTieuChuan();
         }
         public List<Tieu_ChiDTO> dstieuchi()
         {

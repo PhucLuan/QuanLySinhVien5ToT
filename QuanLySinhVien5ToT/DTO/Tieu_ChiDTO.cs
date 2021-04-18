@@ -10,5 +10,6 @@ namespace QuanLySinhVien5ToT.DTO
     {
         public string MaTieuChi { get; set; }
         public string TenTieuChi { get; set; }
+        public int? TienDoTong { get; set; }
     }
 }

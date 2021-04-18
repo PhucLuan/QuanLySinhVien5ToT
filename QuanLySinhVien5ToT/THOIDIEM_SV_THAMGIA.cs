@@ -12,10 +12,13 @@ namespace QuanLySinhVien5ToT
     using System;
     using System.Collections.Generic;
     
-    public partial class CURRENT_TIME
+    public partial class THOIDIEM_SV_THAMGIA
     {
-        public int IDthoigian { get; set; }
-        public Nullable<System.DateTime> TuNgay { get; set; }
-        public Nullable<System.DateTime> DenNgay { get; set; }
+        public string Mssv { get; set; }
+        public int MaThoiGian { get; set; }
+        public Nullable<System.DateTime> ThoiGian_DK { get; set; }
+    
+        public virtual SINH_VIEN SINH_VIEN { get; set; }
+        public virtual THOIGIAN_XET THOIGIAN_XET { get; set; }
     }
 }
